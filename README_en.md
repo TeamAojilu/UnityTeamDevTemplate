@@ -3,7 +3,7 @@ _A template repository for team developing using Unity._
 
 _Comments are written in [ _Italic_ ]._
 
-_English README [here](README_en.md)._
+_日本語のREADMEは[コチラ](README.md)._
 
 # TODO
 _Tasks for your team and project_
