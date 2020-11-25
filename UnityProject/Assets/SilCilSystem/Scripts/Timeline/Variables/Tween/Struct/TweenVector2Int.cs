@@ -16,8 +16,7 @@ namespace SilCilSystem.Timeline
 
         protected override Vector2Int Lerp(Vector2Int start, Vector2Int end, float t)
         {
-            var vec = Vector2.Lerp(start, end, t);
-            return new Vector2Int(m_castType.Cast(vec.x), m_castType.Cast(vec.y));
+            return m_castType.Cast(Vector2.Lerp(start, end, t));
         }
     }
 

@@ -27,15 +27,10 @@ namespace SilCilSystem.Timeline
             {
                 default:
                 case LerpType.Lerp:
-                    return Vector3ToInt(Vector3.Lerp(start, end, t));
+                    return m_castType.Cast(Vector3.Lerp(start, end, t));
                 case LerpType.SLerp:
-                    return Vector3ToInt(Vector3.Slerp(start, end, t));
+                    return m_castType.Cast(Vector3.Slerp(start, end, t));
             }
-        }
-
-        private Vector3Int Vector3ToInt(Vector3 vec)
-        {
-            return new Vector3Int(m_castType.Cast(vec.x), m_castType.Cast(vec.y), m_castType.Cast(vec.z));
         }
     }
 

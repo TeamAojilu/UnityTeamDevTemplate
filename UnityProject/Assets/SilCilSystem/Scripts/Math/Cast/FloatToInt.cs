@@ -27,5 +27,13 @@ namespace SilCilSystem.Math
                     return Mathf.RoundToInt(value);
             }
         }
+
+        // switch判定を複数回呼ぶのが気持ち悪い気もするが、コードの短さ重視で.
+        public static Vector2Int Cast(this CastType castType, Vector2 value)
+            => new Vector2Int(castType.Cast(value.x), castType.Cast(value.y));
+
+        // switch判定を複数回呼ぶのが気持ち悪い気もするが、コードの短さ重視で.
+        public static Vector3Int Cast(this CastType castType, Vector3 value)
+            => new Vector3Int(castType.Cast(value.x), castType.Cast(value.y), castType.Cast(value.z));
     }
 }
