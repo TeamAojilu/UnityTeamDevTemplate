@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using SilCilSystem.Variables;
 
-namespace RollBall
+namespace Samples.RollBall
 {
     public class AxisInputSystem : MonoBehaviour
     {

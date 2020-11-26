@@ -2,7 +2,7 @@
 using UnityEngine;
 using SilCilSystem.SceneLoader;
 
-namespace RollBall
+namespace Samples.RollBall
 {
     public class TitleManager : MonoBehaviour
     {

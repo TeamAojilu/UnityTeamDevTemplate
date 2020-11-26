@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace RollBall
+namespace Samples.RollBall
 {
     public class ItemCountDown : MonoBehaviour
     {

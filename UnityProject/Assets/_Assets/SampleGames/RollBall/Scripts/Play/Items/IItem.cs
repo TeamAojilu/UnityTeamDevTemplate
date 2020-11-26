@@ -1,4 +1,4 @@
-﻿namespace RollBall
+﻿namespace Samples.RollBall
 {
     public interface IItem
     {

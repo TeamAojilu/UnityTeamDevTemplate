@@ -1,7 +1,7 @@
 ﻿using SilCilSystem.Variables;
 using UnityEngine;
 
-namespace RollBall
+namespace Samples.RollBall
 {
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovement : MonoBehaviour

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Assets/SampleGames/RollBall/RollBall.unity
     guid: bff306dc870bb404abff72f0085d36fb
+  - enabled: 1
+    path: Assets/_Assets/SampleGames/2DShooting/2DShooting.unity
+    guid: 2334eb2ce5f0ace47b9236105ef88636
   m_configObjects: {}

@@ -3,7 +3,7 @@ using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.SceneLoader;
 
-namespace RollBall
+namespace Samples.RollBall
 {
     public class GameManager : MonoBehaviour
     {
