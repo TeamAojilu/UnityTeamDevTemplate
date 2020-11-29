@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 
-namespace SilCilSystem.Components
+namespace SilCilSystem.Components.Views
 {
     /// <summary>文字を表示するためのインターフェース</summary>
     public interface IDisplayText
