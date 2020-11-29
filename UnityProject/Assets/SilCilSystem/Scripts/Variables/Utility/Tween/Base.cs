@@ -8,7 +8,6 @@ namespace SilCilSystem.Variables
     {
         internal static IEnumerator Tween<T>(this Variable<T> variable, T start, T end, float time, Func<T, T, float, T> lerp, Func<float, float> curve)
         {
-            variable.Value = lerp(start, end, curve(0f));
             float timer = 0f;
             while (timer < time)
             {

@@ -21,7 +21,7 @@ namespace Samples.Shooting2D
         {
             m_isPlaying.Value = false;
 			m_score.Value = 0;
-			m_disposable = m_onGameOver.Subscibe(OnGameOver);
+			m_disposable = m_onGameOver.Subscribe(OnGameOver);
         }
 
         private void OnDestroy()

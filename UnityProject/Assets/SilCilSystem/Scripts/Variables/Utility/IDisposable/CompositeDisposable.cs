@@ -17,6 +17,7 @@ namespace SilCilSystem.Variables
             {
                 disposable?.Dispose();
             }
+            m_disposables.Clear();
         }
     }
 }

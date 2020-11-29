@@ -14,7 +14,7 @@ namespace Samples.RollBall
         private void Start()
         {
             m_itemCountDown.Value = GetComponentsInChildren<IItem>().Length;
-            m_unsubscriber = m_onItemPicked?.Subscibe(OnItemPicked);
+            m_unsubscriber = m_onItemPicked?.Subscribe(OnItemPicked);
         }
 
         private void OnItemPicked()

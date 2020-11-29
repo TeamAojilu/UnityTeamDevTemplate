@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace SilCilSystem.Variables
 {
-    internal class EventColorListener : GameEventColorListener, IGameEventSetter<EventColor>
+    internal class EventColorListener : GameEventColorListener, IGameEventSetter<GameEventColor>
     {
-        [SerializeField] private EventColor m_event = default;
-        public override IDisposable Subscibe(Action<Color> action) => m_event.Subscribe(action);
+        [SerializeField] private GameEventColor m_event = default;
+        public override IDisposable Subscribe(Action<Color> action) => m_event.Subscribe(action);
 
-        void IGameEventSetter<EventColor>.SetGameEvent(EventColor gameEvent)
+        void IGameEventSetter<GameEventColor>.SetGameEvent(GameEventColor gameEvent)
         {
             m_event = gameEvent;
         }

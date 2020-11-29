@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace SilCilSystem.Variables
 {
-    internal class EventVector3IntListener : GameEventVector3IntListener, IGameEventSetter<EventVector3Int>
+    internal class EventVector3IntListener : GameEventVector3IntListener, IGameEventSetter<GameEventVector3Int>
     {
-        [SerializeField] private EventVector3Int m_event = default;
-        public override IDisposable Subscibe(Action<Vector3Int> action) => m_event.Subscribe(action);
+        [SerializeField] private GameEventVector3Int m_event = default;
+        public override IDisposable Subscribe(Action<Vector3Int> action) => m_event.Subscribe(action);
 
-        void IGameEventSetter<EventVector3Int>.SetGameEvent(EventVector3Int gameEvent)
+        void IGameEventSetter<GameEventVector3Int>.SetGameEvent(GameEventVector3Int gameEvent)
         {
             m_event = gameEvent;
         }

@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace SilCilSystem.Variables
 {
-    internal class EventQuaternionListener : GameEventQuaternionListener, IGameEventSetter<EventQuaternion>
+    internal class EventQuaternionListener : GameEventQuaternionListener, IGameEventSetter<GameEventQuaternion>
     {
-        [SerializeField] private EventQuaternion m_event = default;
-        public override IDisposable Subscibe(Action<Quaternion> action) => m_event.Subscribe(action);
+        [SerializeField] private GameEventQuaternion m_event = default;
+        public override IDisposable Subscribe(Action<Quaternion> action) => m_event.Subscribe(action);
 
-        void IGameEventSetter<EventQuaternion>.SetGameEvent(EventQuaternion gameEvent)
+        void IGameEventSetter<GameEventQuaternion>.SetGameEvent(GameEventQuaternion gameEvent)
         {
             m_event = gameEvent;
         }

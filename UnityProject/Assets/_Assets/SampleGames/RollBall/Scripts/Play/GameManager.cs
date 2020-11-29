@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using SilCilSystem.Variables;
-using SilCilSystem.SceneLoader;
+using SilCilSystem.Singletons;
 
 namespace Samples.RollBall
 {

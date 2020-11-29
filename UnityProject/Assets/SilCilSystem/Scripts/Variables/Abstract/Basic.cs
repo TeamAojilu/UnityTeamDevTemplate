@@ -27,11 +27,11 @@ namespace SilCilSystem.Variables
 
 	public abstract class GameEventListener : ScriptableObject
 	{
-		public abstract IDisposable Subscibe(Action action);
+		public abstract IDisposable Subscribe(Action action);
 	}
 
 	public abstract class GameEventListener<T> : ScriptableObject
 	{
-		public abstract IDisposable Subscibe(Action<T> action);
+		public abstract IDisposable Subscribe(Action<T> action);
 	}
 }

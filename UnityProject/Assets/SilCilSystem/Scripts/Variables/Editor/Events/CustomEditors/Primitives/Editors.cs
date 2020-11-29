@@ -5,18 +5,18 @@ using SilCilSystem.Variables;
 namespace SilCilSystem.Editors
 {
     [CustomEditor(typeof(EventNoArgs))]
-    internal class GameEventNoArgsEditor : GameEventEditor<EventNoArgs, EventNoArgsListener> { }
+    internal class GameEventNoArgsEditor : GameEventEditor<GameEvent, EventNoArgsListener> { }
 
     [CustomEditor(typeof(EventInt))]
-    internal class GameEventIntEditor : GameEventEditor<EventInt, EventIntListener> { }
+    internal class GameEventIntEditor : GameEventEditor<GameEventInt, EventIntListener> { }
 
     [CustomEditor(typeof(EventBool))]
-    internal class GameEventBoolEditor : GameEventEditor<EventBool, EventBoolListener> { }
+    internal class GameEventBoolEditor : GameEventEditor<GameEventBool, EventBoolListener> { }
 
     [CustomEditor(typeof(EventFloat))]
-    internal class GameEventFloatEditor : GameEventEditor<EventFloat, EventFloatListener> { }
+    internal class GameEventFloatEditor : GameEventEditor<GameEventFloat, EventFloatListener> { }
 
     [CustomEditor(typeof(EventString))]
-    internal class GameEventStringEditor : GameEventEditor<EventString, EventStringListener> { }
+    internal class GameEventStringEditor : GameEventEditor<GameEventString, EventStringListener> { }
 }
 #endif

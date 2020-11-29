@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace SilCilSystem.Variables
 {
-    internal class EventBoolListener : GameEventBoolListener, IGameEventSetter<EventBool>
+    internal class EventBoolListener : GameEventBoolListener, IGameEventSetter<GameEventBool>
     {
-        [SerializeField] private EventBool m_event = default;
-        public override IDisposable Subscibe(Action<bool> action) => m_event.Subscribe(action);
+        [SerializeField] private GameEventBool m_event = default;
+        public override IDisposable Subscribe(Action<bool> action) => m_event.Subscribe(action);
 
-        void IGameEventSetter<EventBool>.SetGameEvent(EventBool gameEvent)
+        void IGameEventSetter<GameEventBool>.SetGameEvent(GameEventBool gameEvent)
         {
             m_event = gameEvent;
         }

@@ -8,7 +8,7 @@ namespace Samples.Shooting2D
         
         private void Start()
         {
-            Destroy(gameObject, 10f);
+            Destroy(gameObject, m_lifeTime);
         }
     }
 }

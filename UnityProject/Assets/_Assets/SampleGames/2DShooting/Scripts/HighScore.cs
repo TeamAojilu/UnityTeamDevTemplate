@@ -22,8 +22,8 @@ namespace Samples.Shooting2D
 			Initialize();
 
 			var disposable = new CompositeDisposable();
-			disposable.Add(m_onScoreChanged.Subscibe(OnScoreChanged));
-			disposable.Add(m_onGameOver.Subscibe(OnGameOver));
+			disposable.Add(m_onScoreChanged.Subscribe(OnScoreChanged));
+			disposable.Add(m_onGameOver.Subscribe(OnGameOver));
 			m_disposable = disposable;
 		}
 
