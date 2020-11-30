@@ -6,11 +6,14 @@ namespace SilCilSystem.Variables
 	public abstract class Variable<T> : ScriptableObject
 	{
 		public abstract T Value{ get; set; }
+		public void SetValue(T value) => Value = value;
+		public static implicit operator T(Variable<T> variable) => variable.Value;
 	}
 
 	public abstract class ReadonlyVariable<T> : ScriptableObject
 	{
 		public abstract T Value{ get; }
+		public static implicit operator T(ReadonlyVariable<T> variable) => variable.Value;
 	}
 
 	public abstract class GameEvent : ScriptableObject

@@ -9,10 +9,10 @@ namespace SilCilSystem.Components.Views
     public class DisplayVariables : MonoBehaviour
     {
         [Header("Status")]
-        [SerializeField] private VariableBool m_isBusy = default;
+        [SerializeField] private PropertyBool m_isBusy = default;
 
         [Header("Text")]
-        [SerializeField, TextArea] private string m_format = "Value: {key}";
+        [SerializeField, TextArea] private string m_format = "Value: {key}"; // TextAreaやOnValidateが効かないのでPropertyStringは未使用.
 
         [Header("Variables")]
         [SerializeField] private DisplayVariableInt[] m_intValues = default;
@@ -25,12 +25,17 @@ namespace SilCilSystem.Components.Views
         {
             set
             {
-                if (m_isBusy != null && m_isBusy.Value != value) m_isBusy.Value = value;
+                if (m_isBusy != value) m_isBusy.Value = value;
             }
         }
 
-        private void Start() => SetText();
-        private void OnValidate() => SetText();
+        private void Start() 
+        {
+            SetVariables();
+            SetText();
+        }
+
+        private void OnValidate() => Start();
         
         private void Update()
         {
@@ -50,20 +55,20 @@ namespace SilCilSystem.Components.Views
             m_text = m_text ?? gameObject.GetTextComponent();
             if (m_text == null) return;
 
-            if (m_variables == null)
-            {
-                m_variables = new List<IDisplayVariable>();
-                if(m_intValues?.Length != 0) m_variables.AddRange(m_intValues);
-                if(m_floatValues?.Length != 0) m_variables.AddRange(m_floatValues);
-                m_variables.ForEach(x => x.Initialize());
-            }
-
             string text = m_format;
             foreach (var variable in m_variables)
             {
                 text = text.Replace($"{{{variable.Key}}}", variable.Update());
             }
             m_text.SetText(text);
+        }
+
+        private void SetVariables()
+        {
+            m_variables = new List<IDisplayVariable>();
+            if (m_intValues?.Length != 0) m_variables.AddRange(m_intValues);
+            if (m_floatValues?.Length != 0) m_variables.AddRange(m_floatValues);
+            m_variables.ForEach(x => x.Initialize());
         }
     }
 }

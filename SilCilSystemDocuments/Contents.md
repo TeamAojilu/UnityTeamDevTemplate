@@ -45,6 +45,10 @@ SilCilSystemの他の要素は主に変数オブジェクトとイベントオ�
 
 ---
 
+先ほど、重要なのは3つと言いましたが、コンポーネントを書くときはPropertyも使えると便利です。
+
+- [インスペクタ上で変数オブジェクトの使用/不使用を切り替えられるようにする][page:Property]
+
 #### 変数のset
 
 - 変数に定数を代入する（実装予定）
@@ -85,11 +89,23 @@ Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが�
 
 ※生成処理はPrefabGeneratorOnLoad.csに記述してあります。
 
+### Math
+
+---
+
+変数/イベントオブジェクトとの直接的な関係はないですが、補間曲線の取得などの数学に関するものです。
+SilCilSystemのコンポーネントなどで使用されています。
+
+- [イージング関数を取得/設定する][page:InterpolationCurve]
+- [floatからintへの変換方法を指定する][page:FloatToInt]
+
 <!--- 参照 --->
 <!--- 要点 --->
 [page:Variable]: Variables/Variable.md
 [page:GameEvent]: Variables/GameEvent.md
 [page:OnValueChanged]: Variables/OnValueChanged.md
+
+[page:Property]: Variables/Properties/Property.md
 
 <!--- 変数set --->
 [page:Timer]: Templates/NotYet.md
@@ -97,7 +113,7 @@ Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが�
 [page:TweenVariableCoroutine]: Variables/Tween/TweenVaraiableCotoutine.md
 
 <!--- 変数get --->
-[page:DisplayVariables]: Templates/NotYet.md
+[page:DisplayVariables]: Components/Views/DisplayVariables.md
 
 <!--- イベント登録 --->
 [page:CompositeDisposable]: Variables/IDisposable/CompositeDisposable.md
@@ -107,3 +123,7 @@ Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが�
 [page:SceneLoader]: Singletons/SceneLoader.md
 
 [fig:InitialPrefabs]: Figures/InitialPrefabs.png
+
+<!--- Math --->
+[page:InterpolationCurve]: Templates/NotYet.md
+[page:FloatToInt]: Templates/NotYet.md

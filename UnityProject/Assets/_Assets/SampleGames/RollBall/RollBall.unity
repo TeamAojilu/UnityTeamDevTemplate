@@ -1326,18 +1326,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1aa0b28fac064c4eae6cfa5750b4be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_isBusy: {fileID: 0}
+  m_isBusy:
+    m_value: 0
+    m_variable: {fileID: 0}
   m_format: '{time}
 
     {item}'
   m_intValues:
   - m_key: item
-    m_format: "\u306E\u3053\u308A # \u3053;;\u30AF\u30EA\u30A2"
+    m_format:
+      m_value: "\u306E\u3053\u308A 0 \u3053;;\u30AF\u30EA\u30A2"
+      m_variable: {fileID: 0}
     m_variable: {fileID: 6470250394459388106, guid: c9e9038ffffee7945b3ecb5448e6466f,
       type: 2}
-    m_useInitial: 0
+    m_useInitial:
+      m_value: 0
+      m_variable: {fileID: 0}
     m_initialValue: 0
-    m_duration: 0
+    m_duration:
+      m_value: -1
+      m_variable: {fileID: 0}
     m_curve:
       m_curveType: 0
       m_useCustomCurve: 0
@@ -1350,12 +1358,18 @@ MonoBehaviour:
     m_castType: 0
   m_floatValues:
   - m_key: time
-    m_format: "\u3042\u3068 ##.00 s;\u30B2\u30FC\u30E0\u30AA\u30FC\u30D0\u30FC"
+    m_format:
+      m_value: "\u3042\u3068 0.00 \u79D2;\u30B2\u30FC\u30E0\u30AA\u30FC\u30D0\u30FC"
+      m_variable: {fileID: 0}
     m_variable: {fileID: 3395943798483910231, guid: 3a5a7f8beb8247042ad8b23a87864ef1,
       type: 2}
-    m_useInitial: 0
+    m_useInitial:
+      m_value: 0
+      m_variable: {fileID: 0}
     m_initialValue: 0
-    m_duration: 0
+    m_duration:
+      m_value: -1
+      m_variable: {fileID: 0}
     m_curve:
       m_curveType: 0
       m_useCustomCurve: 0
@@ -1397,7 +1411,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B2\u30FC\u30E0\u30AA\u30FC\u30D0\u30FC\n\u306E\u3053\u308A 2 \u3053"
+  m_Text: "\u3042\u3068 30.00 \u79D2\n\u30AF\u30EA\u30A2"
 --- !u!222 &1447057149
 CanvasRenderer:
   m_ObjectHideFlags: 0

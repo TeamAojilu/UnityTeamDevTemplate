@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -666,18 +666,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1aa0b28fac064c4eae6cfa5750b4be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_isBusy: {fileID: 0}
-  m_format: 'Score: {score}
+  m_isBusy:
+    m_value: 0
+    m_variable: {fileID: 0}
+  m_format: '{score}
 
-    HighScore: {highScore}'
+    {highScore}'
   m_intValues:
   - m_key: score
-    m_format: G
+    m_format:
+      m_value: 'Score: 0'
+      m_variable: {fileID: 0}
     m_variable: {fileID: 7030332484043393690, guid: ddf2fd5e875942a41b81893614105e79,
       type: 2}
-    m_useInitial: 0
+    m_useInitial:
+      m_value: 0
+      m_variable: {fileID: 0}
     m_initialValue: 0
-    m_duration: 0.5
+    m_duration:
+      m_value: 0.5
+      m_variable: {fileID: 0}
     m_curve:
       m_curveType: 0
       m_useCustomCurve: 0
@@ -689,12 +697,18 @@ MonoBehaviour:
         m_RotationOrder: 0
     m_castType: 0
   - m_key: highScore
-    m_format: G
+    m_format:
+      m_value: 'HishScore: 0'
+      m_variable: {fileID: 0}
     m_variable: {fileID: 4734312021709991446, guid: 89d3b90bd5dc1ec4c878e2290c0e64de,
       type: 2}
-    m_useInitial: 0
+    m_useInitial:
+      m_value: 0
+      m_variable: {fileID: 0}
     m_initialValue: 0
-    m_duration: 0
+    m_duration:
+      m_value: -1
+      m_variable: {fileID: 0}
     m_curve:
       m_curveType: 0
       m_useCustomCurve: 0
@@ -725,9 +739,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: 500
+  m_text: 'Score: 600
 
-    HighScore: 3500'
+    HishScore: 4800'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
