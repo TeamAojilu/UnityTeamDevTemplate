@@ -2,6 +2,7 @@
 
 namespace SilCilSystem.Singletons
 {
+    [DefaultExecutionOrder(-1000)]
     /// <summary>
     /// 1つしか存在しないMonoBehaviour
     /// 【挙動】既に存在する場合は削除、そうでなければDontDestroyOnLoadをコール
