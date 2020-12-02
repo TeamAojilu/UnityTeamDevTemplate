@@ -10,8 +10,8 @@ namespace SilCilSystem.Components.AudioPlayers
         [Serializable]
         private class AudioInfo
         {
-            public string name;
-            public AudioClip clip;
+            public string name = "name";
+            public AudioClip clip = default;
         }
 
         [SerializeField] private AudioInfo[] audioInfos = default;

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Math;
+using System;
 
 namespace SilCilSystem.Singletons
 {
@@ -9,6 +10,7 @@ namespace SilCilSystem.Singletons
 		public static void PlayBGM(string name) => Instance._PlayBGM(name);
 		public static void PlaySE(string name) => Instance._PlaySE(name);
 
+		[Header("Volume")]
 		[SerializeField] private ReadonlyPropertyFloat m_defaultBGMVolume = new ReadonlyPropertyFloat(1f);
 		[SerializeField] private ReadonlyPropertyFloat m_defaultSEVolume = new ReadonlyPropertyFloat(1f);
 
@@ -21,20 +23,29 @@ namespace SilCilSystem.Singletons
 		[SerializeField] private AudioSource m_bgmSource = default;
 		[SerializeField] private AudioSource m_seSource = default;
 
+		[Header("Events")]
+		[SerializeField] private GameEventStringListener m_playBGM = default;
+		[SerializeField] private GameEventStringListener m_playSE = default;
+
+		private IDisposable m_disposable = default;
+
 		public IAudioClipResources Clips { get; set; }
 		
-        protected override void OnAwake() { }
+        protected override void OnAwake() 
+		{
+			var disposable = new CompositeDisposable();
+			disposable.Add(m_playBGM?.Subscribe(_PlayBGM));
+			disposable.Add(m_playSE?.Subscribe(_PlaySE));
+			m_disposable = disposable;
+		}
 
-        protected override void OnDestroyCallback() { }
+        protected override void OnDestroyCallback() 
+		{
+			m_disposable?.Dispose();
+		}
 
 		protected void _PlayBGM(string name)
         {
-			if(m_nextBGM != null)
-            {
-				Debug.LogError($"PlayBGM(\"{name}\"): BGM切り替え中に、BGM切り替え処理が入ったので無効になります。");
-				return;
-            }
-
 			m_nextBGM = Clips?.GetClip(name);
 			m_multiply = -1f;
         }

@@ -36,7 +36,6 @@ SilCilSystemは変数オブジェクトとイベントオブジェクトによ�
 ## 機能一覧
 
 SilCilSystemの他の要素は主に変数オブジェクトとイベントオブジェクトを使用した汎用的なクラスの集合です。
-（シングルトンなど、例外もあります。）
 
 あなたが実装しようとしている機能はここに載っているかもしれません。
 コードを書く前にチェックしてみてください。
@@ -51,8 +50,7 @@ SilCilSystemの他の要素は主に変数オブジェクトとイベントオ�
 
 #### 変数のset
 
-- 変数に定数を代入する（実装予定）
-- [時間を測定する][page:Timer]
+- [時間を測定する/一定間隔で処理を行う][page:Timer]
 - [Timelineで変数の値を変える][page:ChangeValueInTimeline]
 - [Tweenコルーチンを用いて変数の値を時間変化させる][page:TweenVariableCoroutine]
 
@@ -76,11 +74,11 @@ SilCilSystemの他の要素は主に変数オブジェクトとイベントオ�
 
 ---
 
-グローバルな処理にまで変数/イベントオブジェクトを使用するとアセット管理の量が無駄に増えると感じたので、シングルトンでは使用していません。
-以下はシングルトンの一覧になります。
+グローバルな処理として利用されると思われる機能はシングルトンで用意しています。
 
 - [シングルトンの実装][page:SingletonMonoBehaviour]
 - [シーンのロード][page:SceneLoader]
+- [音楽の再生][page:AudioPlayer]
 
 作成したシングルトンはゲーム開始時に自動で生成されるようにEditor拡張されています。
 Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが生成されるようになっています。
@@ -108,9 +106,9 @@ SilCilSystemのコンポーネントなどで使用されています。
 [page:Property]: Variables/Properties/Property.md
 
 <!--- 変数set --->
-[page:Timer]: Templates/NotYet.md
+[page:Timer]: Components/Timers/Timer.md
 [page:ChangeValueInTimeline]: Variables/Timeline/ChangeVariableInTimeline.md
-[page:TweenVariableCoroutine]: Variables/Tween/TweenVaraiableCotoutine.md
+[page:TweenVariableCoroutine]: Variables/Tween/TweenVariableCoroutine.md
 
 <!--- 変数get --->
 [page:DisplayVariables]: Components/Views/DisplayVariables.md
@@ -121,9 +119,10 @@ SilCilSystemのコンポーネントなどで使用されています。
 <!--- シングルトン --->
 [page:SingletonMonoBehaviour]: Singletons/SingletonMonoBehaviour.md
 [page:SceneLoader]: Singletons/SceneLoader.md
+[page:AudioPlayer]: Singletons/AudioPlayer.md
 
 [fig:InitialPrefabs]: Figures/InitialPrefabs.png
 
 <!--- Math --->
-[page:InterpolationCurve]: Templates/NotYet.md
-[page:FloatToInt]: Templates/NotYet.md
+[page:InterpolationCurve]: Math/InterpolationCurve.md
+[page:FloatToInt]: Math/FloatToInt.md

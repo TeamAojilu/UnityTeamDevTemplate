@@ -90,7 +90,7 @@ ISceneLoaderは以下のメソッドが定義されたインターフェース�
 |IEnumerator StartEffect()|SceneLoaderのStartメソッドで呼ばれるコルーチンです。|
 |IEnumerator LoadScene(string sceneName)|シーンのロード処理を行うコルーチンです。|
 
-例えば、以下のように、ISceneLoaderを継承したコンポーネントを作成してStartメソッドでLoaderに設定して独自の処理を行います。
+例えば、以下のように、ISceneLoaderを継承したコンポーネントを作成してStartやAwakeメソッドでLoaderに設定して独自の処理を行います。
 
 ```cs
 using System.Collections;
