@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/_Assets/SampleGames/RollBall/Title.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
