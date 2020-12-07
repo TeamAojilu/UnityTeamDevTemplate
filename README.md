@@ -1,22 +1,32 @@
 # UnityTeamDevTemplate
-_Unityを使ったチーム開発でのテンプレートリポジトリです。_
+Unityで共同開発(チーム開発)を行う際、円滑にスタートダッシュを切れるようにサポートをするテンプレートリポジトリです。
 
-_手順やコメントは [ _斜体_ ] で書かれています。適宜削除してください。_
 
-_English README [here](README_en.md)._
+```
+[TODO]
+ここにアイコン画像入れたい
 
-# TODO
-_プロジェクト、チームにおける準備やタスク_
-- [ ] GameTitleにゲームタイトルを記入
-- [ ] Membersにチームメンバーの名前と役割を記入
-- [ ] `UnityProject`ディレクトリの名前をゲームタイトルに変更
-- [ ] Unityを起動しProjectSettings⚙からProductNameとCompanyNameを変更
-- [ ] `[GameTitle]/Assets/_Assets`直下に`[GameTitel]/ScriptableObject`ディレクトリを作成
-- [ ] 必要な`ScriptableObject`を[ドキュメント](https://github.com/kugimasa/UnityTeamDevTemplate/blob/main/SilCilSystemDocuments/Contents.md)を参考に作成
----
+できれば名前も変えたい
+```
 
-# GameTitle
+# テンプレート概要
 
-# Members
-- MemberA: 役割
-- MemberB: 役割
+このテンプレートは
+
+- 設計の共通認識(共通言語)を統一する際に役立つ、[**SilCilSystem**](./SilCilSystemDocuments)
+- GitHubIssuesを使ったタスク管理のための**IssueTemplate**
+- チーム内での決め事や共通認識をGitHubWikiにまとめて置いておく際に役立つ**WikiTemplate**
+
+からなります。
+
+あくまでテンプレートなので、これを用いれば共同開発が必ずうまく行くという訳ではありません。
+
+# 使用するには
+[**Use this template**](https://github.com/kugimasa/UnityTeamDevTemplate/generate) からリポジトリを新規作成できます。
+
+# ライセンス
+
+```
+[TODO]
+要調査
+```
