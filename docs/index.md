@@ -57,6 +57,7 @@ SilCilSystemの他の要素は主に変数オブジェクトとイベントオ�
 #### 変数のget
 
 - [変数の値を表示する][page:DisplayVariables]
+- [変数の値をUIやAnimatorのパラメータに反映させる][page:BindingVariable]
 
 ### イベント関連
 
@@ -64,10 +65,11 @@ SilCilSystemの他の要素は主に変数オブジェクトとイベントオ�
 
 #### イベントの実行
 
-- 複数のイベントを1つにまとめる（実装予定）
+- [Animatorの遷移時にイベントを呼ぶ][page:PublishOnState]
 
 #### イベントの登録
 
+- [イベントでゲームオブジェクトのActiveやコンポーネントのenabledを切り替える][page:Activator]
 - [複数のIDisoposableを1つにまとめる][page:CompositeDisposable]
 
 ### シングルトン
@@ -112,8 +114,13 @@ SilCilSystemのコンポーネントなどで使用されています。
 
 <!--- 変数get --->
 [page:DisplayVariables]: Components/Views/DisplayVariables.md
+[page:BindingVariable]: Components/Views/BindingVariable.md
+
+<!--- イベント実行 --->
+[page:PublishOnState]: StateMachines/PublishOnState.md
 
 <!--- イベント登録 --->
+[page:Activator]: Components/Activators/Activator.md
 [page:CompositeDisposable]: Variables/IDisposable/CompositeDisposable.md
 
 <!--- シングルトン --->
