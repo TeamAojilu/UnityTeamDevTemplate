@@ -6,44 +6,44 @@
 
 <!--- 重要 --->
 
-[page:Variable]: /UnityTeamDevTemplate/Variables/Variable.md
-[page:GameEvent]: /UnityTeamDevTemplate/Variables/GameEvent.md
-[page:OnValueChanged]: /UnityTeamDevTemplate/Variables/OnValueChanged.md
-[page:Property]: /UnityTeamDevTemplate/Variables/Properties/Property.md
+[page:Variable]: /UnityTeamDevTemplate/Variables/Variable.html
+[page:GameEvent]: /UnityTeamDevTemplate/Variables/GameEvent.html
+[page:OnValueChanged]: /UnityTeamDevTemplate/Variables/OnValueChanged.html
+[page:Property]: /UnityTeamDevTemplate/Variables/Properties/Property.html
 
 <!--- 変数 set --->
 
-[page:Timer]: /UnityTeamDevTemplate/Components/Timers/Timer.md
-[page:ChangeVariableInTimeline]: /UnityTeamDevTemplate/Variables/Timeline/ChangeVariableInTimeline.md
-[page:TweenVariableCoroutine]: /UnityTeamDevTemplate/Variables/Tween/TweenVariableCoroutine.md
+[page:Timer]: /UnityTeamDevTemplate/Components/Timers/Timer.html
+[page:ChangeVariableInTimeline]: /UnityTeamDevTemplate/Variables/Timeline/ChangeVariableInTimeline.html
+[page:TweenVariableCoroutine]: /UnityTeamDevTemplate/Variables/Tween/TweenVariableCoroutine.html
 
 <!--- 変数 get --->
 
-[page:DisplayVariables]: /UnityTeamDevTemplate/Components/Views/DisplayVariables.md
-[page:IDisplayText]: /UnityTeamDevTemplate/Components/Views/IDisplayText.md
-[page:BindingVariable]: /UnityTeamDevTemplate/Components/Views/BindingVariable.md
+[page:DisplayVariables]: /UnityTeamDevTemplate/Components/Views/DisplayVariables.html
+[page:IDisplayText]: /UnityTeamDevTemplate/Components/Views/IDisplayText.html
+[page:BindingVariable]: /UnityTeamDevTemplate/Components/Views/BindingVariable.html
 
 <!--- イベント実行 --->
 
-[page:PublishOnState]: /UnityTeamDevTemplate/StateMachines/PublishOnState.md
+[page:PublishOnState]: /UnityTeamDevTemplate/StateMachines/PublishOnState.html
 
 <!--- イベント登録 --->
 
-[page:Activator]: /UnityTeamDevTemplate/Components/Activators/Activator.md
-[page:CompositeDisposable]: /UnityTeamDevTemplate/Variables/IDisposable/CompositeDisposable.md
+[page:Activator]: /UnityTeamDevTemplate/Components/Activators/Activator.html
+[page:CompositeDisposable]: /UnityTeamDevTemplate/Variables/IDisposable/CompositeDisposable.html
 
 <!--- シングルトン --->
 
-[page:SingletonMonoBehaviour]: /UnityTeamDevTemplate/Singletons/SingletonMonoBehaviour.md
-[page:SceneLoader]: /UnityTeamDevTemplate/Singletons/SceneLoader.md
-[page:AudioPlayer]: /UnityTeamDevTemplate/Singletons/AudioPlayer.md
+[page:SingletonMonoBehaviour]: /UnityTeamDevTemplate/Singletons/SingletonMonoBehaviour.html
+[page:SceneLoader]: /UnityTeamDevTemplate/Singletons/SceneLoader.html
+[page:AudioPlayer]: /UnityTeamDevTemplate/Singletons/AudioPlayer.html
 
 <!--- Math --->
 
-[page:InterpolationCurve]: /UnityTeamDevTemplate/Math/InterpolationCurve.md
-[page:FloatToInt]: /UnityTeamDevTemplate/Math/FloatToInt.md
+[page:InterpolationCurve]: /UnityTeamDevTemplate/Math/InterpolationCurve.html
+[page:FloatToInt]: /UnityTeamDevTemplate/Math/FloatToInt.html
 
 <!--- Not Impremented --->
 
-[page:NotYet]: /UnityTeamDevTemplate/Templates/NotYet.md
-[page:Template]: /UnityTeamDevTemplate/Templates/Template.md
+[page:NotYet]: /UnityTeamDevTemplate/Templates/NotYet.html
+[page:Template]: /UnityTeamDevTemplate/Templates/Template.html
