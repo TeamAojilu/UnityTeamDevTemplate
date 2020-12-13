@@ -214,6 +214,10 @@ MonoBehaviour:
       m_RotationOrder: 4
   m_bgmSource: {fileID: 8165151161485110035}
   m_seSource: {fileID: 8165151159740802187}
+  m_playBGM: {fileID: 8105981464685096037, guid: 369627e949c7b9f4599c7717b2f13d41,
+    type: 2}
+  m_playSE: {fileID: 8105981464685096037, guid: 4fd18e4b2b91bbc45b654c18bfc0387e,
+    type: 2}
 --- !u!114 &8165151160172376176
 MonoBehaviour:
   m_ObjectHideFlags: 0

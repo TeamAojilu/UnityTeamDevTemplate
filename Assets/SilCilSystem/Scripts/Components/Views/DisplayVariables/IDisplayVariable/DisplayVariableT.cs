@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Math;
-using System.Collections.Generic;
 
 namespace SilCilSystem.Components.Views
 {
@@ -14,7 +13,7 @@ namespace SilCilSystem.Components.Views
     }
 
     [System.Serializable]
-    internal abstract class DisplayVariable<T, TVariable>: IDisplayVariable where TVariable : ReadonlyVariable<T>
+    internal abstract class DisplayVariableWithAnimation<T, TVariable>: IDisplayVariable where TVariable : ReadonlyVariable<T>
     {
         [Header("Basic")]
         [SerializeField] private string m_key = "key"; // インスペクタのヘッダーがm_keyの内容になるようにstring.
@@ -27,44 +26,24 @@ namespace SilCilSystem.Components.Views
         [SerializeField] private ReadonlyPropertyBool m_useInitial = new ReadonlyPropertyBool(false);
         [SerializeField] private T m_initialValue = default;
 
-        // Update処理用.
-        private T m_startValue = default;
-        private T m_targetValue = default;
-        private float m_timer = 0f;
+        private ReadonlyVariableAnimation<T, TVariable> m_animation = default;
+
+        protected abstract ReadonlyVariableAnimation<T, TVariable> CreateAnimation(TVariable variable, ReadonlyPropertyFloat duration, InterpolationCurve curve);
 
         public string Key => m_key;
-        public bool IsBusy => !EqualityComparer<T>.Default.Equals(m_variable, m_targetValue) || m_timer < m_duration;
+        public bool IsBusy => m_animation.IsBusy();
 
         public void Initialize()
         {
-            m_startValue = (m_useInitial) ? m_initialValue : m_variable;
-            m_timer = 0f;
+            m_animation = CreateAnimation(m_variable, m_duration, m_curve);
+            m_animation.Initialize((m_useInitial) ? m_initialValue : m_variable);
         }
 
         public string Update()
         {
-            // 値が変更された時はtimerを0に戻す.
-            if (!EqualityComparer<T>.Default.Equals(m_variable, m_targetValue))
-            {
-                m_startValue = GetCurrentValue();
-                m_timer = 0f;
-                m_targetValue = m_variable;
-            }
-
-            // 時間変化させない場合は変数の値をそのまま使う.
-            if (m_timer >= m_duration) return ToText(m_variable);
-
-            m_timer += Time.deltaTime;
-            return ToText(GetCurrentValue());
+            return ToText(m_animation.Update());
         }
 
         protected abstract string ToText(T value);
-        protected abstract T Lerp(T start, T end, float t);
-
-        private T GetCurrentValue()
-        {
-            float rate = Mathf.Clamp01(m_timer / m_duration);
-            return Lerp(m_startValue, m_targetValue, m_curve.Evaluate(rate));
-        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace SilCilSystem.Components.Timers
 {
-    [AddComponentMenu(menuName: EditorConstants.AddComponentPath + "Times/" + nameof(Timer))]
+    [AddComponentMenu(menuName: EditorConstants.AddComponentPath + "Timers/" + nameof(Timer))]
     public class Timer : MonoBehaviour
     {
         [SerializeField] private ReadonlyPropertyBool m_enable = new ReadonlyPropertyBool(true);

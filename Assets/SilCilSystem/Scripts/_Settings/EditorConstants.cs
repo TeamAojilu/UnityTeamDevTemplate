@@ -5,5 +5,7 @@
     {
         internal const string CreateAssetMenuPath = "Assets/Create/";
         internal const string AddComponentPath = "SilCil/";
+
+        internal const int SingletonExecutionOrder = -1000;
     }
 }
