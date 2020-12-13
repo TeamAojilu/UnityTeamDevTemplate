@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SilCilSystem
+namespace SilCilSystem.Variables
 {
     public static class DisposeOnSceneUnLoadedExtensios
     {
