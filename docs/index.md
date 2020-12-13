@@ -49,7 +49,7 @@ SilCilSystemの他の要素は主に変数オブジェクトとイベントオ�
 #### 変数のset
 
 - [時間を測定する/一定間隔で処理を行う][page:Timer]
-- [Timelineで変数の値を変える][page:ChangeValueInTimeline]
+- [Timelineで変数の値を変える][page:ChangeVariableInTimeline]
 - [Tweenコルーチンを用いて変数の値を時間変化させる][page:TweenVariableCoroutine]
 
 #### 変数のget
@@ -108,3 +108,5 @@ SilCilSystemのコンポーネントなどで使用されています。
 <!--- 参照 --->
 
 {% include paths.md %}
+
+[fig:InitialPrefabs]: Figures/InitialPrefabs.png
