@@ -117,9 +117,15 @@ private void SetText()
 
 テキストの表示については、[IDisplayTextインターフェース][page:IDisplayText]を取得して使用しています。
 
+<!--- footer --->
+
+{% include footer.md %}
+
 <!--- 参照 --->
+
+{% include paths.md %}
+
 [page:StringFormat]: https://docs.microsoft.com/ja-jp/dotnet/standard/base-types/custom-numeric-format-strings
-[page:IDisplayText]: IDisplayText.md
 
 [fig:TestScore]: Figures/TestScore.png
 [fig:DisplayVariablesBasic]: Figures/DiaplayVariablesBasic.gif

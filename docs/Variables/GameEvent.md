@@ -178,7 +178,12 @@ namespace SilCilSystem.Variables
 これを作成のたびにやるのは面倒なので、Editor拡張で対応しています。
 GameEventアセットを選択すると自動でEventNoArgsListenerアセットをサブアセットとして生成し、参照を設定するようになっています。
 
+<!--- footer --->
+
+{% include footer.md %}
+
 <!--- 参照 --->
-[page:OnValueChanged]: OnValueChanged.md
+
+{% include paths.md %}
 
 [fig:GameEventInInspector]: Figures/GameEventInInspector.gif

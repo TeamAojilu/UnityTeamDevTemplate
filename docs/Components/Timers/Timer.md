@@ -126,6 +126,13 @@ private void SetTime(float t)
 }
 ```
 
+<!--- footer --->
+
+{% include footer.md %}
+
 <!--- 参照 --->
+
+{% include paths.md %}
+
 [fig:CountDownTimer]: Figures/CountDownTimer.gif
 [fig:RepeatingTimer]: Figures/RepeatingTimer.png

@@ -70,3 +70,11 @@ public static IDisplayText GetTextComponent(this GameObject gameObject)
     return null;
 }
 ```
+
+<!--- footer --->
+
+{% include footer.md %}
+
+<!--- 参照 --->
+
+{% include paths.md %}

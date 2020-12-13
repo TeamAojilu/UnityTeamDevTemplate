@@ -104,3 +104,11 @@ internal static IEnumerator Tween<T>(this Variable<T> variable, T start, T end, 
     variable.Value = lerp(start, end, curve(1f));
 }
 ```
+
+<!--- footer --->
+
+{% include footer.md %}
+
+<!--- 参照 --->
+
+{% include paths.md %}

@@ -129,3 +129,11 @@ public class CompositeDisposable : IDisposable
     }
 }
 ```
+
+<!--- footer --->
+
+{% include footer.md %}
+
+<!--- 参照 --->
+
+{% include paths.md %}

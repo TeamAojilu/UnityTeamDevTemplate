@@ -67,3 +67,11 @@ public static int Cast(this CastType castType, float value)
     }
 }
 ```
+
+<!--- footer --->
+
+{% include footer.md %}
+
+<!--- 参照 --->
+
+{% include paths.md %}

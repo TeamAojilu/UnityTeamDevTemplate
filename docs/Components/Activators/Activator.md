@@ -89,5 +89,12 @@ void SetActives(bool value)
 }
 ```
 
+<!--- footer --->
+
+{% include footer.md %}
+
 <!--- 参照 --->
+
+{% include paths.md %}
+
 [fig:GameObjectActivator]: Figures/GameObjectActivator.gif

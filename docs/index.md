@@ -1,8 +1,6 @@
-# Documents
+# SilCilSystem
 
 Unityでゲームを作るのに役に立つかもしれない汎用システム「SilCilSystem」のドキュメントです。
-
-Unity2019.4で動作確認
 
 ## 要点
 
@@ -98,5 +96,15 @@ SilCilSystemのコンポーネントなどで使用されています。
 
 - [イージング関数を取得/設定する][page:InterpolationCurve]
 - [floatからintへの変換方法を指定する][page:FloatToInt]
+
+## ログ
+
+2020.12.13	Unity2019.4で動作確認
+
+<!--- footer --->
+
+{% include footer.md %}
+
+<!--- 参照 --->
 
 {% include paths.md %}

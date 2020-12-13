@@ -145,7 +145,13 @@ namespace SilCilSystem.Variables
 これを変数作成のたびにやるのは面倒なので、Editor拡張で対応しています。
 BoolValueアセットを選択すると自動でReadonlyBoolアセットをサブアセットとして生成し、参照を設定するようになっています。
 
-<!--- 参照 --->
-[page:OnValueChanged]: OnValueChanged.md
+<!--- footer --->
 
+{% include footer.md %}
+
+<!--- 参照 --->
+
+{% include paths.md %}
+
+<!--- 画像 --->
 [fig:VariableInInspector]: Figures/VariableInInspector.gif

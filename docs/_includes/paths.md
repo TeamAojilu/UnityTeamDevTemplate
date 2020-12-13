@@ -1,7 +1,7 @@
 <!--- page paths --->
 
 <!--- トップ -->
-[page:index]: /docs/index.md
+[page:Index]: /docs/index.md
 
 <!--- 重要 --->
 

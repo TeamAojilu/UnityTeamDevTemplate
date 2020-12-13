@@ -138,14 +138,15 @@ private class GameEventInfoIntの例
 }
 ```
 
+<!--- footer --->
+
+{% include footer.md %}
+
 <!--- 参照 --->
-[page:GameEvent]: ../Variables/GameEvent.md
-[page:AudioPlayer]: ../Singletons/AudioPlayer.md
-[page:BindingVariable]: ../Components/Views/BindingVariable.md
-[page:Timer]: ../Components/Timers/Timer.md
+
+{% include paths.md %}
 
 [fig:PlaySEOnState]: Figures/PlaySEOnState.gif
-
 [fig:LogicOutline]: Figures/Logic_Outline.gif
 [fig:LogicStartToPlay]: Figures/Logic_StartToPlay.png
 [fig:LogicPlayToGameClear]: Figures/Logic_PlayToGameClear.png

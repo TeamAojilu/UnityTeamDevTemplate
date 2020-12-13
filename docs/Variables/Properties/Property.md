@@ -153,7 +153,12 @@ public class Property<T, TVariable> where TVariable : Variable<T>
 
 これをエディタ拡張で1行で表示するようにしているだけです。
 
+<!--- footer --->
+
+{% include footer.md %}
+
 <!--- 参照 --->
-[page:Variable]: ../Variable.md
+
+{% include paths.md %}
 
 [fig:PropertyFloat]: Figures/PropertyFloat.gif

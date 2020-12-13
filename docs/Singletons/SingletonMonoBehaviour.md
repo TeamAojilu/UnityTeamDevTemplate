@@ -97,3 +97,11 @@ private void OnDestroy()
     OnDestroyCallback();
 }
 ```
+
+<!--- footer --->
+
+{% include footer.md %}
+
+<!--- 参照 --->
+
+{% include paths.md %}

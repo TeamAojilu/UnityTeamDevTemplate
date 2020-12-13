@@ -107,8 +107,12 @@ namespace SilCilSystem.Variables
 これを作成のたびにやるのは面倒なので、Editor拡張で対応しています。
 変数アセットを作成すると自動でイベント用のアセットが生成されます。
 
+<!--- footer --->
+
+{% include footer.md %}
+
 <!--- 参照 --->
-[page:Variable]: Variable.md
-[page:GameEvent]: GameEvent.md
+
+{% include paths.md %}
 
 [fig:OnValueChangedInInspector]: Figures/OnValueChangedInInspector.gif

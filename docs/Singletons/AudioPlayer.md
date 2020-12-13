@@ -194,5 +194,12 @@ public class Test : MonoBehaviour
 }
 ```
 
+<!--- footer --->
+
+{% include footer.md %}
+
 <!--- 参照 --->
+
+{% include paths.md %}
+
 [fig:AudioList]: Figures/AudioList.gif

@@ -97,6 +97,13 @@ public static Func<float, float> GetCurve(this CurveType type)
 }
 ```
 
+<!--- footer --->
+
+{% include footer.md %}
+
 <!--- 参照 --->
+
+{% include paths.md %}
+
 [fig:InterpolationCurveMove]: Figures/InterpolationCurveMove.gif
 [fig:InterpolationCurveCustom]: Figures/InterpolationCurveCustom.gif

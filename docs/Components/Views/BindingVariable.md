@@ -174,10 +174,13 @@ void SetParameters()
 }
 ```
 
+<!--- footer --->
+
+{% include footer.md %}
+
 <!--- 参照 --->
-[page:Variable]: ../../Variables/Variable.md
-[page:DisplayVariables]: DisplayVariables.md
-[page:PublishOnState]: ../../StateMachines/PublishOnState.md
+
+{% include paths.md %}
 
 [fig:TestSliderComponent]: Figures/TestSliderComponent.png
 [fig:BindingSlider]: Figures/BindingSlider.gif

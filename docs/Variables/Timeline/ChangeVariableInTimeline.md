@@ -71,6 +71,13 @@ public class TweenVariableBehaviour<T> : PlayableBehaviour
 }
 ```
 
+<!--- footer --->
+
+{% include footer.md %}
+
 <!--- 参照 --->
+
+{% include paths.md %}
+
 [fig:BoolActivation]: Figures/BoolActivation.gif
 [fig:TweenVariable]: Figures/TweenVariable.gif

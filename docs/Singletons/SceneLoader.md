@@ -120,3 +120,11 @@ public class CustomSceneLoader : MonoBehaviour, ISceneLoader
     }
 }
 ```
+
+<!--- footer --->
+
+{% include footer.md %}
+
+<!--- 参照 --->
+
+{% include paths.md %}
