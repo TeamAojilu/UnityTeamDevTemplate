@@ -100,7 +100,14 @@ SilCilSystemのコンポーネントなどで使用されています。
 
 ## ログ
 
-2020.12.13	Unity2019.4で動作確認
+Unity2019.4で動作確認
+
+---
+
+2020.11.14 変数/イベントオブジェクト追加（SilCilSystemの開始）
+2020.11.22 SceneLoader追加
+2020.11.30 Property追加
+2020.12.01 AudioPlayer追加
 
 <!--- footer --->
 
