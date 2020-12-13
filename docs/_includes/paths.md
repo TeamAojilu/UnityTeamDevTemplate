@@ -6,7 +6,7 @@
 
 <!--- 重要 --->
 
-[page:Variable]: /docs/Variables/Variable.md
+[page:Variable]: Variables/Variable.md
 [page:GameEvent]: /docs/Variables/GameEvent.md
 [page:OnValueChanged]: /docs/Variables/OnValueChanged.md
 [page:Property]: /docs/Variables/Properties/Property.md
