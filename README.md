@@ -13,7 +13,7 @@ Unityで共同開発(チーム開発)を行う際、円滑にスタートダッ�
 
 このテンプレートは
 
-- 設計の共通認識(共通言語)を統一する際に役立つ、[**SilCilSystem**](./SilCilSystemDocuments)
+- 設計の共通認識(共通言語)を統一する際に役立つ、[**SilCilSystem**](https://teamaojilu.github.io/UnityTeamDevTemplate/)
 - GitHubIssuesを使ったタスク管理のための**IssueTemplate**
 - チーム内での決め事や共通認識をGitHubWikiにまとめて置いておく際に役立つ**WikiTemplate**
 
