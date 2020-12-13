@@ -107,6 +107,8 @@ SilCilSystemのコンポーネントなどで使用されています。
 
 <!--- 参照 --->
 
-{% include paths.md %}
+<!--- {% include paths.md %} --->
+
+[page:Variable]: Variables/Variable.md
 
 [fig:InitialPrefabs]: Figures/InitialPrefabs.png
