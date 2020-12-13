@@ -1,7 +1,7 @@
 <!--- page paths --->
 
 <!--- トップ -->
-[page:Index]: /docs/index.md
+[page:Index]: https://teamaojilu.github.io/UnityTeamDevTemplate/
 
 <!--- 重要 --->
 
