@@ -68,6 +68,7 @@ SilCilSystemの他の要素は主に変数オブジェクトとイベントオ�
 #### イベントの登録
 
 - [イベントでゲームオブジェクトのActiveやコンポーネントのenabledを切り替える][page:Activator]
+- [DisposeメソッドをゲームオブジェクトのDestroy時に呼ぶ][page:DisposeOnDestroy]
 - [Disposeメソッドをシーンのアンロード時に呼ぶ][page:DisposeOnSceneUnLoaded]
 - [複数のIDisposableを1つにまとめる][page:CompositeDisposable]
 
@@ -109,6 +110,7 @@ Unity2019.4で動作確認
 - 2020.11.30 Property追加
 - 2020.12.01 AudioPlayer追加
 - 2020.12.13 UI関連のスクリプト追加
+- 2020.12.19 拡張メソッドDisposeOnDestroy追加
 
 <!--- footer --->
 

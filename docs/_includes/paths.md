@@ -30,6 +30,7 @@
 <!--- イベント登録 --->
 
 [page:Activator]: /UnityTeamDevTemplate/Components/Activators/Activator.html
+[page:DisposeOnDestroy]: /UnityTeamDevTemplate/Variables/IDisposable/DisposeOnDestroy.html
 [page:DisposeOnSceneUnLoaded]: /UnityTeamDevTemplate/Variables/IDisposable/DisposeOnSceneUnLoaded.html
 [page:CompositeDisposable]: /UnityTeamDevTemplate/Variables/IDisposable/CompositeDisposable.html
 
