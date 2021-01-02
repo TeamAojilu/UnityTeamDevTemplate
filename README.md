@@ -24,6 +24,10 @@ Unityで共同開発(チーム開発)を行う際、円滑にスタートダッ�
 # 使用するには
 [**Use this template**](https://github.com/kugimasa/UnityTeamDevTemplate/generate) からリポジトリを新規作成できます。
 
+また、SilCilSystemはUnitypackage化されています。
+
+[**Unity2019版をダウンロード**](https://github.com/TeamAojilu/UnityTeamDevTemplate/releases/download/v1.0/SilCilSystem_unity2019_ver100.unitypackage)
+
 # ライセンス
 
 ```
