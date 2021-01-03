@@ -1,8 +1,10 @@
 ﻿using SilCilSystem.Variables.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace SilCilSystem.Editors
 {
@@ -67,7 +69,7 @@ namespace SilCilSystem.Editors
             
             DrawDragDropArea();
         }
-
+        
         private void DrawDragDropArea()
         {
             //ドロップできる領域を確保
@@ -75,12 +77,8 @@ namespace SilCilSystem.Editors
             GUI.Label(dragDropRect, "");
 
             // 追加ボタンを表示.
-            //var buttonRect = new Rect(dragDropRect.x + 30f, dragDropRect.y + 30f, dragDropRect.width - 60f, 20f);
-            //if (GUI.Button(buttonRect, "Add SubAsset"))
-            //{
-            //    EditorUtility.DisplayPopupMenu(new Rect(buttonRect.x, buttonRect.y + buttonRect.height, buttonRect.width, 0), EditorConstants.AttachVariableMenuPath, null);
-            //}
-
+            DrawAddSubAssetMenu(dragDropRect);
+            
             // イベント処理.
             if (dragDropRect.Contains(Event.current.mousePosition) == false) return;
 
@@ -98,9 +96,9 @@ namespace SilCilSystem.Editors
                         .Select(m => m.GetClass())
                         .ToArray();
 
-                    foreach(var parent in targets)
+                    foreach (var parent in targets)
                     {
-                        if(parent is VariableAsset variable)
+                        if (parent is VariableAsset variable)
                         {
                             CustomEditorUtil.AttachVariableAssets(variable, attaches);
                             AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(parent));
@@ -111,6 +109,19 @@ namespace SilCilSystem.Editors
                     InitActiveEditors();
                     Repaint();
                     break;
+            }
+        }
+
+        private void DrawAddSubAssetMenu(Rect dragDropRect)
+        {
+            var buttonRect = new Rect(dragDropRect.x + 30f, dragDropRect.y + 30f, dragDropRect.width - 60f, 20f);
+            if (GUI.Button(buttonRect, "Add SubAsset"))
+            {
+                AddSubAssetMenu.DisplayAddSubAssetMenu(buttonRect, () =>
+                {
+                    InitActiveEditors();
+                    Repaint();
+                });
             }
         }
 

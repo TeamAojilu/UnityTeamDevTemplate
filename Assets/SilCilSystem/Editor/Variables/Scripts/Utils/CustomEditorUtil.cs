@@ -59,6 +59,9 @@ namespace SilCilSystem.Editors
             endNameEditAction.m_types = children;
             ProjectWindowUtil.StartNameEditingIfProjectWindowExists(instanceID, endNameEditAction, name, icon, "");
         }
+
+        public static void AttachVariableAssets(VariableAsset parent, params Type[] attachTypes)
+            => AttachVariableAssets(parent, attachTypes as IEnumerable<Type>);
         
         public static void AttachVariableAssets(VariableAsset parent, IEnumerable<Type> attachTypes)
         {
