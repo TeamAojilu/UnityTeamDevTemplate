@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isBusy:
-    m_value: 0
+    m_value: 1
     m_variable: {fileID: 0}
   m_format: '{time}
 
@@ -1379,6 +1379,7 @@ MonoBehaviour:
       m_value: 0
       m_variable: {fileID: 0}
     m_initialValue: 0
+  m_stringValues: []
 --- !u!114 &1447057148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1411,7 +1412,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3042\u3068 10.12 \u79D2\n\u30AF\u30EA\u30A2"
+  m_Text: "\u3042\u3068 30.00 \u79D2\n\u30AF\u30EA\u30A2"
 --- !u!222 &1447057149
 CanvasRenderer:
   m_ObjectHideFlags: 0
