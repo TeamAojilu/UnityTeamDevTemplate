@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &8105981464685096037
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -22,6 +22,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d252f5615d7a5d344a48689adca588f9, type: 3}
-  m_Name: PlaySEListener
+  m_Name: PlaySE_Listener
   m_EditorClassIdentifier: 
   m_event: {fileID: 11400000}

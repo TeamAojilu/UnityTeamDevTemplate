@@ -16,7 +16,7 @@ MonoBehaviour:
   m_onValueChanged: {fileID: 2454497604175296446}
 --- !u!114 &2454497604175296446
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -24,11 +24,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc9fd06d6bf479b4ba4dd3428b58b255, type: 3}
-  m_Name: OnItemCountChanged
+  m_Name: ItemCount_OnChanged
   m_EditorClassIdentifier: 
 --- !u!114 &3503392291656269596
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -36,12 +36,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2092934b449cda3408bfba63b456e87c, type: 3}
-  m_Name: OnItemCountChangedListener
+  m_Name: ItemCount_Listener
   m_EditorClassIdentifier: 
   m_event: {fileID: 2454497604175296446}
 --- !u!114 &6470250394459388106
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -49,6 +49,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3514c65ad6a8c154cae67cbc08b9398e, type: 3}
-  m_Name: ItemCountReadonly
+  m_Name: ItemCount_Readonly
   m_EditorClassIdentifier: 
   m_variable: {fileID: 11400000}

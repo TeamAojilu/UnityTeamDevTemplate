@@ -3,7 +3,6 @@
     public static class Constants
     {
 #if UNITY_EDITOR
-        public const string CreateAssetMenuPath = "Assets/Create/";
         internal const string AddComponentPath = "SilCil/";
 #endif
 

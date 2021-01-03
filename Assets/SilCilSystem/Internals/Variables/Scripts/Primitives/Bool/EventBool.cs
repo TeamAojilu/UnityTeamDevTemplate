@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 
-namespace SilCilSystem.Interernals
+namespace SilCilSystem.Internals
 {
     internal class EventBool : GameEventBool
     {

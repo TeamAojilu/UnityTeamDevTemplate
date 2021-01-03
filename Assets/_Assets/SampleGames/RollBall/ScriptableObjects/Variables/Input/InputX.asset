@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &-9149712324429928716
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f3ba7ba667e86a418fb8622744dbc8a, type: 3}
-  m_Name: InputXReadonly
+  m_Name: InputX_Readonly
   m_EditorClassIdentifier: 
   m_variable: {fileID: 11400000}
 --- !u!114 &-6783102627002670109
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -23,12 +23,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a54dc80423042548813ccc1066a3310, type: 3}
-  m_Name: OnInputXChangedListener
+  m_Name: InputX_Listener
   m_EditorClassIdentifier: 
   m_event: {fileID: -6180613991712160455}
 --- !u!114 &-6180613991712160455
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -36,7 +36,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 946a50b20c4ae6d4b903a43cd51e62ae, type: 3}
-  m_Name: OnInputXChanged
+  m_Name: InputX_OnChanged
   m_EditorClassIdentifier: 
 --- !u!114 &11400000
 MonoBehaviour:

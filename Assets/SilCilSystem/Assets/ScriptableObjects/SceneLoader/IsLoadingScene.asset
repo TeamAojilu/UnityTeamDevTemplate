@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &-7324359859248512944
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92872acfccee99d44b84f7a04883ef2b, type: 3}
-  m_Name: OnIsLoadingSceneChanged
+  m_Name: IsLoadingScene_OnChanged
   m_EditorClassIdentifier: 
 --- !u!114 &-4738047445063918129
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -22,12 +22,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bb78647944348a4289c6818870c8ba1, type: 3}
-  m_Name: OnIsFadingChangedListener
+  m_Name: IsLoadingScene_Listener
   m_EditorClassIdentifier: 
   m_event: {fileID: -7324359859248512944}
 --- !u!114 &-4710613453296994100
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -35,7 +35,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 382aedbb827af6f4199bc7a40d9d524b, type: 3}
-  m_Name: IsLoadingSceneReadonly
+  m_Name: IsLoadingScene_Readonly
   m_EditorClassIdentifier: 
   m_variable: {fileID: 11400000}
 --- !u!114 &11400000
