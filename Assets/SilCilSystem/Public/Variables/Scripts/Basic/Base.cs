@@ -27,7 +27,7 @@ namespace SilCilSystem.Variables.Base.Generic
     public abstract class VariableBase<T> : Variable<T>
     {
         [SerializeField] private T m_value = default;
-        [SerializeField, HideInInspector] private GameEvent<T> m_onValueChanged = default;
+        [SerializeField] private GameEvent<T> m_onValueChanged = default;
 
         public override void GetAssetName(ref string name) => name = $"{name}_Variable";
         public override void OnAttached(IEnumerable<VariableAsset> variables)
@@ -55,7 +55,7 @@ namespace SilCilSystem.Variables.Base.Generic
 
     public abstract class ReadonlyVariableBase<T> : ReadonlyVariable<T>
     {
-        [SerializeField, HideInInspector] private Variable<T> m_variable = default;
+        [SerializeField] private Variable<T> m_variable = default;
 
         public override T Value => m_variable;
 
@@ -64,7 +64,7 @@ namespace SilCilSystem.Variables.Base.Generic
         {
             foreach (var variable in variables)
             {
-                if (variables is Variable<T> value)
+                if (variable is Variable<T> value)
                 {
                     m_variable = value;
                     return;
@@ -97,7 +97,7 @@ namespace SilCilSystem.Variables.Base.Generic
 
     public abstract class GameEventListenerBase<T> : GameEventListener<T>
     {
-        [SerializeField, HideInInspector] private GameEvent<T> m_event = default;
+        [SerializeField] private GameEvent<T> m_event = default;
 
         public override IDisposable Subscribe(Action<T> action) => m_event?.Subscribe(action);
         public override IDisposable Subscribe(Action action) => Subscribe(_ => action?.Invoke());

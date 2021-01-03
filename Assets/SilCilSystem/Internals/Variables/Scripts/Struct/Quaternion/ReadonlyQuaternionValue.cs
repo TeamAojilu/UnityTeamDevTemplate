@@ -2,12 +2,14 @@
 using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals
 {
+    [AddSubAssetMenu(VariablePath.ReadonlyMenuPath + "(Quaternion)", typeof(VariableQuaternion))]
     internal class ReadonlyQuaternionValue : ReadonlyQuaternion
     {
-        [SerializeField, HideInInspector] private VariableQuaternion m_variable = default;
+        [SerializeField] private VariableQuaternion m_variable = default;
 
         public override Quaternion Value => m_variable;
 
@@ -16,7 +18,7 @@ namespace SilCilSystem.Internals
         {
             foreach (var variable in variables)
             {
-                if (variables is VariableQuaternion value)
+                if (variable is VariableQuaternion value)
                 {
                     m_variable = value;
                     return;

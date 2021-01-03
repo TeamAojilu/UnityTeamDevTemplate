@@ -2,12 +2,14 @@
 using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals
 {
+    [AddSubAssetMenu(VariablePath.ReadonlyMenuPath + "(Int)", typeof(VariableInt))]
     internal class ReadonlyIntValue : ReadonlyInt
     {
-        [SerializeField, HideInInspector] private VariableInt m_variable = default;
+        [SerializeField] private VariableInt m_variable = default;
 
         public override int Value => m_variable;
 
@@ -16,7 +18,7 @@ namespace SilCilSystem.Internals
         {
             foreach (var variable in variables)
             {
-                if (variables is VariableInt value)
+                if (variable is VariableInt value)
                 {
                     m_variable = value;
                     return;

@@ -2,12 +2,14 @@
 using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals
 {
+    [AddSubAssetMenu(VariablePath.ReadonlyMenuPath + "(Vector2Int)", typeof(VariableVector2Int))]
     internal class ReadonlyVector2IntValue : ReadonlyVector2Int
     {
-        [SerializeField, HideInInspector] private VariableVector2Int m_variable = default;
+        [SerializeField] private VariableVector2Int m_variable = default;
 
         public override Vector2Int Value => m_variable;
 
@@ -16,7 +18,7 @@ namespace SilCilSystem.Internals
         {
             foreach (var variable in variables)
             {
-                if (variables is VariableVector2Int value)
+                if (variable is VariableVector2Int value)
                 {
                     m_variable = value;
                     return;

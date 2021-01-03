@@ -2,12 +2,14 @@
 using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals
 {
+    [AddSubAssetMenu(VariablePath.ReadonlyMenuPath + "(Float)", typeof(VariableFloat))]
     internal class ReadonlyFloatValue : ReadonlyFloat
     {
-        [SerializeField, HideInInspector] private VariableFloat m_variable = default;
+        [SerializeField] private VariableFloat m_variable = default;
 
         public override float Value => m_variable;
 
@@ -16,7 +18,7 @@ namespace SilCilSystem.Internals
         {
             foreach (var variable in variables)
             {
-                if (variables is VariableFloat value)
+                if (variable is VariableFloat value)
                 {
                     m_variable = value;
                     return;

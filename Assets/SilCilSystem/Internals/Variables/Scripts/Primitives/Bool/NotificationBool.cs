@@ -8,7 +8,7 @@ namespace SilCilSystem.Internals
     internal class NotificationBool : VariableBool
     {
         [SerializeField] private bool m_value = default;
-        [SerializeField, HideInInspector] private GameEventBool m_onValueChanged = default;
+        [SerializeField] private GameEventBool m_onValueChanged = default;
 
         public override void GetAssetName(ref string name) => name = $"{name}_Variable";
         public override void OnAttached(IEnumerable<VariableAsset> variables)

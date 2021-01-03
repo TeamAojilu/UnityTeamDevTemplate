@@ -119,6 +119,10 @@ namespace SilCilSystem.Editors
             {
                 AddSubAssetMenu.DisplayAddSubAssetMenu(buttonRect, () =>
                 {
+                    foreach(var t in targets)
+                    {
+                        AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(t));
+                    }
                     InitActiveEditors();
                     Repaint();
                 });

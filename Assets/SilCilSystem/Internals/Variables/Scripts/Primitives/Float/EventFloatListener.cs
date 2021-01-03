@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals
 {
+    [AddSubAssetMenu(VariablePath.ListenerMenuPath + "(Float)", typeof(GameEventFloat))]
     internal class EventFloatListener : GameEventFloatListener
     {
-        [SerializeField, HideInInspector] private GameEventFloat m_event = default;
+        [SerializeField] private GameEventFloat m_event = default;
 
         public override IDisposable Subscribe(Action<float> action) => m_event?.Subscribe(action);
 

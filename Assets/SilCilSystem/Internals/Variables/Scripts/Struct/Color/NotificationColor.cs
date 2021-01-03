@@ -8,7 +8,7 @@ namespace SilCilSystem.Internals
     internal class NotificationColor : VariableColor
     {
         [SerializeField] private Color m_value = default;
-        [SerializeField, HideInInspector] private GameEventColor m_onValueChanged = default;
+        [SerializeField] private GameEventColor m_onValueChanged = default;
 
         public override void GetAssetName(ref string name) => name = $"{name}_Variable";
         public override void OnAttached(IEnumerable<VariableAsset> variables)

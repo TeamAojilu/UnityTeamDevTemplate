@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals
 {
+    [AddSubAssetMenu(VariablePath.ListenerMenuPath + "(Bool)", typeof(GameEventBool))]
     internal class EventBoolListener : GameEventBoolListener
     {
-        [SerializeField, HideInInspector] private GameEventBool m_event = default;
+        [SerializeField] private GameEventBool m_event = default;
 
         public override IDisposable Subscribe(Action<bool> action) => m_event?.Subscribe(action);
 

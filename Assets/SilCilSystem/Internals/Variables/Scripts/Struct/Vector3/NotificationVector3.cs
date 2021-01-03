@@ -4,11 +4,11 @@ using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 
 namespace SilCilSystem.Internals
-{
+{ 
     internal class NotificationVector3 : VariableVector3
     {
         [SerializeField] private Vector3 m_value = default;
-        [SerializeField, HideInInspector] private GameEventVector3 m_onValueChanged = default;
+        [SerializeField] private GameEventVector3 m_onValueChanged = default;
 
         public override void GetAssetName(ref string name) => name = $"{name}_Variable";
         public override void OnAttached(IEnumerable<VariableAsset> variables)

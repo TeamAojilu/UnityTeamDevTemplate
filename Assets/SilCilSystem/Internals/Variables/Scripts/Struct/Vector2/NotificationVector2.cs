@@ -8,7 +8,7 @@ namespace SilCilSystem.Internals
     internal class NotificationVector2 : VariableVector2
     {
         [SerializeField] private Vector2 m_value = default;
-        [SerializeField, HideInInspector] private GameEventVector2 m_onValueChanged = default;
+        [SerializeField] private GameEventVector2 m_onValueChanged = default;
 
         public override void GetAssetName(ref string name) => name = $"{name}_Variable";
         public override void OnAttached(IEnumerable<VariableAsset> variables)
