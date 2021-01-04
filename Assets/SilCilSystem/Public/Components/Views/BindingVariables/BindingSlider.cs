@@ -9,18 +9,18 @@ namespace SilCilSystem.Components.Views
     [RequireComponent(typeof(Slider))]
     public class BindingSlider : BindingComponent, IBindingParameters
     {
-        [SerializeField] private ReadonlyPropertyBool m_setValueWithoutNotify = new ReadonlyPropertyBool(false);
+        public ReadonlyPropertyBool m_setValueWithoutNotify = new ReadonlyPropertyBool(false);
 
         [Header("Params")]
-        [SerializeField] private ReadonlyPropertyFloat m_minValue = new ReadonlyPropertyFloat(0f);
-        [SerializeField] private ReadonlyPropertyFloat m_maxValue = new ReadonlyPropertyFloat(1f);
-        [SerializeField] private ReadonlyPropertyBool m_wholeNumbers = new ReadonlyPropertyBool(false);
-        [SerializeField] private ReadonlyPropertyFloat m_value = new ReadonlyPropertyFloat(0f);
+        public ReadonlyPropertyFloat m_minValue = new ReadonlyPropertyFloat(0f);
+        public ReadonlyPropertyFloat m_maxValue = new ReadonlyPropertyFloat(1f);
+        public ReadonlyPropertyBool m_wholeNumbers = new ReadonlyPropertyBool(false);
+        public ReadonlyPropertyFloat m_value = new ReadonlyPropertyFloat(0f);
 
         [Header("Animation")]
-        [SerializeField] private PropertyBool m_isBusy = default;
-        [SerializeField] private ReadonlyPropertyFloat m_duration = new ReadonlyPropertyFloat(-1f);
-        [SerializeField] private InterpolationCurve m_curve = default;
+        public PropertyBool m_isBusy = default;
+        public ReadonlyPropertyFloat m_duration = new ReadonlyPropertyFloat(-1f);
+        public InterpolationCurve m_curve = default;
 
         private Slider m_slider = default;
         private PropertyAnimation<float, ReadonlyPropertyFloat, ReadonlyFloat> m_animation = default;
@@ -53,6 +53,7 @@ namespace SilCilSystem.Components.Views
 
         private void SetIsBusy(bool value)
         {
+            if (m_isBusy == null) return;
             if (value == m_isBusy) return;
             m_isBusy.Value = value;
         }
