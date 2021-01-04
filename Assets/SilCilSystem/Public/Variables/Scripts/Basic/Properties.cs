@@ -22,6 +22,16 @@ namespace SilCilSystem.Variables.Generic
             }
         }
 
+        public Variable<T> Variable
+        {
+            get => m_variable;
+            set
+            {
+                m_value = value;
+                m_variable = value;
+            }
+        }
+
         public void SetValue(T value) => Value = value;
         public static implicit operator T(Property<T> property) => property.Value;
     }
@@ -35,6 +45,17 @@ namespace SilCilSystem.Variables.Generic
         public ReadonlyProperty(T value) => m_value = value;
 
         public T Value => (m_variable != null) ? m_variable.Value : m_value;
+
+        public ReadonlyVariable<T> Variable
+        {
+            get => m_variable;
+            set
+            {
+                m_value = value;
+                m_variable = value;
+            }
+        }
+
         public static implicit operator T(ReadonlyProperty<T> property) => property.Value;
     }
 
@@ -56,6 +77,16 @@ namespace SilCilSystem.Variables.Generic
             }
         }
 
+        public TVariable Variable
+        {
+            get => m_variable;
+            set
+            {
+                m_value = value;
+                m_variable = value;
+            }
+        }
+
         public void SetValue(TType value) => Value = value;
         public static implicit operator TType(Property<TType, TVariable> property) => property.Value;
     }
@@ -69,6 +100,17 @@ namespace SilCilSystem.Variables.Generic
         public ReadonlyProperty(TType value) => m_value = value;
 
         public TType Value => (m_variable != null) ? m_variable.Value : m_value;
+
+        public TReadonly Variable
+        {
+            get => m_variable;
+            set
+            {
+                m_value = value;
+                m_variable = value;
+            }
+        }
+
         public static implicit operator TType(ReadonlyProperty<TType, TReadonly> property) => property.Value;
     }
 }

@@ -1,20 +1,62 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SilCilSystem.Components.Timers;
+using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using UnityEngine;
 
 namespace SilCilSystem.Editors
 {
-    //[AddVariableDragDrop("Timers/Timer")]
-    //internal class TimerGenerator : VariableDragDropAction
-    //{
-    //    public override bool IsAccepted(VariableAsset dropAsset)
-    //    {
+    internal abstract class TimerGenerator : VariableDragDropAction
+    {
+        public override bool IsAccepted(VariableAsset dropAsset)
+        {
+            return dropAsset?.GetSubVariable<VariableFloat>() != null;
+        }
 
-    //    }
+        public override void OnDropExited(VariableAsset dropAsset)
+        {
+            var time = dropAsset?.GetSubVariable<VariableFloat>();
+            if (time == null) return;
 
-    //    public override void OnDropExited(VariableAsset dropAsset)
-    //    {
-    //    }
-    //}
+            GameObject obj = new GameObject();
+            obj.name = $"Timer_{dropAsset.name}";
+            var timer = obj.AddComponent<Timer>();
+
+            SetOptions(timer, time);
+        }
+
+        protected abstract void SetOptions(Timer timer, VariableFloat variable);
+    }
+
+    [AddVariableDragDrop("Timers/Count up")]
+    internal class CountUpTimerGenerator : TimerGenerator
+    {
+        protected override void SetOptions(Timer timer, VariableFloat variable)
+        {
+            timer.m_time.Variable = variable;
+        }
+    }
+
+    [AddVariableDragDrop("Timers/Count down")]
+    internal class CountDownTimerGenerator : TimerGenerator
+    {
+        protected override void SetOptions(Timer timer, VariableFloat variable)
+        {
+            timer.m_time.Variable = variable;
+            timer.m_initialTime = new ReadonlyPropertyFloat(variable);
+            timer.m_max = new ReadonlyPropertyFloat(variable);
+            timer.m_timeScale = new ReadonlyPropertyFloat(-1f);
+        }
+    }
+
+    [AddVariableDragDrop("Timers/Repeat")]
+    internal class RepeatTimerGenerator : TimerGenerator
+    {
+        protected override void SetOptions(Timer timer, VariableFloat variable)
+        {
+            timer.m_time.Variable = variable;
+            timer.m_initialTime = new ReadonlyPropertyFloat(variable);
+            timer.m_max = new ReadonlyPropertyFloat(variable);
+            timer.m_repeating = new ReadonlyPropertyBool(true);
+        }
+    }
 }

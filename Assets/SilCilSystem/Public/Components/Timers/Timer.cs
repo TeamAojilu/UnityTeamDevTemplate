@@ -7,23 +7,23 @@ namespace SilCilSystem.Components.Timers
     [AddComponentMenu(menuName: Constants.AddComponentPath + "Timers/" + nameof(Timer))]
     public class Timer : MonoBehaviour
     {
-        [SerializeField] private ReadonlyPropertyBool m_enable = new ReadonlyPropertyBool(true);
+        public ReadonlyPropertyBool m_enable = new ReadonlyPropertyBool(true);
 
         [Header("Basic")]
-        [SerializeField] private VariableFloat m_time = default;
-        [SerializeField] private ReadonlyPropertyFloat m_initialTime = new ReadonlyPropertyFloat(0f);
-        [SerializeField] private ReadonlyPropertyFloat m_timeScale = new ReadonlyPropertyFloat(1f);
+        public PropertyFloat m_time = new PropertyFloat(0f);
+        public ReadonlyPropertyFloat m_initialTime = new ReadonlyPropertyFloat(0f);
+        public ReadonlyPropertyFloat m_timeScale = new ReadonlyPropertyFloat(1f);
 
         [Header("Range")]
-        [SerializeField] private ReadonlyPropertyFloat m_min = new ReadonlyPropertyFloat(0f);
-        [SerializeField] private ReadonlyPropertyFloat m_max = new ReadonlyPropertyFloat(float.MaxValue);
+        public ReadonlyPropertyFloat m_min = new ReadonlyPropertyFloat(0f);
+        public ReadonlyPropertyFloat m_max = new ReadonlyPropertyFloat(float.MaxValue);
 
         [Header("Repeat")]
-        [SerializeField] private ReadonlyPropertyBool m_repeating = new ReadonlyPropertyBool(false);
+        public ReadonlyPropertyBool m_repeating = new ReadonlyPropertyBool(false);
 
         [Header("Events")]
-        [SerializeField] private UnityEvent m_onMinValue = default;
-        [SerializeField] private UnityEvent m_onMaxValue = default;
+        public UnityEvent m_onMinValue = default;
+        public UnityEvent m_onMaxValue = default;
 
         private void Start()
         {
