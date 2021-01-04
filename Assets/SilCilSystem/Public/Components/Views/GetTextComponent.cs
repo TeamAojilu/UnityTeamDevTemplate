@@ -27,6 +27,32 @@ namespace SilCilSystem.Components.Views
             return null;
         }
 
+        /// <summary>
+        /// GameObjectの子供にアタッチされているIDisplayText/Text/TextMeshPro(UGUI, 3D Text)を取得してインターフェースを返す
+        /// 【挙動】ない場合はnull
+        /// </summary>
+        public static IDisplayText GetTextComponentInChildren(this GameObject gameObject)
+        {
+            if (gameObject == null) return null;
+            
+            var display = gameObject.GetComponentInChildren<IDisplayText>();
+            if (display != null) return display;
+
+            var text = gameObject.GetComponentInChildren<Text>();
+            if(text != null) return new DisplayStringTextUGUI(text);
+
+            var textMeshProUGUI = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+            if(textMeshProUGUI != null) return new DisplayStringTextMeshProUGUI(textMeshProUGUI);
+
+            var textMesh = gameObject.GetComponentInChildren<TextMesh>();
+            if (textMesh != null) return new DisplayStringTextMesh(textMesh);
+
+            var textMeshPro = gameObject.GetComponentInChildren<TextMeshPro>();
+            if (textMeshPro != null) return new DisplayStringTextMeshPro(textMeshPro);
+            
+            return null;
+        }
+
         internal class DisplayStringTextUGUI : IDisplayText
         {
             private readonly Text m_text;

@@ -10,9 +10,6 @@
         internal const string CreateVariableMenuPath = CreateAssetMenuPath + "Variables/";
         internal const string CreateGameEventMenuPath = CreateAssetMenuPath + "Events/";
 
-        internal const string CreateGameObjectMenuPath = "GameObject/SilCilSystem/";
-        internal const int CreateGameObjectMenuOrder = 0;
-
         // SilCilSystem Menu
         internal const string SilCilSystemMenuPath = "SilCilSystem/";
         internal const string DragDropSettingMenuPath = SilCilSystemMenuPath + "DragDrop/";
@@ -31,6 +28,7 @@
         internal const string TextTemplateID = "d9fbbac3448a71d448976595aa336392";
         internal const string TextTMPTemplateID = "9fe7ce90c3a2e2549a08857cc20c3d48";
         internal const string SliderTemplateID = "d6a2f0abf3a2fd840926ea55daafd5d5";
+        internal const string BarTemplateID = "b3bd1860c3ea6f7448a2961c8b934600";
         internal const string ToggleTemplateID = "c347fd82a7661c74bbbab21a9592daf0";
 #endif
 

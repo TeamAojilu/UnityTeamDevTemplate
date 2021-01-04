@@ -8,7 +8,6 @@ namespace SilCilSystem.Editors.Views
 {
     public static class UICreator
     {
-        [MenuItem(Constants.CreateGameObjectMenuPath + nameof(Canvas), false, Constants.CreateGameObjectMenuOrder)]
         public static Canvas CreateCanvas()
         {
             var instance = Instantiate<Canvas>(Constants.CanvasTemplateID);
@@ -16,32 +15,32 @@ namespace SilCilSystem.Editors.Views
             return instance;
         }
 
-        [MenuItem(Constants.CreateGameObjectMenuPath + nameof(EventSystem), false, Constants.CreateGameObjectMenuOrder)]
         public static EventSystem CreateEventSystem()
         {
             if (GameObject.FindObjectOfType<EventSystem>() != null) return null;
             return Instantiate<EventSystem>(Constants.EventSystemTemplateID, true);
         }
         
-        [MenuItem(Constants.CreateGameObjectMenuPath + nameof(Text), false, Constants.CreateGameObjectMenuOrder)]
         public static Text CreateText()
         {
             return InstantiateElement<Text>(Constants.TextTemplateID);
         }
 
-        [MenuItem(Constants.CreateGameObjectMenuPath + "Text - Text Mesh Pro", false, Constants.CreateGameObjectMenuOrder)]
         public static TextMeshProUGUI CreateTextTMP()
         {
             return InstantiateElement<TextMeshProUGUI>(Constants.TextTMPTemplateID);
         }
 
-        [MenuItem(Constants.CreateGameObjectMenuPath + nameof(Slider), false, Constants.CreateGameObjectMenuOrder)]
         public static Slider CreateSlider()
         {
             return InstantiateElement<Slider>(Constants.SliderTemplateID);
         }
 
-        [MenuItem(Constants.CreateGameObjectMenuPath + nameof(Toggle), false, Constants.CreateGameObjectMenuOrder)]
+        public static Slider CreateBar()
+        {
+            return InstantiateElement<Slider>(Constants.BarTemplateID);
+        }
+
         public static Toggle CreateToggle()
         {
             return InstantiateElement<Toggle>(Constants.ToggleTemplateID);

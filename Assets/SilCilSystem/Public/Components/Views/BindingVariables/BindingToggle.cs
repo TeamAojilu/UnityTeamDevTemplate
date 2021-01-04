@@ -10,10 +10,10 @@ namespace SilCilSystem.Components.Views
     {
         private Toggle m_toggle = default;
 
-        [SerializeField] private ReadonlyPropertyBool m_setValueWithoutNotify = new ReadonlyPropertyBool(false);
+        public ReadonlyPropertyBool m_setValueWithoutNotify = new ReadonlyPropertyBool(false);
         
         [Header("Params")]
-        [SerializeField] private ReadonlyPropertyBool m_isOn = new ReadonlyPropertyBool(false);
+        public ReadonlyPropertyBool m_isOn = new ReadonlyPropertyBool(false);
 
         public void SetParameters()
         {
