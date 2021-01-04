@@ -56,10 +56,9 @@ namespace SilCilSystem.Editors
                     case EventType.DragPerform:
                         DragAndDrop.AcceptDrag();
                         var obj = DragAndDrop.objectReferences.FirstOrDefault();
-                        if (!(obj is VariableAsset)) break;
-
-                        var path = AssetDatabase.GetAssetPath(obj);
-                        foreach(var asset in AssetDatabase.LoadAllAssetsAtPath(path))
+                        if (!(obj is VariableAsset parent)) break;
+                        
+                        foreach(var asset in parent.GetAllVariables())
                         {
                             variable.objectReferenceValue = asset;
                             if (variable.objectReferenceValue != null) break;

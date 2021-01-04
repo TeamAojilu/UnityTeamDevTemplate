@@ -2,7 +2,6 @@
 using UnityEditor;
 using SilCilSystem.Variables.Base;
 using System;
-using System.Linq;
 
 namespace SilCilSystem.Editors
 {
@@ -14,10 +13,11 @@ namespace SilCilSystem.Editors
         {
             var variable = EditorUtility.InstanceIDToObject(instanceId) as VariableAsset;
             if (variable == null) return;
+
             AssetDatabase.CreateAsset(variable, pathName);
-            CustomEditorUtil.AttachVariableAssets(variable, m_types);
-            var variables = AssetDatabase.LoadAllAssetsAtPath(pathName);
-            variable.OnAttached(variables.Where(x => x is VariableAsset).Select(x => x as VariableAsset));
+            variable.AddSubVariables(m_types);
+            variable.OnAttached(variable);
+
             AssetDatabase.ImportAsset(pathName);
             ProjectWindowUtil.ShowCreatedAsset(variable);
         }

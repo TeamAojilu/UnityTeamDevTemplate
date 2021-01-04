@@ -21,8 +21,7 @@ namespace SilCilSystem.Editors
             {
                 var parent = AssetDatabase.LoadAssetAtPath<VariableAsset>(changed);
                 if (parent == null) continue;
-                var assets = AssetDatabase.LoadAllAssetsAtPath(changed);
-                CustomEditorUtil.RenameVariableAssets(parent);
+                parent.RenameSubVariables();
             }
         }
     }

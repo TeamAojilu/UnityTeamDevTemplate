@@ -7,13 +7,13 @@ namespace SilCilSystem.Editors
     {
         private const string MenuPath = "Struct/Vector3Int";
 
-        [MenuItem(EditorConstants.CreateVariableMenuPath + MenuPath, false, 0)]
+        [MenuItem(Constants.CreateVariableMenuPath + MenuPath, false, 0)]
         private static void CreateVariableAsset()
         {
             CustomEditorUtil.CreateVariableAsset<NotificationVector3Int>("NewVariable.asset", typeof(ReadonlyVector3IntValue), typeof(EventVector3Int), typeof(EventVector3IntListener));
         }
 
-        [MenuItem(EditorConstants.CreateGameEventMenuPath + MenuPath, false, 0)]
+        [MenuItem(Constants.CreateGameEventMenuPath + MenuPath, false, 0)]
         private static void CreateEventAsset()
         {
             CustomEditorUtil.CreateVariableAsset<EventVector3Int>("NewEvent.asset", typeof(EventVector3IntListener));

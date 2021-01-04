@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals
 {
@@ -9,19 +9,6 @@ namespace SilCilSystem.Internals
     {
         [SerializeField] private Vector2 m_value = default;
         [SerializeField] private GameEventVector2 m_onValueChanged = default;
-
-        public override void GetAssetName(ref string name) => name = $"{name}_Variable";
-        public override void OnAttached(IEnumerable<VariableAsset> variables)
-        {
-            foreach (var variable in variables)
-            {
-                if (variable is GameEventVector2 onChanged)
-                {
-                    m_onValueChanged = onChanged;
-                    return;
-                }
-            }
-        }
 
         public override Vector2 Value
         {
@@ -31,6 +18,12 @@ namespace SilCilSystem.Internals
                 m_value = value;
                 m_onValueChanged?.Publish(m_value);
             }
+        }
+
+        public override void GetAssetName(ref string name) => name = $"{name}_Variable";
+        public override void OnAttached(VariableAsset parent)
+        {
+            m_onValueChanged = parent.GetSubVariable<GameEventVector2>();
         }
     }
 }

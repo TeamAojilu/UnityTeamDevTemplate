@@ -12,7 +12,7 @@ namespace SilCilSystem.Editors
     {
         public static VariableInspectorOrders GetInstance()
         {
-            var path = AssetDatabase.GUIDToAssetPath(EditorConstants.VariableInspectorOrdersID);
+            var path = AssetDatabase.GUIDToAssetPath(Constants.VariableInspectorOrdersID);
             return AssetDatabase.LoadAssetAtPath<VariableInspectorOrders>(path);
         }
 
@@ -55,10 +55,7 @@ namespace SilCilSystem.Editors
 
         public VariableAsset[] GetOrderedSubAssets(VariableAsset parent)
         {
-            var path = AssetDatabase.GetAssetPath(parent);
-            var assets = AssetDatabase.LoadAllAssetsAtPath(path)
-                .Where(x => x is VariableAsset && !AssetDatabase.IsMainAsset(x))
-                .Select(x => x as VariableAsset);
+            var assets = parent.GetAllVariables().Where(x => !AssetDatabase.IsMainAsset(x));
             var ordered = Sort(assets).ToArray();
             return ordered;
         }

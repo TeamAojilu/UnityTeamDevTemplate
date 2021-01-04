@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 using System.Diagnostics;
-using System.Collections.Generic;
 using SilCilSystem.Variables.Generic;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Variables.Base
 {
@@ -14,7 +14,7 @@ namespace SilCilSystem.Variables.Base
 
         [Conditional("UNITY_EDITOR")]
         /// <summary>Available only for UNITY_EDITOR</summary>
-        public abstract void OnAttached(IEnumerable<VariableAsset> variables);
+        public abstract void OnAttached(VariableAsset parent);
     }
 }
 
@@ -30,16 +30,9 @@ namespace SilCilSystem.Variables.Base.Generic
         [SerializeField] private GameEvent<T> m_onValueChanged = default;
 
         public override void GetAssetName(ref string name) => name = $"{name}_Variable";
-        public override void OnAttached(IEnumerable<VariableAsset> variables)
+        public override void OnAttached(VariableAsset parent)
         {
-            foreach (var variable in variables)
-            {
-                if (variable is GameEvent<T> onChanged)
-                {
-                    m_onValueChanged = onChanged;
-                    return;
-                }
-            }
+            m_onValueChanged = parent.GetSubVariable<GameEvent<T>>();
         }
 
         public override T Value
@@ -60,16 +53,9 @@ namespace SilCilSystem.Variables.Base.Generic
         public override T Value => m_variable;
 
         public override void GetAssetName(ref string name) => name = $"{name}_Readonly";
-        public override void OnAttached(IEnumerable<VariableAsset> variables)
+        public override void OnAttached(VariableAsset parent)
         {
-            foreach (var variable in variables)
-            {
-                if (variable is Variable<T> value)
-                {
-                    m_variable = value;
-                    return;
-                }
-            }
+            m_variable = parent.GetSubVariable<Variable<T>>();
         }
     }
 
@@ -92,7 +78,7 @@ namespace SilCilSystem.Variables.Base.Generic
         public override IDisposable Subscribe(Action action) => Subscribe(_ => action?.Invoke());
 
         public override void GetAssetName(ref string name) => name = $"{name}_OnChanged";
-        public override void OnAttached(IEnumerable<VariableAsset> variables) { }
+        public override void OnAttached(VariableAsset parent) { }
     }
 
     public abstract class GameEventListenerBase<T> : GameEventListener<T>
@@ -103,16 +89,9 @@ namespace SilCilSystem.Variables.Base.Generic
         public override IDisposable Subscribe(Action action) => Subscribe(_ => action?.Invoke());
 
         public override void GetAssetName(ref string name) => name = $"{name}_Listener";
-        public override void OnAttached(IEnumerable<VariableAsset> variables)
+        public override void OnAttached(VariableAsset parent)
         {
-            foreach (var variable in variables)
-            {
-                if (variable is GameEvent<T> onChanged)
-                {
-                    m_event = onChanged;
-                    return;
-                }
-            }
+            m_event = parent.GetSubVariable<GameEvent<T>>();
         }
     }
 }

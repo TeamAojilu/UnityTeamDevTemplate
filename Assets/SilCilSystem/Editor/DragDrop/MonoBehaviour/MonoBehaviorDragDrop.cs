@@ -1,24 +1,44 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
 
 namespace SilCilSystem.Editors
 {
-    public static class ScriptDragDrop
+    internal static class MonoBehaviorDragDrop
     {
+        private const string MenuPath = Constants.DragDropSettingMenuPath + nameof(MonoBehaviour);
         private static HashSet<Rect> m_rects = new HashSet<Rect>();
         private static bool m_willCreate = false;
 
         [InitializeOnLoadMethod]
         private static void OnLoad()
         {
-            EditorApplication.hierarchyWindowItemOnGUI -= OnGUI;
-            EditorApplication.hierarchyChanged -= OnHierarchyChanged;
-            EditorApplication.hierarchyWindowItemOnGUI += OnGUI;
-            EditorApplication.hierarchyChanged += OnHierarchyChanged;
+            SetActive();
         }
 
+        [MenuItem(MenuPath)]
+        private static void OnStateChanged()
+        {
+            bool isChecked = !EditorPrefs.GetBool(MenuPath, true);
+            EditorPrefs.SetBool(MenuPath, isChecked);
+            SetActive();
+        }
+
+        private static void SetActive()
+        {
+            bool active = EditorPrefs.GetBool(MenuPath, true);
+            Menu.SetChecked(MenuPath, active);
+            EditorApplication.hierarchyWindowItemOnGUI -= OnGUI;
+            EditorApplication.hierarchyChanged -= OnHierarchyChanged;
+            if (active)
+            {
+                EditorApplication.hierarchyWindowItemOnGUI += OnGUI;
+                EditorApplication.hierarchyChanged += OnHierarchyChanged;
+            }
+        }
+        
         private static void OnHierarchyChanged()
         {
             m_rects.Clear();
@@ -60,15 +80,44 @@ namespace SilCilSystem.Editors
                     if (m_willCreate)
                     {
                         m_willCreate = false;
-                        foreach (var behaviour in behaviours)
+
+                        if (behaviours.Length == 1)
                         {
-                            GameObject obj = new GameObject();
-                            obj.name = behaviour.Name;
-                            obj.AddComponent(behaviour);
+                            CreateEachGameObject(behaviours);
                         }
+                        else
+                        {
+                            CustomEditorUtil.DisplayMenuAtMousePosition(i => 
+                            {
+                                if (i == 0) CreateSingleGameObject(behaviours);
+                                if (i == 1) CreateEachGameObject(behaviours);
+                            }, "Single object", "Each object");
+                        }
+
                         EditorApplication.RepaintHierarchyWindow();
                     }
                     break;
+            }
+        }
+
+        private static void CreateSingleGameObject(Type[] behaviours)
+        {
+            GameObject obj = new GameObject();
+            obj.name = null;
+            foreach (var behaviour in behaviours)
+            {
+                obj.name = (string.IsNullOrWhiteSpace(obj.name)) ? behaviour.Name : obj.name;
+                obj.AddComponent(behaviour);
+            }
+        }
+
+        private static void CreateEachGameObject(System.Type[] behaviours)
+        {
+            foreach (var behaviour in behaviours)
+            {
+                GameObject obj = new GameObject();
+                obj.name = behaviour.Name;
+                obj.AddComponent(behaviour);
             }
         }
     }

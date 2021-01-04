@@ -28,12 +28,10 @@ namespace SilCilSystem.Editors
             }
             
             string path = AssetDatabase.GetAssetPath(m_object);
-            m_object = null;
-            foreach (var asset in AssetDatabase.LoadAllAssetsAtPath(path))
+            foreach (var asset in m_object.GetAllVariables())
             {
                 property.objectReferenceValue = asset;
-                if (property.objectReferenceValue == null) continue;
-                break;
+                if (property.objectReferenceValue != null) break;
             }
         }
     }

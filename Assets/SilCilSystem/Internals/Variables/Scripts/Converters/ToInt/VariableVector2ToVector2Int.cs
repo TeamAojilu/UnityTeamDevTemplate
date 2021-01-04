@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using SilCilSystem.Editors;
@@ -7,7 +6,7 @@ using SilCilSystem.Math;
 
 namespace SilCilSystem.Internals.Variables.Converters
 {
-    [AddSubAssetMenu(VariablePath.ConvertMenuPath + "Vector2Int (from Vector2)", typeof(VariableVector2))]
+    [AddSubAssetMenu(Constants.ConvertMenuPath + "Vector2Int (from Vector2)", typeof(VariableVector2))]
     internal class VariableVector2ToVector2Int : VariableVector2Int
     {
         [SerializeField] private VariableVector2 m_variable = default;
@@ -20,17 +19,9 @@ namespace SilCilSystem.Internals.Variables.Converters
         }
         
         public override void GetAssetName(ref string name) => name = $"{name}_ToInt";
-
-        public override void OnAttached(IEnumerable<VariableAsset> variables)
+        public override void OnAttached(VariableAsset parent)
         {
-            foreach (var variable in variables)
-            {
-                if (variable is VariableVector2 value)
-                {
-                    m_variable = value;
-                    return;
-                }
-            }
+            m_variable = parent.GetSubVariable<VariableVector2>();
         }
     }
 }

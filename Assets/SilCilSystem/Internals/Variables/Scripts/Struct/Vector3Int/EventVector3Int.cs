@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
@@ -22,6 +21,6 @@ namespace SilCilSystem.Internals
         }
 
         public override void GetAssetName(ref string name) => name = $"{name}_OnChanged";
-        public override void OnAttached(IEnumerable<VariableAsset> variables) { }
+        public override void OnAttached(VariableAsset parent) { }
     }
 }

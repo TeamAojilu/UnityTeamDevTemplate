@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
@@ -7,23 +6,16 @@ using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals
 {
-    [AddSubAssetMenu(VariablePath.ListenerMenuPath + "(Action)", typeof(GameEvent))]
+    [AddSubAssetMenu(Constants.ListenerMenuPath + "(Action)", typeof(GameEvent))]
     internal class EventNoArgsListener : GameEventListener
     {
         [SerializeField] private GameEvent m_event = default;
         public override IDisposable Subscribe(Action action) => m_event?.Subscribe(action);
 
         public override void GetAssetName(ref string name) => name = $"{name}_Listener";
-        public override void OnAttached(IEnumerable<VariableAsset> variables)
+        public override void OnAttached(VariableAsset parent)
         {
-            foreach (var variable in variables)
-            {
-                if (variable is GameEvent gameEvent)
-                {
-                    m_event = gameEvent;
-                    break;
-                }
-            }
+            m_event = parent.GetSubVariable<GameEvent>();
         }
     }
 }

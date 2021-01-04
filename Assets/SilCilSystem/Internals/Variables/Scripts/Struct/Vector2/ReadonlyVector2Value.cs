@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals
 {
-    [AddSubAssetMenu(VariablePath.ReadonlyMenuPath + "(Vector2)", typeof(VariableVector2))]
+    [AddSubAssetMenu(Constants.ReadonlyMenuPath + "(Vector2)", typeof(VariableVector2))]
     internal class ReadonlyVector2Value : ReadonlyVector2
     {
         [SerializeField] private VariableVector2 m_variable = default;
@@ -14,16 +13,9 @@ namespace SilCilSystem.Internals
         public override Vector2 Value => m_variable;
 
         public override void GetAssetName(ref string name) => name = $"{name}_Readonly";
-        public override void OnAttached(IEnumerable<VariableAsset> variables)
+        public override void OnAttached(VariableAsset parent)
         {
-            foreach (var variable in variables)
-            {
-                if (variable is VariableVector2 value)
-                {
-                    m_variable = value;
-                    return;
-                }
-            }
+            m_variable = parent.GetSubVariable<VariableVector2>();
         }
     }
 }

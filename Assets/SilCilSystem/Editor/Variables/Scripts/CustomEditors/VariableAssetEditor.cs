@@ -1,10 +1,8 @@
 ﻿using SilCilSystem.Variables.Base;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace SilCilSystem.Editors
 {
@@ -100,11 +98,9 @@ namespace SilCilSystem.Editors
                     {
                         if (parent is VariableAsset variable)
                         {
-                            CustomEditorUtil.AttachVariableAssets(variable, attaches);
-                            AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(parent));
+                            variable.AddSubVariables(attaches);
                         }
                     }
-                    AssetDatabase.SaveAssets();
 
                     InitActiveEditors();
                     Repaint();

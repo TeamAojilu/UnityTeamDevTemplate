@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using SilCilSystem.Editors;
@@ -7,7 +6,7 @@ using SilCilSystem.Math;
 
 namespace SilCilSystem.Internals.Variables.Converters
 {
-    [AddSubAssetMenu(VariablePath.ConvertMenuPath + "Vector3 (from Vector3Int)", typeof(VariableVector3Int))]
+    [AddSubAssetMenu(Constants.ConvertMenuPath + "Vector3 (from Vector3Int)", typeof(VariableVector3Int))]
     internal class VariableVector3IntToVector3 : VariableVector3
     {
         [SerializeField] private VariableVector3Int m_variable = default;
@@ -20,17 +19,9 @@ namespace SilCilSystem.Internals.Variables.Converters
         }
         
         public override void GetAssetName(ref string name) => name = $"{name}_ToFloat";
-
-        public override void OnAttached(IEnumerable<VariableAsset> variables)
+        public override void OnAttached(VariableAsset parent)
         {
-            foreach (var variable in variables)
-            {
-                if (variable is VariableVector3Int value)
-                {
-                    m_variable = value;
-                    return;
-                }
-            }
+            m_variable = parent.GetSubVariable<VariableVector3Int>();
         }
     }
 }
