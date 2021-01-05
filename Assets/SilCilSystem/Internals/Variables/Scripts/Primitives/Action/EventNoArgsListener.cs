@@ -6,14 +6,14 @@ using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals
 {
-    [AddSubAssetMenu(Constants.ListenerMenuPath + "(Action)", typeof(GameEvent))]
+    [Variable("Listener", Constants.ListenerMenuPath + "(Action)", typeof(GameEvent))]
     internal class EventNoArgsListener : GameEventListener
     {
         [SerializeField] private GameEvent m_event = default;
         public override IDisposable Subscribe(Action action) => m_event?.Subscribe(action);
 
-        public override void GetAssetName(ref string name) => name = $"{name}_Listener";
-        public override void OnAttached(VariableAsset parent)
+        [OnAttached]
+        private void OnAttached(VariableAsset parent)
         {
             m_event = parent.GetSubVariable<GameEvent>();
         }

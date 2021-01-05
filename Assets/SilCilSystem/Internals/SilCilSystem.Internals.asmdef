@@ -1,7 +1,8 @@
 {
     "name": "SilCilSystem.Internals",
     "references": [
-        "GUID:7d0deb14354e38f44a24726177cf389d"
+        "GUID:7d0deb14354e38f44a24726177cf389d",
+        "GUID:7d04e53d35d794c4489bf802f3aa8c62"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using SilCilSystem.Variables;
-using SilCilSystem.Variables.Base;
 using SilCilSystem.Editors;
+using SilCilSystem.Variables.Base;
 
 namespace SilCilSystem.Internals
 {
+    [Variable("Variable")]
     internal class NotificationBool : VariableBool
     {
         [SerializeField] private bool m_value = default;
@@ -20,8 +21,8 @@ namespace SilCilSystem.Internals
             }
         }
 
-        public override void GetAssetName(ref string name) => name = $"{name}_Variable";
-        public override void OnAttached(VariableAsset parent)
+        [OnAttached]
+        private void OnAttached(VariableAsset parent)
         {
             m_onValueChanged = parent.GetSubVariable<GameEventBool>();
         }

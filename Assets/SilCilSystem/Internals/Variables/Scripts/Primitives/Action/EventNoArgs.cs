@@ -1,9 +1,10 @@
 ﻿using System;
+using SilCilSystem.Editors;
 using SilCilSystem.Variables;
-using SilCilSystem.Variables.Base;
 
 namespace SilCilSystem.Internals
 {
+    [Variable("Changed")]
     internal class EventNoArgs : GameEvent
     {
         private event Action m_event = default;
@@ -18,8 +19,5 @@ namespace SilCilSystem.Internals
             m_event += action;
             return DelegateDispose.Create(() => m_event -= action);
         }
-
-        public override void GetAssetName(ref string name) => name = $"{name}_Event";
-        public override void OnAttached(VariableAsset parent) { }
     }
 }

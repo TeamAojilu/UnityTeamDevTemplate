@@ -2,9 +2,11 @@
 using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals
 {
+    [Variable("Changed")]
     internal class EventVector3 : GameEventVector3
     {
         private event Action<Vector3> m_event = default;
@@ -19,8 +21,5 @@ namespace SilCilSystem.Internals
             m_event += action;
             return DelegateDispose.Create(() => m_event -= action);
         }
-
-        public override void GetAssetName(ref string name) => name = $"{name}_OnChanged";
-        public override void OnAttached(VariableAsset parent) { }
     }
 }

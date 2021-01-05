@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using SilCilSystem.Variables;
-using SilCilSystem.Variables.Base;
 using SilCilSystem.Editors;
 using SilCilSystem.Math;
+using SilCilSystem.Variables.Base;
 
 namespace SilCilSystem.Internals.Variables.Converters
 {
-    [AddSubAssetMenu(Constants.ConvertMenuPath + "Float (from Int)", typeof(VariableInt))]
+    [Variable("ToFloat", Constants.ConvertMenuPath + "Float (from Int)", typeof(VariableInt))]
     internal class VariableIntToFloat : VariableFloat
     {
         [SerializeField] private VariableInt m_variable = default;
@@ -17,9 +17,9 @@ namespace SilCilSystem.Internals.Variables.Converters
             get => m_variable.Value;
             set => m_variable?.SetValue(m_castType.Cast(value));
         }
-        
-        public override void GetAssetName(ref string name) => name = $"{name}_ToFloat";
-        public override void OnAttached(VariableAsset parent)
+
+        [OnAttached]
+        private void OnAttached(VariableAsset parent)
         {
             m_variable = parent.GetSubVariable<VariableInt>();
         }

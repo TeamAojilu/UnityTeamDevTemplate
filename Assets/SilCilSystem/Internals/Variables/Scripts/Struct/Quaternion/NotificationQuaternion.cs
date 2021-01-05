@@ -5,6 +5,7 @@ using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals
 {
+    [Variable("Variable")]
     internal class NotificationQuaternion : VariableQuaternion
     {
         [SerializeField] private Quaternion m_value = default;
@@ -20,8 +21,8 @@ namespace SilCilSystem.Internals
             }
         }
 
-        public override void GetAssetName(ref string name) => name = $"{name}_Variable";
-        public override void OnAttached(VariableAsset parent)
+        [OnAttached]
+        private void OnAttached(VariableAsset parent)
         {
             m_onValueChanged = parent.GetSubVariable<GameEventQuaternion>();
         }
