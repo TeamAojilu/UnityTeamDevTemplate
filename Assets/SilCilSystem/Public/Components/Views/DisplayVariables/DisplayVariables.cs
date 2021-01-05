@@ -9,16 +9,16 @@ namespace SilCilSystem.Components.Views
     public class DisplayVariables : MonoBehaviour
     {
         [Header("Status")]
-        [SerializeField] private PropertyBool m_isBusy = default;
+        public PropertyBool m_isBusy = new PropertyBool(false);
 
         [Header("Text")]
-        [SerializeField, TextArea] private string m_format = "Value: {key}"; // TextAreaやOnValidateが効かないのでPropertyStringは未使用.
+        [TextArea] public string m_format = "Value: {key}"; // TextAreaやOnValidateが効かないのでPropertyStringは未使用.
 
         [Header("Variables")]
-        [SerializeField] private DisplayVariableInt[] m_intValues = default;
-        [SerializeField] private DisplayVariableFloat[] m_floatValues = default;
-        [SerializeField] private DisplayVariableString[] m_stringValues = default;
-
+        [SerializeField] internal DisplayVariableInt[] m_intValues = default;
+        [SerializeField] internal DisplayVariableFloat[] m_floatValues = default;
+        [SerializeField] internal DisplayVariableString[] m_stringValues = default;
+        
         private IDisplayText m_text = default;
         private List<IDisplayVariable> m_variables = default;
         private string[] m_currentStrings = default;

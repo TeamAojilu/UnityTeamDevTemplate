@@ -17,15 +17,15 @@ namespace SilCilSystem.Components.Views
     internal abstract class DisplayVariableWithAnimation<T, TVariable>: IDisplayVariable where TVariable : ReadonlyVariable<T>
     {
         [Header("Basic")]
-        [SerializeField] private string m_key = "key"; // インスペクタのヘッダーがm_keyの内容になるようにstring.
-        [SerializeField] protected ReadonlyPropertyString m_format = new ReadonlyPropertyString("G");
-        [SerializeField] private TVariable m_variable = default;
+        public string m_key = "key"; // インスペクタのヘッダーがm_keyの内容になるようにstring.
+        public ReadonlyPropertyString m_format = new ReadonlyPropertyString("G");
+        public TVariable m_variable = default;
 
         [Header("Animation")]
-        [SerializeField] private ReadonlyPropertyFloat m_duration = new ReadonlyPropertyFloat(-1f);
-        [SerializeField] private InterpolationCurve m_curve = default;
-        [SerializeField] private ReadonlyPropertyBool m_useInitial = new ReadonlyPropertyBool(false);
-        [SerializeField] private T m_initialValue = default;
+        public ReadonlyPropertyFloat m_duration = new ReadonlyPropertyFloat(-1f);
+        public InterpolationCurve m_curve = default;
+        public ReadonlyPropertyBool m_useInitial = new ReadonlyPropertyBool(false);
+        public T m_initialValue = default;
 
         private ReadonlyVariableAnimation<T, TVariable> m_animation = default;
 

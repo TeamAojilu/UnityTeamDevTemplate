@@ -29,8 +29,6 @@ namespace SilCilSystem.Editors
         [DidReloadScripts(TypeDetectOrder)]
         public static void OnLoad()
         {
-            if (EditorApplication.isPlayingOrWillChangePlaymode) return;
-
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 if (IsExcepted(assembly)) continue;

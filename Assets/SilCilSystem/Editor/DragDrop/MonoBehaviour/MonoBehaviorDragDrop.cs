@@ -23,13 +23,13 @@ namespace SilCilSystem.Editors
         {
             bool isChecked = !EditorPrefs.GetBool(MenuPath, true);
             EditorPrefs.SetBool(MenuPath, isChecked);
+            Menu.SetChecked(MenuPath, isChecked);
             SetActive();
         }
 
         private static void SetActive()
         {
             bool active = EditorPrefs.GetBool(MenuPath, true);
-            Menu.SetChecked(MenuPath, active);
             EditorApplication.hierarchyWindowItemOnGUI -= OnGUI;
             EditorApplication.hierarchyChanged -= OnHierarchyChanged;
             if (active)

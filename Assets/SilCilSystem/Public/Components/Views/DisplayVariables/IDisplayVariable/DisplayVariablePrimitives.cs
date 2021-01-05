@@ -33,8 +33,9 @@ namespace SilCilSystem.Components.Views
     internal class DisplayVariableString : IDisplayVariable
     {
         [Header("Basic")]
-        [SerializeField] private string m_key = "key"; // インスペクタのヘッダーがm_keyの内容になるようにstring.
-        [SerializeField] protected ReadonlyString m_variable = default;
+        public string m_key = "key"; // インスペクタのヘッダーがm_keyの内容になるようにstring.
+        public ReadonlyString m_variable = default;
+        
         public string Key => m_key;
         public bool IsBusy => false;
         public void Initialize() { }
