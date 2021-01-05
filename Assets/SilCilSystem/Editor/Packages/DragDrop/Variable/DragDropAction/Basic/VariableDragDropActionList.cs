@@ -42,9 +42,11 @@ namespace SilCilSystem.Editors
             List<string> paths = new List<string>();
             List<VariableDragDropAction> actions = new List<VariableDragDropAction>();
 
+            var drops = variables.Select(x => x.GetAllVariables()).ToArray();
+
             foreach(var item in m_list)
             {
-                if(variables.All(x => item.Value.IsAccepted(x)))
+                if(drops.All(x => item.Value.IsAccepted(x)))
                 {
                     paths.Add(item.Key);
                     actions.Add(item.Value);

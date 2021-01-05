@@ -3,17 +3,15 @@ using SilCilSystem.Components.Views;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using SilCilSystem.Editors.Views;
+using System.Linq;
 
 namespace SilCilSystem.Editors
 {
     internal abstract class TextGeneratorBase : VariableDragDropAction
     {
-        public override bool IsAccepted(VariableAsset dropAsset)
+        public override bool IsAccepted(VariableAsset[] dropAsset)
         {
-            if (dropAsset?.GetSubVariable<ReadonlyInt>() != null) return true;
-            if (dropAsset?.GetSubVariable<ReadonlyFloat>() != null) return true;
-            if (dropAsset?.GetSubVariable<ReadonlyString>() != null) return true;
-            return false;
+            return dropAsset.Any(x => x is ReadonlyInt || x is ReadonlyFloat || x is ReadonlyString);
         }
 
         public override void OnDropExited(VariableAsset dropAsset)

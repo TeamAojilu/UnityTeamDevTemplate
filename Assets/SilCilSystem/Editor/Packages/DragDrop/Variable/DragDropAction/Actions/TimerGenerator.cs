@@ -1,15 +1,16 @@
 ﻿using SilCilSystem.Components.Timers;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
+using System.Linq;
 using UnityEngine;
 
 namespace SilCilSystem.Editors
 {
     internal abstract class TimerGenerator : VariableDragDropAction
     {
-        public override bool IsAccepted(VariableAsset dropAsset)
+        public override bool IsAccepted(VariableAsset[] dropAsset)
         {
-            return dropAsset?.GetSubVariable<VariableFloat>() != null;
+            return dropAsset.Any(x => x is VariableFloat);
         }
 
         public override void OnDropExited(VariableAsset dropAsset)

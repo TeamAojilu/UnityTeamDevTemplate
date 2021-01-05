@@ -4,14 +4,15 @@ using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using SilCilSystem.Components.Views;
 using SilCilSystem.Editors.Views;
+using System.Linq;
 
 namespace SilCilSystem.Editors
 {
     internal abstract class ToggleGeneratorBase : VariableDragDropAction
     {
-        public override bool IsAccepted(VariableAsset dropAsset)
+        public override bool IsAccepted(VariableAsset[] dropAsset)
         {
-            return dropAsset?.GetSubVariable<ReadonlyBool>() != null;
+            return dropAsset.Any(x => x is ReadonlyBool);
         }
 
         public override void OnDropExited(VariableAsset dropAsset)
@@ -54,9 +55,9 @@ namespace SilCilSystem.Editors
     [AddVariableDragDrop("Interactive/Toggle")]
     internal class ToggleGenerator : ToggleGeneratorBase
     {
-        public override bool IsAccepted(VariableAsset dropAsset)
+        public override bool IsAccepted(VariableAsset[] dropAsset)
         {
-            return base.IsAccepted(dropAsset) && dropAsset?.GetSubVariable<VariableBool>() != null;
+            return base.IsAccepted(dropAsset) && dropAsset.Any(x => x is VariableBool);
         }
 
         protected override void PostProcess(VariableAsset dropAsset, Toggle toggle)

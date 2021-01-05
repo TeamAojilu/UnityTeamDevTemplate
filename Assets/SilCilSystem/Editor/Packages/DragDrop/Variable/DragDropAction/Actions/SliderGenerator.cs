@@ -4,14 +4,15 @@ using SilCilSystem.Variables.Base;
 using SilCilSystem.Components.Views;
 using SilCilSystem.Editors.Views;
 using UnityEditor.Events;
+using System.Linq;
 
 namespace SilCilSystem.Editors
 {
     internal abstract class SliderGeneratorBase : VariableDragDropAction
     {
-        public override bool IsAccepted(VariableAsset dropAsset)
+        public override bool IsAccepted(VariableAsset[] assetIncludingChildren)
         {
-            return dropAsset?.GetSubVariable<ReadonlyFloat>() != null;
+            return assetIncludingChildren.Any(x => x is ReadonlyFloat);
         }
 
         public override void OnDropExited(VariableAsset dropAsset)
@@ -48,9 +49,9 @@ namespace SilCilSystem.Editors
     [AddVariableDragDrop("Interactives/Slider")]
     internal class SliderGenerator : SliderGeneratorBase
     {
-        public override bool IsAccepted(VariableAsset dropAsset)
+        public override bool IsAccepted(VariableAsset[] assetIncludingChildren)
         {
-            return base.IsAccepted(dropAsset) && dropAsset?.GetSubVariable<ReadonlyFloat>() != null;
+            return base.IsAccepted(assetIncludingChildren) && assetIncludingChildren.Any(x => x is VariableFloat);
         }
 
         protected override Slider CreateSlider()
