@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
+using SilCilSystem.Singletons;
 
-namespace SilCilSystem.Singletons
+namespace SilCilSystem.SceneLoaders
 {
     /// <summary>
     /// シーンをロードするシングルトン.

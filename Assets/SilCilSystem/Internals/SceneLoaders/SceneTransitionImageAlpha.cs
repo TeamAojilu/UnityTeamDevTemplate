@@ -2,11 +2,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using SilCilSystem.Math;
+using SilCilSystem.SceneLoaders;
 
-namespace SilCilSystem.Components.SceneLoaders
+namespace SilCilSystem.Internals.SceneLoaders
 {
     /// <summary>UI/ImageのAlpha値を使用して画面遷移処理を行うコンポーネント</summary>
-    public class SceneTransitionImageAlpha : MonoBehaviour, ISceneTransition
+    internal class SceneTransitionImageAlpha : MonoBehaviour, ISceneTransition
     {
         [SerializeField] private float m_fadeTime = 0.5f;
         [SerializeField] private InterpolationCurve m_curve = default;

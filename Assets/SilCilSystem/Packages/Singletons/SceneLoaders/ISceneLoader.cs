@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace SilCilSystem.Singletons
+namespace SilCilSystem.SceneLoaders
 {
     /// <summary>シーンの読み込みを行うインターフェース</summary>
     public interface ISceneLoader

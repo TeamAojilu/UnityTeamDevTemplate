@@ -3,7 +3,7 @@ using SilCilSystem.Variables;
 using SilCilSystem.Editors;
 using SilCilSystem.Variables.Base;
 
-namespace SilCilSystem.Internals
+namespace SilCilSystem.Internals.Variables
 {
     [Variable("Variable")]
     internal class NotificationBool : VariableBool

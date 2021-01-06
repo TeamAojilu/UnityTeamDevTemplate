@@ -1,5 +1,6 @@
 using UnityEditor;
 using SilCilSystem.Editors;
+using SilCilSystem.Internals.Variables;
 
 namespace SilCilSystem.Internals.Editors
 {

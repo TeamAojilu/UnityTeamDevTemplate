@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using SilCilSystem.Singletons;
 
-namespace SilCilSystem.Components.SceneLoaders
+namespace SilCilSystem.SceneLoaders
 {
     /// <summary>
     /// ISceneTransitionを実装したコンポーネントを利用するISceneLoaderコンポーネント.
     /// 【注意】ISceneTransitionは子供に設置すること.
     /// </summary>
     [RequireComponent(typeof(SceneLoader))]
-    public class SceneLoaderWithSceneTransition : MonoBehaviour, ISceneLoader
+    [AddComponentMenu(Constants.AddComponentPath + nameof(SceneLoaders) + "/" + nameof(SceneLoaderWithSceneTransition))]
+    internal class SceneLoaderWithSceneTransition : MonoBehaviour, ISceneLoader
     {
         private ISceneTransition Fader => m_fader = m_fader ?? gameObject.GetComponentInChildren<ISceneTransition>(); 
         private ISceneTransition m_fader;

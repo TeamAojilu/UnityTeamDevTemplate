@@ -4,7 +4,7 @@ using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using SilCilSystem.Editors;
 
-namespace SilCilSystem.Internals
+namespace SilCilSystem.Internals.Variables
 {
     [Variable("Listener", Constants.ListenerMenuPath + "(Vector3)", typeof(GameEventVector3))]
     internal class EventVector3Listener : GameEventVector3Listener

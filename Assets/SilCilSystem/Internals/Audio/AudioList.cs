@@ -1,11 +1,11 @@
 ﻿using System;
 using UnityEngine;
-using SilCilSystem.Singletons;
+using SilCilSystem.Audio;
 
-namespace SilCilSystem.Components.AudioPlayers
+namespace SilCilSystem.Internals.Audio
 {
     [CreateAssetMenu(fileName = nameof(AudioList), menuName = nameof(AudioList), order = 1)]
-    public class AudioList : ScriptableObject, IAudioClipResources
+    internal class AudioList : ScriptableObject, IAudioClipResources
     {
         [Serializable]
         private class AudioInfo

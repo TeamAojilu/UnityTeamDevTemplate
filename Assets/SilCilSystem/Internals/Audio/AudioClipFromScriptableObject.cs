@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using SilCilSystem.Singletons;
+using SilCilSystem.Audio;
 
-namespace SilCilSystem.Components.AudioPlayers
+namespace SilCilSystem.Internals.Audio
 {
-    public class AudioClipFromScriptableObject : MonoBehaviour
+    internal class AudioClipFromScriptableObject : MonoBehaviour
     {
         [SerializeField] private ScriptableObject m_audioClipResources = default;
 

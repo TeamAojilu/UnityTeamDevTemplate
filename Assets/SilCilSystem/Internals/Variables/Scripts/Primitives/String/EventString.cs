@@ -1,9 +1,8 @@
 ﻿using System;
 using SilCilSystem.Editors;
 using SilCilSystem.Variables;
-using SilCilSystem.Variables.Base;
 
-namespace SilCilSystem.Internals
+namespace SilCilSystem.Internals.Variables
 {
     [Variable("Changed")]
     internal class EventString : GameEventString

@@ -3,7 +3,7 @@ using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using SilCilSystem.Editors;
 
-namespace SilCilSystem.Internals
+namespace SilCilSystem.Internals.Variables
 {
     [Variable("Readonly", Constants.ReadonlyMenuPath + "(Color)", typeof(VariableColor))]
     internal class ReadonlyColorValue : ReadonlyColor

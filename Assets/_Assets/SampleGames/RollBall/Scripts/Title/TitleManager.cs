@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
-using SilCilSystem.Singletons;
+using SilCilSystem.SceneLoaders;
 
 namespace Samples.RollBall
 {

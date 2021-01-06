@@ -3,7 +3,7 @@ using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using SilCilSystem.Editors;
 
-namespace SilCilSystem.Internals
+namespace SilCilSystem.Internals.Variables
 {
     [Variable("Readonly", Constants.ReadonlyMenuPath + "(Vector2Int)", typeof(VariableVector2Int))]
     internal class ReadonlyVector2IntValue : ReadonlyVector2Int

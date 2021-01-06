@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SilCilSystem.Singletons
+namespace SilCilSystem.Audio
 {
 	public interface IAudioClipResources
     {

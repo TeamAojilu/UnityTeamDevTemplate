@@ -73,7 +73,7 @@ MonoBehaviour:
   m_isBusy:
     m_value: 0
     m_variable: {fileID: 11400000, guid: 25086688504573a40a7c0e85a442575d, type: 2}
-  m_loadScene: {fileID: 6563336216783530859, guid: 76a7405881f3ad848b3c5515f6cb9a88,
+  m_loadScene: {fileID: -3198611636116012631, guid: 76a7405881f3ad848b3c5515f6cb9a88,
     type: 2}
 --- !u!1 &2340520607945077829
 GameObject:

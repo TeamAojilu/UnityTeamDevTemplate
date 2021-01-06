@@ -2,7 +2,7 @@
 using SilCilSystem.Editors;
 using SilCilSystem.Variables;
 
-namespace SilCilSystem.Internals
+namespace SilCilSystem.Internals.Variables
 {
     [Variable("Changed")]
     internal class EventNoArgs : GameEvent

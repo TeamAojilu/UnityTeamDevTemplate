@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-using SilCilSystem.Singletons;
-using SilCilSystem.Variables;
 using System;
+using SilCilSystem.Variables;
+using SilCilSystem.SceneLoaders;
 
-namespace SilCilSystem.Components.SceneLoaders
+namespace SilCilSystem.Internals.SceneLoaders
 {
-    [RequireComponent(typeof(SceneLoader))]
-    public class SceneLoaderVariableSystem : MonoBehaviour
+    internal class SceneLoaderVariableSystem : MonoBehaviour
     {
         [SerializeField] private PropertyBool m_isBusy = default;
         [SerializeField] private GameEventStringListener m_loadScene = default;

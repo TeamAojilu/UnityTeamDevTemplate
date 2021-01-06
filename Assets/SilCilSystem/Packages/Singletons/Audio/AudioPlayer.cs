@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Math;
-using System;
+using SilCilSystem.Singletons;
 
-namespace SilCilSystem.Singletons
+namespace SilCilSystem.Audio
 {
     public class AudioPlayer : SingletonMonoBehaviour<AudioPlayer>
     {
