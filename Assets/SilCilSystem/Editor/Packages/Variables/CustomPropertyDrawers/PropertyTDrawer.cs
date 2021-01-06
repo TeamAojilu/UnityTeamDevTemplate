@@ -8,8 +8,8 @@ using SilCilSystem.Variables.Generic;
 
 namespace SilCilSystem.Editors
 {
-    // [CustomPropertyDrawer(typeof(Property<>), true)]
-    // [CustomPropertyDrawer(typeof(ReadonlyProperty<>), true)]
+    [CustomPropertyDrawer(typeof(Property<>), true)]
+    [CustomPropertyDrawer(typeof(ReadonlyProperty<>), true)]
     [CustomPropertyDrawer(typeof(Property<,>), true)]
     [CustomPropertyDrawer(typeof(ReadonlyProperty<,>), true)]
     internal class PropertyTDrawer : PropertyDrawer

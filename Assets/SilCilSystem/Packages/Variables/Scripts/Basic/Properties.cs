@@ -3,13 +3,14 @@ using UnityEngine;
 
 namespace SilCilSystem.Variables.Generic
 {
-    // 2019ではVaraible<T>がシリアライズできないので使用不可.
-    [Obsolete, Serializable]
-    public abstract class Property<T>
+    /// <summary>Unity2019ではVaraible<T>がシリアライズできないので注意</summary>
+    [Serializable]
+    public class Property<T>
     {
         [SerializeField] private T m_value = default;
         [SerializeField] private Variable<T> m_variable = default;
 
+        /// <summary>Unity2019ではVaraible<T>がシリアライズできないので注意</summary>
         public Property(T value) => Value = value;
 
         public T Value
@@ -36,12 +37,14 @@ namespace SilCilSystem.Variables.Generic
         public static implicit operator T(Property<T> property) => property.Value;
     }
 
-    [Obsolete, Serializable]
-    public abstract class ReadonlyProperty<T>
+    /// <summary>Unity2019ではReadonlyVaraible<T>がシリアライズできないので注意</summary>
+    [Serializable]
+    public class ReadonlyProperty<T>
     {
         [SerializeField] private T m_value = default;
         [SerializeField] private ReadonlyVariable<T> m_variable = default;
 
+        /// <summary>Unity2019ではReadonlyVaraible<T>がシリアライズできないので注意</summary>
         public ReadonlyProperty(T value) => m_value = value;
 
         public T Value => (m_variable != null) ? m_variable.Value : m_value;

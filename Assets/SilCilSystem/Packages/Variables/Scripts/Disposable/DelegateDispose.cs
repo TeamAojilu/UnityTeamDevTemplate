@@ -1,24 +1,38 @@
 ﻿using System;
+using SilCilSystem.ObjectPools;
 
 namespace SilCilSystem.Variables
 {
-    /// <summary>Dispose呼び出しで登録したActionを呼ぶ</summary>
-    public class DelegateDispose : IDisposable
+    /// <summary>Dispose呼び出しで登録したActionを呼ぶIDisposable</summary>
+    public class DelegateDispose : IDisposable, IPooledObject
     {
-        private readonly Action m_delegate;
+        private static ObjectPool<DelegateDispose> ObjectPool = new ObjectPool<DelegateDispose>(() => new DelegateDispose());
 
-        /// <summary>Dispose呼び出しで登録したActionを呼ぶ</summary>
-        private DelegateDispose(Action action) => m_delegate = action;
-        
-        public void Dispose() => m_delegate.Invoke();
-
-        /// <summary>
-        /// コンストラクタを隠すための静的メソッド
-        /// 後々キャッシュなどの最適化用に作成.
-        /// </summary>
         public static IDisposable Create(Action action)
         {
-            return new DelegateDispose(action);
+            var instance = ObjectPool.GetInstance();
+            instance.m_delegate = action;
+            return instance;
+        }
+
+        private Action m_delegate = default;
+        private bool m_isPooled = false;
+        
+        private DelegateDispose() { }
+
+        bool IPooledObject.IsPooled => m_isPooled;
+
+        void IPooledObject.ResetPooledObject()
+        {
+            m_delegate = null;
+            m_isPooled = false;
+        }
+        
+        public void Dispose()
+        {
+            m_delegate?.Invoke();
+            m_delegate = null;
+            m_isPooled = true;
         }
     }
 }
