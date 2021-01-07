@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SilCilSystem.ObjectPools
 {
-    public class ObjectPool<T> where T : IPooledObject
+    public class ObjectPool<T> where T : class, IPooledObject
     {
         private readonly List<T> m_instances;
         private readonly Func<T> m_createFunction;
@@ -16,17 +16,10 @@ namespace SilCilSystem.ObjectPools
 
         public T GetInstance()
         {
-            var instance = GetOrCreateInstance();
-            return instance;
-        }
-
-        private T GetOrCreateInstance()
-        {
             foreach (var instance in m_instances)
             {
                 if (instance == null) continue;
-                if (!instance.IsPooled) continue;
-                return instance;
+                if (instance.IsPooled) return instance;
             }
 
             var newInstance = m_createFunction.Invoke();
