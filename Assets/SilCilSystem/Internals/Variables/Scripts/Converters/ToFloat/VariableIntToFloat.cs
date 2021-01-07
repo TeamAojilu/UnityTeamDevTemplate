@@ -15,7 +15,7 @@ namespace SilCilSystem.Internals.Variables.Converters
         public override float Value
         {
             get => m_variable.Value;
-            set => m_variable?.SetValue(m_castType.Cast(value));
+            set => m_variable.Value = m_castType.Cast(value);
         }
 
         [OnAttached]

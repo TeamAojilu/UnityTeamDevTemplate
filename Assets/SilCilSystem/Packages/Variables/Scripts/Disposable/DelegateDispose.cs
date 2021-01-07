@@ -16,23 +16,15 @@ namespace SilCilSystem.Variables
         }
 
         private Action m_delegate = default;
-        private bool m_isPooled = false;
         
         private DelegateDispose() { }
 
-        bool IPooledObject.IsPooled => m_isPooled;
+        bool IPooledObject.IsPooled => m_delegate == null;
 
-        void IPooledObject.ResetPooledObject()
-        {
-            m_delegate = null;
-            m_isPooled = false;
-        }
-        
         public void Dispose()
         {
             m_delegate?.Invoke();
             m_delegate = null;
-            m_isPooled = true;
         }
     }
 }

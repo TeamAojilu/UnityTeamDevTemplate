@@ -15,7 +15,7 @@ namespace SilCilSystem.Internals.Variables.Converters
         public override Vector3Int Value
         {
             get => m_castType.Cast(m_variable.Value);
-            set => m_variable?.SetValue(value);
+            set => m_variable.Value = value;
         }
         
         [OnAttached]

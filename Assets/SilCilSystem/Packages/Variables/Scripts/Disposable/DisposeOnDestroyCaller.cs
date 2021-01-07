@@ -22,34 +22,34 @@ namespace SilCilSystem.Variables
     public static class DisposeOnDestroyCallerExtensions
     {
         /// <summary>ゲームオブジェクトが破棄される時に自動でDisposeが呼ばれるようにする</summary>
-        public static void DisposeOnDestroy(this IDisposable disposable, GameObject gameObject)
+        public static void DisposeOnDestroy(this IDisposable disposable, GameObject lifeTimeObject)
         {
-            if (gameObject == null)
+            if (lifeTimeObject == null)
             {
-                Debug.LogError($"{nameof(DisposeOnDestroy)}: GameObject is null");
+                Debug.LogError($"{nameof(DisposeOnDestroy)}: {nameof(lifeTimeObject)} is null");
                 return;
             }
 
-            if(gameObject.TryGetComponent(out DisposeOnDestroyCaller caller))
+            if(lifeTimeObject.TryGetComponent(out DisposeOnDestroyCaller caller))
             {
                 caller.Set(disposable);
             }
             else
             {
-                gameObject.AddComponent<DisposeOnDestroyCaller>().Set(disposable);
+                lifeTimeObject.AddComponent<DisposeOnDestroyCaller>().Set(disposable);
             }
         }
 
         /// <summary>イベントの登録. ゲームオブジェクトが破棄される時に自動でDisposeが呼ばれる</summary>
-        public static void Subscribe(this GameEvent gameEvent, Action action, GameObject gameObject)
+        public static void Subscribe(this GameEvent gameEvent, Action action, GameObject lifeTimeObject)
         {
-            gameEvent?.Subscribe(action).DisposeOnDestroy(gameObject);
+            gameEvent?.Subscribe(action).DisposeOnDestroy(lifeTimeObject);
         }
 
         /// <summary>イベントの登録. ゲームオブジェクトが破棄される時に自動でDisposeが呼ばれる</summary>
-        public static void Subscribe<T>(this GameEvent<T> gameEvent, Action<T> action, GameObject gameObject)
+        public static void Subscribe<T>(this GameEvent<T> gameEvent, Action<T> action, GameObject lifeTimeObject)
         {
-            gameEvent?.Subscribe(action).DisposeOnDestroy(gameObject);
+            gameEvent?.Subscribe(action).DisposeOnDestroy(lifeTimeObject);
         }
     }
 }

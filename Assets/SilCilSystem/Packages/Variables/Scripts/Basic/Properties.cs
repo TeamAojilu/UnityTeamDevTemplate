@@ -19,7 +19,7 @@ namespace SilCilSystem.Variables.Generic
             set
             {
                 m_value = value;
-                m_variable?.SetValue(value);
+                if(m_variable != null) m_variable.Value = value;
             }
         }
 
@@ -28,7 +28,7 @@ namespace SilCilSystem.Variables.Generic
             get => m_variable;
             set
             {
-                m_value = value;
+                m_value = (value == null) ? default : value;
                 m_variable = value;
             }
         }
@@ -54,7 +54,6 @@ namespace SilCilSystem.Variables.Generic
             get => m_variable;
             set
             {
-                m_value = value;
                 m_variable = value;
             }
         }
@@ -76,7 +75,7 @@ namespace SilCilSystem.Variables.Generic
             set
             {
                 m_value = value;
-                m_variable?.SetValue(value);
+                if (m_variable != null) m_variable.Value = value;
             }
         }
 
@@ -85,7 +84,7 @@ namespace SilCilSystem.Variables.Generic
             get => m_variable;
             set
             {
-                m_value = value;
+                m_value = (value == null) ? default: value.Value;
                 m_variable = value;
             }
         }
@@ -109,7 +108,6 @@ namespace SilCilSystem.Variables.Generic
             get => m_variable;
             set
             {
-                m_value = value;
                 m_variable = value;
             }
         }
