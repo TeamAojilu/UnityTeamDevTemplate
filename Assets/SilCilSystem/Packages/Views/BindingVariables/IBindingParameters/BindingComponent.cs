@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     public interface IBindingParameters
     {

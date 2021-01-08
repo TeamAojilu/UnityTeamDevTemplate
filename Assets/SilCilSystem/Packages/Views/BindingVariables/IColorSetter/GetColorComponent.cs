@@ -3,7 +3,7 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using TMPro;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     public interface IColorSetter
     {

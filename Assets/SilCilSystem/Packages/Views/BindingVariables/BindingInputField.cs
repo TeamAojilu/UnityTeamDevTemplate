@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using SilCilSystem.Variables;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     [AddComponentMenu(menuName: Constants.AddComponentPath + "Views/" + nameof(BindingInputField))]
     public class BindingInputField : BindingComponent, IBindingParameters

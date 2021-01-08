@@ -4,7 +4,7 @@ using SilCilSystem.Math;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Generic;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     internal abstract class PropertyAnimation<T, TProperty, TVariable> : ValueAnimation<T>
             where TProperty : ReadonlyProperty<T, TVariable>

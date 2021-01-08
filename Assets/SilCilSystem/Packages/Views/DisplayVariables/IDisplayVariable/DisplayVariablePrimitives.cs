@@ -3,7 +3,7 @@ using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Math;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     [Serializable]
     internal class DisplayVariableInt : DisplayVariableWithAnimation<int, ReadonlyInt>

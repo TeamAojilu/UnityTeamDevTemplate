@@ -5,7 +5,7 @@ using TMPro;
 using SilCilSystem.Variables;
 using SilCilSystem.Math;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     [AddComponentMenu(menuName: Constants.AddComponentPath + "Views/" + nameof(BindingColor))]
     public class BindingColor : BindingComponent, IBindingParameters

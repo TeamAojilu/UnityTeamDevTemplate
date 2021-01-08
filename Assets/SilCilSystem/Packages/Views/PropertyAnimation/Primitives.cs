@@ -2,7 +2,7 @@
 using SilCilSystem.Math;
 using SilCilSystem.Variables;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     internal class PropertyAnimationFloat : PropertyAnimation<float, ReadonlyPropertyFloat, ReadonlyFloat>
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using SilCilSystem.Components.Views;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
+using SilCilSystem.Views;
 using SilCilSystem.Editors.Views;
 using System.Linq;
 
@@ -19,49 +19,31 @@ namespace SilCilSystem.Editors
             var text = CreateText();
             if (text == null) return;
 
+
             text.gameObject.name = $"{dropAsset.name} Text";
+
+            string key = "key";
             var display = text.AddComponent<DisplayVariables>();
-            display.m_format = $"{dropAsset.name}: {{key}}";
+            display.Format = $"{dropAsset.name}: {key}";
 
             var intValue = dropAsset.GetSubVariable<ReadonlyInt>();
             if(intValue != null)
             {
-                display.m_intValues = new DisplayVariableInt[]
-                {
-                    new DisplayVariableInt()
-                    { 
-                        m_key = "key",
-                        m_variable = intValue,
-                    }
-                };
+                display.AddDisplayedVariable(key, intValue);
                 return;
             }
 
             var floatValue = dropAsset.GetSubVariable<ReadonlyFloat>();
             if (floatValue != null)
             {
-                display.m_floatValues = new DisplayVariableFloat[]
-                {
-                    new DisplayVariableFloat()
-                    {
-                        m_key = "key",
-                        m_variable = floatValue,
-                    }
-                };
+                display.AddDisplayedVariable(key, floatValue);
                 return;
             }
 
             var stringValue = dropAsset.GetSubVariable<ReadonlyString>();
             if (stringValue != null)
             {
-                display.m_stringValues = new DisplayVariableString[]
-                {
-                    new DisplayVariableString()
-                    {
-                        m_key = "key",
-                        m_variable = stringValue,
-                    }
-                };
+                display.AddDisplayedVariable(key, stringValue);
                 return;
             }
         }

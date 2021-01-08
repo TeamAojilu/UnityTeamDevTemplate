@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SilCilSystem.Variables;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     [AddComponentMenu(menuName: Constants.AddComponentPath + "Views/" + nameof(BindingSelectables))]
     public class BindingSelectables : BindingComponent, IBindingParameters

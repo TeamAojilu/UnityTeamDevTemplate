@@ -2,7 +2,7 @@
 using SilCilSystem.Variables;
 using UnityEngine;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     internal class PropertyAnimationColor : PropertyAnimation<Color, ReadonlyPropertyColor, ReadonlyColor>
     {

@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using SilCilSystem.Variables;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     [AddComponentMenu(menuName: Constants.AddComponentPath + "Views/" + nameof(BindingToggle))]
     [RequireComponent(typeof(Toggle))]
@@ -10,10 +10,10 @@ namespace SilCilSystem.Components.Views
     {
         private Toggle m_toggle = default;
 
-        public ReadonlyPropertyBool m_setValueWithoutNotify = new ReadonlyPropertyBool(false);
+        [SerializeField] internal ReadonlyPropertyBool m_setValueWithoutNotify = new ReadonlyPropertyBool(false);
         
         [Header("Params")]
-        public ReadonlyPropertyBool m_isOn = new ReadonlyPropertyBool(false);
+        [SerializeField] internal ReadonlyPropertyBool m_isOn = new ReadonlyPropertyBool(false);
 
         public void SetParameters()
         {

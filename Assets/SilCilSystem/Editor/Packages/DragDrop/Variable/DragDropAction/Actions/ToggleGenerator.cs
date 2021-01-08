@@ -2,7 +2,7 @@
 using UnityEditor.Events;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
-using SilCilSystem.Components.Views;
+using SilCilSystem.Views;
 using SilCilSystem.Editors.Views;
 using System.Linq;
 

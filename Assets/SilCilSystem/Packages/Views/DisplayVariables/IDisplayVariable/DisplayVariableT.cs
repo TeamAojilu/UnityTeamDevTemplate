@@ -3,7 +3,7 @@ using SilCilSystem.Variables;
 using SilCilSystem.Math;
 using SilCilSystem.Variables.Generic;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     internal interface IDisplayVariable
     {

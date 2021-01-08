@@ -2,7 +2,7 @@
 using SilCilSystem.Variables;
 using SilCilSystem.Math;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     [AddComponentMenu(menuName: Constants.AddComponentPath + "Views/" + nameof(BindingCanvasGroup))]
     [RequireComponent(typeof(CanvasGroup))]

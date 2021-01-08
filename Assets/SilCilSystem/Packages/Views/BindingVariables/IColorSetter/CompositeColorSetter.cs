@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     public class CompositeColorSetter : IColorSetter
     {

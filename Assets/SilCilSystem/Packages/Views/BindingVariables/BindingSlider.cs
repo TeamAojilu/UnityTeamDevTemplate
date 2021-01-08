@@ -3,24 +3,24 @@ using UnityEngine.UI;
 using SilCilSystem.Variables;
 using SilCilSystem.Math;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     [AddComponentMenu(menuName: Constants.AddComponentPath + "Views/" + nameof(BindingSlider))]
     [RequireComponent(typeof(Slider))]
     public class BindingSlider : BindingComponent, IBindingParameters
     {
-        public ReadonlyPropertyBool m_setValueWithoutNotify = new ReadonlyPropertyBool(false);
+        [SerializeField] internal ReadonlyPropertyBool m_setValueWithoutNotify = new ReadonlyPropertyBool(false);
 
         [Header("Params")]
-        public ReadonlyPropertyFloat m_minValue = new ReadonlyPropertyFloat(0f);
-        public ReadonlyPropertyFloat m_maxValue = new ReadonlyPropertyFloat(1f);
-        public ReadonlyPropertyBool m_wholeNumbers = new ReadonlyPropertyBool(false);
-        public ReadonlyPropertyFloat m_value = new ReadonlyPropertyFloat(0f);
+        [SerializeField] internal ReadonlyPropertyFloat m_minValue = new ReadonlyPropertyFloat(0f);
+        [SerializeField] internal ReadonlyPropertyFloat m_maxValue = new ReadonlyPropertyFloat(1f);
+        [SerializeField] internal ReadonlyPropertyBool m_wholeNumbers = new ReadonlyPropertyBool(false);
+        [SerializeField] internal ReadonlyPropertyFloat m_value = new ReadonlyPropertyFloat(0f);
 
         [Header("Animation")]
-        public PropertyBool m_isBusy = default;
-        public ReadonlyPropertyFloat m_duration = new ReadonlyPropertyFloat(-1f);
-        public InterpolationCurve m_curve = default;
+        [SerializeField] internal PropertyBool m_isBusy = default;
+        [SerializeField] internal ReadonlyPropertyFloat m_duration = new ReadonlyPropertyFloat(-1f);
+        [SerializeField] internal InterpolationCurve m_curve = default;
 
         private Slider m_slider = default;
         private PropertyAnimation<float, ReadonlyPropertyFloat, ReadonlyFloat> m_animation = default;

@@ -2,7 +2,7 @@
 using UnityEngine;
 using SilCilSystem.Variables;
 
-namespace SilCilSystem.Components.Views
+namespace SilCilSystem.Views
 {
     [AddComponentMenu(menuName: Constants.AddComponentPath + "Views/" + nameof(BindingAnimator))]
     [RequireComponent(typeof(Animator))]

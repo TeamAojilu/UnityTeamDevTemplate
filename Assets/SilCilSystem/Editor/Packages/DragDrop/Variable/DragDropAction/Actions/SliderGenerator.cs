@@ -1,7 +1,7 @@
 ﻿using UnityEngine.UI;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
-using SilCilSystem.Components.Views;
+using SilCilSystem.Views;
 using SilCilSystem.Editors.Views;
 using UnityEditor.Events;
 using System.Linq;
