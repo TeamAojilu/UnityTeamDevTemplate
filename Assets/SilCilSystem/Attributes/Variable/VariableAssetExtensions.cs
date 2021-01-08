@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEditor;
 using SilCilSystem.Variables.Base;
@@ -34,20 +35,27 @@ namespace SilCilSystem.Editors
             return GetSubVariableCollection<VariableAsset>(parent).ToArray();
         }
 
+        [Conditional("UNITY_EDITOR")]
         public static void AddSubVariable<T>(this VariableAsset parent) where T : VariableAsset
         {
             var asset = ScriptableObject.CreateInstance<T>();
             SetSubVariable(parent, asset);
         }
-        
+
+        [Conditional("UNITY_EDITOR")]
         public static void AddSubVariable(this VariableAsset parent, Type type)
         {
             var asset = ScriptableObject.CreateInstance(type) as VariableAsset;
             SetSubVariable(parent, asset);
         }
+        
+        // Conditional属性はメソッドの"呼び出し"を条件付きでコンパイルする.
+        // メソッド自体のコンパイルはされるらしく、AssetDatabaseでコンパイルエラー吐く.
 
+        [Conditional("UNITY_EDITOR")]
         public static void AddSubVariables(this VariableAsset parent, params Type[] types)
         {
+#if UNITY_EDITOR
             List<VariableAsset> assets = new List<VariableAsset>();
             foreach(var type in types)
             {
@@ -62,10 +70,13 @@ namespace SilCilSystem.Editors
                 VariableAttributeList.CallAttached(asset, parent);
             }
             AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(parent));
+#endif
         }
 
-        internal static void RenameSubVariables(this VariableAsset parent)
+        [Conditional("UNITY_EDITOR")]
+        public static void RenameSubVariables(this VariableAsset parent)
         {
+#if UNITY_EDITOR
             if (AssetDatabase.IsSubAsset(parent)) return;
             
             // 名前が変わった場合のみImportする.
@@ -82,10 +93,13 @@ namespace SilCilSystem.Editors
             }
 
             if (import) AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(parent));
+#endif
         }
 
+        [Conditional("UNITY_EDITOR")]
         private static void SetSubVariable(VariableAsset parent, VariableAsset asset, bool importAndOnAttached = true)
         {
+#if UNITY_EDITOR
             SetName(asset, parent.name);
             asset.hideFlags = HideFlags.HideInHierarchy;
 
@@ -96,8 +110,10 @@ namespace SilCilSystem.Editors
                 VariableAttributeList.CallAttached(asset, parent);
                 AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(parent));
             }
+#endif
         }
 
+        [Conditional("UNITY_EDITOR")]
         private static void SetName(VariableAsset asset, string parentName)
         {
             string name = VariableAttributeList.GetName(asset, parentName);
@@ -108,6 +124,7 @@ namespace SilCilSystem.Editors
 
         private static IEnumerable<T> GetSubVariableCollection<T>(VariableAsset parent)
         {
+#if UNITY_EDITOR
             string path = AssetDatabase.GetAssetPath(parent);
             foreach (var asset in AssetDatabase.LoadAllAssetsAtPath(path))
             {
@@ -116,10 +133,13 @@ namespace SilCilSystem.Editors
                     yield return value;
                 }
             }
+#endif
+            yield break;
         }
 
         private static IEnumerable<VariableAsset> GetSubVariableCollection(VariableAsset parent, Type type)
         {
+#if UNITY_EDITOR
             string path = AssetDatabase.GetAssetPath(parent);
             foreach (var asset in AssetDatabase.LoadAllAssetsAtPath(path))
             {
@@ -128,6 +148,8 @@ namespace SilCilSystem.Editors
                     yield return value;
                 }
             }
+#endif
+            yield break;
         }
     }
 }

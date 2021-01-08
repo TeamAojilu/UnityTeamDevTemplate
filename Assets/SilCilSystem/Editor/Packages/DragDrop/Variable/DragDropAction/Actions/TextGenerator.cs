@@ -24,12 +24,13 @@ namespace SilCilSystem.Editors
 
             string key = "key";
             var display = text.AddComponent<DisplayVariables>();
-            display.Format = $"{dropAsset.name}: {key}";
+            display.Format = $"{dropAsset.name}: {{{key}}}";
 
             var intValue = dropAsset.GetSubVariable<ReadonlyInt>();
             if(intValue != null)
             {
                 display.AddDisplayedVariable(key, intValue);
+                display.UpdateText();
                 return;
             }
 
@@ -37,6 +38,7 @@ namespace SilCilSystem.Editors
             if (floatValue != null)
             {
                 display.AddDisplayedVariable(key, floatValue);
+                display.UpdateText();
                 return;
             }
 
@@ -44,6 +46,7 @@ namespace SilCilSystem.Editors
             if (stringValue != null)
             {
                 display.AddDisplayedVariable(key, stringValue);
+                display.UpdateText();
                 return;
             }
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics;
+using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using SilCilSystem.Editors;
@@ -12,7 +13,7 @@ namespace SilCilSystem.Internals.Variables
 
         public override bool Value => m_variable;
 
-        [OnAttached]
+        [OnAttached, Conditional("UNITY_EDITOR")]
         private void OnAttached(VariableAsset parent)
         {
             m_variable = parent.GetSubVariable<VariableBool>();

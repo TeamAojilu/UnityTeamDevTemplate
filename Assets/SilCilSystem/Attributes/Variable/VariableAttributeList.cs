@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Collections.Generic;
-using UnityEditor.Callbacks;
 using SilCilSystem.Variables.Base;
 
 namespace SilCilSystem.Editors
@@ -40,7 +40,8 @@ namespace SilCilSystem.Editors
             }
         }
 
-        [DidReloadScripts(TypeDetector.PreTypeDetectOrder)]
+#if UNITY_EDITOR
+        [UnityEditor.Callbacks.DidReloadScripts(TypeDetector.PreTypeDetectOrder)]
         private static void OnLoad()
         {
             m_list.Clear();
@@ -62,6 +63,7 @@ namespace SilCilSystem.Editors
             }
             m_list[type] = item;
         }
+#endif
 
         public static string GetName(VariableAsset subAsset, string name)
         {
@@ -73,6 +75,7 @@ namespace SilCilSystem.Editors
             return null;
         }
 
+        [Conditional("UNITY_EDITOR")]
         public static void CallAttached(VariableAsset subAsset, VariableAsset parent)
         {
             foreach(var item in m_list)
@@ -85,12 +88,11 @@ namespace SilCilSystem.Editors
 
         public static void GetEnableTypes(VariableAsset parent, out List<string> menuPaths, out List<Type> types)
         {
-            var asset = parent.GetAllVariables();
             menuPaths = new List<string>();
             types = new List<Type>();
             foreach(var item in m_list)
             {
-                if (item.Value.Attribute.CanBeChild(asset))
+                if (item.Value.Attribute.CanBeChild(parent.GetAllVariables()))
                 {
                     menuPaths.Add(item.Value.Attribute.MenuPath ?? item.Value.GetType().Name);
                     types.Add(item.Key);

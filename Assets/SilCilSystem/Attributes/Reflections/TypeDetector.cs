@@ -1,6 +1,7 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
+using System.Diagnostics;
 using System.Reflection;
-using UnityEditor;
 using UnityEditor.Callbacks;
 
 namespace SilCilSystem.Editors
@@ -25,9 +26,9 @@ namespace SilCilSystem.Editors
             if (name.StartsWith("UnityEngine.")) return true;
             return false;
         }
-        
+
         [DidReloadScripts(TypeDetectOrder)]
-        public static void OnLoad()
+        private static void LoadAssemblies()
         {
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
@@ -40,3 +41,4 @@ namespace SilCilSystem.Editors
         }
     }
 }
+#endif

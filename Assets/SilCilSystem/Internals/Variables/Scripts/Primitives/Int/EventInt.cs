@@ -1,6 +1,6 @@
 ﻿using System;
-using SilCilSystem.Editors;
 using SilCilSystem.Variables;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals.Variables
 {

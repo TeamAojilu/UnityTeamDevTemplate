@@ -1,13 +1,9 @@
 {
-    "name": "SilCilSystem.Editors",
+    "name": "SilCilSystem.Attributes",
     "references": [
-        "GUID:7d0deb14354e38f44a24726177cf389d",
-        "GUID:00dc4d9929986ab4b9fc0d8998b31c2d",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+        "GUID:7d0deb14354e38f44a24726177cf389d"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

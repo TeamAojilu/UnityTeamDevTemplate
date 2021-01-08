@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics;
+using UnityEngine;
 using SilCilSystem.Variables;
-using SilCilSystem.Editors;
 using SilCilSystem.Math;
 using SilCilSystem.Variables.Base;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals.Variables.Converters
 {
@@ -18,7 +19,7 @@ namespace SilCilSystem.Internals.Variables.Converters
             set => m_variable.Value = m_castType.Cast(value);
         }
 
-        [OnAttached]
+        [OnAttached, Conditional("UNITY_EDITOR")]
         private void OnAttached(VariableAsset parent)
         {
             m_variable = parent.GetSubVariable<VariableInt>();

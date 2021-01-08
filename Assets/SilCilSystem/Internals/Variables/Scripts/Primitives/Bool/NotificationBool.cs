@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics;
+using UnityEngine;
 using SilCilSystem.Variables;
-using SilCilSystem.Editors;
 using SilCilSystem.Variables.Base;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Internals.Variables
 {
@@ -21,7 +22,7 @@ namespace SilCilSystem.Internals.Variables
             }
         }
 
-        [OnAttached]
+        [OnAttached, Conditional("UNITY_EDITOR")]
         private void OnAttached(VariableAsset parent)
         {
             m_onValueChanged = parent.GetSubVariable<GameEventBool>();

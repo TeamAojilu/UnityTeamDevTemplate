@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
@@ -13,7 +14,7 @@ namespace SilCilSystem.Internals.Variables
 
         public override IDisposable Subscribe(Action<int> action) => m_event?.Subscribe(action);
 
-        [OnAttached]
+        [OnAttached, Conditional("UNITY_EDITOR")]
         private void OnAttached(VariableAsset parent)
         {
             m_event = parent.GetSubVariable<GameEventInt>();
