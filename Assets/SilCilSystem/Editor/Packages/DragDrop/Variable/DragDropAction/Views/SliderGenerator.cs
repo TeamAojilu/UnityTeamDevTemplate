@@ -1,10 +1,10 @@
-﻿using UnityEngine.UI;
+﻿using System.Linq;
+using UnityEngine.UI;
+using UnityEditor.Events;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using SilCilSystem.Views;
 using SilCilSystem.Editors.Views;
-using UnityEditor.Events;
-using System.Linq;
 
 namespace SilCilSystem.Editors
 {

@@ -12,7 +12,7 @@ namespace SilCilSystem.Activators
         [SerializeField] private bool m_setOnUpdate = true;
 
         [Header("Binding")]
-        [SerializeField] private ReadonlyPropertyBool m_isActive = new ReadonlyPropertyBool(true);
+        [SerializeField] internal ReadonlyPropertyBool m_isActive = new ReadonlyPropertyBool(true);
         [SerializeField] private bool m_reverse = false;
 
         private class Updatable : IUpdatable
