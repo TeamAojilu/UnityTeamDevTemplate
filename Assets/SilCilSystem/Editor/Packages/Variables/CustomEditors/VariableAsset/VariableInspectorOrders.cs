@@ -36,6 +36,7 @@ namespace SilCilSystem.Editors
         public static void RemoveNull()
         {
             var instance = GetInstance();
+            if (instance == null) return;
             instance.m_orders = instance.m_orders.Where(x => EditorUtility.InstanceIDToObject(x.m_instanceID) != null).ToList();
         }
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc9fd06d6bf479b4ba4dd3428b58b255, type: 3}
-  m_Name: HighScore_OnChanged
+  m_Name: HighScore_Changed
   m_EditorClassIdentifier: 
 --- !u!114 &-4112614793923524981
 MonoBehaviour:

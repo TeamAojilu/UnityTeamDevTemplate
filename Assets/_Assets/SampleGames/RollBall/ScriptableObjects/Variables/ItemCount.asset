@@ -24,7 +24,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc9fd06d6bf479b4ba4dd3428b58b255, type: 3}
-  m_Name: ItemCount_OnChanged
+  m_Name: ItemCount_Changed
   m_EditorClassIdentifier: 
 --- !u!114 &3503392291656269596
 MonoBehaviour:

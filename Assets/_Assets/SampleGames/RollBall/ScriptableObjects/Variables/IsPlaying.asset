@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92872acfccee99d44b84f7a04883ef2b, type: 3}
-  m_Name: IsPlaying_OnChanged
+  m_Name: IsPlaying_Changed
   m_EditorClassIdentifier: 
 --- !u!114 &-4478955888394437178
 MonoBehaviour:
