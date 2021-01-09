@@ -1,4 +1,5 @@
 ﻿using System;
+using SilCilSystem.Editors;
 
 namespace SilCilSystem.Math
 {
@@ -6,12 +7,12 @@ namespace SilCilSystem.Math
     {
         public enum CompareType
         {
-            EqualTo,
-            NotEqualTo,
-            LessThan,
-            LessThanOrEqualTo,
-            GreaterThan,
-            GreaterThanOrEqualTo,
+            [EnumLabel("==")] EqualTo,
+            [EnumLabel("!=")] NotEqualTo,
+            [EnumLabel("<")] LessThan,
+            [EnumLabel("<=")] LessThanOrEqualTo,
+            [EnumLabel(">")] GreaterThan,
+            [EnumLabel(">=")] GreaterThanOrEqualTo,
         }
 
         public static bool Compare<T>(this CompareType compareType, T value1, T value2) where T : IComparable<T>

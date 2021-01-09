@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SilCilSystem.Editors;
+using System;
 using UnityEngine;
 
 namespace SilCilSystem.Math
@@ -15,46 +16,46 @@ namespace SilCilSystem.Math
             Linear = 0,
 
             /// <summary>2次関数によるEaseIn</summary>
-            EaseInQuad = 100,
+            [EnumLabel("EaseIn/Quad")] EaseInQuad = 100,
             /// <summary>2次関数によるEaseOut</summary>
-            EaseOutQuad,
+            [EnumLabel("EaseOut/Quad")] EaseOutQuad,
             /// <summary>2次関数によるEaseInOut</summary>
-            EaseInOutQuad,
+            [EnumLabel("EaseInOut/Quad")] EaseInOutQuad,
 
             /// <summary>4次関数によるEaseIn</summary>
-            EaseInQuart = 200,
+            [EnumLabel("EaseIn/Quart")] EaseInQuart = 200,
             /// <summary>4次関数によるEaseOut</summary>
-            EaseOutQuart,
+            [EnumLabel("EaseOut/Quart")] EaseOutQuart,
             /// <summary>4次関数によるEaseInOut</summary>
-            EaseInOutQuart,
+            [EnumLabel("EaseInOut/Quart")] EaseInOutQuart,
 
             /// <summary>三角関数によるEaseIn</summary>
-            EaseInSin = 300,
+            [EnumLabel("EaseIn/Sin")] EaseInSin = 300,
             /// <summary>三角関数によるEaseOut</summary>
-            EaseOutSin,
+            [EnumLabel("EaseOut/Sin")] EaseOutSin,
             /// <summary>三角関数によるEaseInOut</summary>
-            EaseInOutSin,
+            [EnumLabel("EaseInOut/Sin")] EaseInOutSin,
 
             /// <summary>反動ありEaseIn</summary>
-            EaseInBack = 400,
+            [EnumLabel("EaseIn/Back")] EaseInBack = 400,
             /// <summary>反動ありEaseOut</summary>
-            EaseOutBack,
+            [EnumLabel("EaseOut/Back")] EaseOutBack,
             /// <summary>反動ありEaseInOut</summary>
-            EaseInOutBack,
+            [EnumLabel("EaseInOut/Back")] EaseInOutBack,
 
             /// <summary>跳ね返りEaseIn</summary>
-            EaseInBounce = 500,
+            [EnumLabel("EaseIn/Bounce")] EaseInBounce = 500,
             /// <summary>跳ね返りEaseOut</summary>
-            EaseOutBounce,
+            [EnumLabel("EaseOut/Bounce")] EaseOutBounce,
             /// <summary>跳ね返りEaseInOut</summary>
-            EaseInOutBounce,
+            [EnumLabel("EaseInOut/Bounce")] EaseInOutBounce,
 
             /// <summary>直線によるループ</summary>
-            LoopLinear = 1000,
+            [EnumLabel("Loop/Linear")] LoopLinear = 1000,
             /// <summary>放物線（2次関数）によるループ</summary>
-            LoopJump,
+            [EnumLabel("Loop/Jump")] LoopJump,
             /// <summary>三角関数によるループ</summary>
-            LoopSin,
+            [EnumLabel("Loop/Sin")] LoopSin,
 
             /// <summary>Unity.Random</summary>
             Random = 10000,

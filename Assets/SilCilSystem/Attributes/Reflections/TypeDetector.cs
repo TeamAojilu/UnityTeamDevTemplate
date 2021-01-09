@@ -1,6 +1,6 @@
 ﻿#if UNITY_EDITOR
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor.Callbacks;
 
@@ -11,15 +11,28 @@ namespace SilCilSystem.Editors
         public const int PreTypeDetectOrder = 0;
         private const int TypeDetectOrder = PreTypeDetectOrder + 1;
 
+        private readonly static HashSet<string> m_exceptions = new HashSet<string>()
+        {
+            "System",
+            "UnityEngine",
+            "UnityEditor",
+            "Cinemachine",
+            "com.unity.cinemachine.editor",
+            "SyntaxTree.VisualStudio.Unity.Bridge",
+            "SyntaxTree.VisualStudio.Unity.Messaging",
+            "ExCSS.Unity",
+            "nunit.framework",
+            "ICSharpCode.NRefactory",
+            "mscorlib",
+        };
+
         public static event Action<Type> OnTypeDetected;
 
         private static bool IsExcepted(Assembly assembly)
         {
             string name = assembly?.GetName()?.Name;
             if (name == null) return true;
-            if (name == "System") return true;
-            if (name == "UnityEngine") return true;
-            if (name == "UnityEditor") return true;
+            if (m_exceptions.Contains(name)) return true;
             if (name.StartsWith("System.")) return true;
             if (name.StartsWith("Unity.")) return true;
             if (name.StartsWith("UnityEditor.")) return true;
