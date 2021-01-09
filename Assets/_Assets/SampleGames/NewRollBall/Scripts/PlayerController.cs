@@ -7,7 +7,6 @@ namespace Samples.NewRollBall
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private ReadonlyPropertyFloat m_speed = new ReadonlyPropertyFloat(10f);
-        [SerializeField] private VariableBool m_isPlaying = default;
         [SerializeField] private VariableInt m_count = default;
         [SerializeField] private string m_pickupTag = "PickUp";
 
@@ -30,7 +29,6 @@ namespace Samples.NewRollBall
             if (other.gameObject.CompareTag(m_pickupTag))
             {
                 m_count.Value++;
-                if (m_count >= 13) m_isPlaying.Value = false;
                 other.gameObject.SetActive(false);
             }
         }

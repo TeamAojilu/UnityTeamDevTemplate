@@ -331,7 +331,6 @@ MonoBehaviour:
   m_speed:
     m_value: 10
     m_variable: {fileID: 0}
-  m_isPlaying: {fileID: 11400000, guid: 1d910b8fd6c07704ab8cf354a60f8023, type: 2}
   m_count: {fileID: 11400000, guid: 200191661a2de604fb93d32b1269814f, type: 2}
   m_pickupTag: PickUp
 --- !u!54 &82510577
@@ -1550,10 +1549,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 396861acb69298f42b36c1b4a250ca49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_setActive: {fileID: 0}
-  m_setActiveTrue: {fileID: 5868820942401687012, guid: 1d910b8fd6c07704ab8cf354a60f8023,
-    type: 2}
-  m_setActiveFalse: {fileID: 0}
+  m_setOnStart: 0
+  m_setOnUpdate: 1
+  m_isActive:
+    m_value: 1
+    m_variable: {fileID: -3462293826442365091, guid: 200191661a2de604fb93d32b1269814f,
+      type: 2}
+  m_reverse: 0
   m_targets:
   - {fileID: 1205459155}
 --- !u!114 &1013059792
@@ -1568,10 +1570,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 850b1b1e51d0eee4bb5874b3e74e4139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_setActive: {fileID: 5868820942401687012, guid: 1d910b8fd6c07704ab8cf354a60f8023,
-    type: 2}
-  m_setActiveTrue: {fileID: 0}
-  m_setActiveFalse: {fileID: 0}
+  m_setOnStart: 0
+  m_setOnUpdate: 1
+  m_isActive:
+    m_value: 1
+    m_variable: {fileID: -3462293826442365091, guid: 200191661a2de604fb93d32b1269814f,
+      type: 2}
+  m_reverse: 1
   m_targets:
   - {fileID: 82510576}
 --- !u!4 &1013059793

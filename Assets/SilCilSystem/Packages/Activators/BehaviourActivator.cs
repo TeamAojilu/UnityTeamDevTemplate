@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SilCilSystem.Components.Activators
+namespace SilCilSystem.Activators
 {
     [AddComponentMenu(menuName: Constants.AddComponentPath + "Activators/" + nameof(BehaviourActivator))]
     public class BehaviourActivator : Activator

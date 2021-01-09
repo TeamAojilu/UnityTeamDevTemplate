@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SilCilSystem.Components.Activators
+namespace SilCilSystem.Activators
 {
     [AddComponentMenu(menuName: Constants.AddComponentPath + "Activators/" + nameof(GameObjectActivator))]
     public class GameObjectActivator : Activator
