@@ -37,20 +37,14 @@ namespace SilCilSystem.Editors
 
         [Conditional("UNITY_EDITOR")]
         public static void AddSubVariable<T>(this VariableAsset parent, bool registerUndo = true) where T : VariableAsset
-        {
-            var asset = ScriptableObject.CreateInstance<T>();
-            if (registerUndo) Undo.RegisterCreatedObjectUndo(asset, "Add Sub Variable");
-            SetSubVariable(parent, asset);
-        }
+            => AddSubVariable(parent, typeof(T), registerUndo);
 
         [Conditional("UNITY_EDITOR")]
         public static void AddSubVariable(this VariableAsset parent, Type type, bool registerUndo = true)
         {
-            var asset = ScriptableObject.CreateInstance(type) as VariableAsset;
-            if (registerUndo) Undo.RegisterCreatedObjectUndo(asset, "Add Sub Variable");
-            SetSubVariable(parent, asset);
+            AddSubVariableInternal(parent, type, registerUndo);
         }
-        
+
         // Conditional属性はメソッドの"呼び出し"を条件付きでコンパイルする.
         // メソッド自体のコンパイルはされるらしく、AssetDatabaseでコンパイルエラー吐く.
 
@@ -58,20 +52,9 @@ namespace SilCilSystem.Editors
         public static void AddSubVariables(this VariableAsset parent, bool registerUndo, params Type[] types)
         {
 #if UNITY_EDITOR
-            List<VariableAsset> assets = new List<VariableAsset>();
-            foreach(var type in types)
-            {
-                var asset = ScriptableObject.CreateInstance(type) as VariableAsset;
-                if (registerUndo) Undo.RegisterCreatedObjectUndo(asset, "Add Sub Variable");
-                SetSubVariable(parent, asset, false);
-                assets.Add(asset);
-            }
-
+            var assets = types.Select(x => parent.AddSubVariableInternal(x, false)).ToArray();
             AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(parent));
-            foreach(var asset in assets)
-            {
-                VariableAttributeList.CallAttached(asset, parent);
-            }
+            foreach(var asset in assets) VariableAttributeList.CallAttached(asset, parent);
             AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(parent));
 #endif
         }
@@ -96,6 +79,18 @@ namespace SilCilSystem.Editors
             }
 
             if (import) AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(parent));
+#endif
+        }
+
+        private static VariableAsset AddSubVariableInternal(this VariableAsset parent, Type type, bool registerUndo)
+        {
+#if UNITY_EDITOR
+            var asset = ScriptableObject.CreateInstance(type) as VariableAsset;
+            if (registerUndo) Undo.RegisterCreatedObjectUndo(asset, "Add Sub Variable");
+            SetSubVariable(parent, asset);
+            return asset;
+#else
+            return null;
 #endif
         }
 

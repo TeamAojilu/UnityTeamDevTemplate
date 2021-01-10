@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92872acfccee99d44b84f7a04883ef2b, type: 3}
-  m_Name: NewVariable_Changed
+  m_Name: IsLoadingScene_Changed
   m_EditorClassIdentifier: 
 --- !u!114 &-3356689603584005719
 MonoBehaviour:
@@ -22,7 +22,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 382aedbb827af6f4199bc7a40d9d524b, type: 3}
-  m_Name: NewVariable_Readonly
+  m_Name: IsLoadingScene_Readonly
   m_EditorClassIdentifier: 
   m_variable: {fileID: 11400000}
 --- !u!114 &-1034694697531194279
@@ -35,7 +35,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bb78647944348a4289c6818870c8ba1, type: 3}
-  m_Name: NewVariable_Listener
+  m_Name: IsLoadingScene_Listener
   m_EditorClassIdentifier: 
   m_event: {fileID: -5874050071999813984}
 --- !u!114 &11400000
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a25fae5bab828994a9301f64b9247c3b, type: 3}
-  m_Name: NewVariable
+  m_Name: IsLoadingScene
   m_EditorClassIdentifier: 
   m_value: 0
   m_onValueChanged: {fileID: -5874050071999813984}

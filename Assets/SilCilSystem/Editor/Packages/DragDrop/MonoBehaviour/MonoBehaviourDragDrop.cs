@@ -6,7 +6,7 @@ using UnityEditor;
 
 namespace SilCilSystem.Editors
 {
-    internal static class MonoBehaviorDragDrop
+    internal static class MonoBehaviourDragDrop
     {
         private const string MenuPath = Constants.DragDropSettingMenuPath + nameof(MonoBehaviour);
         private static HashSet<Rect> m_rects = new HashSet<Rect>();
@@ -69,28 +69,40 @@ namespace SilCilSystem.Editors
 
             if (behaviours.Length == 1)
             {
-                Selection.activeObject = CreateGameObject(behaviours);
+                var options = MonoBehaviourDragDropList.Paths.ToArray();
+                EditorMenuUtil.DisplayMenuAtMousePosition(i =>
+                {
+                    Selection.activeObject = AddComponentToGameObject(options[i], behaviours);
+                }, options);
             }
             else
             {
-                EditorMenuUtil.DisplayMenuAtMousePosition(i =>
+                var menus = MonoBehaviourDragDropList.Paths.ToArray();
+                var options = new string[] { "Single object", "Each Object" }.SelectMany(x => menus.Select(m => $"{x}/{m}")).ToArray();
+                EditorMenuUtil.DisplayMenuAtMousePosition(i => 
                 {
-                    if (i == 0) Selection.activeObject = CreateGameObject(behaviours);
-                    if (i == 1) Selection.objects = behaviours.Select(x => CreateGameObject(x)).ToArray();
-                }, "Single object", "Each object");
+                    int mode = i / menus.Length;
+                    int index = i % menus.Length;
+                    switch (mode)
+                    {
+                        case 0:
+                            Selection.activeObject = AddComponentToGameObject(menus[index], behaviours);
+                            break;
+                        case 1:
+                            Selection.objects = behaviours.Select(x => AddComponentToGameObject(menus[index], x)).ToArray();
+                            break;
+                    }
+                }, options);
             }
         }
 
-        private static GameObject CreateGameObject(params Type[] behaviours)
+        private static GameObject AddComponentToGameObject(string path, params Type[] behaviours)
         {
-            GameObject obj = new GameObject();
-            obj.name = null;
+            var obj = MonoBehaviourDragDropList.GetGameObject(path);
             foreach (var behaviour in behaviours)
             {
-                obj.name = (string.IsNullOrWhiteSpace(obj.name)) ? behaviour.Name : obj.name;
                 obj.AddComponent(behaviour);
             }
-            Undo.RegisterCreatedObjectUndo(obj, $"Create {obj.name}");
             return obj;
         }
     }
