@@ -9,7 +9,7 @@ namespace SilCilSystem.Internals.Variables
     [Variable("Readonly", Constants.ReadonlyMenuPath + "(Color)", typeof(VariableColor))]
     internal class ReadonlyColorValue : ReadonlyColor
     {
-        [SerializeField] private VariableColor m_variable = default;
+        [SerializeField, NotEditable] private VariableColor m_variable = default;
 
         public override Color Value => m_variable;
 

@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables
     internal class NotificationQuaternion : VariableQuaternion
     {
         [SerializeField] private Quaternion m_value = default;
-        [SerializeField] private GameEventQuaternion m_onValueChanged = default;
+        [SerializeField, NotEditable] private GameEventQuaternion m_onValueChanged = default;
 
         public override Quaternion Value
         {

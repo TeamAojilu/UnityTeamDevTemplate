@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables
     [Variable("Listener", Constants.ListenerMenuPath + "(Action)", typeof(GameEvent))]
     internal class EventNoArgsListener : GameEventListener
     {
-        [SerializeField] private GameEvent m_event = default;
+        [SerializeField, NotEditable] private GameEvent m_event = default;
         public override IDisposable Subscribe(Action action) => m_event?.Subscribe(action);
 
         [OnAttached, Conditional("UNITY_EDITOR")]

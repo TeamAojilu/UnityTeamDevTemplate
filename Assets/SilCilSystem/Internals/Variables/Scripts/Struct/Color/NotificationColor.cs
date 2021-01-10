@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables
     internal class NotificationColor : VariableColor
     {
         [SerializeField] private Color m_value = default;
-        [SerializeField] private GameEventColor m_onValueChanged = default;
+        [SerializeField, NotEditable] private GameEventColor m_onValueChanged = default;
 
         public override Color Value
         {

@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables
     internal class NotificationFloat : VariableFloat
     {
         [SerializeField] private float m_value = default;
-        [SerializeField] private GameEventFloat m_onValueChanged = default;
+        [SerializeField, NotEditable] private GameEventFloat m_onValueChanged = default;
 
         public override float Value
         {

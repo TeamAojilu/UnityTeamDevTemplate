@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables
     internal class NotificationVector3 : VariableVector3
     {
         [SerializeField] private Vector3 m_value = default;
-        [SerializeField] private GameEventVector3 m_onValueChanged = default;
+        [SerializeField, NotEditable] private GameEventVector3 m_onValueChanged = default;
 
         public override Vector3 Value
         {

@@ -14,7 +14,7 @@ namespace SilCilSystem.Internals.Variables.Converters
         where TVariable : ReadonlyVariable<TType>
         where TProperty : ReadonlyProperty<TType, TVariable>
     {
-        [SerializeField] private TVariable m_variable = default;
+        [SerializeField, NotEditable] private TVariable m_variable = default;
         [SerializeField] private Comparison.CompareType m_compareType = default;
         [SerializeField] private TProperty m_compareTo = default;
 
