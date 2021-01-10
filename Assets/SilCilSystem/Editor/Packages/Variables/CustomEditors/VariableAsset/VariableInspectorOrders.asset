@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4823596a68f3a3f4991084dbe6ec44fe, type: 3}
   m_Name: VariableInspectorOrders
   m_EditorClassIdentifier: 
-  m_orders: []
+  m_orders:
+  - m_instanceID: 17030
+    m_order: 0
+  - m_instanceID: 17036
+    m_order: 3
+  - m_instanceID: 17040
+    m_order: 1
+  - m_instanceID: 18410
+    m_order: 2
+  - m_instanceID: -9274
+    m_order: 3

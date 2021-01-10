@@ -36,16 +36,18 @@ namespace SilCilSystem.Editors
         }
 
         [Conditional("UNITY_EDITOR")]
-        public static void AddSubVariable<T>(this VariableAsset parent) where T : VariableAsset
+        public static void AddSubVariable<T>(this VariableAsset parent, bool registerUndo = true) where T : VariableAsset
         {
             var asset = ScriptableObject.CreateInstance<T>();
+            if (registerUndo) Undo.RegisterCreatedObjectUndo(asset, "Add Sub Variable");
             SetSubVariable(parent, asset);
         }
 
         [Conditional("UNITY_EDITOR")]
-        public static void AddSubVariable(this VariableAsset parent, Type type)
+        public static void AddSubVariable(this VariableAsset parent, Type type, bool registerUndo = true)
         {
             var asset = ScriptableObject.CreateInstance(type) as VariableAsset;
+            if (registerUndo) Undo.RegisterCreatedObjectUndo(asset, "Add Sub Variable");
             SetSubVariable(parent, asset);
         }
         
@@ -53,13 +55,14 @@ namespace SilCilSystem.Editors
         // メソッド自体のコンパイルはされるらしく、AssetDatabaseでコンパイルエラー吐く.
 
         [Conditional("UNITY_EDITOR")]
-        public static void AddSubVariables(this VariableAsset parent, params Type[] types)
+        public static void AddSubVariables(this VariableAsset parent, bool registerUndo, params Type[] types)
         {
 #if UNITY_EDITOR
             List<VariableAsset> assets = new List<VariableAsset>();
             foreach(var type in types)
             {
                 var asset = ScriptableObject.CreateInstance(type) as VariableAsset;
+                if (registerUndo) Undo.RegisterCreatedObjectUndo(asset, "Add Sub Variable");
                 SetSubVariable(parent, asset, false);
                 assets.Add(asset);
             }

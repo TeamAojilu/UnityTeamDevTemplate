@@ -17,8 +17,9 @@ namespace SilCilSystem.Editors.Views
 
         public static EventSystem CreateEventSystem()
         {
-            if (GameObject.FindObjectOfType<EventSystem>() != null) return null;
-            return Instantiate<EventSystem>(Constants.EventSystemTemplateID, true);
+            if (Object.FindObjectOfType<EventSystem>() != null) return null;
+            var instance = Instantiate<EventSystem>(Constants.EventSystemTemplateID, true);
+            return instance;
         }
         
         public static Text CreateText()
@@ -54,19 +55,21 @@ namespace SilCilSystem.Editors.Views
             return instance;
         }
         
-        private static T Instantiate<T>(string guid, bool selection = true) where T : Object
+        private static T Instantiate<T>(string guid, bool selection = true) where T : Component
         {
             var path = AssetDatabase.GUIDToAssetPath(guid);
             var prefab = AssetDatabase.LoadAssetAtPath<T>(path);
             var instance = Object.Instantiate(prefab);
             instance.name = prefab.name;
             if (selection) Selection.activeObject = instance;
+
+            Undo.RegisterCreatedObjectUndo(instance.gameObject, $"Create");
             return instance;
         }
 
         private static EventSystem CreateEventSystem(bool selection)
         {
-            if (GameObject.FindObjectOfType<EventSystem>() != null) return null;
+            if (Object.FindObjectOfType<EventSystem>() != null) return null;
             return Instantiate<EventSystem>(Constants.EventSystemTemplateID, selection);
         }
 
@@ -79,7 +82,7 @@ namespace SilCilSystem.Editors.Views
                 if (canvas != null) return canvas;
             }
 
-            canvas = GameObject.FindObjectOfType<Canvas>();
+            canvas = Object.FindObjectOfType<Canvas>();
             if (canvas != null) return canvas;
 
             canvas = CreateCanvas();

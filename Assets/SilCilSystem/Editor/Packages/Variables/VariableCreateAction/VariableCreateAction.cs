@@ -28,7 +28,7 @@ namespace SilCilSystem.Editors
                 if (variable == null) return;
 
                 AssetDatabase.CreateAsset(variable, pathName);
-                variable.AddSubVariables(m_types);
+                variable.AddSubVariables(false, m_types);
                 VariableAttributeList.CallAttached(variable, variable);
 
                 AssetDatabase.ImportAsset(pathName);

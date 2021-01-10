@@ -100,7 +100,7 @@ namespace SilCilSystem.Editors
                     {
                         if (parent is VariableAsset variable)
                         {
-                            variable.AddSubVariables(attaches);
+                            variable.AddSubVariables(true, attaches);
                         }
                     }
 
@@ -132,7 +132,7 @@ namespace SilCilSystem.Editors
             { 
                 foreach(var t in targets)
                 {
-                    (t as VariableAsset).AddSubVariables(types[i]);
+                    (t as VariableAsset).AddSubVariables(true, types[i]);
                 }
                 InitActiveEditors();
                 Repaint();
@@ -180,9 +180,9 @@ namespace SilCilSystem.Editors
                     Repaint();
                     return true;
                 }
-                if (GUILayout.Button("Delete") && EditorUtility.DisplayDialog($"Delete {editorTarget.name} ?", "You cannot undo this action", "Delete", "Cancel"))
+                if (GUILayout.Button("Delete"))
                 {
-                    DestroyImmediate(editorTarget, true);
+                    Undo.DestroyObjectImmediate(editorTarget);
                     return true;
                 }
             }

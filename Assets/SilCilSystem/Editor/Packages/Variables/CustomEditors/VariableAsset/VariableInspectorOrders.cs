@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using SilCilSystem.Variables.Base;
-using System.Linq;
 
 namespace SilCilSystem.Editors
 {
@@ -68,6 +67,7 @@ namespace SilCilSystem.Editors
 
         public void MoveUp(VariableAsset parent, VariableAsset target)
         {
+            Undo.RecordObject(this, $"MoveUp {target.name}");
             VariableAsset[] ordered = GetOrderedSubAssets(parent);
 
             for (int i = 0; i < ordered.Length; i++)
@@ -87,6 +87,7 @@ namespace SilCilSystem.Editors
         
         public void MoveDown(VariableAsset parent, VariableAsset target)
         {
+            Undo.RecordObject(this, $"MoveDown {target.name}");
             var ordered = GetOrderedSubAssets(parent);
 
             for (int i = 0; i < ordered.Length; i++)

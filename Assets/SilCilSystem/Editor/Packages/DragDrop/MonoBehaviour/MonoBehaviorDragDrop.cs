@@ -10,7 +10,6 @@ namespace SilCilSystem.Editors
     {
         private const string MenuPath = Constants.DragDropSettingMenuPath + nameof(MonoBehaviour);
         private static HashSet<Rect> m_rects = new HashSet<Rect>();
-        private static bool m_willCreate = false;
 
         [InitializeOnLoadMethod]
         private static void OnLoad()
@@ -70,33 +69,22 @@ namespace SilCilSystem.Editors
             if (behaviours.Length == 0) return;
             
             DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+            if (Event.current.type != EventType.DragPerform) return;
 
-            switch (Event.current.type)
+            DragAndDrop.AcceptDrag();
+            Event.current.Use();
+
+            if (behaviours.Length == 1)
             {
-                case EventType.DragPerform:
-                    m_willCreate = true;
-                    break;
-                case EventType.DragExited:
-                    if (m_willCreate)
-                    {
-                        m_willCreate = false;
-
-                        if (behaviours.Length == 1)
-                        {
-                            CreateEachGameObject(behaviours);
-                        }
-                        else
-                        {
-                            EditorMenuUtil.DisplayMenuAtMousePosition(i => 
-                            {
-                                if (i == 0) CreateSingleGameObject(behaviours);
-                                if (i == 1) CreateEachGameObject(behaviours);
-                            }, "Single object", "Each object");
-                        }
-
-                        EditorApplication.RepaintHierarchyWindow();
-                    }
-                    break;
+                CreateEachGameObject(behaviours);
+            }
+            else
+            {
+                EditorMenuUtil.DisplayMenuAtMousePosition(i =>
+                {
+                    if (i == 0) CreateSingleGameObject(behaviours);
+                    if (i == 1) CreateEachGameObject(behaviours);
+                }, "Single object", "Each object");
             }
         }
 
@@ -111,7 +99,7 @@ namespace SilCilSystem.Editors
             }
         }
 
-        private static void CreateEachGameObject(System.Type[] behaviours)
+        private static void CreateEachGameObject(Type[] behaviours)
         {
             foreach (var behaviour in behaviours)
             {
