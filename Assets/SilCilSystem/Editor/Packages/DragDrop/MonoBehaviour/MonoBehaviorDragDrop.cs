@@ -45,19 +45,12 @@ namespace SilCilSystem.Editors
 
         private static void OnGUI(int instanceID, Rect rect)
         {
-            if (!m_rects.Contains(rect))
-            {
-                m_rects.Add(rect);
-                return;
-            }
-
             // 通常のスクリプトアタッチを邪魔しないようにする.
+            if (m_rects.Add(rect)) return;
             if (m_rects.Any(x => x.Contains(Event.current.mousePosition))) return;
 
             if (DragAndDrop.objectReferences == null) return;
             if (DragAndDrop.objectReferences.Length == 0) return;
-            
-            var instance = EditorUtility.InstanceIDToObject(instanceID);
             
             var behaviours = DragAndDrop.objectReferences
                         .Where(x => x.GetType() == typeof(MonoScript))
@@ -76,19 +69,19 @@ namespace SilCilSystem.Editors
 
             if (behaviours.Length == 1)
             {
-                CreateEachGameObject(behaviours);
+                Selection.activeObject = CreateGameObject(behaviours);
             }
             else
             {
                 EditorMenuUtil.DisplayMenuAtMousePosition(i =>
                 {
-                    if (i == 0) CreateSingleGameObject(behaviours);
-                    if (i == 1) CreateEachGameObject(behaviours);
+                    if (i == 0) Selection.activeObject = CreateGameObject(behaviours);
+                    if (i == 1) Selection.objects = behaviours.Select(x => CreateGameObject(x)).ToArray();
                 }, "Single object", "Each object");
             }
         }
 
-        private static void CreateSingleGameObject(Type[] behaviours)
+        private static GameObject CreateGameObject(params Type[] behaviours)
         {
             GameObject obj = new GameObject();
             obj.name = null;
@@ -97,16 +90,8 @@ namespace SilCilSystem.Editors
                 obj.name = (string.IsNullOrWhiteSpace(obj.name)) ? behaviour.Name : obj.name;
                 obj.AddComponent(behaviour);
             }
-        }
-
-        private static void CreateEachGameObject(Type[] behaviours)
-        {
-            foreach (var behaviour in behaviours)
-            {
-                GameObject obj = new GameObject();
-                obj.name = behaviour.Name;
-                obj.AddComponent(behaviour);
-            }
+            Undo.RegisterCreatedObjectUndo(obj, $"Create {obj.name}");
+            return obj;
         }
     }
 }
