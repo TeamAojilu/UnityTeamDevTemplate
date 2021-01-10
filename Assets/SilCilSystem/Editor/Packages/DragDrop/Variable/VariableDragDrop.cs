@@ -8,7 +8,6 @@ namespace SilCilSystem.Editors
     internal static class VariableDragDrop
     {
         private const string MenuPath = Constants.DragDropSettingMenuPath + nameof(VariableAsset);
-        private static bool m_willCreate = false;
 
         [InitializeOnLoadMethod]
         private static void OnLoad()
@@ -48,20 +47,12 @@ namespace SilCilSystem.Editors
             
             DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
 
-            switch (Event.current.type)
-            {
-                case EventType.DragPerform:
-                    m_willCreate = true;
-                    break;
-                case EventType.DragExited:
-                    if (m_willCreate)
-                    {
-                        m_willCreate = false;
-                        VariableDragDropActionList.DisplayMenuAtMousePosition(variables.Select(x => x as VariableAsset));
-                        EditorApplication.RepaintHierarchyWindow();
-                    }
-                    break;
-            }
+            if (Event.current.type != EventType.DragPerform) return;
+            DragAndDrop.AcceptDrag();
+            Event.current.Use();
+
+            VariableDragDropActionList.DisplayMenuAtMousePosition(variables.Select(x => x as VariableAsset));
+            EditorApplication.RepaintHierarchyWindow();
         }
     }
 }

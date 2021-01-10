@@ -3,6 +3,7 @@ using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using System.Linq;
 using UnityEngine;
+using UnityEditor;
 
 namespace SilCilSystem.Editors
 {
@@ -23,6 +24,8 @@ namespace SilCilSystem.Editors
             var timer = obj.AddComponent<Timer>();
 
             SetOptions(timer, time);
+            Undo.RegisterCreatedObjectUndo(obj, $"Create {obj.name}");
+            Selection.activeObject = obj;
         }
 
         protected abstract void SetOptions(Timer timer, VariableFloat variable);

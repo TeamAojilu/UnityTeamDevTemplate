@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEditor;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using SilCilSystem.Activators;
@@ -24,6 +25,9 @@ namespace SilCilSystem.Editors
             obj.name = $"{Prefix} {dropAsset.name}";
             var activator = obj.AddComponent<T>();
             activator.m_isActive.Variable = variable;
+
+            Undo.RegisterCreatedObjectUndo(obj, $"Create {obj.name}");
+            Selection.activeObject = obj;
         }
     }
 
