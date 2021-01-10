@@ -24,7 +24,7 @@ namespace SilCilSystem.Internals.Variables.Converters
         }
 
         [OnAttached, Conditional("UNITY_EDITOR")]
-        private void OnAttached(VariableAsset parent)
+        protected void OnAttached(VariableAsset parent)
         {
             m_variable = parent.GetSubVariable<TVariable>();
         }

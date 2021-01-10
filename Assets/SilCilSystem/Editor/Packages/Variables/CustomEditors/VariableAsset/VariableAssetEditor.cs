@@ -78,36 +78,35 @@ namespace SilCilSystem.Editors
 
             // 追加ボタンを表示.
             DrawAddSubAssetMenu(dragDropRect);
-            
+
             // イベント処理.
             if (dragDropRect.Contains(Event.current.mousePosition) == false) return;
+            if (DragAndDrop.objectReferences == null) return;
+            
+            var attaches = DragAndDrop.objectReferences
+                .Where(x => x.GetType() == typeof(MonoScript))
+                .OfType<MonoScript>()
+                .Select(m => m.GetClass())
+                .ToArray();
 
-            switch (Event.current.type)
+            if (attaches.Length == 0) return;
+
+            DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+
+            if (Event.current.type != EventType.DragPerform) return;
+
+            DragAndDrop.AcceptDrag();
+            Event.current.Use();
+            foreach (var parent in targets)
             {
-                case EventType.DragUpdated:
-                    DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
-                    break;
-                case EventType.DragPerform:
-                    DragAndDrop.AcceptDrag();
-
-                    var attaches = DragAndDrop.objectReferences
-                        .Where(x => x.GetType() == typeof(MonoScript))
-                        .OfType<MonoScript>()
-                        .Select(m => m.GetClass())
-                        .ToArray();
-
-                    foreach (var parent in targets)
-                    {
-                        if (parent is VariableAsset variable)
-                        {
-                            variable.AddSubVariables(true, attaches);
-                        }
-                    }
-
-                    InitActiveEditors();
-                    Repaint();
-                    break;
+                if (parent is VariableAsset variable)
+                {
+                    variable.AddSubVariables(true, attaches);
+                }
             }
+
+            InitActiveEditors();
+            Repaint();
         }
 
         private void DrawAddSubAssetMenu(Rect dragDropRect)

@@ -8,6 +8,7 @@ namespace SilCilSystem.Editors
     /// <summary>
     /// VariableAssetの派生クラスが対象.
     /// parentTypesで指定されたVariableAssetの子供として生成できるようになる.
+    /// (正確にはメニュー表示される)
     /// </summary>
     [Conditional("UNITY_EDITOR")]
     [AttributeUsage(AttributeTargets.Class)]
@@ -43,7 +44,7 @@ namespace SilCilSystem.Editors
     /// <summary>
     /// 子供として生成された場合に呼ばれる関数を指定する.
     /// 型はvoid (VariableAsset)であること.
-    /// SubVaraibleをつけていないクラスで使用しても無視される.
+    /// VariableAttributeをつけていないクラスで使用しても無視される.
     /// </summary>
     [Conditional("UNITY_EDITOR")]
     [AttributeUsage(AttributeTargets.Method)]
