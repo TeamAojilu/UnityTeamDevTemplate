@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using SilCilSystem.Variables;
-using System.Linq;
 using SilCilSystem.Variables.Base;
 using SilCilSystem.Variables.Generic;
 
@@ -46,27 +45,25 @@ namespace SilCilSystem.Editors
             EditorGUI.PropertyField(mainRect, (m_useVariables[position]) ? variable : value, label);
 
             // ドラッグ処理.
-            if (position.Contains(Event.current.mousePosition))
+            do
             {
-                switch (Event.current.type)
-                {
-                    case EventType.DragUpdated:
-                        DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
-                        break;
-                    case EventType.DragPerform:
-                        DragAndDrop.AcceptDrag();
-                        var obj = DragAndDrop.objectReferences.FirstOrDefault();
-                        if (!(obj is VariableAsset parent)) break;
-                        
-                        foreach(var asset in parent.GetAllVariables())
-                        {
-                            variable.objectReferenceValue = asset;
-                            if (variable.objectReferenceValue != null) break;
-                        }
-                        break;
-                }
-            }
+                if (!position.Contains(Event.current.mousePosition)) break;
 
+                var obj = DragAndDrop.objectReferences.FirstOrDefault();
+                if (!(obj is VariableAsset parent)) break;
+
+                DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+                if (Event.current.type != EventType.DragPerform) break;
+
+                DragAndDrop.AcceptDrag();
+                Event.current.Use();
+                foreach (var asset in parent.GetAllVariables())
+                {
+                    variable.objectReferenceValue = asset;
+                    if (variable.objectReferenceValue != null) break;
+                }
+            } while (false);
+            
             EditorGUI.EndProperty();
         }
     }

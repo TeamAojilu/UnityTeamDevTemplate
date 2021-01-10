@@ -51,5 +51,17 @@ namespace SilCilSystem.Variables
         {
             gameEvent?.Subscribe(action).DisposeOnDestroy(lifeTimeObject);
         }
+
+        /// <summary>イベントの登録. ゲームオブジェクトが破棄される時に自動でDisposeが呼ばれる</summary>
+        public static void Subscribe(this GameEventListener gameEvent, Action action, GameObject lifeTimeObject)
+        {
+            gameEvent?.Subscribe(action).DisposeOnDestroy(lifeTimeObject);
+        }
+
+        /// <summary>イベントの登録. ゲームオブジェクトが破棄される時に自動でDisposeが呼ばれる</summary>
+        public static void Subscribe<T>(this GameEventListener<T> gameEvent, Action<T> action, GameObject lifeTimeObject)
+        {
+            gameEvent?.Subscribe(action).DisposeOnDestroy(lifeTimeObject);
+        }
     }
 }

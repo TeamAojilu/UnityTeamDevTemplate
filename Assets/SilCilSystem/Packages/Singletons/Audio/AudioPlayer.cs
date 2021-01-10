@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using SilCilSystem.Variables;
 using SilCilSystem.Math;
 using SilCilSystem.Singletons;
@@ -8,8 +7,8 @@ namespace SilCilSystem.Audio
 {
     public class AudioPlayer : SingletonMonoBehaviour<AudioPlayer>
     {
-		public static void PlayBGM(string name) => Instance._PlayBGM(name);
-		public static void PlaySE(string name) => Instance._PlaySE(name);
+		public static void PlayBGM(AudioClip clip) => Instance._PlayBGM(clip);
+		public static void PlaySE(AudioClip clip, Vector3 worldPosition = default) => Instance._PlaySE(clip, worldPosition);
 
 		[Header("Volume")]
 		[SerializeField] private ReadonlyPropertyFloat m_defaultBGMVolume = new ReadonlyPropertyFloat(1f);
@@ -18,44 +17,35 @@ namespace SilCilSystem.Audio
 		[Header("BGM")]
 		[SerializeField] private ReadonlyPropertyBool m_loop = new ReadonlyPropertyBool(true);
 		[SerializeField] private ReadonlyPropertyFloat m_fadeTime = new ReadonlyPropertyFloat(0.2f);
-		[SerializeField] private InterpolationCurve m_fadeCurve = default; 
+		[SerializeField] private InterpolationCurve m_fadeCurve = default;
 
 		[Header("Audio Sources")]
 		[SerializeField] private AudioSource m_bgmSource = default;
-		[SerializeField] private AudioSource m_seSource = default;
-
-		[Header("Events")]
-		[SerializeField] private GameEventStringListener m_playBGM = default;
-		[SerializeField] private GameEventStringListener m_playSE = default;
-
-		private IDisposable m_disposable = default;
-
-		public IAudioClipResources Clips { get; set; }
+		[SerializeField] private AudioSource[] m_seSources = default;
 		
-        protected override void OnAwake() 
-		{
-			var disposable = new CompositeDisposable();
-			disposable.Add(m_playBGM?.Subscribe(_PlayBGM));
-			disposable.Add(m_playSE?.Subscribe(_PlaySE));
-			m_disposable = disposable;
-		}
+        protected override void OnAwake() { }
+		protected override void OnDestroyCallback() { }
 
-        protected override void OnDestroyCallback() 
-		{
-			m_disposable?.Dispose();
-		}
-
-		protected void _PlayBGM(string name)
+		private void _PlayBGM(AudioClip clip)
         {
-			m_nextBGM = Clips?.GetClip(name);
+			m_nextBGM = clip;
 			m_multiply = -1f;
         }
 
-		protected void _PlaySE(string name)
+		private void _PlaySE(AudioClip clip, Vector3 worldPosition)
         {
-			var clip = Clips?.GetClip(name);
-			m_seSource.PlayOneShot(clip);
-        }
+            foreach (var item in m_seSources)
+            {
+				if (item == null || item.isPlaying) continue;
+				item.clip = clip;
+				item.transform.position = worldPosition;
+				item.Play();
+				return;
+            }
+#if UNITY_EDITOR
+			Debug.Log("AudioPlayer: PlaySE is skipped.");
+#endif
+		}
 
 		private float m_multiply = 0f;
 		private float m_volumeRate = 0f;
@@ -64,8 +54,11 @@ namespace SilCilSystem.Audio
 
 		private void Update()
         {
-			// SEの音量を設定.
-			m_seSource.volume = m_defaultSEVolume;
+            // SEの音量を設定.
+            foreach (var item in m_seSources)
+            {
+				item.volume = m_defaultSEVolume;
+            }
 
             // BGMのフェード処理.
             if (m_fadeTime > 0f)

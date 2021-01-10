@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2340520607432372730}
   - component: {fileID: 5657877208259508580}
   - component: {fileID: 2340520607432372729}
-  - component: {fileID: -8113696815852835825}
+  - component: {fileID: 7073856682293053892}
   m_Layer: 0
   m_Name: SceneLoader
   m_TagString: Untagged
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a548b804d9be4dc47aab9e7ae40aaf3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8113696815852835825
+--- !u!114 &7073856682293053892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,8 +72,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_isBusy:
     m_value: 0
-    m_variable: {fileID: 11400000, guid: 25086688504573a40a7c0e85a442575d, type: 2}
-  m_loadScene: {fileID: -3198611636116012631, guid: 76a7405881f3ad848b3c5515f6cb9a88,
+    m_variable: {fileID: 11400000, guid: 457e21ecde3e43c459f8ae9f84ba6f37, type: 2}
+  m_loadScene: {fileID: -3037159574346163468, guid: 36a5baeec7975ef4fbb0bee8931c3456,
     type: 2}
 --- !u!1 &2340520607945077829
 GameObject:

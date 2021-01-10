@@ -17,8 +17,8 @@ namespace Samples.RollBall
         [SerializeField] private float m_waitTimeToNextScene = 3f;
 
         [Header("Audio")]
-        [SerializeField] private string m_gameOverKey = "RollBall_GameOver";
-        [SerializeField] private string m_gameClearKey = "RollBall_GameClear";
+        [SerializeField] private AudioClip m_gameOverClip = default;
+        [SerializeField] private AudioClip m_gameClearClip = default;
 
         public IEnumerator Start()
         {
@@ -45,7 +45,7 @@ namespace Samples.RollBall
         public void FinishGame(bool isClear)
         {
             m_isPlaying.Value = false;
-            AudioPlayer.PlaySE((isClear) ? m_gameClearKey : m_gameOverKey);
+            AudioPlayer.PlaySE((isClear) ? m_gameClearClip : m_gameOverClip);
         }
     }
 }
