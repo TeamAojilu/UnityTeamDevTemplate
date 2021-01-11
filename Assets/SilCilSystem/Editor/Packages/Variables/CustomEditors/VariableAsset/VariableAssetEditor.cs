@@ -37,7 +37,6 @@ namespace SilCilSystem.Editors
         {
             ClearActiveEditors();
             Undo.undoRedoPerformed -= InitActiveEditors;
-            // AssetDatabase.SaveAssets();
         }
 
         public override void OnInspectorGUI()

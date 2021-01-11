@@ -28,7 +28,7 @@ namespace SilCilSystem.Variables.Generic
             get => m_variable;
             set
             {
-                m_value = (value == null) ? default : value;
+                m_value = (value == null) ? default : value.Value;
                 m_variable = value;
             }
         }

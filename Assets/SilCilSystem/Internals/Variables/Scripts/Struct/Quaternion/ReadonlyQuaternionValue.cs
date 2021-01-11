@@ -11,7 +11,7 @@ namespace SilCilSystem.Internals.Variables
     {
         [SerializeField, NotEditable] private VariableQuaternion m_variable = default;
 
-        public override Quaternion Value => m_variable;
+        public override Quaternion Value => m_variable.Value;
 
         [OnAttached, Conditional("UNITY_EDITOR")]
         private void OnAttached(VariableAsset parent)

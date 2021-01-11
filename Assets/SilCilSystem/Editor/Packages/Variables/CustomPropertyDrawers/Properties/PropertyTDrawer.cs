@@ -13,8 +13,8 @@ namespace SilCilSystem.Editors
     [CustomPropertyDrawer(typeof(ReadonlyProperty<,>), true)]
     internal class PropertyTDrawer : PropertyDrawer
     {
-        private const string ValueName = "m_value";
-        private const string VariableName = "m_variable";
+        protected const string ValueName = "m_value";
+        protected const string VariableName = "m_variable";
         private const float ToggleWidth = 20f;
         private const float Space = 10f;
 
@@ -43,7 +43,7 @@ namespace SilCilSystem.Editors
             // 描画.
             m_useVariables[position] = GUI.Toggle(toggleRect, variable.objectReferenceValue != null || m_useVariables[position], "");
             EditorGUI.PropertyField(mainRect, (m_useVariables[position]) ? variable : value, label);
-
+            
             // ドラッグ処理.
             do
             {

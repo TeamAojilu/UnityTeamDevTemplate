@@ -11,7 +11,7 @@ namespace SilCilSystem.Internals.Variables
     {
         [SerializeField, NotEditable] private VariableFloat m_variable = default;
 
-        public override float Value => m_variable;
+        public override float Value => m_variable.Value;
 
         [OnAttached, Conditional("UNITY_EDITOR")]
         private void OnAttached(VariableAsset parent)

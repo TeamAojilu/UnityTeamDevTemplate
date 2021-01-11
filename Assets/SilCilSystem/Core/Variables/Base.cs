@@ -33,7 +33,7 @@ namespace SilCilSystem.Variables.Base.Generic
     {
         [SerializeField] private Variable<T> m_variable = default;
 
-        public override T Value => m_variable;
+        public override T Value => m_variable.Value;
     }
 
     public abstract class GameEventBase<T> : GameEvent<T>

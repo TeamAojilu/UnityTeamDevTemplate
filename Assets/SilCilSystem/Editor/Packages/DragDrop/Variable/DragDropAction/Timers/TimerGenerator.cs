@@ -46,8 +46,8 @@ namespace SilCilSystem.Editors
         protected override void SetOptions(Timer timer, VariableFloat variable)
         {
             timer.m_time.Variable = variable;
-            timer.m_initialTime = new ReadonlyPropertyFloat(variable);
-            timer.m_max = new ReadonlyPropertyFloat(variable);
+            timer.m_initialTime = new ReadonlyPropertyFloat(variable.Value);
+            timer.m_max = new ReadonlyPropertyFloat(variable.Value);
             timer.m_timeScale = new ReadonlyPropertyFloat(-1f);
         }
     }
@@ -58,8 +58,8 @@ namespace SilCilSystem.Editors
         protected override void SetOptions(Timer timer, VariableFloat variable)
         {
             timer.m_time.Variable = variable;
-            timer.m_initialTime = new ReadonlyPropertyFloat(variable);
-            timer.m_max = new ReadonlyPropertyFloat(variable);
+            timer.m_initialTime = new ReadonlyPropertyFloat(variable.Value);
+            timer.m_max = new ReadonlyPropertyFloat(variable.Value);
             timer.m_repeating = new ReadonlyPropertyBool(true);
         }
     }
