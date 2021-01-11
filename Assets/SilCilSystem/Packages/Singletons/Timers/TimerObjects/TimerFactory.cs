@@ -13,7 +13,7 @@ namespace SilCilSystem.Timers
         {
             var timer = m_simpleTimerPool.GetInstance();
             timer.Reset();
-            timer.IsEnabled = enabled;
+            timer.IsEnabled = () => lifeTimeObject != null && enabled?.Invoke() != false;
             timer.IsFinished = t => IsFinishedForDelay(t, lifeTimeObject, method, delay);
             UpdateDispatcher.Register(timer, updateMode);
         }
@@ -34,7 +34,7 @@ namespace SilCilSystem.Timers
         {
             var timer = m_simpleTimerPool.GetInstance();
             timer.Reset();
-            timer.IsEnabled = enabled;
+            timer.IsEnabled = () => lifeTimeObject != null && enabled?.Invoke() != false;
             timer.IsFinished = t =>
             {
                 update.Invoke(t);

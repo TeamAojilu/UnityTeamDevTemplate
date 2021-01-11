@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using SilCilSystem.Variables;
-using System;
 
 namespace Samples.Shooting2D
 {
@@ -15,18 +14,11 @@ namespace Samples.Shooting2D
 		[SerializeField] private GameObject m_title = default;
 		[SerializeField] private GameObject m_playerPrefab = default;
 
-		private IDisposable m_disposable = default;
-
         private void Awake()
         {
             m_isPlaying.Value = false;
 			m_score.Value = 0;
-			m_disposable = m_onGameOver.Subscribe(OnGameOver);
-        }
-
-        private void OnDestroy()
-        {
-			m_disposable?.Dispose();
+			m_onGameOver?.Subscribe(OnGameOver, gameObject);
         }
 
         private void Update()
