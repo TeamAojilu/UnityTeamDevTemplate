@@ -1,0 +1,21 @@
+{
+    "name": "SilCilSystem.Internals.Editors",
+    "references": [
+        "GUID:d5c2cd3ab3c8fb64dbf1bd77fddcf613",
+        "GUID:7d0deb14354e38f44a24726177cf389d",
+        "GUID:00dc4d9929986ab4b9fc0d8998b31c2d",
+        "GUID:bd5dcdf6950c6f741804b9ec1e021239",
+        "GUID:7d04e53d35d794c4489bf802f3aa8c62"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
