@@ -12,6 +12,15 @@
 [page:OnValueChanged]: /UnityTeamDevTemplate/ver200/Variables/OnValueChanged.html
 [page:Property]: /UnityTeamDevTemplate/ver200/Variables/Property.html
 
+<!--- IDisposable --->
+[page:DisposeOnDestroy]: /UnityTeamDevTemplate/ver200/Variables/IDisposable/DisposeOnDestroy.html
+[page:DisposeOnSceneUnLoaded]: /UnityTeamDevTemplate/ver200/Variables/IDisposable/DisposeOnSceneUnLoaded.html
+[page:CompositeDisposable]: /UnityTeamDevTemplate/ver200/Variables/IDisposable/CompositeDisposable.html
+[page:DelegateDispose]: /UnityTeamDevTemplate/ver200/Variables/IDisposable/DelegateDispose.html
+
+<!--- ObjectPools --->
+[page:ObjectPool]: /UnityTeamDevTemplate/ver200/Variables/ObjectPools/ObjectPool.html
+
 <!--- 変数 set --->
 
 [page:Timer]: /UnityTeamDevTemplate/ver200/Components/Timers/Timer.html
@@ -31,9 +40,6 @@
 <!--- イベント登録 --->
 
 [page:Activator]: /UnityTeamDevTemplate/ver200/Components/Activators/Activator.html
-[page:DisposeOnDestroy]: /UnityTeamDevTemplate/ver200/Variables/IDisposable/DisposeOnDestroy.html
-[page:DisposeOnSceneUnLoaded]: /UnityTeamDevTemplate/ver200/Variables/IDisposable/DisposeOnSceneUnLoaded.html
-[page:CompositeDisposable]: /UnityTeamDevTemplate/ver200/Variables/IDisposable/CompositeDisposable.html
 
 <!--- シングルトン --->
 

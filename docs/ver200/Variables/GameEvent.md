@@ -147,6 +147,8 @@ namespace SilCilSystem.Variables
 }
 ```
 
+※登録解除用のIDisposableの生成に用いているDelegateDisposeについては[こちら][page:DelegateDispose]。
+
 読み取り専用クラスGameEventListenerの具体的な実装はGameEventを参照に持ち、値を返します。
 
 ```cs

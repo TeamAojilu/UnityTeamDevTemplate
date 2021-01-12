@@ -39,42 +39,39 @@ SilCilSystemの他の要素は主に変数/イベントアセットを利用し�
 あなたが実装しようとしている機能はここに載っているかもしれません。
 コードを書く前にチェックしてみてください。
 
-### 変数関連
+### ドラッグ&ドロップ
 
----
+- スクリプトがアタッチされたゲームオブジェクトを生成する
+- 変数アセットに対応するUIパーツを生成する
+- 変数アセットを変換する
 
-#### 変数のset
+### 時間
 
-- [時間を測定する/一定間隔で処理を行う][page:Timer]
-- [Timelineで変数の値を変える][page:ChangeVariableInTimeline]
+- [時間を測定する][page:Timer]
+- 一定時間後/一定間隔で処理を行う
 - [Tweenコルーチンを用いて変数の値を時間変化させる][page:TweenVariableCoroutine]
 
-#### 変数のget
+### 機能のON/OFF
 
-- [変数の値を表示する][page:DisplayVariables]
-- [変数の値をUIやAnimatorのパラメータに反映させる][page:BindingVariable]
+- [ゲームオブジェクトのActiveやコンポーネントのenabledを切り替える][page:Activator]
 
-### イベント関連
+### UI&エフェクト
 
----
-
-#### イベントの実行
-
+- [変数アセットの値を表示する][page:DisplayVariables]
+- [変数アセットの値をUIやAnimatorのパラメータに反映させる][page:BindingVariable]
 - [Animatorの遷移時にイベントを呼ぶ][page:PublishOnState]
-
-#### イベントの登録
-
-- [イベントでゲームオブジェクトのActiveやコンポーネントのenabledを切り替える][page:Activator]
-
-### シングルトン
+- [Timelineで変数の値を変える][page:ChangeVariableInTimeline]
 
 ---
 
-グローバルな処理として利用されると思われる機能はシングルトンで用意しています。
+### その他
+
+#### シングルトン
 
 - [シングルトンの実装][page:SingletonMonoBehaviour]
 - [シーンのロード][page:SceneLoader]
 - [音楽の再生][page:AudioPlayer]
+- Updateの移譲
 
 作成したシングルトンはゲーム開始時に自動で生成されるようにEditor拡張されています。
 Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが生成されるようになっています。
@@ -83,15 +80,15 @@ Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが�
 
 ※生成処理はPrefabGeneratorOnLoad.csに記述してあります。
 
-### Math
-
----
-
-変数/イベントアセットとの直接的な関係はないですが、補間曲線の取得などの数学に関するものです。
-SilCilSystemのコンポーネントなどで使用されています。
+#### Math
 
 - [イージング関数を取得/設定する][page:InterpolationCurve]
 - [floatからintへの変換方法を指定する][page:FloatToInt]
+
+#### オブジェクトプール
+
+- [オブジェクトプール][page:ObjectPool]
+- [IDisposableを生成する][page:DelegateDispose]
 
 ## ログ
 
