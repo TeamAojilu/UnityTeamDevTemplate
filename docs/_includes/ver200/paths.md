@@ -7,6 +7,7 @@
 <!--- 重要 --->
 
 [page:Variable]: /UnityTeamDevTemplate/ver200/Variables/Variable.html
+[page:VariableAset]: /UnityTeamDevTemplate/ver200/Variables/VariableAsset.html
 [page:GameEvent]: /UnityTeamDevTemplate/ver200/Variables/GameEvent.html
 [page:OnValueChanged]: /UnityTeamDevTemplate/ver200/Variables/OnValueChanged.html
 [page:Property]: /UnityTeamDevTemplate/ver200/Variables/Properties/Property.html

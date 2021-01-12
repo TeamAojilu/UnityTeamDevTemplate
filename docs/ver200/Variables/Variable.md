@@ -4,7 +4,7 @@ abstract
 
 名前空間：SilCilSystem.Variables
 
-継承：UnityEngine.ScriptableObject
+継承：[VariableAsset][page:VariableAsset]
 
 ---
 
@@ -15,12 +15,12 @@ abstract
 
 |抽象クラス|役割|
 |-|-|
-|Variable\<T>|ValueプロパティでT型の値のset/get|
-|ReadonlyVariable\<T>|ValueプロパティでT型の値のget|
+|Variable\<T>|ValueでT型の値のset/get|
+|ReadonlyVariable\<T>|ValueでT型の値のget|
 
-ただ、UnityではGenericクラスのScriptableObjectをアセットとして生成することができないため、
-よく使うであろう型についてはGenericクラスを継承した非Genericな抽象クラスを用意しています。
-実際のコーディングではこちらを使用することになると思います。
+ただ、Unity2019ではジェネリッククラスをシリアライズすることができないため、
+よく使う型については非ジェネリックな抽象クラスを用意しています。
+実際のスクリプトでは以下のクラスを使用することになると思います。
 
 ### Primitive
 
@@ -87,23 +87,26 @@ public class TestReadonlyInt : MonoBehaviour
 ```
 
 インスペクタ上で同じ変数を設定すれば、両者の連携が可能になります。
-プロジェクトのメニューからInt型の変数アセットを作成します。
-VariableIntには変数アセットを、ReadonlyIntにはサブアセットになっているReadonlyのアセットを設定します。
+メニューからInt型の変数アセットを作成して設定します。
 
 ![変数アセットをインスペクタ上で設定する][fig:VariableInInspector]
+**画像は最新版ではないので変更予定**
 
 ## 使用上の注意点
 
 Updateで値をチェックして、値が変わったら何か処理をするといったことをしたい場合には
-イベントアセットの使用を検討してください。
+[イベントアセット][page:GameEvent]の使用を検討してください。
 値の変更が少ない場合には、イベントアセットで実現するほうが良いと思います。
 上記のカウンタの例もイベントアセットで実現できます。
-イベントを使用する場合は[こちら][page:OnValueChanged]。
+イベントを使用する場合は[こちら][page:OnValueChanged]が参考になります。
 
 ## 実装
 
-変数アセットは変数を1つメンバに持つ単純なScriptableObejctとして実装されています。
-例えば、Variable\<bool>を継承した抽象クラスVaraibeBoolの具体的な実装は以下です。
+Variable\<T>は抽象クラスなので、具体的な実装を記述していません。
+インスペクタ上で設定するアセットはinternalなクラスとして実装しています。
+
+最も簡単な変数アセットの実装は変数を1つだけ持つ単純なScriptableObejctです。
+例えば、Variable\<bool>を継承したクラスならこうなります。
 
 ```cs
 using UnityEngine;
@@ -119,7 +122,7 @@ namespace SilCilSystem.Variables
 }
 ```
 
-読み取り専用クラスReadonlyBoolの具体的な実装はVariableBoolを参照に持ち、値を返します。
+読み取り専用クラスの具体的な実装はVariableBoolを参照に持ち、値を返します。
 
 ```cs
 using UnityEngine;
@@ -134,8 +137,7 @@ namespace SilCilSystem.Variables
 }
 ```
 
-したがって、変数1つに対して2つのアセットが必要です。
-2つのアセットを作るだけでなく、参照関係も設定しなければなりません。
+これら2つを機能させるためには、それぞれのアセットを作るだけでなく、参照関係も設定しなければなりません。
 つまり、機能させるには以下の3つのステップが必要です。
 
 1. BoolValueアセットを作成する
@@ -143,7 +145,16 @@ namespace SilCilSystem.Variables
 3. ReadonlyBoolValueアセットのm_variableに1で作成したBoolValueアセットを設定する
 
 これを変数作成のたびにやるのは面倒なので、Editor拡張で対応しています。
-BoolValueアセットを選択すると自動でReadonlyBoolアセットをサブアセットとして生成し、参照を設定するようになっています。
+
+実際には[値の変更を通知][page:OnValueChanged]するために[イベントアセット][page:GameEvent]も紐づけており、
+1つの変数に対して4つのアセットが生成されるようになっています。
+
+これらのアセットをすべて表示するのは煩わしいので、サブアセットにしてHideFlagsを設定することで非表示にしています。
+アセットのインスペクタにあるShow/Hideを押すことで表示/非表示を切り替えられます。
+
+ここに画像を挿入予定
+
+※変更を反映するにはプロジェクトビューを更新させなければならないようです。この辺り、エディタ拡張でうまくやることができませんでした。
 
 <!--- footer --->
 

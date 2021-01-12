@@ -68,9 +68,6 @@ SilCilSystemの他の要素は主に変数/イベントアセットを利用し�
 #### イベントの登録
 
 - [イベントでゲームオブジェクトのActiveやコンポーネントのenabledを切り替える][page:Activator]
-- [DisposeメソッドをゲームオブジェクトのDestroy時に呼ぶ][page:DisposeOnDestroy]
-- [Disposeメソッドをシーンのアンロード時に呼ぶ][page:DisposeOnSceneUnLoaded]
-- [複数のIDisposableを1つにまとめる][page:CompositeDisposable]
 
 ### シングルトン
 
