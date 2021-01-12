@@ -19,9 +19,9 @@ Property, ReadonlyPropertyはインスペクタ上で変数と[変数アセッ�
 T: 変数の型（int, floatなど）
 TVariable: T型の変数アセット（VariableInt, VariableFloatなど）
 
-Unity2019ではGenericクラスはシリアライズできないため、
-よく使うであろう型についてはGenericクラスを継承した非Genericなクラスを用意しています。
-実際のコーディングではこちらを使用することになると思います。
+Unity2019ではジェネリッククラスをシリアライズすることができないため、
+よく使う型については非ジェネリックな抽象クラスを用意しています。
+実際のスクリプトでは以下のクラスを使用することになると思います。
 
 ### Primitive
 
@@ -86,9 +86,8 @@ public class TestVariable : MonoBehaviour
 ```
 
 変数アセットへの変更により、移動速度を他のスクリプトから制御できるようになりました。
-しかし、このスクリプトを動かすためには、変数アセットを作成して設定するという手間が加わりました。
-外部との連携をせずに動かしたい場合であっても変数アセットを作成する必要があり、
-管理しなくてはならないアセットの数が増えてしまいます。
+しかし、動作させるためには、変数アセットを作成して設定するという手間が加わりました。
+外部との連携をせずに動かしたい場合であっても変数アセットを作成する必要があり、少し面倒です。
 
 そこで、Property, ReadonlyPropertyの出番です。
 今回はReadonlyFloatを用いているので、それに対応するReadonlyPropertyFloatを使用します。
@@ -113,15 +112,13 @@ public class TestVariable : MonoBehaviour
 このようにすることで、変数アセットを使用したい場合にのみ、エディタ上で指定できるようになります。
 
 ![エディタ上での見え方][fig:PropertyFloat]
+**この画像は最新ではないので変更予定**
 
 ## 使用上の注意点
 
-全ての設定項目をこれで置き換えるのが妥当かという点は考える必要があります。
-Property, ReadonlyPropertyは現状RangeやTextAreaといった他のAttributeに対応していませんし、
-コンポーネント固有のエディタ拡張をする際には通常の変数を用いたほうが拡張が楽だと思います。
+全ての設定項目をこれで置き換えるのが妥当かどうかは考える必要があります。
+Property, ReadonlyPropertyはRangeやTextAreaなどのAttributeや配列の複数ファイルドラッグ&ドロップに対応していません。
 外部と連携する必要がないと思われるものは変数で実装することも考えましょう。
-
-あと配列の要素に使う場合など、一部エディタ拡張が上手く機能しなかったりする不具合があります。ごめんなさい。
 
 ## 実装
 
@@ -146,12 +143,10 @@ public class Property<T, TVariable> where TVariable : Variable<T>
             m_variable?.SetValue(value);
         }
     }
-
-    public static implicit operator T(Property<T, TVariable> property) => property.Value;
 }
 ```
 
-これをエディタ拡張で1行で表示するようにしているだけです。
+これをエディタ拡張で1行で表示するようにしています。
 
 <!--- footer --->
 

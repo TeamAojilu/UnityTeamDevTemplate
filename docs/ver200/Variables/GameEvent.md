@@ -27,7 +27,7 @@ abstract
 |GameEvent\<T>|Publishでメソッドの実行|GameEventを継承|
 |GameEventListener\<T>|Subscribeでメソッドの登録|GameEventListenerを継承|
 
-ただ、Unity2019ではジェネリッククラスをシリアライズすることができないため、
+Unity2019ではジェネリッククラスをシリアライズすることができないため、
 よく使う型については非ジェネリックな抽象クラスを用意しています。
 実際のスクリプトでは以下のクラスを使用することになると思います。
 

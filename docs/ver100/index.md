@@ -1,6 +1,4 @@
-# SilCilSystem
-
-Unityでゲームを作るのに役に立つかもしれない汎用システム「SilCilSystem」のドキュメントです。
+# SilCilSystem ver1.0
 
 ## 要点
 
