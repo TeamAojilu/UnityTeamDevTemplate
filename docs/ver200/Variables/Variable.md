@@ -1,4 +1,4 @@
-# 変数オブジェクト
+# 変数アセット
 
 abstract
 
@@ -52,7 +52,7 @@ using SilCilSystem.Variables;
 
 public class TestVariableInt : MonoBehaviour
 {
-    // 変数オブジェクトをシリアライズしてインスペクタで設定可能に.
+    // 変数アセットをシリアライズしてインスペクタで設定可能に.
     [SerializeField] private VariableInt m_count = default;
 
     private void Update()
@@ -75,7 +75,7 @@ using SilCilSystem.Variables;
 
 public class TestReadonlyInt : MonoBehaviour
 {
-    // 変数オブジェクトをシリアライズしてインスペクタで設定可能に.
+    // 変数アセットをシリアライズしてインスペクタで設定可能に.
     [SerializeField] private ReadonlyInt m_count = default;
 
     private void Update()
@@ -95,14 +95,14 @@ VariableIntには変数アセットを、ReadonlyIntにはサブアセットに�
 ## 使用上の注意点
 
 Updateで値をチェックして、値が変わったら何か処理をするといったことをしたい場合には
-イベントオブジェクトの使用を検討してください。
-値の変更が少ない場合には、イベントオブジェクトで実現するほうが良いと思います。
-上記のカウンタの例もイベントオブジェクトで実現できます。
+イベントアセットの使用を検討してください。
+値の変更が少ない場合には、イベントアセットで実現するほうが良いと思います。
+上記のカウンタの例もイベントアセットで実現できます。
 イベントを使用する場合は[こちら][page:OnValueChanged]。
 
 ## 実装
 
-変数オブジェクトは変数を1つメンバに持つ単純なScriptableObejctとして実装されています。
+変数アセットは変数を1つメンバに持つ単純なScriptableObejctとして実装されています。
 例えば、Variable\<bool>を継承した抽象クラスVaraibeBoolの具体的な実装は以下です。
 
 ```cs

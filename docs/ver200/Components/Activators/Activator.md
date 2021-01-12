@@ -28,7 +28,7 @@ abstract
 ## 使用例
 
 例えば、クリックするたびにCubeをON/OFFする処理をしてみます。
-まず、bool型の変数オブジェクトを作成して以下のスクリプトに設定します。
+まず、bool型の変数アセットを作成して以下のスクリプトに設定します。
 
 ```cs
 using UnityEngine;
@@ -49,7 +49,7 @@ public class TestActivator : MonoBehaviour
 ```
 
 GameObjectActivatorを使用してCubeオブジェクトのSetActiveを切り替えます。
-先ほどの変数オブジェクトに関連するGameEventBoolListenerを設定します。
+先ほどの変数アセットに関連するGameEventBoolListenerを設定します。
 TargetsにON/OFFを切り替えたいGameObjectを指定します。
 
 ![GameObjectActivatorを設定する][fig:GameObjectActivator]

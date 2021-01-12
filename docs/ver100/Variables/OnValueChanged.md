@@ -1,12 +1,12 @@
 # 変数の値が変化した場合に処理を呼ぶ
 
 変数の値が変化した場合に処理を呼びたい場合には、変数アセットのサブアセットになっているListenerが利用できます。
-これは[変数オブジェクト][page:Variable]と[イベントオブジェクト][page:GameEvent]を組み合わせた機能です。
+これは[変数アセット][page:Variable]と[イベントアセット][page:GameEvent]を組み合わせた機能です。
 
 ## 使用例
 
 例えば、キーを押すたびに値が増えるカウンタを作ってみます。
-これは[変数オブジェクトのページ][page:Variable]に記載されているTestVariableIntをそのまま利用できます。
+これは[変数アセットのページ][page:Variable]に記載されているTestVariableIntをそのまま利用できます。
 
 ```cs
 using UnityEngine;
@@ -14,7 +14,7 @@ using SilCilSystem.Variables;
 
 public class TestVariableInt : MonoBehaviour
 {
-    // 変数オブジェクトをシリアライズしてインスペクタで設定可能に.
+    // 変数アセットをシリアライズしてインスペクタで設定可能に.
     [SerializeField] private VariableInt m_count = default;
 
     private void Update()
@@ -30,7 +30,7 @@ public class TestVariableInt : MonoBehaviour
 
 カウンタの値が変更された場合にDebug.Logで表示することを考えます。
 イベントとして処理するため、GameEventIntListenerを使用します。
-これも[イベントオブジェクトのページ][page:GameEvent]に記載されているDebugDiceをそのまま利用できます。
+これも[イベントアセットのページ][page:GameEvent]に記載されているDebugDiceをそのまま利用できます。
 （スクリプト名が適切ではありませんが、サンプルなので気にしないでください。）
 
 ```cs
@@ -40,7 +40,7 @@ using SilCilSystem.Variables;
 
 public class DebugDice : MonoBehaviour
 {
-    // イベントオブジェクトをシリアライズしてインスペクタで設定可能に.
+    // イベントアセットをシリアライズしてインスペクタで設定可能に.
     [SerializeField] private GameEventIntListener m_onDiceRolled = default;
 
     // 登録解除用.
@@ -72,7 +72,7 @@ VariableIntには変数アセットを、GameEventIntListenerにはサブアセ�
 
 正確には値が代入された場合にイベントが呼ばれるようになっています。
 例えば、boolの値の代入を検出してイベントを呼ぶ実装は以下です。
-イベントオブジェクトを参照として持ち、setter内でPublishを読んでいるだけです。
+イベントアセットを参照として持ち、setter内でPublishを読んでいるだけです。
 
 ```cs
 using UnityEngine;
@@ -80,7 +80,7 @@ using UnityEngine;
 namespace SilCilSystem.Variables
 {
     // 使用する際は具体的な型（この場合はNotificationBool）を知る必要がないのでinternalで実装.
-    internal class NotificationBool : BoolValue // 変数オブジェクトのBoolValueを継承.
+    internal class NotificationBool : BoolValue // 変数アセットのBoolValueを継承.
     {
         [SerializeField] private GameEventBool m_onValueChanged = default;
 
@@ -101,7 +101,7 @@ namespace SilCilSystem.Variables
 値が変更された場合に処理を呼ぶ機能の実現には以下の2つのステップが必要になります。
 
 1. NotificationBoolアセットを生成する。
-2. bool型のイベントオブジェクトを生成する。
+2. bool型のイベントアセットを生成する。
 3. NotificationBoolアセットのm_onValueChangedに2で生成したアセットを設定する。
 
 これを作成のたびにやるのは面倒なので、Editor拡張で対応しています。

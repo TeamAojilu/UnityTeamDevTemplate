@@ -6,8 +6,8 @@ class
 
 ---
 
-Property, ReadonlyPropertyはインスペクタ上で変数と[変数オブジェクト][page:Variable]のどちらを使うかを選択できるようになるクラスです。
-これらを用いることで、変数オブジェクトを必要以上に増やすことなくスクリプトの設定項目をエディタ上で調整できるようになります。
+Property, ReadonlyPropertyはインスペクタ上で変数と[変数アセット][page:Variable]のどちらを使うかを選択できるようになるクラスです。
+これらを用いることで、変数アセットを必要以上に増やすことなくスクリプトの設定項目をエディタ上で調整できるようになります。
 
 ## メンバ一覧
 
@@ -17,7 +17,7 @@ Property, ReadonlyPropertyはインスペクタ上で変数と[変数オブジ�
 |ReadonlyProperty\<T, TVariable>|ValueプロパティでT型の値のget|
 
 T: 変数の型（int, floatなど）
-TVariable: T型の変数オブジェクト（VariableInt, VariableFloatなど）
+TVariable: T型の変数アセット（VariableInt, VariableFloatなど）
 
 Unity2019ではGenericクラスはシリアライズできないため、
 よく使うであろう型についてはGenericクラスを継承した非Genericなクラスを用意しています。
@@ -66,7 +66,7 @@ public class Test : MonoBehaviour
 }
 ```
 
-SilCilSystemの[変数オブジェクト][page:Variable]を使用する場合は以下のようになります。
+SilCilSystemの[変数アセット][page:Variable]を使用する場合は以下のようになります。
 
 ```cs
 using UnityEngine;
@@ -74,7 +74,7 @@ using SilCilSystem.Variables;
 
 public class TestVariable : MonoBehaviour
 {
-    // 変数を変数オブジェクトに変更.
+    // 変数を変数アセットに変更.
     [SerializeField] private ReadonlyFloat m_speed = default;
 
     private void Update()
@@ -85,9 +85,9 @@ public class TestVariable : MonoBehaviour
 }
 ```
 
-変数オブジェクトへの変更により、移動速度を他のスクリプトから制御できるようになりました。
-しかし、このスクリプトを動かすためには、変数オブジェクトを作成して設定するという手間が加わりました。
-外部との連携をせずに動かしたい場合であっても変数オブジェクトを作成する必要があり、
+変数アセットへの変更により、移動速度を他のスクリプトから制御できるようになりました。
+しかし、このスクリプトを動かすためには、変数アセットを作成して設定するという手間が加わりました。
+外部との連携をせずに動かしたい場合であっても変数アセットを作成する必要があり、
 管理しなくてはならないアセットの数が増えてしまいます。
 
 そこで、Property, ReadonlyPropertyの出番です。
@@ -99,7 +99,7 @@ using SilCilSystem.Variables;
 
 public class TestVariable : MonoBehaviour
 {
-    // 変数オブジェクトを使う/使わないを選べるようになる.
+    // 変数アセットを使う/使わないを選べるようになる.
     [SerializeField] private ReadonlyPropertyFloat m_speed = new ReadonlyPropertyFloat(10f);
 
     private void Update()
@@ -110,7 +110,7 @@ public class TestVariable : MonoBehaviour
 }
 ```
 
-このようにすることで、変数オブジェクトを使用したい場合にのみ、エディタ上で指定できるようになります。
+このようにすることで、変数アセットを使用したい場合にのみ、エディタ上で指定できるようになります。
 
 ![エディタ上での見え方][fig:PropertyFloat]
 
@@ -125,7 +125,7 @@ Property, ReadonlyPropertyは現状RangeやTextAreaといった他のAttribute�
 
 ## 実装
 
-内部で変数オブジェクトと変数の両方の値を保持しているだけのラッパークラスです。
+内部で変数アセットと変数の両方の値を保持しているだけのラッパークラスです。
 
 ```cs
 public class Property<T, TVariable> where TVariable : Variable<T>
@@ -138,7 +138,7 @@ public class Property<T, TVariable> where TVariable : Variable<T>
 
     public T Value
     {
-        // 変数オブジェクトがnullのときは変数の値を使う.
+        // 変数アセットがnullのときは変数の値を使う.
         get => m_variable ?? m_value;
         set
         {

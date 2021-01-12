@@ -9,7 +9,7 @@ class
 ---
 
 AnimationState遷移時にイベントを発行するクラスです。
-UnityのAnimator機能と[イベントオブジェクト][page:GameEvent]を連携させることが可能です。
+UnityのAnimator機能と[イベントアセット][page:GameEvent]を連携させることが可能です。
 
 ## 設定項目
 
@@ -17,7 +17,7 @@ Stateの開始時と終了時のタイミングで処理を呼ぶことができ
 引数なしのイベントを呼ぶ場合は、GameEvent, UnityEngine.Events.UnityEventが利用できます。
 引数ありのイベントを呼ぶ場合には、以下の2通りが可能です。
 
-- 引数を固定値でイベントを呼ぶ -> UnityEventでイベントオブジェクトをPublish
+- 引数を固定値でイベントを呼ぶ -> UnityEventでイベントアセットをPublish
 - 引数にAnimatorのパラメータを使用する -> GameEventInfoInt, GameEventInfoFloat, GameEventInfoBoolを使用
 
 ※GameEventInfo~系はインスペクタ上での設定を可能にするためのprivateなサブクラスです。
@@ -26,20 +26,20 @@ Stateの開始時と終了時のタイミングで処理を呼ぶことができ
 
 |type|name|description|note|
 |-|-|-|-|
-|GameEvent|m_onStateEnter|引数なしのイベントオブジェクト||
-|GameEventInfoInt[]|m_onStateEnterInt|int型を引数にとるイベントオブジェクト|引数にAnimatorのint型パラメータを使用|
-|GameEventInfoFloat[]|m_onStateEnterFloat|int型を引数にとるイベントオブジェクト|引数にAnimatorのfloat型パラメータを使用|
-|GameEventInfoBool[]|m_onStateEnterBool|int型を引数にとるイベントオブジェクト|引数にAnimatorのbool型パラメータを使用|
+|GameEvent|m_onStateEnter|引数なしのイベントアセット||
+|GameEventInfoInt[]|m_onStateEnterInt|int型を引数にとるイベントアセット|引数にAnimatorのint型パラメータを使用|
+|GameEventInfoFloat[]|m_onStateEnterFloat|int型を引数にとるイベントアセット|引数にAnimatorのfloat型パラメータを使用|
+|GameEventInfoBool[]|m_onStateEnterBool|int型を引数にとるイベントアセット|引数にAnimatorのbool型パラメータを使用|
 |UnityEvent|m_onStateEnterEvent|メソッドを指定|引数を固定してイベントを呼びたい場合などに使用可能|
 
 ### State終了時にイベントを呼ぶ
 
 |type|name|description|note|
 |-|-|-|-|
-|GameEvent|m_onStateExit|引数なしのイベントオブジェクト||
-|GameEventInfoInt[]|m_onStateExitInt|int型を引数にとるイベントオブジェクト|引数にAnimatorのint型パラメータを使用|
-|GameEventInfoFloat[]|m_onStateExitFloat|int型を引数にとるイベントオブジェクト|引数にAnimatorのfloat型パラメータを使用|
-|GameEventInfoBool[]|m_onStateExitBool|int型を引数にとるイベントオブジェクト|引数にAnimatorのbool型パラメータを使用|
+|GameEvent|m_onStateExit|引数なしのイベントアセット||
+|GameEventInfoInt[]|m_onStateExitInt|int型を引数にとるイベントアセット|引数にAnimatorのint型パラメータを使用|
+|GameEventInfoFloat[]|m_onStateExitFloat|int型を引数にとるイベントアセット|引数にAnimatorのfloat型パラメータを使用|
+|GameEventInfoBool[]|m_onStateExitBool|int型を引数にとるイベントアセット|引数にAnimatorのbool型パラメータを使用|
 |UnityEvent|m_onStateExitEvent|メソッドを指定|引数を固定してイベントを呼びたい場合などに使用可能|
 
 ## 使用例
@@ -51,7 +51,7 @@ PublishOnStateを使用することでアニメーションとロジックを紐
 
 ここでは、State遷移時に音を鳴らしてみましょう。
 まずはAnimatorControllerのStateを選択してPublishOnStateをアタッチします。
-そして、OnStateEnterEventに[AudioPlayer][page:AudioPlayer]のイベントオブジェクトであるPlaySEを設定すれば音を鳴らすことができます。
+そして、OnStateEnterEventに[AudioPlayer][page:AudioPlayer]のイベントアセットであるPlaySEを設定すれば音を鳴らすことができます。
 
 ![State開始時に効果音を鳴らす][fig:PlaySEOnState]
 
@@ -65,7 +65,7 @@ PublishOnStateを使用することでアニメーションとロジックを紐
 UnityのAnimator機能はその名の通り、アニメーションのための機能です。
 通常は上記のように音を鳴らしたりといったエフェクト用の処理を呼ぶことが多いと思いますが、
 （使い勝手が良いかは置いておいて）有限ステートマシンとして利用することも可能です。
-Animatorのパラメータに[変数オブジェクトをバインドさせる][page:BindingVariable]ことでゲームロジックを実装することも可能です。
+Animatorのパラメータに[変数アセットをバインドさせる][page:BindingVariable]ことでゲームロジックを実装することも可能です。
 
 ここでは、制限時間10秒以内にスコアを10以上獲得したらゲームクリアになるロジックをコーディング無しで組んでみます。
 
@@ -97,7 +97,7 @@ Startで変数の値をPublishOnStateを用いて初期化します。
 ![Playの変数設定][fig:LogicPlayState]
 
 続いて、コンポーネントを設定します。
-Animatorコンポーネントと変数オブジェクトをバインドします。
+Animatorコンポーネントと変数アセットをバインドします。
 
 ![Animatorと変数のバインド][fig:LogicAnimatorComponent]
 

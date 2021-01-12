@@ -8,7 +8,7 @@ class
 
 ---
 
-変数オブジェクトの値を表示するためのコンポーネントです。
+変数アセットの値を表示するためのコンポーネントです。
 実際の表示処理は[IDisplayTextインターフェース][page:IDisplayText]に委譲し、
 このコンポーネントは表示形式の指定や表示する値のアニメーション設定を行います。
 
@@ -23,7 +23,7 @@ class
 |PropertyBool|m_isBusy|更新処理があったときはtrue|数値のアニメーションが終わったタイミングを知りたいときなど|
 |string|m_format|変数の値を代入する箇所を指定|変数設定のm_keyを{}で囲む|
 
-### 変数オブジェクトの個別設定
+### 変数アセットの個別設定
 
 #### 基本設定
 
@@ -31,7 +31,7 @@ class
 |-|-|-|-|
 |string|m_key|全体設定のm_formatで用いる識別用文字列|重複ないように設定|
 |ReadonlyPropertyString|m_format|変数の値の表示形式|ToStringの引数|
-|ScriptableObject|m_variable|用いる変数オブジェクト|ReadonlyでもVariableでも可、読取のみ使用|
+|ScriptableObject|m_variable|用いる変数アセット|ReadonlyでもVariableでも可、読取のみ使用|
 
 m_formatについては[C#のドキュメント][page:StringFormat]を参考にしてください。
 
@@ -76,20 +76,20 @@ public class TestScore : MonoBehaviour
 }
 ```
 
-変数オブジェクトを作成して設定します。
+変数アセットを作成して設定します。
 
-![変数オブジェクトを設定する][fig:TestScore]
+![変数アセットを設定する][fig:TestScore]
 
 次に、スコアをDisplayVariablesを用いて表示してみましょう。
 
 1. Textコンポーネント（TextMeshProでも可）と同じゲームオブジェクトにDisplayVariablesをアタッチして設定します。
 2. 全体設定のm_formatに"score: {score}"を入力します。
-3. m_intValuesにスコアの変数オブジェクトを設定します。
+3. m_intValuesにスコアの変数アセットを設定します。
 4. m_keyには"score", m_formatには"0"を入力します。
 
 ![DisplayVariablesで変数の値を表示する][fig:DisplayVariablesBasic]
 
-実行すれば、変数オブジェクトの値が表示されます。
+実行すれば、変数アセットの値が表示されます。
 
 アニメーションもさせてみましょう。
 m_durationに0.5を入力すれば0.5秒で変数の値に変わってくれます。

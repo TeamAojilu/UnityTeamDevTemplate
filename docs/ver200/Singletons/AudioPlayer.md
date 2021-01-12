@@ -57,8 +57,8 @@ class
 
 |type|name|description|note|
 |-|-|-|-|
-|GameEventStringListener|m_playBGM|PlayBGMを呼ぶイベントオブジェクト||
-|GameEventStringListener|m_playSE|PlaySEを呼ぶイベントオブジェクト||
+|GameEventStringListener|m_playBGM|PlayBGMを呼ぶイベントアセット||
+|GameEventStringListener|m_playSE|PlaySEを呼ぶイベントアセット||
 
 ## 使用例
 

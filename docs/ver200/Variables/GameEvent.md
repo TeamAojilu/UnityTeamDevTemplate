@@ -1,4 +1,4 @@
-# イベントオブジェクト
+# イベントアセット
 
 abstract
 
@@ -61,7 +61,7 @@ using SilCilSystem.Variables;
 
 public class RollDice : MonoBehaviour
 {
-    // イベントオブジェクトをシリアライズしてインスペクタで設定可能に.
+    // イベントアセットをシリアライズしてインスペクタで設定可能に.
     [SerializeField] private GameEventInt m_onDiceRolled = default;
 
     private void Update()
@@ -86,7 +86,7 @@ using SilCilSystem.Variables;
 
 public class DebugDice : MonoBehaviour
 {
-    // イベントオブジェクトをシリアライズしてインスペクタで設定可能に.
+    // イベントアセットをシリアライズしてインスペクタで設定可能に.
     [SerializeField] private GameEventIntListener m_onDiceRolled = default;
 
     // 登録解除用.
@@ -127,7 +127,7 @@ OnDisableやOnDestroyなど利用しましょう。
 
 ## 実装
 
-イベントオブジェクトはイベントハンドラをメンバに持つ単純なScriptableObejctとして実装されています。
+イベントアセットはイベントハンドラをメンバに持つ単純なScriptableObejctとして実装されています。
 例えば、GameEventを継承した抽象クラスEventNoArgsの具体的な実装は以下です。
 
 ```cs

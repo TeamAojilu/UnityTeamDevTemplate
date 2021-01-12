@@ -4,18 +4,18 @@ Timeline機能と連携して変数の値を変化させることができます
 
 ## 使用例
 
-変数オブジェクトをTimelineにドラッグ&ドロップすればTrackができます。
+変数アセットをTimelineにドラッグ&ドロップすればTrackができます。
 
 ### BoolActivation
 
-bool型の変数オブジェクトを用いるとBoolActivationが生成されます。
+bool型の変数アセットを用いるとBoolActivationが生成されます。
 これはclip内でboolの値がtrueになり、clip外でfalseになります。
 
 ![BoolActivationを作成して実行する][fig:BoolActivation]
 
 ### Tween
 
-floatなどの変数オブジェクトを用いるとTweenVaraiableが生成されます。
+floatなどの変数アセットを用いるとTweenVaraiableが生成されます。
 これは特定の値からある値へと徐々に変化させるclipです。
 
 ![TweenVariableを作成して実行する][fig:TweenVariable]

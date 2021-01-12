@@ -1,4 +1,4 @@
-# 変数オブジェクトをコンポーネントにバインドする
+# 変数アセットをコンポーネントにバインドする
 
 class
 
@@ -8,7 +8,7 @@ class
 
 ---
 
-[変数オブジェクト][page:Variable]の値をuGUIのUI要素やAnimatorのパラメータに設定することができます。（以下、バインドと表記）
+[変数アセット][page:Variable]の値をuGUIのUI要素やAnimatorのパラメータに設定することができます。（以下、バインドと表記）
 ToggleのON/OFFやSliderのValueをバインドすることでUIとゲームロジックの連携が可能です。
 
 ## クラス一覧
@@ -17,7 +17,7 @@ ToggleのON/OFFやSliderのValueをバインドすることでUIとゲームロ�
 
 |対象のコンポーネント|name|description|
 |-|-|-|
-|Animator|BindingAnimator|AnimatorControllerのパラメータへのバインド、イベントオブジェクトによるSetTriggerも可能|
+|Animator|BindingAnimator|AnimatorControllerのパラメータへのバインド、イベントアセットによるSetTriggerも可能|
 |CanvasGroup|BindingCanvasGroup|Alphaパラメータはアニメーション可能|
 |Slider|BindingSlider|Valueパラメータはアニメーション可能|
 |Toggle|BindingToggle||
@@ -58,9 +58,9 @@ ToggleのON/OFFやSliderのValueをバインドすることでUIとゲームロ�
 
 ## 使用例
 
-### Sliderに変数オブジェクトをバインドする
+### Sliderに変数アセットをバインドする
 
-変数オブジェクトをSliderのValueにバインドすることで、HPゲージなどに利用できます。
+変数アセットをSliderのValueにバインドすることで、HPゲージなどに利用できます。
 
 試しに、Z/Xキーで値を増減させるスクリプトを書いてみます。
 
@@ -93,13 +93,13 @@ public class TestSlider : MonoBehaviour
 }
 ```
 
-float型の変数オブジェクトを作成してm_valueに設定します。
+float型の変数アセットを作成してm_valueに設定します。
 
 ![TestSliderの設定][fig:TestSliderComponent]
 
 Sliderを作成します。
 簡単のために、Interactableはfalseにしてプレイヤーがスライダーを動かせないようにします。
-BindingSliderをアタッチして、m_valueに先ほど作成したものと同じ変数オブジェクトを設定すれば機能します。
+BindingSliderをアタッチして、m_valueに先ほど作成したものと同じ変数アセットを設定すれば機能します。
 
 ![BindingSliderを設定する][fig:BindingSlider]
 
@@ -111,14 +111,14 @@ BindingSliderをアタッチして、m_valueに先ほど作成したものと同
 #### 双方向バインドする
 
 SliderのInteractableをtrueにすれば、プレイヤーが画面上で値を変更できるようになります。
-プレイヤーに変更された値を変数オブジェクトの値に反映させる（UI -> 変数オブジェクト）には
-SliderのOnValueChangedイベントに変数オブジェクトを設定することで可能です。
+プレイヤーに変更された値を変数アセットの値に反映させる（UI -> 変数アセット）には
+SliderのOnValueChangedイベントに変数アセットを設定することで可能です。
 
 ![Interactableをtrueにした双方向バインディング][fig:InteractableSlider]
 
 ## 使用上の注意点
 
-「UI -> 変数オブジェクト」の連携をさせる場合はアニメーションはさせないようにしましょう。
+「UI -> 変数アセット」の連携をさせる場合はアニメーションはさせないようにしましょう。
 
 毎フレーム設定するのはパフォーマンス的にネックになる可能性もあります。
 とりあえず使用してみて問題になりそうなら、独自に作成するぐらいがいいと思います。

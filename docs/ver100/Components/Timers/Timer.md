@@ -9,7 +9,7 @@ class
 ---
 
 時間を測定するコンポーネントです。
-変数オブジェクトの値をUpdateメソッド内で変更します。
+変数アセットの値をUpdateメソッド内で変更します。
 2倍速で計算したり、-1倍速にしてカウントダウンさせたり、一定間隔ごとに処理を呼んだりできます。
 
 ## 設定項目
@@ -19,7 +19,7 @@ class
 |type|name|description|note|
 |-|-|-|-|
 |ReadonlyPropertyBool|m_enable|trueなら時間測定を実行||
-|VariableFloat|m_time|時間を表す変数オブジェクト||
+|VariableFloat|m_time|時間を表す変数アセット||
 |ReadonlyPropertyFloat|m_initialTime|開始次のm_timeの値|Startメソッドで代入|
 |ReadonlyPropertyFloat|m_timeScale|時間スケール|1なら等倍速、2なら2倍速|
 
@@ -90,7 +90,7 @@ m_onMinValueに5秒ごとに呼ぶ処理を登録します。
 
 ## 実装
 
-Updateで処理して変数オブジェクトの値を加算しています。
+Updateで処理して変数アセットの値を加算しています。
 
 ```cs
 private void Update()
@@ -103,7 +103,7 @@ private void Update()
 
 更新処理はm_repeatingがtrueの場合はMathf.Repeatを、
 falseの場合はMathf.Clampを使用しています。
-変更があった場合のみ、変数オブジェクトに値を代入しています。
+変更があった場合のみ、変数アセットに値を代入しています。
 
 ```cs
 private void SetTime(float t)
