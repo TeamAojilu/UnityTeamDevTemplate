@@ -48,7 +48,8 @@ SilCilSystemの他の要素は主に変数/イベントアセットを利用し�
 ### 時間
 
 - [時間を測定する][page:Timer]
-- 一定時間後/一定間隔で処理を行う
+- [一定時間後/一定間隔で処理を行う][page:TimeMethods]
+- [毎フレーム処理を呼ぶ][page:UpdateDispatcher]
 - [Tweenコルーチンを用いて変数の値を時間変化させる][page:TweenVariableCoroutine]
 
 ### 機能のON/OFF
@@ -62,16 +63,30 @@ SilCilSystemの他の要素は主に変数/イベントアセットを利用し�
 - [Animatorの遷移時にイベントを呼ぶ][page:PublishOnState]
 - [Timelineで変数の値を変える][page:ChangeVariableInTimeline]
 
+### シーン遷移
+
+- [シーンをロードする][page:SceneLoader]
+
+### 音楽
+
+- [AudioClipを再生する][page:AudioPlayer]
+
+### 数学
+
+- [イージング関数を取得/設定する][page:InterpolationCurve]
+- [floatからintへの変換方法を指定する][page:FloatToInt]
+- 値の比較方法を指定する
+
+### オブジェクトプール
+
+- [オブジェクトプール][page:ObjectPool]
+- [IDisposableを生成する][page:DelegateDispose]
+
 ---
 
-### その他
-
-#### シングルトン
+### シングルトン
 
 - [シングルトンの実装][page:SingletonMonoBehaviour]
-- [シーンのロード][page:SceneLoader]
-- [音楽の再生][page:AudioPlayer]
-- Updateの移譲
 
 作成したシングルトンはゲーム開始時に自動で生成されるようにEditor拡張されています。
 Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが生成されるようになっています。
@@ -79,16 +94,6 @@ Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが�
 ![InitialPrefabs][fig:InitialPrefabs]
 
 ※生成処理はPrefabGeneratorOnLoad.csに記述してあります。
-
-#### Math
-
-- [イージング関数を取得/設定する][page:InterpolationCurve]
-- [floatからintへの変換方法を指定する][page:FloatToInt]
-
-#### オブジェクトプール
-
-- [オブジェクトプール][page:ObjectPool]
-- [IDisposableを生成する][page:DelegateDispose]
 
 ## ログ
 

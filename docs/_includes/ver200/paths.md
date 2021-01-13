@@ -21,6 +21,11 @@
 <!--- ObjectPools --->
 [page:ObjectPool]: /UnityTeamDevTemplate/ver200/Variables/ObjectPools/ObjectPool.html
 
+<!--- Timers --->
+[page:TimeMethods]: /UnityTeamDevTemplate/ver200/Timers/TimeMethods.html
+[page:UpdateDispatcher]: /UnityTeamDevTemplate/ver200/Timers/UpdateDispatcher.html
+[page:UpdateMode]: /UnityTeamDevTemplate/ver200/Timers/UpdateMode.html
+
 <!--- 変数 set --->
 
 [page:Timer]: /UnityTeamDevTemplate/ver200/Components/Timers/Timer.html
