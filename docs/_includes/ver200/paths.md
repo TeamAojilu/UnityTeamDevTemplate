@@ -18,6 +18,9 @@
 [page:CompositeDisposable]: /UnityTeamDevTemplate/ver200/Variables/IDisposable/CompositeDisposable.html
 [page:DelegateDispose]: /UnityTeamDevTemplate/ver200/Variables/IDisposable/DelegateDispose.html
 
+<!-- DragDrop --->
+[page:MonoBehaviourDragDrop]: /UnityTeamDevTemplate/ver200/Editors/MonoBehaviourDragDrop.html
+
 <!--- ObjectPools --->
 [page:ObjectPool]: /UnityTeamDevTemplate/ver200/Variables/ObjectPools/ObjectPool.html
 
