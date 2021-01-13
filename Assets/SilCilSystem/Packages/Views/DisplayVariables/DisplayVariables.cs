@@ -53,6 +53,7 @@ namespace SilCilSystem.Views
             var item = new DisplayVariableFloat();
             item.m_key = key;
             item.m_variable = variable;
+            item.m_format = new ReadonlyPropertyString("0.000");
             m_floatValues.Add(item);
 
             SetVariables();

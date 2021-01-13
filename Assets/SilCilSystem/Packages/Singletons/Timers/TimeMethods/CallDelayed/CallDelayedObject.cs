@@ -1,55 +1,44 @@
 ﻿using System;
 using SilCilSystem.ObjectPools;
-using Object = UnityEngine.Object;
 
 namespace SilCilSystem.Timers
 {
-    internal class CallDelayedObject : IUpdatable, IPooledObject
+    internal class CallDelayedObject : IPooledObject
     {
         private float m_time = 0f;
 
         public float Delay { get; set; }
-
-        public Object LifeTimeObject { get; set; }
-
-        public Action CallBack { get; set; }
-
+        public Action Method { get; private set; }
         /// <summary>nullならtrue扱い</summary>
-        public Func<bool> IsEnable { get; set; }
-
-        public bool Enabled => LifeTimeObjectIsNull() == false && IsEnable?.Invoke() != false;
-
-        public bool IsPooled => LifeTimeObject == null;
+        public Func<bool> IsEnable { get; private set; }
+        public bool IsPooled { get; private set; } = true;
 
         public bool Update(float deltaTime)
         {
+            if (IsPooled) return false;
+            if (IsEnable?.Invoke() == false) return true;
             m_time += deltaTime;
             if (m_time < Delay) return true;
-            CallBack?.Invoke();
+            Method?.Invoke();
             Clear();
             return false;
         }
 
-        private bool LifeTimeObjectIsNull()
+        public void SetParameter(Action method, float delay, Func<bool> enabled = null)
         {
-            if(LifeTimeObject == null)
-            {
-                Clear();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            Method = method;
+            Delay = delay;
+            IsEnable = enabled;
+            IsPooled = false;
         }
 
         private void Clear()
         {
             m_time = 0f;
             Delay = 0f;
-            LifeTimeObject = null;
-            CallBack = null;
+            Method = null;
             IsEnable = null;
+            IsPooled = true;
         }
     }
 }

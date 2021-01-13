@@ -1,32 +1,26 @@
 ﻿using System;
 using SilCilSystem.ObjectPools;
-using Object = UnityEngine.Object;
 
 namespace SilCilSystem.Timers
 {
-    internal class CallRepeatedlyObject : IUpdatable, IPooledObject
+    internal class CallRepeatedlyObject : IPooledObject
     {
         private float m_time = 0f;
         private int m_count = 0;
 
-        public Action Method { get; set; }
-
+        public Action Method { get; private set; }
         public float Interval { get; set; }
-
-        public Object LifeTimeObject { get; set; }
-
         /// <summary>負なら無限</summary>
         public int RepeatCount { get; set; }
-
         /// <summary>nullならtrue扱い</summary>
-        public Func<bool> IsEnabled { get; set; }
-
-        public bool Enabled => LifeTimeObjectIsNull() == false && IsEnabled?.Invoke() != false;
-
-        public bool IsPooled => LifeTimeObject == null;
+        public Func<bool> IsEnabled { get; private set; }
+        public bool IsPooled { get; private set; }
 
         public bool Update(float deltaTime)
         {
+            if (IsPooled) return false;
+            if (IsEnabled?.Invoke() == false) return true;
+
             m_time += deltaTime;
             if (m_time < Interval) return true;
 
@@ -45,26 +39,22 @@ namespace SilCilSystem.Timers
             }
         }
 
-        private bool LifeTimeObjectIsNull()
+        public void SetParameters(Action method, float interval, int repeatCount, Func<bool> enabled)
         {
-            if(LifeTimeObject == null)
-            {
-                Clear();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            Method = method;
+            Interval = interval;
+            RepeatCount = repeatCount;
+            IsEnabled = enabled;
+            IsPooled = false;
         }
 
         private void Clear()
         {
-            Method = null;
-            LifeTimeObject = null;
-            IsEnabled = null;
             m_time = 0f;
             m_count = 0;
+            Method = null;
+            IsEnabled = null;
+            IsPooled = true;
         }
     }
 }

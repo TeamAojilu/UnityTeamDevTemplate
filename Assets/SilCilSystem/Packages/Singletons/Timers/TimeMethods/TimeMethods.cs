@@ -10,14 +10,14 @@ namespace SilCilSystem.Timers
         
         public static void CallDelayed(Action method, float delay, Object lifeTimeObject, UpdateMode updateMode = UpdateMode.DeltaTime)
         {
-            var call = m_callDelayedFactory.Create(method, delay, lifeTimeObject);
-            UpdateDispatcher.Register(call, updateMode);
+            var call = m_callDelayedFactory.Create(method, delay);
+            UpdateDispatcher.Register(call, lifeTimeObject, updateMode);
         }
 
         public static void CallRepeatedly(Action method, float interval, Object lifeTimeObject, UpdateMode updateMode = UpdateMode.DeltaTime, int repeatCount = -1, Func<bool> enabled = null)
         {
-            var call = m_callRepeatedlyFactory.Create(method, interval, lifeTimeObject, repeatCount: repeatCount, enabled: enabled);
-            UpdateDispatcher.Register(call, updateMode);
+            var call = m_callRepeatedlyFactory.Create(method, interval, repeatCount: repeatCount, enabled: enabled);
+            UpdateDispatcher.Register(call, lifeTimeObject, updateMode);
         }
     }
 }

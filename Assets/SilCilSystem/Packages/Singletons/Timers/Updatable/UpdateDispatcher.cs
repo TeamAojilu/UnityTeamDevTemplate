@@ -2,32 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SilCilSystem.Singletons;
+using SilCilSystem.ObjectPools;
+using Object = UnityEngine.Object;
 
 namespace SilCilSystem.Timers
 {
     public class UpdateDispatcher : SingletonMonoBehaviour<UpdateDispatcher>
     {
-        public static void Register(IUpdatable updatable, UpdateMode mode, bool canDuplicated = false)
-            => Instance.Add(updatable, mode, canDuplicated);
+        public static void Register(Func<float, bool> update, Object lifeTimeObject, UpdateMode mode = UpdateMode.DeltaTime)
+            => Instance.Add(update, lifeTimeObject, mode);
+        
+        private class UpdateInfo : IPooledObject
+        {
+            public Object LifeTimeObject { get; set; }
+            public Func<float, bool> Update { get; set; }
+            public bool IsPooled => LifeTimeObject == null;
+            public void Clear()
+            {
+                LifeTimeObject = null;
+                Update = null;
+            }
+        }
 
         private const int Capacity = 32;
-        private Dictionary<UpdateMode, IUpdatable[]> m_updatables = new Dictionary<UpdateMode, IUpdatable[]>();
+        private Dictionary<UpdateMode, UpdateInfo[]> m_updatables = new Dictionary<UpdateMode, UpdateInfo[]>();
+        private ObjectPool<UpdateInfo> m_pool = new ObjectPool<UpdateInfo>(() => new UpdateInfo());
 
         protected override void OnAwake()
         {
             foreach(UpdateMode key in Enum.GetValues(typeof(UpdateMode)))
             {
-                m_updatables[key] = new IUpdatable[Capacity];
+                m_updatables[key] = new UpdateInfo[Capacity];
             }
         }
 
-        private void Add(IUpdatable timer, UpdateMode mode, bool canDuplicated)
+        private void Add(Func<float, bool> update, Object lifeTimeObject, UpdateMode mode)
         {
+            var instance = m_pool.GetInstance();
+            instance.LifeTimeObject = lifeTimeObject;
+            instance.Update = update;
+
+            // 空いているところに設定する.
             for (int i = 0; i < m_updatables[mode].Length; i++)
             {
-                if (canDuplicated == false && m_updatables[mode][i] == timer) return;
                 if (m_updatables[mode][i] != null) continue;
-                m_updatables[mode][i] = timer;
+                m_updatables[mode][i] = instance;
                 return;
             }
 
@@ -35,7 +54,7 @@ namespace SilCilSystem.Timers
             var array = m_updatables[mode];
             int length = array.Length;
             Array.Resize(ref array, length * 2);
-            array[length] = timer;
+            array[length] = instance;
         }
 
         private void FixedUpdate()
@@ -61,9 +80,11 @@ namespace SilCilSystem.Timers
             for(int i = 0; i < m_updatables[mode].Length; i++)
             {
                 if (m_updatables[mode][i] == null) continue;
-                if (!m_updatables[mode][i].Enabled) continue;
-                if (m_updatables[mode][i].Update(deltaTime)) continue;
-                m_updatables[mode][i] = null;
+                if (m_updatables[mode][i].LifeTimeObject == null || m_updatables[mode][i].Update?.Invoke(deltaTime) != true)
+                {
+                    m_updatables[mode][i]?.Clear();
+                    m_updatables[mode][i] = null;            
+                }
             }
         }
 

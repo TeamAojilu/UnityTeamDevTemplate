@@ -1,6 +1,5 @@
 ﻿using System;
 using SilCilSystem.ObjectPools;
-using Object = UnityEngine.Object;
 
 namespace SilCilSystem.Timers
 {
@@ -8,13 +7,11 @@ namespace SilCilSystem.Timers
     {
         private ObjectPool<CallDelayedObject> m_pool = new ObjectPool<CallDelayedObject>(() => new CallDelayedObject());
 
-        public IUpdatable Create(Action method, float delay, Object lifeTimeObject, Func<bool> isEnabled = null)
+        public Func<float, bool> Create(Action method, float delay, Func<bool> isEnabled = null)
         {
             var call = m_pool.GetInstance();
-            call.CallBack = method;
-            call.Delay = delay;
-            call.LifeTimeObject = lifeTimeObject;
-            return call;
+            call.SetParameter(method, delay, isEnabled);
+            return call.Update;
         }
     }
 }

@@ -26,7 +26,6 @@ namespace SilCilSystem.Editors
                 }
             }
 
-            Debug.Log(label.tooltip);
             base.OnGUI(position, property, label);
         }
     }
