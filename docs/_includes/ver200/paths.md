@@ -23,6 +23,9 @@
 [page:VariableDragDrop]: /UnityTeamDevTemplate/ver200/Editors/VariableDragDrop.html
 [page:VariableAttribute]: /UnityTeamDevTemplate/ver200/Editors/VariableAttribute.html
 
+<!--- Attribute --->
+[page:NonEditableAttribute]: /UnityTeamDevTemplate/ver200/Editors/NonEditableAttribute.html
+
 <!--- ObjectPools --->
 [page:ObjectPool]: /UnityTeamDevTemplate/ver200/Variables/ObjectPools/ObjectPool.html
 

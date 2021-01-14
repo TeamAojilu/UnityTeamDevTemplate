@@ -174,6 +174,9 @@ public class VariableElement : Variable<Element>
 [Variable("ToElement", null)]
 ```
 
+また、自動で参照設定するようにした場合、インスペクタ上で参照をいじれてしまうのは不便かもしれません。
+その場合は、[NonEditable属性][page:NonEditableAttribute]を利用するとよいでしょう。
+
 ## 実装
 
 属性で指定されたクラスとメソッドをリフレクションしています。
