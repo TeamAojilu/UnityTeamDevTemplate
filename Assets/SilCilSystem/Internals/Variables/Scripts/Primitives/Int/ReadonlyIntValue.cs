@@ -9,7 +9,7 @@ namespace SilCilSystem.Internals.Variables
     [Variable("Readonly", Constants.ReadonlyMenuPath + "(Int)", typeof(VariableInt))]
     internal class ReadonlyIntValue : ReadonlyInt
     {
-        [SerializeField, NotEditable] private VariableInt m_variable = default;
+        [SerializeField, NonEditable] private VariableInt m_variable = default;
 
         public override int Value => m_variable.Value;
 

@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables
     [Variable("Listener", Constants.ListenerMenuPath + "(Bool)", typeof(GameEventBool))]
     internal class EventBoolListener : GameEventBoolListener
     {
-        [SerializeField, NotEditable] private GameEventBool m_event = default;
+        [SerializeField, NonEditable] private GameEventBool m_event = default;
 
         public override IDisposable Subscribe(Action<bool> action) => m_event?.Subscribe(action);
 

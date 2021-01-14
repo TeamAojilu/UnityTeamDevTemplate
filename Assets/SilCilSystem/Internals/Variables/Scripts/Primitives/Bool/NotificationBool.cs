@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables
     internal class NotificationBool : VariableBool
     {
         [SerializeField] private bool m_value = default;
-        [SerializeField, NotEditable] private GameEventBool m_onValueChanged = default;
+        [SerializeField, NonEditable] private GameEventBool m_onValueChanged = default;
 
         public override bool Value
         {

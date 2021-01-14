@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables
     [Variable("Listener", Constants.ListenerMenuPath + "(Vector2)", typeof(GameEventVector2))]
     internal class EventVector2Listener : GameEventVector2Listener
     {
-        [SerializeField, NotEditable] private GameEventVector2 m_event = default;
+        [SerializeField, NonEditable] private GameEventVector2 m_event = default;
 
         public override IDisposable Subscribe(Action<Vector2> action) => m_event?.Subscribe(action);
 

@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables
     internal class NotificationString : VariableString
     {
         [SerializeField] private string m_value = default;
-        [SerializeField, NotEditable] private GameEventString m_onValueChanged = default;
+        [SerializeField, NonEditable] private GameEventString m_onValueChanged = default;
 
         public override string Value
         {

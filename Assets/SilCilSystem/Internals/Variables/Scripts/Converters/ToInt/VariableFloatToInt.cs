@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables.Converters
     [Variable("ToInt", Constants.ConvertMenuPath + "Int (from Float)", typeof(VariableFloat))]
     internal class VariableFloatToInt : VariableInt
     {
-        [SerializeField, NotEditable] private VariableFloat m_variable = default;
+        [SerializeField, NonEditable] private VariableFloat m_variable = default;
         [SerializeField] private FloatToInt.CastType m_castType = default;
 
         public override int Value
