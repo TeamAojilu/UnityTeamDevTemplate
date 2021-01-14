@@ -54,7 +54,7 @@ namespace SilCilSystem.Editors
         protected abstract GameObject CreateText();
     }
 
-    [AddVariableDragDrop("Readonly/Text")]
+    [VariableDragDrop("Readonly/Text")]
     internal class TextGenerator : TextGeneratorBase
     {
         protected override GameObject CreateText()
@@ -63,7 +63,7 @@ namespace SilCilSystem.Editors
         }
     }
 
-    [AddVariableDragDrop("Readonly/Text - Text Mesh Pro")]
+    [VariableDragDrop("Readonly/Text - Text Mesh Pro")]
     internal class TextTMPGenerator : TextGeneratorBase
     {
         protected override GameObject CreateText()

@@ -22,10 +22,11 @@ namespace SilCilSystem.Editors
     [CustomEditor(typeof(ReadonlyVariable<Color>), true), CanEditMultipleObjects]
     internal class ReadonlyVariableColorEditor : ReadonlyVariableEditor<Color> 
     {
-        protected override void DrawReadonlyValue(Rect rect, Color value)
+        protected override void DrawValue(Rect rect)
         {
+            var variable = target as ReadonlyVariable<Color>;
             GUI.enabled = false;
-            EditorGUI.ColorField(rect, "Value", value);
+            EditorGUI.ColorField(rect, "Value", variable.Value);
             GUI.enabled = true;
         }
     }

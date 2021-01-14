@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables.Converters
     [Variable("ToFloat", Constants.ConvertMenuPath + "Vector3 (from Vector3Int)", typeof(VariableVector3Int))]
     internal class VariableVector3IntToVector3 : VariableVector3
     {
-        [SerializeField, NotEditable] private VariableVector3Int m_variable = default;
+        [SerializeField, NonEditable] private VariableVector3Int m_variable = default;
         [SerializeField] private FloatToInt.CastType m_castType = default;
 
         public override Vector3 Value

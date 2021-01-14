@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables
     [Variable("Listener", Constants.ListenerMenuPath + "(Float)", typeof(GameEventFloat))]
     internal class EventFloatListener : GameEventFloatListener
     {
-        [SerializeField, NotEditable] private GameEventFloat m_event = default;
+        [SerializeField, NonEditable] private GameEventFloat m_event = default;
 
         public override IDisposable Subscribe(Action<float> action) => m_event?.Subscribe(action);
 

@@ -5,11 +5,11 @@ namespace SilCilSystem.Editors
 {
     [Conditional("UNITY_EDITOR")]
     [AttributeUsage(AttributeTargets.Class)]
-    public class AddVariableDragDropAttribute : Attribute
+    public class VariableDragDropAttribute : Attribute
     {
         public readonly string m_path;
 
-        public AddVariableDragDropAttribute(string pathName)
+        public VariableDragDropAttribute(string pathName)
         {
             m_path = pathName;
         }

@@ -9,7 +9,7 @@ namespace SilCilSystem.Internals.Variables
     [Variable("Readonly", Constants.ReadonlyMenuPath + "(Quaternion)", typeof(VariableQuaternion))]
     internal class ReadonlyQuaternionValue : ReadonlyQuaternion
     {
-        [SerializeField, NotEditable] private VariableQuaternion m_variable = default;
+        [SerializeField, NonEditable] private VariableQuaternion m_variable = default;
 
         public override Quaternion Value => m_variable.Value;
 
