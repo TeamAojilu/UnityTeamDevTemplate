@@ -21,6 +21,7 @@
 <!-- DragDrop --->
 [page:MonoBehaviourDragDrop]: /UnityTeamDevTemplate/ver200/Editors/MonoBehaviourDragDrop.html
 [page:VariableDragDrop]: /UnityTeamDevTemplate/ver200/Editors/VariableDragDrop.html
+[page:VariableAttribute]: /UnityTeamDevTemplate/ver200/Editors/VariableAttribute.html
 
 <!--- ObjectPools --->
 [page:ObjectPool]: /UnityTeamDevTemplate/ver200/Variables/ObjectPools/ObjectPool.html
