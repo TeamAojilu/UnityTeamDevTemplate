@@ -99,9 +99,9 @@ Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが�
 
 - [MonoBehaviourDragDrop][page:MonoBehaviourDragDrop]
 - [VariableDragDrop][page:VariableDragDrop]
-- [VariableAttribute, OnAttached][page:VariableAttribute]
+- [Variable, OnAttached][page:VariableAttribute]
 - [NonEditable][page:NonEditableAttribute]
-- EnumLabel
+- [EnumLabel][page:EnumLabelAttribute]
 
 ## ログ
 

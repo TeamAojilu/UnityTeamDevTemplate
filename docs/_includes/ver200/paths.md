@@ -25,6 +25,7 @@
 
 <!--- Attribute --->
 [page:NonEditableAttribute]: /UnityTeamDevTemplate/ver200/Editors/NonEditableAttribute.html
+[page:EnumLabelAttribute]: /UnityTeamDevTemplate/ver200/Editors/EnumLabelAttribute.html
 
 <!--- ObjectPools --->
 [page:ObjectPool]: /UnityTeamDevTemplate/ver200/Variables/ObjectPools/ObjectPool.html
