@@ -39,7 +39,7 @@ namespace SilCilSystem.Editors
         protected abstract void PostProcess(VariableAsset dropAsset, Toggle toggle);
     }
 
-    [AddVariableDragDrop("Readonly/Toggle")]
+    [VariableDragDrop("Readonly/Toggle")]
     internal class ReadonlyToggleGenerator : ToggleGeneratorBase
     {
         protected override void PostProcess(VariableAsset dropAsset, Toggle toggle)
@@ -52,7 +52,7 @@ namespace SilCilSystem.Editors
         }
     }
 
-    [AddVariableDragDrop("Interactive/Toggle")]
+    [VariableDragDrop("Interactive/Toggle")]
     internal class ToggleGenerator : ToggleGeneratorBase
     {
         public override bool IsAccepted(VariableAsset[] dropAsset)

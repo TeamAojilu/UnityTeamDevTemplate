@@ -31,13 +31,13 @@ namespace SilCilSystem.Editors
         }
     }
 
-    [AddVariableDragDrop("Activators/GameObjects")]
+    [VariableDragDrop("Activators/GameObjects")]
     internal class GameObjectActivatorGenerator : ActivatorGeneratorBase<GameObjectActivator>
     {
         protected override string Prefix => nameof(GameObjectActivator);
     }
 
-    [AddVariableDragDrop("Activators/Behaviours")]
+    [VariableDragDrop("Activators/Behaviours")]
     internal class BehaviourActivatorGenerator : ActivatorGeneratorBase<BehaviourActivator>
     {
         protected override string Prefix => nameof(BehaviourActivator);

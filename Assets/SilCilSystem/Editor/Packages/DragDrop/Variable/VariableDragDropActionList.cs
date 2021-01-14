@@ -23,7 +23,7 @@ namespace SilCilSystem.Editors
             if (!typeof(VariableDragDropAction).IsAssignableFrom(type)) return;
             if (type.IsAbstract) return;
 
-            var attr = type.GetCustomAttribute<AddVariableDragDropAttribute>();
+            var attr = type.GetCustomAttribute<VariableDragDropAttribute>();
             if (attr == null) return;
 
             var constructor = type.GetConstructor(Type.EmptyTypes);
