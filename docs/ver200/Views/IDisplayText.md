@@ -2,7 +2,7 @@
 
 interface
 
-名前空間：SilCilSystem.Components.Views
+名前空間：SilCilSystem.Views
 
 ---
 

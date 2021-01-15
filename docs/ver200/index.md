@@ -74,7 +74,7 @@ SilCilSystemの他の要素は主に変数/イベントアセットを利用し�
 
 - [イージング関数を取得/設定する][page:InterpolationCurve]
 - [floatからintへの変換方法を指定する][page:FloatToInt]
-- 値の比較方法を指定する
+- [値の比較方法を指定する][page:Comparison]
 
 ### IDisposable
 
@@ -106,5 +106,3 @@ SilCilSystemの他の要素は主に変数/イベントアセットを利用し�
 <!--- 参照 --->
 
 {% include ver200/paths.md %}
-
-[fig:InitialPrefabs]: Figures/InitialPrefabs.png

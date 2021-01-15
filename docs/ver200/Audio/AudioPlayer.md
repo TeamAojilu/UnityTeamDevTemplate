@@ -2,9 +2,9 @@
 
 class
 
-名前空間：SilCilSystem.Singletons
+名前空間：SilCilSystem.Audio
 
-継承：SingletonMonoBehaviour\<T>
+継承：[SingletonMonoBehaviour\<T>][page:SingletonMonoBehaviour]
 
 ---
 

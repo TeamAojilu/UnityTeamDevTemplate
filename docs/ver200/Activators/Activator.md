@@ -2,7 +2,7 @@
 
 abstract
 
-名前空間：SilCilSystem.Components.Activators
+名前空間：SilCilSystem.Activators
 
 継承：MonoBehaviour
 

@@ -24,30 +24,31 @@
 [page:TimeMethods]: /UnityTeamDevTemplate/ver200/Timers/TimeMethods.html
 [page:UpdateDispatcher]: /UnityTeamDevTemplate/ver200/Timers/UpdateDispatcher.html
 [page:UpdateMode]: /UnityTeamDevTemplate/ver200/Timers/UpdateMode.html
-[page:Timer]: /UnityTeamDevTemplate/ver200/Components/Timers/Timer.html
-[page:TweenVariableCoroutine]: /UnityTeamDevTemplate/ver200/Variables/Tween/TweenVariableCoroutine.html
-[page:ChangeVariableInTimeline]: /UnityTeamDevTemplate/ver200/Variables/Timeline/ChangeVariableInTimeline.html
+[page:Timer]: /UnityTeamDevTemplate/ver200/Timers/Timer.html
+[page:TweenVariableCoroutine]: /UnityTeamDevTemplate/ver200/Tween/TweenVariableCoroutine.html
+[page:ChangeVariableInTimeline]: /UnityTeamDevTemplate/ver200/Timeline/ChangeVariableInTimeline.html
 
 <!--- Binding --->
 
-[page:Activator]: /UnityTeamDevTemplate/ver200/Components/Activators/Activator.html
-[page:DisplayVariables]: /UnityTeamDevTemplate/ver200/Components/Views/DisplayVariables.html
-[page:IDisplayText]: /UnityTeamDevTemplate/ver200/Components/Views/IDisplayText.html
-[page:BindingVariable]: /UnityTeamDevTemplate/ver200/Components/Views/BindingVariable.html
+[page:Activator]: /UnityTeamDevTemplate/ver200/Activators/Activator.html
+[page:DisplayVariables]: /UnityTeamDevTemplate/ver200/Views/DisplayVariables.html
+[page:IDisplayText]: /UnityTeamDevTemplate/ver200/Views/IDisplayText.html
+[page:BindingVariable]: /UnityTeamDevTemplate/ver200/Views/BindingVariable.html
 [page:PublishOnState]: /UnityTeamDevTemplate/ver200/StateMachines/PublishOnState.html
 
 <!--- Scene --->
 
-[page:SceneLoader]: /UnityTeamDevTemplate/ver200/Singletons/SceneLoader.html
+[page:SceneLoader]: /UnityTeamDevTemplate/ver200/SceneLoaders/SceneLoader.html
 
 <!--- Audio --->
 
-[page:AudioPlayer]: /UnityTeamDevTemplate/ver200/Singletons/AudioPlayer.html
+[page:AudioPlayer]: /UnityTeamDevTemplate/ver200/Audio/AudioPlayer.html
 
 <!--- Math --->
 
 [page:InterpolationCurve]: /UnityTeamDevTemplate/ver200/Math/InterpolationCurve.html
 [page:FloatToInt]: /UnityTeamDevTemplate/ver200/Math/FloatToInt.html
+[page:Comparison]: /UnityTeamDevTemplate/ver200/Templates/NotYet.html
 
 <!--- IDisposable --->
 
