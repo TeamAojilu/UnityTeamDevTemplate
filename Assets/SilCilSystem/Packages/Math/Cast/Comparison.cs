@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SilCilSystem.Editors;
 
 namespace SilCilSystem.Math
@@ -16,20 +17,29 @@ namespace SilCilSystem.Math
         }
 
         public static bool Compare<T>(this CompareType compareType, T value1, T value2) where T : IComparable<T>
+            => Compare(value1.CompareTo(value2), compareType);
+
+        public static bool Compare<T>(this CompareType compareType, T value1, T value2, IComparer<T> comparer)
+            => Compare(comparer.Compare(value1, value2), compareType);
+
+        private static bool Compare(int compareValue, CompareType compareType)
         {
             switch (compareType)
             {
-                case CompareType.EqualTo: return value1.CompareTo(value2) == 0;
-                case CompareType.NotEqualTo: return value1.CompareTo(value2) != 0;
-                case CompareType.LessThan: return value1.CompareTo(value2) < 0;
-                case CompareType.LessThanOrEqualTo: return value1.CompareTo(value2) <= 0;
-                case CompareType.GreaterThan: return value1.CompareTo(value2) > 0;
-                case CompareType.GreaterThanOrEqualTo: return value1.CompareTo(value2) >= 0;
+                case CompareType.EqualTo: return compareValue == 0;
+                case CompareType.NotEqualTo: return compareValue != 0;
+                case CompareType.LessThan: return compareValue < 0;
+                case CompareType.LessThanOrEqualTo: return compareValue <= 0;
+                case CompareType.GreaterThan: return compareValue > 0;
+                case CompareType.GreaterThanOrEqualTo: return compareValue >= 0;
                 default: return false;
             }
         }
 
         public static bool CompareTo<T>(this T value1, T value2, CompareType compareType) where T : IComparable<T>
             => compareType.Compare(value1, value2);
+
+        public static bool CompareTo<T>(this T value1, T value2, CompareType compareType, IComparer<T> comparer)
+            => compareType.Compare(value1, value2, comparer);
     }
 }
