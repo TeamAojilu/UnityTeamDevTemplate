@@ -17,22 +17,14 @@ namespace Samples.Shooting2D
             
 			while (true)
 			{
-				while (m_isPlaying.Value == false)
-				{
-					yield return new WaitForEndOfFrame();
-				}
+				yield return new WaitUntil(() => m_isPlaying.Value);
 
 				GameObject g = Instantiate(m_wavePrefabs[m_currentWave], transform.position, Quaternion.identity);
-
 				g.transform.parent = transform;
 
-				while (g.transform.childCount != 0)
-				{
-					yield return new WaitForEndOfFrame();
-				}
+				yield return new WaitUntil(() => g.transform.childCount == 0);
 
 				Destroy(g);
-
 				m_currentWave++;
 				m_currentWave %= m_wavePrefabs.Length;
 			}
