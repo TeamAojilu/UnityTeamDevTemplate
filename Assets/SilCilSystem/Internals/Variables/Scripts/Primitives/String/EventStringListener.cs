@@ -10,7 +10,7 @@ namespace SilCilSystem.Internals.Variables
     [Variable("Listener", Constants.ListenerMenuPath + "(String)", typeof(GameEventString))]
     internal class EventStringListener : GameEventStringListener
     {
-        [SerializeField, NotEditable] private GameEventString m_event = default;
+        [SerializeField, NonEditable] private GameEventString m_event = default;
 
         public override IDisposable Subscribe(Action<string> action) => m_event?.Subscribe(action);
 

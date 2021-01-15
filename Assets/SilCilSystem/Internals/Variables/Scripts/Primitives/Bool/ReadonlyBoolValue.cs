@@ -9,7 +9,7 @@ namespace SilCilSystem.Internals.Variables
     [Variable("Readonly", Constants.ReadonlyMenuPath + "(Bool)", typeof(VariableBool))]
     internal class ReadonlyBoolValue : ReadonlyBool
     {
-        [SerializeField, NotEditable] private VariableBool m_variable = default;
+        [SerializeField, NonEditable] private VariableBool m_variable = default;
 
         public override bool Value => m_variable;
 

@@ -9,7 +9,7 @@ namespace SilCilSystem.Internals.Variables
     [Variable("Readonly", Constants.ReadonlyMenuPath + "(Vector3Int)", typeof(VariableVector3Int))]
     internal class ReadonlyVector3IntValue : ReadonlyVector3Int
     {
-        [SerializeField, NotEditable] private VariableVector3Int m_variable = default;
+        [SerializeField, NonEditable] private VariableVector3Int m_variable = default;
 
         public override Vector3Int Value => m_variable.Value;
 

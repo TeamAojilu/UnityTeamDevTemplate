@@ -35,7 +35,7 @@ namespace SilCilSystem.Editors
         protected abstract void PostProcess(VariableAsset dropAsset, Slider slider);
     }
 
-    [AddVariableDragDrop("Readonly/Bar (Slider)")]
+    [VariableDragDrop("Readonly/Bar (Slider)")]
     internal class BarGenerator : SliderGeneratorBase
     {
         protected override Slider CreateSlider()
@@ -46,7 +46,7 @@ namespace SilCilSystem.Editors
         protected override void PostProcess(VariableAsset dropAsset, Slider slider) { }
     }
 
-    [AddVariableDragDrop("Interactives/Slider")]
+    [VariableDragDrop("Interactives/Slider")]
     internal class SliderGenerator : SliderGeneratorBase
     {
         public override bool IsAccepted(VariableAsset[] assetIncludingChildren)

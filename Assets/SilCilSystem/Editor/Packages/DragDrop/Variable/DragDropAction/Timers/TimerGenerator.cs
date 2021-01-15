@@ -31,7 +31,7 @@ namespace SilCilSystem.Editors
         protected abstract void SetOptions(Timer timer, VariableFloat variable);
     }
 
-    [AddVariableDragDrop("Timers/Count up")]
+    [VariableDragDrop("Timers/Count up")]
     internal class CountUpTimerGenerator : TimerGenerator
     {
         protected override void SetOptions(Timer timer, VariableFloat variable)
@@ -40,7 +40,7 @@ namespace SilCilSystem.Editors
         }
     }
 
-    [AddVariableDragDrop("Timers/Count down")]
+    [VariableDragDrop("Timers/Count down")]
     internal class CountDownTimerGenerator : TimerGenerator
     {
         protected override void SetOptions(Timer timer, VariableFloat variable)
@@ -52,7 +52,7 @@ namespace SilCilSystem.Editors
         }
     }
 
-    [AddVariableDragDrop("Timers/Repeat")]
+    [VariableDragDrop("Timers/Repeat")]
     internal class RepeatTimerGenerator : TimerGenerator
     {
         protected override void SetOptions(Timer timer, VariableFloat variable)
