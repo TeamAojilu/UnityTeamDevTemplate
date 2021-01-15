@@ -5,7 +5,7 @@ using SilCilSystem.Variables.Generic;
 using static SilCilSystem.Math.CurveTypeDefinition;
 using static SilCilSystem.Math.FloatToInt;
 
-namespace SilCilSystem.Variables 
+namespace SilCilSystem.Tween 
 { 
     public static class TweenStructExtensions
     {

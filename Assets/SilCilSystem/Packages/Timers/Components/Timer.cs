@@ -2,7 +2,7 @@
 using SilCilSystem.Variables;
 using UnityEngine.Events;
 
-namespace SilCilSystem.Components.Timers
+namespace SilCilSystem.Timers
 {
     [AddComponentMenu(menuName: Constants.AddComponentPath + "Timers/" + nameof(Timer))]
     public class Timer : MonoBehaviour

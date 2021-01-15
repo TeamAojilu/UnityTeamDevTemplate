@@ -1,8 +1,9 @@
 ﻿using SilCilSystem.Math;
+using SilCilSystem.Variables;
 using SilCilSystem.Variables.Generic;
 using UnityEngine;
 
-namespace SilCilSystem.Variables.Timeline
+namespace SilCilSystem.Timeline
 {
     public class TweenVector3Int : TweenVariableAsset<Vector3Int, TweenVector3IntBehaviour>
     {

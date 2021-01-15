@@ -2,7 +2,7 @@
 using UnityEngine.Playables;
 using SilCilSystem.Variables.Generic;
 
-namespace SilCilSystem.Variables.Timeline
+namespace SilCilSystem.Timeline
 {
     public class TweenVariableBehaviour<T> : PlayableBehaviour
     {

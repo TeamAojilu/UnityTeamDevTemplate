@@ -1,8 +1,9 @@
-﻿using System;
+﻿using SilCilSystem.Variables;
+using System;
 using UnityEngine;
 using UnityEngine.Playables;
 
-namespace SilCilSystem.Variables.Timeline
+namespace SilCilSystem.Timeline
 {
     [Serializable]
     public class BoolActivationAsset : PlayableAsset
