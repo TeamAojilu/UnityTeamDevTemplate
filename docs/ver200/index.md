@@ -1,5 +1,7 @@
 # SilCilSystem ver2.0
 
+Unity2019.4で動作確認
+
 ## 要点
 
 SilCilSystemは変数アセットとイベントアセットにより成り立つシステムです。
@@ -47,23 +49,20 @@ SilCilSystemの他の要素は主に変数/イベントアセットを利用し�
 
 ### 時間
 
-- [時間を測定する][page:Timer]
 - [一定時間後/一定間隔で処理を行う][page:TimeMethods]
 - [毎フレーム処理を呼ぶ][page:UpdateDispatcher]
+- [時間を測定する][page:Timer]
 - [Tweenコルーチンを用いて変数の値を時間変化させる][page:TweenVariableCoroutine]
-
-### UI&エフェクト
-
-- [変数アセットの値を表示する][page:DisplayVariables]
-- [変数アセットの値をUIやAnimatorのパラメータに反映させる][page:BindingVariable]
-- [Animatorの遷移時にイベントを呼ぶ][page:PublishOnState]
 - [Timelineで変数の値を変える][page:ChangeVariableInTimeline]
 
-### 機能のON/OFF
+### 変数アセットのバインド
 
+- [変数アセットの値をUIやAnimatorのパラメータに反映させる][page:BindingVariable]
+- [変数アセットの値を表示する][page:DisplayVariables]
 - [ゲームオブジェクトのActiveやコンポーネントのenabledを切り替える][page:Activator]
+- [Animatorの遷移時にイベントを呼ぶ][page:PublishOnState]
 
-### シーン遷移
+### シーン
 
 - [シーンをロードする][page:SceneLoader]
 
@@ -77,35 +76,28 @@ SilCilSystemの他の要素は主に変数/イベントアセットを利用し�
 - [floatからintへの変換方法を指定する][page:FloatToInt]
 - 値の比較方法を指定する
 
+### IDisposable
+
+- [IDisposableを生成する][page:DelegateDispose]
+- [ゲームオブジェクトが破棄されたときにDisposeを呼ぶ][page:DisposeOnDestroy]
+- [シーン遷移時にDisposeを呼ぶ][page:DisposeOnSceneUnLoaded]
+- [複数のIDisposableを1つにまとめる][page:CompositeDisposable]
+
 ### オブジェクトプール
 
 - [オブジェクトプール][page:ObjectPool]
-- [IDisposableを生成する][page:DelegateDispose]
-
----
 
 ### シングルトン
 
 - [シングルトンの実装][page:SingletonMonoBehaviour]
 
-作成したシングルトンはゲーム開始時に自動で生成されるようにEditor拡張されています。
-Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが生成されるようになっています。
-
-![InitialPrefabs][fig:InitialPrefabs]
-
-※生成処理はPrefabGeneratorOnLoad.csに記述してあります。
-
-### カスタム属性
+### エディタ拡張
 
 - [MonoBehaviourDragDrop][page:MonoBehaviourDragDrop]
 - [VariableDragDrop][page:VariableDragDrop]
 - [Variable, OnAttached][page:VariableAttribute]
 - [NonEditable][page:NonEditableAttribute]
 - [EnumLabel][page:EnumLabelAttribute]
-
-## ログ
-
-Unity2019.4で動作確認
 
 <!--- footer --->
 

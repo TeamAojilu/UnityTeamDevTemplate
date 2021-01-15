@@ -61,10 +61,20 @@ public class SingletonExampleUser : MonoBehaviour
 }
 ```
 
-## 使用上の注意点
+## シングルトンの自動生成
 
-作成したシングルトンは自動で生成されるわけではありません。
-スクリプトをアタッチしたGameObjectをシーン上に配置しましょう。
+作成したシングルトンは自動で生成されるようにしたほうが便利です。
+
+ゲーム開始時に自動で生成されるようなEditor拡張を用意しており、
+Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが生成されるようになっています。
+
+例えば、[SceneLoader][page:SceneLoader]や[AudioPlayer][page:AudioPlayer]はSilCilSystemフォルダ下にこのフォルダを作成しており、
+自動で生成されるようになっています。
+
+![InitialPrefabs][fig:InitialPrefabs]
+画像は変更予定
+
+※生成処理はPrefabGeneratorOnLoad.csに記述してあります。
 
 ## 実装
 

@@ -1,3 +1,5 @@
 ---
 
-[トップへ][page:Index]
+[ドキュメントトップへ][page:Index]
+
+[ダウンロードページへ][page:Download]
