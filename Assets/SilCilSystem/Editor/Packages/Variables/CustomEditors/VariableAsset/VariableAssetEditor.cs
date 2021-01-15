@@ -42,6 +42,11 @@ namespace SilCilSystem.Editors
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
+
+            serializedObject.Update();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(VariableAsset.m_description)));
+            serializedObject.ApplyModifiedProperties();
+
             if (!IsMain()) return;
             
             EditorGUILayout.Space();
@@ -233,13 +238,14 @@ namespace SilCilSystem.Editors
         
         private void SetHideFlags(Object target, bool show)
         {
-            var path = AssetDatabase.GetAssetPath(target);
-            foreach (var subasset in AssetDatabase.LoadAllAssetsAtPath(path))
+            if (!(target is VariableAsset variable)) return;
+
+            foreach (var subasset in variable.GetAllVariables())
             {
                 if (subasset == target) continue;
                 subasset.hideFlags = (show) ? HideFlags.None : HideFlags.HideInHierarchy;
             }
-            AssetDatabase.ImportAsset(path);
+            AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(target));
         }
 
         private void DrawInspectorTitlebar(Editor editor)

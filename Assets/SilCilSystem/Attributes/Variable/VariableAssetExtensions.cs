@@ -123,10 +123,12 @@ namespace SilCilSystem.Editors
         private static IEnumerable<T> GetSubVariableCollection<T>(VariableAsset parent)
         {
 #if UNITY_EDITOR
-            string path = AssetDatabase.GetAssetPath(parent);
-            foreach (var asset in AssetDatabase.LoadAllAssetsAtPath(path))
-            {
-                if (asset is T value)
+            var subvariables = VariableInspectorOrders.GetInstance()?.GetOrderedSubAssets(parent, true);
+            if (subvariables == null) yield break;
+
+            for (int i = subvariables.Length - 1; i >= 0; i--) 
+            { 
+                if(subvariables[i] is T value)
                 {
                     yield return value;
                 }
@@ -138,10 +140,12 @@ namespace SilCilSystem.Editors
         private static IEnumerable<VariableAsset> GetSubVariableCollection(VariableAsset parent, Type type)
         {
 #if UNITY_EDITOR
-            string path = AssetDatabase.GetAssetPath(parent);
-            foreach (var asset in AssetDatabase.LoadAllAssetsAtPath(path))
+            var subvariables = VariableInspectorOrders.GetInstance()?.GetOrderedSubAssets(parent, true);
+            if (subvariables == null) yield break;
+
+            for (int i = subvariables.Length - 1; i >= 0; i--)
             {
-                if (asset is VariableAsset value && type.IsAssignableFrom(asset.GetType()))
+                if (subvariables[i] is VariableAsset value && type.IsAssignableFrom(subvariables[i].GetType()))
                 {
                     yield return value;
                 }
