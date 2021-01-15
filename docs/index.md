@@ -12,8 +12,8 @@
 
 |version|Download|Document|note|
 |-|-|-|-|
-|1.00|[ダウンロード][release:ver100]|[ドキュメント][page:ver100]|Unity2019.4で動作確認|
 |2.00|1月末リリース予定|[ドキュメント][page:ver200]|Unity2019.4で動作確認|
+|1.00|[ダウンロード][release:ver100]|[ドキュメント][page:ver100]|Unity2019.4で動作確認|
 
 <!--- 参照 --->
 

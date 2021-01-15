@@ -44,17 +44,17 @@ ToggleのON/OFFやSliderのValueをバインドすることでUIとゲームロ�
 
 |type|name|description|note|
 |-|-|-|-|
-|bool|m_setOnStart|trueならStartメソッドで値を設定||
-|bool|m_setOnUpdate|trueならUpdateメソッドで値を更新|クラスによっては強制でON|
-|ReadonlyPropertyBool|m_setValueWithoutNotify|trueならSetValueWithoutNotifyメソッドを使用して値を設定||
+|bool|SetOnStart|trueならStartメソッドで値を設定||
+|PropertyBool|SetOnUpdate|trueならUpdateメソッドで値を更新|クラスによっては強制でON|
+|ReadonlyPropertyBool|SetValueWithoutNotify|trueならSetValueWithoutNotifyメソッドを使用して値を設定||
 
 ### アニメーション
 
 |type|name|description|note|
 |-|-|-|-|
-|PropertyBool|m_isBusy|アニメーション中ならtrueになる||
-|ReadonlyPropertyFloat|m_duration|アニメーションの長さ|0以下ならアニメーション無し|
-|InterpolationCurve|m_curve|アニメーションの補間曲線||
+|PropertyBool|IsBusy|アニメーション中ならtrueになる||
+|ReadonlyPropertyFloat|Duration|アニメーションの長さ|0以下ならアニメーション無し|
+|InterpolationCurve|Curve|アニメーションの補間曲線||
 
 ## 使用例
 
@@ -99,12 +99,12 @@ float型の変数アセットを作成してm_valueに設定します。
 
 Sliderを作成します。
 簡単のために、Interactableはfalseにしてプレイヤーがスライダーを動かせないようにします。
-BindingSliderをアタッチして、m_valueに先ほど作成したものと同じ変数アセットを設定すれば機能します。
+BindingSliderをアタッチして、Valueに先ほど作成したものと同じ変数アセットを設定すれば機能します。
 
 ![BindingSliderを設定する][fig:BindingSlider]
 
 アニメーションさせることも可能です。
-以下はm_durationが0（アニメーション無し）と0.5のときの比較です。
+以下はDurationが0（アニメーション無し）と0.5のときの比較です。
 
 ![アニメーションありとなしの比較][fig:SliderAnimation]
 

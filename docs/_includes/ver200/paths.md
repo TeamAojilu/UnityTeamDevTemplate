@@ -48,7 +48,7 @@
 
 [page:InterpolationCurve]: /UnityTeamDevTemplate/ver200/Math/InterpolationCurve.html
 [page:FloatToInt]: /UnityTeamDevTemplate/ver200/Math/FloatToInt.html
-[page:Comparison]: /UnityTeamDevTemplate/ver200/Templates/NotYet.html
+[page:Comparison]: /UnityTeamDevTemplate/ver200/Math/Comparison.html
 
 <!--- IDisposable --->
 

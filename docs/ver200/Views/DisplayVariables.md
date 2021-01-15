@@ -20,8 +20,8 @@ class
 
 |type|name|description|note|
 |-|-|-|-|
-|PropertyBool|m_isBusy|更新処理があったときはtrue|数値のアニメーションが終わったタイミングを知りたいときなど|
-|string|m_format|変数の値を代入する箇所を指定|変数設定のm_keyを{}で囲む|
+|PropertyBool|IsBusy|更新処理があったときはtrue|数値のアニメーションが終わったタイミングを知りたいときなど|
+|string|Format|変数の値を代入する箇所を指定|変数設定のm_keyを{}で囲む|
 
 ### 変数アセットの個別設定
 
@@ -29,11 +29,11 @@ class
 
 |type|name|description|note|
 |-|-|-|-|
-|string|m_key|全体設定のm_formatで用いる識別用文字列|重複ないように設定|
-|ReadonlyPropertyString|m_format|変数の値の表示形式|ToStringの引数|
-|ScriptableObject|m_variable|用いる変数アセット|ReadonlyでもVariableでも可、読取のみ使用|
+|string|Key|全体設定のFormatで用いる識別用文字列|重複ないように設定|
+|ReadonlyPropertyString|Format|変数の値の表示形式|ToStringの引数|
+|VariableAsset|Variable|用いる変数アセット|Readonly|
 
-m_formatについては[C#のドキュメント][page:StringFormat]を参考にしてください。
+Formatについては[C#のドキュメント][page:StringFormat]を参考にしてください。
 
 #### アニメーション設定
 
@@ -41,16 +41,16 @@ m_formatについては[C#のドキュメント][page:StringFormat]を参考に�
 
 |type|name|description|note|
 |-|-|-|-|
-|ReadonlyPropertyFloat|m_duration|アニメーションの変化時間|0以下ならアニメーションなし|
-|InterpolationCurve|m_curve|補間曲線|イージングを用いたアニメーションに使用|
-|bool|m_useInitial|Start時に特定の値を用いる場合はtrueに設定||
-|変数の型|m_initialValue|Start時に用いる値|m_useInitialがtrueの場合のみ使用|
+|ReadonlyPropertyFloat|Duration|アニメーションの変化時間|0以下ならアニメーションなし|
+|InterpolationCurve|Curve|補間曲線|イージングを用いたアニメーションに使用|
+|bool|UseInitial|Start時に特定の値を用いる場合はtrueに設定||
+|変数の型|InitialValue|Start時に用いる値|UseInitialがtrueの場合のみ使用|
 
 ##### int型
 
 |type|name|description|note|
 |-|-|-|-|
-|FloatToInt.CastType|m_castType|floatからintへの変換方法の指定|floatで補間してからintに変換するのに必要|
+|FloatToInt.CastType|CastType|floatからintへの変換方法の指定|floatで補間してからintに変換するのに必要|
 
 ## 使用例
 
@@ -83,16 +83,16 @@ public class TestScore : MonoBehaviour
 次に、スコアをDisplayVariablesを用いて表示してみましょう。
 
 1. Textコンポーネント（TextMeshProでも可）と同じゲームオブジェクトにDisplayVariablesをアタッチして設定します。
-2. 全体設定のm_formatに"score: {score}"を入力します。
-3. m_intValuesにスコアの変数アセットを設定します。
-4. m_keyには"score", m_formatには"0"を入力します。
+2. 全体設定のFormatに"score: {score}"を入力します。
+3. IntValuesにスコアの変数アセットを設定します。
+4. Keyには"score", Formatには"0"を入力します。
 
 ![DisplayVariablesで変数の値を表示する][fig:DisplayVariablesBasic]
 
 実行すれば、変数アセットの値が表示されます。
 
 アニメーションもさせてみましょう。
-m_durationに0.5を入力すれば0.5秒で変数の値に変わってくれます。
+Durationに0.5を入力すれば0.5秒で変数の値に変わってくれます。
 
 ![アニメーションの設定をする][fig:AnimationSettings]
 

@@ -43,34 +43,23 @@ public class DebugDice : MonoBehaviour
     // イベントアセットをシリアライズしてインスペクタで設定可能に.
     [SerializeField] private GameEventIntListener m_onDiceRolled = default;
 
-    // 登録解除用.
-    private IDisposable m_disposable = default;
-
     private void Start()
     {
-        // 実行するメソッドを登録する.
-        m_disposable = m_onDiceRolled.Subscribe(x => Debug.Log(x));
-    }
-
-    private void OnDestroy()
-    {
-        // メソッドの登録解除はDisposeを呼ぶ.
-        m_disposable?.Dispose();
+        // 実行するメソッドを登録する. 第2引数に指定したGameObjectが破棄されたらイベント解除される.
+        m_disposable = m_onDiceRolled.Subscribe(x => Debug.Log(x), gameObject);
     }
 }
 ```
 
 インスペクタ上で同じ変数を設定すれば、両者の連携が可能になります。
-プロジェクトのメニューからInt型の変数アセットを作成します。
-VariableIntには変数アセットを、GameEventIntListenerにはサブアセットになっているListenerアセットを設定します。
+プロジェクトのメニューからInt型の変数アセットを作成して設定します。
 
 ![インスペクタ上で変数とイベントの設定を行う][fig:OnValueChangedInInspector]
-
-※Listenerアセットは1度GameEventアセットを選択して更新しないと生成されないようになっています。
+画像は変更予定
 
 ## 実装
 
-正確には値が代入された場合にイベントが呼ばれるようになっています。
+値が代入された場合にイベントが呼ばれるようになっています。
 例えば、boolの値の代入を検出してイベントを呼ぶ実装は以下です。
 イベントアセットを参照として持ち、setter内でPublishを読んでいるだけです。
 
@@ -80,16 +69,17 @@ using UnityEngine;
 namespace SilCilSystem.Variables
 {
     // 使用する際は具体的な型（この場合はNotificationBool）を知る必要がないのでinternalで実装.
-    internal class NotificationBool : BoolValue // 変数アセットのBoolValueを継承.
+    internal class NotificationBool : VariableBool
     {
+        [SerializeField] private bool m_value = default;
         [SerializeField] private GameEventBool m_onValueChanged = default;
 
         public override bool Value
         {
-            get => base.Value;
+            get => m_value;
             set
             {
-                base.Value = value;
+                m_value = value;
                 // setterが呼ばれる度にイベントを呼ぶ.
                 m_onValueChanged?.Publish(value);
             }

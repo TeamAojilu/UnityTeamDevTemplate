@@ -8,7 +8,7 @@ abstract
 
 ---
 
-イベントでゲームオブジェクトのActiveやコンポーネントのenabledを切り替えるためのクラスです。
+bool型の[変数アセット][page:Variable]でゲームオブジェクトのActiveやコンポーネントのenabledを切り替えるためのクラスです。
 
 ## クラス一覧
 
@@ -21,9 +21,10 @@ abstract
 
 |type|name|description|
 |-|-|-|
-|GameEventBoolListener||m_setActive|ON/OFFを行うイベント|
-|GameEventListener|m_setActiveTrue|ONにするイベント|
-|GameEventListener|m_setActiveFalse|OFFにするイベント|
+|bool|SetOnStart|trueならStartメソッドで値を反映|
+|ReadonlyPropertyBool|SetOnUpdate|trueならUpdateメソッドで値を反映|
+|ReadonlyPropertyBool|IsActive|機能のON/OFFを指定|
+|bool|Reverse|trueならIsActiveのtrue/falseと逆の値を設定|
 
 ## 使用例
 
@@ -48,30 +49,21 @@ public class TestActivator : MonoBehaviour
 }
 ```
 
-GameObjectActivatorを使用してCubeオブジェクトのSetActiveを切り替えます。
-先ほどの変数アセットに関連するGameEventBoolListenerを設定します。
+GameObjectActivatorを作成して先ほどの変数アセットを設定します。
 TargetsにON/OFFを切り替えたいGameObjectを指定します。
 
 ![GameObjectActivatorを設定する][fig:GameObjectActivator]
 
 ## 実装
 
-m_setActive, m_setActiveTrue, m_setActiveFalseのいずれも同一のメソッドを呼んでいます。
-OnEnableでイベント登録、OnDisableで登録解除しています。
+[UpdateDispatcher][page:UpdateDispatcher]を使用して処理を呼んでいます。
 
 ```cs
-void OnEnable()
+bool MicroUpdate(float deltaTime)
 {
-    var disposable = new CompositeDisposable();
-    disposable.Add(m_setActive?.Subscribe(SetActives));
-    disposable.Add(m_setActiveTrue?.Subscribe(() => SetActives(true)));
-    disposable.Add(m_setActiveFalse?.Subscribe(() => SetActives(false)));
-    m_disposable = disposable;
-}
-
-void OnDisable()
-{
-    m_disposable?.Dispose();
+    if (!enabled) return true;
+    if (m_setOnUpdate) SetActives((m_reverse == false) ? m_isActive : !m_isActive);
+    return true;
 }
 ```
 

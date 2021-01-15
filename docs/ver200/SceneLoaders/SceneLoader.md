@@ -33,7 +33,7 @@ LoadSceneメソッドの呼び出しでシーンを読み込みます。
 
 ```cs
 using UnityEngine;
-using SilCilSystem.Singletons;
+using SilCilSystem.SceneLoaders;
 
 public class Test : MonoBehaviour
 {
@@ -96,7 +96,7 @@ ISceneLoaderは以下のメソッドが定義されたインターフェース�
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using SilCilSystem.Singletons;
+using SilCilSystem.SceneLoaders;
 
 public class CustomSceneLoader : MonoBehaviour, ISceneLoader
 {

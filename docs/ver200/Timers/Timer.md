@@ -2,14 +2,14 @@
 
 class
 
-名前空間：SilCilSystem.Components.Timers
+名前空間：SilCilSystem.Timers
 
 継承：UnityEngine.MonoBehaviour
 
 ---
 
 時間を測定するコンポーネントです。
-変数アセットの値をUpdateメソッド内で変更します。
+[変数アセット][page:Variable]の値をUpdateメソッド内で変更します。
 2倍速で計算したり、-1倍速にしてカウントダウンさせたり、一定間隔ごとに処理を呼んだりできます。
 
 ## 設定項目
@@ -18,27 +18,27 @@ class
 
 |type|name|description|note|
 |-|-|-|-|
-|ReadonlyPropertyBool|m_enable|trueなら時間測定を実行||
-|VariableFloat|m_time|時間を表す変数アセット||
-|ReadonlyPropertyFloat|m_initialTime|開始次のm_timeの値|Startメソッドで代入|
-|ReadonlyPropertyFloat|m_timeScale|時間スケール|1なら等倍速、2なら2倍速|
+|ReadonlyPropertyBool|Enable|trueなら時間測定を実行||
+|VariableFloat|Time|時間を表す変数アセット||
+|ReadonlyPropertyFloat|InitialTime|開始次のm_timeの値|Startメソッドで代入|
+|ReadonlyPropertyFloat|TimeScale|時間スケール|1なら等倍速、2なら2倍速|
 
 ### 値の範囲
 
 |type|name|description|note|
 |-|-|-|-|
-|ReadonlyPropertyFloat|m_min|m_timeの最小値||
-|ReadonlyPropertyFloat|m_max|m_timeの最大値|制限をつけたくない場合は十分に大きな値を入れる|
-|ReadonlyPropertyBool|m_repeating|繰り返しありの場合true|trueならm_maxを超えるとm_minに、m_minを下回るとm_maxになる|
+|ReadonlyPropertyFloat|Min|m_timeの最小値||
+|ReadonlyPropertyFloat|Max|m_timeの最大値|制限をつけたくない場合は十分に大きな値を入れる|
+|ReadonlyPropertyBool|Repeating|繰り返しありの場合true|trueならm_maxを超えるとm_minに、m_minを下回るとm_maxになる|
 
 ### イベント
 
 |type|name|description|note|
 |-|-|-|-|
-|UnityEvent|m_onMinValue|時間がm_minに到達した時に呼ばれる|カウントダウンのコールバックなどに使用|
-|UnityEvent|m_onMaxValue|時間がm_maxに到達した時に呼ばれる||
+|UnityEvent|OnMinValue|時間がMinに到達した時に呼ばれる|カウントダウンのコールバックなどに使用|
+|UnityEvent|OnMaxValue|時間がMaxに到達した時に呼ばれる||
 
-※m_repeatingがtrueになっている場合、m_onMinValue, m_onMaxValueは同時に呼ばれます。
+※Repeatingがtrueになっている場合、OnMinValue, OnMaxValueは同時に呼ばれます。
 
 ## 使用例
 
@@ -48,12 +48,12 @@ class
 
 |設定|値|
 |-|-|
-|m_initialTime|30|
-|m_timeScale|-1|
-|m_min|0|
-|m_max|30|
+|InitialTime|30|
+|TimeScale|-1|
+|Min|0|
+|Max|30|
 
-m_onMinValueに0秒になった時の処理を登録すれば、コールバックが可能です。
+OnMinValueに0秒になった時の処理を登録すれば、コールバックが可能です。
 例えば、以下のようなスクリプトを作成して登録します。
 
 ```cs
@@ -73,18 +73,18 @@ public class TestTimer : MonoBehaviour
 
 ### 5秒ごとに処理をする
 
-m_repeatingをtrueにして5秒ごとに処理を読んでみましょう。
+Repeatingをtrueにして5秒ごとに処理を読んでみましょう。
 以下のように設定します。
 
 |設定|値|
 |-|-|
-|m_initialTime|0|
-|m_timeScale|1|
-|m_min|0|
-|m_max|5|
-|m_repeating|true|
+|InitialTime|0|
+|TimeScale|1|
+|Min|0|
+|Max|5|
+|Repeating|true|
 
-m_onMinValueに5秒ごとに呼ぶ処理を登録します。
+OnMinValueに5秒ごとに呼ぶ処理を登録します。
 
 ![5秒ごとに処理を行うタイマーを設定する][fig:RepeatingTimer]
 
@@ -101,7 +101,7 @@ private void Update()
 }
 ```
 
-更新処理はm_repeatingがtrueの場合はMathf.Repeatを、
+更新処理はRepeatingがtrueの場合はMathf.Repeatを、
 falseの場合はMathf.Clampを使用しています。
 変更があった場合のみ、変数アセットに値を代入しています。
 

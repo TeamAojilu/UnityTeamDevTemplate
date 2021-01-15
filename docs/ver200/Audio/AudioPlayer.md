@@ -9,25 +9,19 @@ class
 ---
 
 音楽の再生を行うためのシングルトンです。
-音源の場所指定はできないため、プレイヤーとの距離によって音量を変えるという処理はできません。
-したがって、2DゲームやBGMやシステム音向けです。
+BGMの再生と効果音の再生をサポートしています。
+効果音に関しては同時再生数に制限があるほか、再生場所指定による3Dサウンド効果の利用が可能です。
 
 ## メンバ一覧
-
-### プロパティ
-
-|member|description|
-|-|-|
-|IAudioClipResources Clips|AudioClipを取得するためのインターフェースを指定|
 
 ### メソッド
 
 |member|description|
 |-|-|
-|static void PlayBGM(string name)|BGMを再生/変更する|
-|static void PlaySE(string name)|SEを再生する|
+|static void PlayBGM(AudioClip clip)|BGMを再生/変更する|
+|static void PlaySE(AudioClip clip, Vector3 worldPosition)|SEを再生する, positionの規定値はVector3.zero|
 
-※PlayBGMに無効な文字列を指定すると音量0にフェードアウトします。
+※PlayBGMにnullを渡すと音量0にフェードアウトします。
 
 ### 設定項目
 
@@ -35,77 +29,52 @@ class
 
 |type|name|description|note|
 |-|-|-|-|
-|ReadonlyPropertyFloat|m_defaultBGMVolume|BGMの音量|フェード中はこの値より小さくなる|
-|ReadonlyPropertyFloat|m_defaultSEVolume|SEの音量||
+|ReadonlyPropertyFloat|DefaultBGMVolume|BGMの音量|フェード中はこの値より小さくなる|
+|ReadonlyPropertyFloat|DefaultSEVolume|SEの音量||
 
 #### BGM設定
 
 |type|name|description|note|
 |-|-|-|-|
-|ReadonlyPropertyBool|m_loop|trueならループ再生||
-|ReadonlyPropertyFloat|m_fadeTime|BGM切り替え時のフェード時間|単位は秒|
-|InterpolationCurve|m_fadeCurve|BGM切り替え時のフェードに使う関数||
+|ReadonlyPropertyBool|Loop|trueならループ再生||
+|ReadonlyPropertyFloat|FadeTime|BGM切り替え時のフェード時間|単位は秒|
+|InterpolationCurve|FadeCurve|BGM切り替え時のフェードに使う関数||
 
 #### 音源
 
 |type|name|description|note|
 |-|-|-|-|
-|AudioSource|m_bgmSource|BGM再生用のAudioSource||
-|ReadonlyPropertyFloat|m_seSource|SE再生用のAudioSource||
+|AudioSource|BgmSource|BGM再生用のAudioSource||
+|AudioSource[]|SeSources|SE再生用のAudioSource|設定した数が同時再生数の限界になります|
 
-#### イベント
-
-|type|name|description|note|
-|-|-|-|-|
-|GameEventStringListener|m_playBGM|PlayBGMを呼ぶイベントアセット||
-|GameEventStringListener|m_playSE|PlaySEを呼ぶイベントアセット||
+※2D/3Dサウンド, AudioMixerの設定はそれぞれのAudioSourceに対して行ってください。
 
 ## 使用例
 
 基本的にPlayBGMとPlaySEを呼べばいいです。
-引数に指定する文字列はIAudioClipResourcesで指定する文字列と同じです。
-デフォルトではResourcesフォルダに置いてあるAudioListで指定します。
-
-![AudioListを設定する][fig:AudioList]
-
-あとは音を再生したいタイミングでPlayBGM/PlaySEを呼びましょう
+音を再生したいタイミングでPlayBGM/PlaySEを呼びましょう。
 例えば、以下はキーを押すたびに効果音を再生するスクリプトです。
 
 ```cs
 using UnityEngine;
-using SilCilSystem.Singletons;
+using SilCilSystem.Audio;
 
 public class TestAudioPlayer : MonoBehaviour
 {
-    [SerializeField] private string m_name = "Test";
+    [SerializeField] private AudioClip m_clip = default;
 
     private void Update()
     {
         if (Input.anyKeyDown)
         {
             // キーを押すたびに音を鳴らす.
-            AudioPlayer.PlaySE(m_name);
+            AudioPlayer.PlaySE(m_clip);
         }
     }
 }
 ```
 
-## 使用上の注意点
-
-デフォルトではAudioMixerを使用していません。
-AudioMixerを使用する場合はm_defaultBGMVolumeやm_defaultSEVolumeなどを変更しないようにするほうがいいと思います。
-
 ## 実装
-
-SE再生はPlayOneShotを呼び出しているだけです。
-
-```cs
-void _PlaySE(string name)
-{
-    var clip = Clips?.GetClip(name);
-    m_seSource.PlayOneShot(clip);
-}
-```
 
 BGM再生は次に再生するべきAudioClipを保持した状態で音量を0に変化させていきます。
 
@@ -137,59 +106,18 @@ private void Update()
 }
 ```
 
-### IAudioClipResourcesの実装
-
-AudioClipはIAudioClipResourcesインターフェースを用いて取得しているので、
-独自の処理を実装して指定できます。
-Resourcesからロードしたり、Addressableを用いたりなど、状況に応じてカスタマイズできます。
-
-IAudioClipResourcesは以下のメソッドが定義されたインターフェースです。
-
-|member|description|
-|-|-|
-|AudioClip GetClip(string name)|nameで指定されたAudioClipを返す|
-
-例として、AudioClipをResourcesフォルダからロードして返すClipLoaderを作ってみます。
+SE再生は再生していないAudioSourceを探し出してPlayを呼び出します。
 
 ```cs
-using UnityEngine;
-using System.Collections.Generic;
-using SilCilSystem.Singletons;
-
-public class ClipLoader : IAudioClipResources
+void _PlaySE(AudioClip clip, Vector3 worldPosition)
 {
-    private Dictionary<string, AudioClip> m_clips = new Dictionary<string, AudioClip>();
-
-    public AudioClip GetClip(string name)
+    foreach (var item in m_seSources)
     {
-        if (m_clips.ContainsKey(name))
-        {
-            return m_clips[name];
-        }
-        else
-        {
-            // clipを取得.
-            AudioClip clip = Resources.Load<AudioClip>(name);
-            m_clips[name] = clip;
-            return clip;
-        }
-    }
-}
-```
-
-あとは作成したクラスをAudioPlayerのClipsに指定すれば使用できます。
-適当なスクリプトで設定しましょう。
-
-```cs
-using UnityEngine;
-using SilCilSystem.Singletons;
-
-public class Test : MonoBehaviour
-{
-    private void Awake()
-    {
-        // AudioPlayerに設定.
-        AudioPlayer.Instance.Clips = new ClipLoader();
+        if (item == null || item.isPlaying) continue;
+        item.clip = clip;
+        item.transform.position = worldPosition;
+        item.Play();
+        return;
     }
 }
 ```

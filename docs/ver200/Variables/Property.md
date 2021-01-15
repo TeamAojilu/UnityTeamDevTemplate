@@ -118,7 +118,7 @@ public class TestVariable : MonoBehaviour
 
 全ての設定項目をこれで置き換えるのが妥当かどうかは考える必要があります。
 Property, ReadonlyPropertyはRangeやTextAreaなどのAttributeや配列の複数ファイルドラッグ&ドロップに対応していません。
-外部と連携する必要がないと思われるものは変数で実装することも考えましょう。
+外部と連携する必要がないと思われるものは通常のシリアライズで実装することも考えましょう。
 
 ## 実装
 

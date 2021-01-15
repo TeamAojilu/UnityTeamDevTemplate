@@ -20,11 +20,15 @@ using SilCilSystem.Variables;
 public class TestEventListener : MonoBehaviour
 {
     [SerializeField] private GameEventListener m_event = default;
+    [SerializeField] private GameEventIntListener m_eventInt = default;
 
     private void Start()
     {
         // OnDestroyメソッドでDisposeを書く必要がなくなります.
-        m_event.Subscribe(() => Debug.Log("Hello")).DisposeOnDestroy(gameObject);
+        m_event?.Subscribe(() => Debug.Log("Hello")).DisposeOnDestroy(gameObject);
+
+        // Subscribeの第2引数にGameObjectを指定することもできます.
+        m_eventInt?.Subscribe(i => Debug.Log(i), gameObject);
     }
 }
 ```
@@ -32,6 +36,8 @@ public class TestEventListener : MonoBehaviour
 ## 実装
 
 Disoposeを呼ぶためのコンポーネントを指定されたゲームオブジェクトにAddComponentすることで実現しています。
+イベント1つ1つに対してそれぞれコンポーネントを追加するのはパフォーマンス的にもよろしくないので、
+[CompositeDisposable][page:CompositeDisposable]を使用して複数のIDisposableを1つにまとめています。
 アタッチする用のコンポーネントは以下のようになっています。
 
 ```cs

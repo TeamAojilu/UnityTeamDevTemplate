@@ -52,7 +52,7 @@ public class Test : MonoBehaviour
 
 ## 実装
 
-switch構文でそれぞれ処理しているだけです。
+switch構文でそれぞれ処理しています。
 
 ```cs
 public static int Cast(this CastType castType, float value)

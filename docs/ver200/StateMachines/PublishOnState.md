@@ -26,21 +26,21 @@ Stateの開始時と終了時のタイミングで処理を呼ぶことができ
 
 |type|name|description|note|
 |-|-|-|-|
-|GameEvent|m_onStateEnter|引数なしのイベントアセット||
-|GameEventInfoInt[]|m_onStateEnterInt|int型を引数にとるイベントアセット|引数にAnimatorのint型パラメータを使用|
-|GameEventInfoFloat[]|m_onStateEnterFloat|int型を引数にとるイベントアセット|引数にAnimatorのfloat型パラメータを使用|
-|GameEventInfoBool[]|m_onStateEnterBool|int型を引数にとるイベントアセット|引数にAnimatorのbool型パラメータを使用|
-|UnityEvent|m_onStateEnterEvent|メソッドを指定|引数を固定してイベントを呼びたい場合などに使用可能|
+|GameEvent|OnStateEnter|引数なしのイベントアセット||
+|GameEventInfoInt[]|OnStateEnterInt|int型を引数にとるイベントアセット|引数にAnimatorのint型パラメータを使用|
+|GameEventInfoFloat[]|OnStateEnterFloat|int型を引数にとるイベントアセット|引数にAnimatorのfloat型パラメータを使用|
+|GameEventInfoBool[]|OnStateEnterBool|int型を引数にとるイベントアセット|引数にAnimatorのbool型パラメータを使用|
+|UnityEvent|OnStateEnterEvent|メソッドを指定|引数を固定してイベントを呼びたい場合などに使用可能|
 
 ### State終了時にイベントを呼ぶ
 
 |type|name|description|note|
 |-|-|-|-|
-|GameEvent|m_onStateExit|引数なしのイベントアセット||
-|GameEventInfoInt[]|m_onStateExitInt|int型を引数にとるイベントアセット|引数にAnimatorのint型パラメータを使用|
-|GameEventInfoFloat[]|m_onStateExitFloat|int型を引数にとるイベントアセット|引数にAnimatorのfloat型パラメータを使用|
-|GameEventInfoBool[]|m_onStateExitBool|int型を引数にとるイベントアセット|引数にAnimatorのbool型パラメータを使用|
-|UnityEvent|m_onStateExitEvent|メソッドを指定|引数を固定してイベントを呼びたい場合などに使用可能|
+|GameEvent|OnStateExit|引数なしのイベントアセット||
+|GameEventInfoInt[]|OnStateExitInt|int型を引数にとるイベントアセット|引数にAnimatorのint型パラメータを使用|
+|GameEventInfoFloat[]|OnStateExitFloat|int型を引数にとるイベントアセット|引数にAnimatorのfloat型パラメータを使用|
+|GameEventInfoBool[]|OnStateExitBool|int型を引数にとるイベントアセット|引数にAnimatorのbool型パラメータを使用|
+|UnityEvent|OnStateExitEvent|メソッドを指定|引数を固定してイベントを呼びたい場合などに使用可能|
 
 ## 使用例
 
