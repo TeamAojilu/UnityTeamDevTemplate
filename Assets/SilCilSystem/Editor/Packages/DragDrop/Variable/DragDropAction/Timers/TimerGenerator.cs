@@ -1,4 +1,4 @@
-﻿using SilCilSystem.Components.Timers;
+﻿using SilCilSystem.Timers;
 using SilCilSystem.Variables;
 using SilCilSystem.Variables.Base;
 using System.Linq;

@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-using System;
 using SilCilSystem.Variables.Generic;
 
-namespace SilCilSystem.Variables
+namespace SilCilSystem.Tween
 {
     public static class TweenVariablesExtensions
     {

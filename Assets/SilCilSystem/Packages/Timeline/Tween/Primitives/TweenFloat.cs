@@ -1,7 +1,8 @@
-﻿using SilCilSystem.Variables.Generic;
+﻿using SilCilSystem.Variables;
+using SilCilSystem.Variables.Generic;
 using UnityEngine;
 
-namespace SilCilSystem.Variables.Timeline
+namespace SilCilSystem.Timeline
 {
     public class TweenFloat : TweenVariableAsset<float, TweenFloatBehaviour>
     {

@@ -4,7 +4,7 @@ using UnityEngine.Playables;
 using SilCilSystem.Math;
 using SilCilSystem.Variables.Generic;
 
-namespace SilCilSystem.Variables.Timeline
+namespace SilCilSystem.Timeline
 {
     [Serializable]
     public abstract class TweenVariableAsset<T, TBehaviour> : PlayableAsset
