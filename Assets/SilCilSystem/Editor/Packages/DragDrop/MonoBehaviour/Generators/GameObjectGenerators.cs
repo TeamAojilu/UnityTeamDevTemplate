@@ -47,8 +47,9 @@ namespace SilCilSystem.Editors
             return RegisterUndo(GameObject.CreatePrimitive(PrimitiveType.Capsule), "Create Capsule");
         }
 
-        private static GameObject RegisterUndo(GameObject obj, string name)
+        private static GameObject RegisterUndo(GameObject obj, string name, string objectName = null)
         {
+            obj.name = objectName;
             Undo.RegisterCreatedObjectUndo(obj, name);
             return obj;
         }
