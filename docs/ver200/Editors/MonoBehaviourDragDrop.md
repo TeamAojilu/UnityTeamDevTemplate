@@ -2,6 +2,8 @@
 
 エディタ拡張
 
+Assembly：SilCilSystem.Attributes
+
 ---
 
 MonoBehaviourを継承したスクリプトをHierarchyにドラッグ&ドロップすることで、

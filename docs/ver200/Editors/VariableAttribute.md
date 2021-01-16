@@ -2,6 +2,8 @@
 
 エディタ拡張
 
+Assembly：SilCilSystem.Attributes
+
 ---
 
 [VariableAssetクラス][page:VariableAsset]を継承したアセットは[変数アセット][page:Variable]の子供として生成することができます。

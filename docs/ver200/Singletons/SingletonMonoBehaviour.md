@@ -6,6 +6,8 @@ abstract
 
 継承：UnityEngine.MonoBehaviour
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 ゲーム内に1つしか存在しないコンポーネントの作成に使用する抽象クラスです。
@@ -65,7 +67,7 @@ public class TestSingletonExample : MonoBehaviour
 
 作成したシングルトンは自動で生成されるようにしたほうが便利です。
 
-ゲーム開始時に自動で生成されるようなEditor拡張を用意しており、
+ゲーム開始時に自動で生成されるようなエディタ拡張を用意しており、
 Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが生成されるようになっています。
 
 例えば、[SceneLoader][page:SceneLoader]や[AudioPlayer][page:AudioPlayer]はSilCilSystemフォルダ下にこのフォルダを作成しており、

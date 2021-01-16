@@ -4,6 +4,8 @@ static class
 
 名前空間：SilCilSystem.Timers
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 時間に関するメソッドが定義されています。

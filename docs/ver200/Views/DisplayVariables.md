@@ -6,6 +6,8 @@ class
 
 継承：UnityEngine.MonoBehaviour
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 変数アセットの値を表示するためのコンポーネントです。

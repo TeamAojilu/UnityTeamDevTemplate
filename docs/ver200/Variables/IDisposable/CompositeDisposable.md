@@ -6,6 +6,8 @@ class
 
 継承：System.IDisposable
 
+Assembly：SilCilSystem
+
 ---
 
 複数のIDisposableを1つにまとめるためのクラスです。

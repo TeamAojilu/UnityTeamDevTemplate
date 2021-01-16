@@ -6,6 +6,8 @@ class
 
 継承：[SingletonMonoBehaviour\<T>][page:SingletonMonoBehaviour]
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 シーンのロード処理を行うシングルトンです。

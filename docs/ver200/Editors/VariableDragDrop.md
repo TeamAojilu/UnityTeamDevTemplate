@@ -2,6 +2,8 @@
 
 エディタ拡張
 
+Assembly：SilCilSystem.Attributes
+
 ---
 
 [変数アセット][page:Variable]をHierarchyにドラッグ&ドロップすることで、

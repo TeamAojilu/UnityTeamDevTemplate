@@ -4,6 +4,8 @@ interface
 
 名前空間：SilCilSystem.Views
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 文字列を表示するためのインターフェースです。

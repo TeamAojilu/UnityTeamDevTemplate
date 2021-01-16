@@ -4,6 +4,8 @@
 
 名前空間：SilCilSystem.Tween
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 Tweenコルーチンは変数の値をある値から別の値へと時間変化させる拡張メソッドです。

@@ -4,6 +4,8 @@ enum
 
 名前空間：SilCilSystem.Timers
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 更新タイミングを表す列挙型です。

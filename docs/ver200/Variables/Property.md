@@ -4,6 +4,8 @@ class
 
 名前空間：SilCilSystem.Variables (ジェネリック版はSilCilSystem.Variables.Generic)
 
+Assembly：SilCilSystem
+
 ---
 
 Property, ReadonlyPropertyはインスペクタ上で変数と[変数アセット][page:Variable]のどちらを使うかを選択できるようになるクラスです。

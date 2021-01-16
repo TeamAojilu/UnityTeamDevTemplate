@@ -6,6 +6,8 @@ abstract
 
 継承：MonoBehaviour
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 bool型の[変数アセット][page:Variable]でゲームオブジェクトのActiveやコンポーネントのenabledを切り替えるためのクラスです。

@@ -6,6 +6,8 @@ class
 
 継承：UnityEngine.StateMachineBehaviour
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 AnimationState遷移時にイベントを発行するクラスです。

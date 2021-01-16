@@ -6,6 +6,8 @@ abstract/interface/class/struct
 
 継承：
 
+Assembly：
+
 ---
 
 概要

@@ -5,8 +5,11 @@ class
 名前空間：SilCilSystem.Variables
 
 継承：
+
 - System.IDisposable
 - [SilCilSystem.IPooledObject][page:ObjectPool]
+
+Assembly：SilCilSystem
 
 ---
 

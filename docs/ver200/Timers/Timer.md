@@ -6,6 +6,8 @@ class
 
 継承：UnityEngine.MonoBehaviour
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 時間を測定するコンポーネントです。

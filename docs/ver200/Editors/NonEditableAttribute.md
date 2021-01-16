@@ -6,6 +6,8 @@
 
 継承：UnityEngine.PropertyAttribute
 
+Assembly：SilCilSystem.Attributes
+
 ---
 
 インスペクタ上で編集不可にするカスタム属性です。

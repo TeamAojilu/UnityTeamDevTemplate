@@ -6,6 +6,8 @@ abstract
 
 継承：[VariableAsset][page:VariableAsset]
 
+Assembly：SilCilSystem
+
 ---
 
 異なるスクリプト間で変数の値を共有できます。
@@ -134,7 +136,7 @@ internal class ReadonlyBoolValue : ReadonlyBool
 2. ReadonlyBoolValueアセットを作成する
 3. ReadonlyBoolValueアセットのm_variableに1で作成したBoolValueアセットを設定する
 
-これを変数作成のたびにやるのは面倒なので、Editor拡張で対応しています。
+これを変数作成のたびにやるのは面倒なので、エディタ拡張で対応しています。
 
 実際には[値の変更を通知][page:OnValueChanged]するために[イベントアセット][page:GameEvent]も紐づけており、
 1つの変数に対して4つのアセットが生成されるようになっています。

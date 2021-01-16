@@ -6,6 +6,8 @@
 
 継承：System.Attribute
 
+Assembly：SilCilSystem.Attributes
+
 ---
 
 Enumのエディタ上での表示を変更するカスタム属性です。

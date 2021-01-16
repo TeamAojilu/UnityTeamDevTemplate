@@ -6,6 +6,8 @@ class
 
 継承：UnityEngine.MonoBehaviour
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 [変数アセット][page:Variable]の値をuGUIのUI要素やAnimatorのパラメータに設定することができます。（以下、バインドと表記）

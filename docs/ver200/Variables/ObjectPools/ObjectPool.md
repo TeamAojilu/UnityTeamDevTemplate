@@ -6,6 +6,8 @@ class
 
 名前空間：SilCilSystem.ObjectPools
 
+Assembly：SilCilSystem
+
 ---
 
 オブジェクトを使いまわすことで、生成と破棄の処理を軽くするためのクラスです。

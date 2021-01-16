@@ -6,6 +6,8 @@ abstract
 
 継承：UnityEngine.ScriptableObject
 
+Assembly：SilCilSystem
+
 ---
 
 [変数アセット][page:Variable]と[イベントアセット][page:GameEvent]の基底クラスです。

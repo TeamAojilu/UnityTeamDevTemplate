@@ -88,7 +88,7 @@ internal class NotificationBool : VariableBool
 2. bool型のイベントアセットを生成する。
 3. NotificationBoolアセットのm_onValueChangedに2で生成したアセットを設定する。
 
-これを作成のたびにやるのは面倒なので、Editor拡張で対応しています。
+これを作成のたびにやるのは面倒なので、エディタ拡張で対応しています。
 変数アセットを作成すると自動でイベント用のアセットが生成されます。
 
 <!--- footer --->

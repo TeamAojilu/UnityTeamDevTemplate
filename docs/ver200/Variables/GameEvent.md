@@ -6,6 +6,8 @@ abstract
 
 継承：[VariableAsset][page:VariableAsset]
 
+Assembly：SilCilSystem
+
 ---
 
 異なるスクリプト間でのメソッドの実行ができます。
@@ -160,7 +162,7 @@ internal class EventNoArgsListener : GameEventListener
 2. EventNoArgsListenerアセットを作成する
 3. EventNoArgsListenerアセットのm_eventに1で作成したEventNoArgsアセットを設定する
 
-これを作成のたびにやるのは面倒なので、Editor拡張で対応しています。
+これを作成のたびにやるのは面倒なので、エディタ拡張で対応しています。
 GameEventアセットを選択すると自動でEventNoArgsListenerアセットをサブアセットとして生成し、参照を設定するようになっています。
 
 これらのアセットをすべて表示するのは煩わしいので、サブアセットにしてHideFlagsを設定することで非表示にしています。

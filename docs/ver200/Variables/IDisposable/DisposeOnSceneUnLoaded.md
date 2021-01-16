@@ -4,6 +4,8 @@
 
 名前空間：SilCilSystem.Variables
 
+Assembly：SilCilSystem
+
 ---
 
 IDisposableをシーンのアンロード時に呼ぶようにする拡張メソッドです。

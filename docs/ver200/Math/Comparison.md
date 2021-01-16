@@ -4,6 +4,8 @@ enum
 
 名前空間：SilCilSystem.Math
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 値を比較するための列挙型です。

@@ -4,6 +4,8 @@ enum
 
 名前空間：SilCilSystem.Math
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 float型からint型への変換を行うための列挙型です。

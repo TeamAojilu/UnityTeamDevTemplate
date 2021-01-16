@@ -6,6 +6,8 @@ class
 
 継承：[SingletonMonoBehaviour\<T>][page:SingletonMonoBehaviour]
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 Update, LateUpdate, FixedUpdateの処理を行うシングルトンです。

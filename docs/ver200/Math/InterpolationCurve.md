@@ -4,6 +4,8 @@ class
 
 名前空間：SilCilSystem.Math
 
+Assembly：SilCilSystem.Packages
+
 ---
 
 補間曲線として使用できるイージング関数を取得するためのクラスです。
