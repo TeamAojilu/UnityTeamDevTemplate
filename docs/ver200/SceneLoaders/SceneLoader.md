@@ -35,13 +35,14 @@ LoadSceneメソッドの呼び出しでシーンを読み込みます。
 using UnityEngine;
 using SilCilSystem.SceneLoaders;
 
-public class Test : MonoBehaviour
+public class TestSceneLoader : MonoBehaviour
 {
     [SerializeField] private string m_nextSceneName = "TestScene";
 
     private void Update()
     {
-        if (Input.anyKeyDown)
+        // シーンロード中はIsBusyがtrueになるので処理しない.
+        if (SceneLoader.IsBusy == false && Input.anyKeyDown)
         {
             SceneLoader.LoadScene(m_nextSceneName);
         }
@@ -52,10 +53,19 @@ public class Test : MonoBehaviour
 シーンの遷移処理が終了するまで待ちたいことも多いので、WaitLoadingコルーチンを用意しています。
 
 ```cs
-IEnumetator Start()
+using System.Collections;
+using UnityEngine;
+using SilCilSystem.SceneLoaders;
+
+public class TestWaitSceneLoading : MonoBehaviour
 {
-    // 処理を待ちたいときはコルーチンでyield returnする.
-    yield return SceneLoader.WaitLoading;
+    private IEnumerator Start()
+    {
+        // 処理を待ちたいときはコルーチンでyield returnする.
+        yield return SceneLoader.WaitLoading;
+
+        Debug.Log("Scene Loader is free");
+    }
 }
 ```
 
@@ -95,7 +105,6 @@ ISceneLoaderは以下のメソッドが定義されたインターフェース�
 ```cs
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using SilCilSystem.SceneLoaders;
 
 public class CustomSceneLoader : MonoBehaviour, ISceneLoader
@@ -114,12 +123,15 @@ public class CustomSceneLoader : MonoBehaviour, ISceneLoader
 
     public IEnumerator LoadScene(string sceneName)
     {
-        // 例えば、1秒待ってからシーンを読み込み.
+        // 例えば、1秒待ってからシーン名を表示するだけにする.
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(sceneName);
+        Debug.Log(sceneName);
     }
 }
 ```
+
+**実際に使用する場合は、デフォルトで用意されているSceneLoaderのプレハブを変更するべきです。**
+デフォルトで生成されるプレハブについては[SingletonMonoBehaviour][page:SingletonMonoBehaviour]を参考にしてください。
 
 <!--- footer --->
 

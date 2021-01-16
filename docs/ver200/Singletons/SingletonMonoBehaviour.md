@@ -52,7 +52,7 @@ public class SingletonExample : SingletonMonoBehaviour<SigletonExample>
 ```cs
 using UnityEngine;
 
-public class SingletonExampleUser : MonoBehaviour
+public class TestSingletonExample : MonoBehaviour
 {
     private void Start()
     {
@@ -72,7 +72,8 @@ Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが�
 自動で生成されるようになっています。
 
 ![InitialPrefabs][fig:InitialPrefabs]
-画像は変更予定
+
+**画像は変更予定**
 
 ※生成処理はPrefabGeneratorOnLoad.csに記述してあります。
 
@@ -115,3 +116,5 @@ private void OnDestroy()
 <!--- 参照 --->
 
 {% include ver200/paths.md %}
+
+[fig:InitialPrefabs]: Figures/InitialPrefabs.png

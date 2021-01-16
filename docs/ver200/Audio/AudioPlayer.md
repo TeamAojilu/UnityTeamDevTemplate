@@ -74,6 +74,11 @@ public class TestAudioPlayer : MonoBehaviour
 }
 ```
 
+## AudioSourceの設定
+
+AudioPlayerで使用されるAudioSourceの設定により効果音の再生数や3D効果を取り入れることができます。
+デフォルトで再生されるプレハブは[SingletonMonoBehaviour][page:SingletonMonoBehaviour]を参考にしてください。
+
 ## 実装
 
 BGM再生は次に再生するべきAudioClipを保持した状態で音量を0に変化させていきます。
@@ -89,7 +94,7 @@ void _PlayBGM(string name)
 音量が0になったら、AudioClipを差し替えます。
 
 ```cs
-private void Update()
+void Update()
 {
     // 他の処理...
 
@@ -129,5 +134,3 @@ void _PlaySE(AudioClip clip, Vector3 worldPosition)
 <!--- 参照 --->
 
 {% include ver200/paths.md %}
-
-[fig:AudioList]: Figures/AudioList.gif
