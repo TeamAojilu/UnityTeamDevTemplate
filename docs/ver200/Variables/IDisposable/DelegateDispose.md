@@ -52,10 +52,10 @@ public void Dispose()
 
 m_delegateへの代入はstaticメソッドのCreateで行っています。
 
-```
+```cs
 public static IDisposable Create(Action action)
 {
-    var instance = ObjectPool.GetInstance();
+    var instance = m_pool.GetInstance();
     instance.m_delegate = action;
     return instance;
 }

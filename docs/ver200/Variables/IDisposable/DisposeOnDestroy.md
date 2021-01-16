@@ -17,7 +17,7 @@
 using UnityEngine;
 using SilCilSystem.Variables;
 
-public class TestEventListener : MonoBehaviour
+public class TestDisposeOnDestroy : MonoBehaviour
 {
     [SerializeField] private GameEventListener m_event = default;
     [SerializeField] private GameEventIntListener m_eventInt = default;

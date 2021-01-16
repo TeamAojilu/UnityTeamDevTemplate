@@ -30,7 +30,7 @@ using UnityEngine;
 using SilCilSystem.Variables;
 using System;
 
-public class Test : MonoBehaviour
+public class TestDisposables : MonoBehaviour
 {
     [SerializeField] private GameEventIntListener m_event1 = default; // int型のイベント.
     [SerializeField] private GameEventListener m_event2 = default; // 引数なしのイベント.
@@ -71,7 +71,7 @@ using UnityEngine;
 using SilCilSystem.Variables;
 using System;
 
-public class Test : MonoBehaviour
+public class TestCompositeDisposable : MonoBehaviour
 {
     [SerializeField] private GameEventIntListener m_event1 = default;
     [SerializeField] private GameEventListener m_event2 = default;

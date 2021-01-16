@@ -17,14 +17,14 @@ IDisposableをシーンのアンロード時に呼ぶようにする拡張メソ
 using UnityEngine;
 using SilCilSystem.Variables;
 
-public class TestEventListener : MonoBehaviour
+public class TestDisposeOnSceneUnLoaded : MonoBehaviour
 {
     [SerializeField] private GameEventListener m_event = default;
 
     private void Start()
     {
         // シーンと同時に破棄されるスクリプトなら、OnDestroyメソッドでDisposeを書く必要がなくなります.
-        m_event.Subscribe(() => Debug.Log("Hello")).DisposeOnSceneUnLoaded();
+        m_event?.Subscribe(() => Debug.Log("Hello"))?.DisposeOnSceneUnLoaded();
     }
 }
 ```

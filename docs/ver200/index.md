@@ -86,9 +86,9 @@ SilCilSystemの他の要素は主に変数/イベントアセットを利用し�
 
 ### IDisposable
 
-- [IDisposableを生成する][page:DelegateDispose]
 - [ゲームオブジェクトが破棄されたときにDisposeを呼ぶ][page:DisposeOnDestroy]
 - [シーン遷移時にDisposeを呼ぶ][page:DisposeOnSceneUnLoaded]
+- [IDisposableを生成する][page:DelegateDispose]
 - [複数のIDisposableを1つにまとめる][page:CompositeDisposable]
 
 ### エディタ拡張
