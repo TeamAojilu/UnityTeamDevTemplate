@@ -8,7 +8,7 @@ Assembly：SilCilSystem
 
 ---
 
-Property, ReadonlyPropertyはインスペクタ上で変数と[変数アセット][page:Variable]のどちらを使うかを選択できるようになるクラスです。
+`Property`, `ReadonlyProperty`はインスペクタ上で変数と[変数アセット][page:Variable]のどちらを使うかを選択できるようになるクラスです。
 これらを用いることで、変数アセットを必要以上に増やすことなくスクリプトの設定項目をエディタ上で調整できるようになります。
 
 ## メンバ一覧
@@ -18,8 +18,8 @@ Property, ReadonlyPropertyはインスペクタ上で変数と[変数アセッ�
 |Property\<T, TVariable>|ValueプロパティでT型の値のset/get|
 |ReadonlyProperty\<T, TVariable>|ValueプロパティでT型の値のget|
 
-T: 変数の型（int, floatなど）
-TVariable: T型の変数アセット（VariableInt, VariableFloatなど）
+`T`: 変数の型（`int`, `float`など）
+`TVariable`: T型の変数アセット（`VariableInt`, `VariableFloat`など）
 
 Unity2019ではジェネリッククラスをシリアライズすることができないため、
 よく使う型については非ジェネリックな抽象クラスを用意しています。
@@ -91,8 +91,8 @@ public class TestSerializeVariable : MonoBehaviour
 しかし、動作させるためには、変数アセットを作成して設定するという手間が加わりました。
 外部との連携をせずに動かしたい場合であっても変数アセットを作成する必要があり、少し面倒です。
 
-そこで、Property, ReadonlyPropertyの出番です。
-今回はReadonlyFloatを用いているので、それに対応するReadonlyPropertyFloatを使用します。
+そこで、`Property`, `ReadonlyProperty`の出番です。
+今回は`ReadonlyFloat`を用いているので、それに対応する`ReadonlyPropertyFloat`を使用します。
 
 ```cs
 using UnityEngine;
@@ -120,12 +120,15 @@ public class TestSerializeProperty : MonoBehaviour
 ## 使用上の注意点
 
 全ての設定項目をこれで置き換えるのが妥当かどうかは考える必要があります。
-Property, ReadonlyPropertyはRangeやTextAreaなどのAttributeや配列の複数ファイルドラッグ&ドロップに対応していません。
+`Property`, `ReadonlyProperty`は`Range`や`TextArea`などの属性や配列の複数ファイルドラッグ&ドロップに対応していません。
 外部と連携する必要がないと思われるものは通常のシリアライズで実装することも考えましょう。
+
+また、大量のインスタンスが生まれると思われるゲームオブジェクトに対しては
+メモリ消費量を抑えるために使用しないという選択肢も考えましょう。
 
 ## 実装
 
-内部で変数アセットと変数の両方の値を保持しているだけのラッパークラスです。
+内部で変数アセットと変数の両方の値を保持するラッパークラスです。
 
 ```cs
 public class Property<T, TVariable> where TVariable : Variable<T>
