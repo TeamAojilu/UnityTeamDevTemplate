@@ -13,49 +13,45 @@ MonoBehaviour:
   m_Name: VariableInspectorOrders
   m_EditorClassIdentifier: 
   m_orders:
-  - m_instanceID: 17030
-    m_order: 0
-  - m_instanceID: 17036
-    m_order: 3
-  - m_instanceID: 17040
-    m_order: 1
-  - m_instanceID: 17990
-    m_order: 3
-  - m_instanceID: 17994
-    m_order: 4
-  - m_instanceID: 17996
-    m_order: 5
-  - m_instanceID: 17998
-    m_order: 6
-  - m_instanceID: 18002
-    m_order: 7
-  - m_instanceID: 18004
-    m_order: 8
-  - m_instanceID: 18008
-    m_order: 9
   - m_instanceID: 16226
     m_order: 10
-  - m_instanceID: 18012
+  - m_instanceID: 17878
+    m_order: 1
+  - m_instanceID: 17884
+    m_order: 2
+  - m_instanceID: 17886
+    m_order: 3
+  - m_instanceID: 17888
+    m_order: 4
+  - m_instanceID: 17892
+    m_order: 5
+  - m_instanceID: 17894
+    m_order: 6
+  - m_instanceID: 17898
+    m_order: 7
+  - m_instanceID: 16250
+    m_order: 8
+  - m_instanceID: 17902
+    m_order: 9
+  - m_instanceID: 17904
+    m_order: 10
+  - m_instanceID: 17906
     m_order: 11
-  - m_instanceID: 18014
+  - m_instanceID: 17910
     m_order: 12
-  - m_instanceID: 18016
+  - m_instanceID: 17912
     m_order: 13
-  - m_instanceID: 18020
+  - m_instanceID: 17914
     m_order: 14
-  - m_instanceID: 18022
+  - m_instanceID: 17918
     m_order: 15
-  - m_instanceID: 18024
+  - m_instanceID: 17920
     m_order: 16
-  - m_instanceID: 18028
+  - m_instanceID: 17922
     m_order: 17
-  - m_instanceID: 18030
+  - m_instanceID: 17924
     m_order: 18
-  - m_instanceID: 18032
+  - m_instanceID: 17928
     m_order: 19
-  - m_instanceID: 18034
+  - m_instanceID: 17930
     m_order: 20
-  - m_instanceID: 18038
-    m_order: 21
-  - m_instanceID: 18040
-    m_order: 22
