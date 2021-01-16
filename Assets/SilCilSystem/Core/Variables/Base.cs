@@ -4,7 +4,12 @@ using SilCilSystem.Variables.Generic;
 
 namespace SilCilSystem.Variables.Base
 {
-    public abstract class VariableAsset : ScriptableObject { }
+    public abstract class VariableAsset : ScriptableObject
+    {
+#if UNITY_EDITOR
+        [SerializeField, TextArea, HideInInspector] internal string m_description = default;
+#endif
+    }
 }
 
 //

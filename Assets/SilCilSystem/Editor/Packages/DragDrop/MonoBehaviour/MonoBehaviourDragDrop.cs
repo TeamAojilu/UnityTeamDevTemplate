@@ -14,21 +14,27 @@ namespace SilCilSystem.Editors
         [InitializeOnLoadMethod]
         private static void OnLoad()
         {
-            EditorApplication.delayCall += () => Menu.SetChecked(MenuPath, EditorPrefs.GetBool(MenuPath, true));
+            EditorApplication.delayCall += DelayCall;
+        }
+
+        private static void DelayCall()
+        {
             SetActive();
+            EditorApplication.delayCall -= DelayCall;
         }
 
         [MenuItem(MenuPath)]
         private static void OnStateChanged()
         {
-            bool isChecked = !EditorPrefs.GetBool(MenuPath, Menu.GetChecked(MenuPath));
-            EditorPrefs.SetBool(MenuPath, isChecked);
+            EditorPrefs.SetBool(MenuPath, !EditorPrefs.GetBool(MenuPath, true));
             SetActive();
         }
 
         private static void SetActive()
         {
             bool active = EditorPrefs.GetBool(MenuPath, true);
+            Menu.SetChecked(MenuPath, active);
+
             EditorApplication.hierarchyWindowItemOnGUI -= OnGUI;
             EditorApplication.hierarchyChanged -= OnHierarchyChanged;
             if (active)
@@ -98,11 +104,14 @@ namespace SilCilSystem.Editors
 
         private static GameObject AddComponentToGameObject(string path, params Type[] behaviours)
         {
+            string name = null;
             var obj = MonoBehaviourDragDropList.GetGameObject(path);
             foreach (var behaviour in behaviours)
             {
+                name = name ?? $"{behaviour.Name}";
                 obj.AddComponent(behaviour);
             }
+            obj.name = (string.IsNullOrWhiteSpace(obj.name)) ? name : obj.name;
             return obj;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if UNITY_EDITOR
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
@@ -9,9 +10,12 @@ namespace SilCilSystem.Editors
     // [CreateAssetMenu]
     internal class VariableInspectorOrders : ScriptableObject
     {
+        // GUIDで指定. フォルダ構成をいじられても動くように.
+        private const string VariableInspectorOrdersID = "632d6d46c658303489412669cd0c2a10";
+
         public static VariableInspectorOrders GetInstance()
         {
-            var path = AssetDatabase.GUIDToAssetPath(Constants.VariableInspectorOrdersID);
+            var path = AssetDatabase.GUIDToAssetPath(VariableInspectorOrdersID);
             return AssetDatabase.LoadAssetAtPath<VariableInspectorOrders>(path);
         }
 
@@ -39,25 +43,29 @@ namespace SilCilSystem.Editors
             instance.m_orders = instance.m_orders.Where(x => EditorUtility.InstanceIDToObject(x.m_instanceID) != null).ToList();
         }
 
-        public IEnumerable<VariableAsset> Sort(IEnumerable<VariableAsset> variables)
+        private VariableAsset[] Sort(IEnumerable<VariableAsset> variables)
         {
-            return variables.OrderBy(x => 
+            bool import = false;
+            var array = variables.OrderBy(x => 
             {
                 var order = this[x.GetInstanceID()];
                 if(order == null)
                 {
-                    order = new OrderInfo(x.GetInstanceID(), m_orders.Count);
+                    order = new OrderInfo(x.GetInstanceID(), (AssetDatabase.IsMainAsset(x)) ? -1 : m_orders.Count);
                     m_orders.Add(order);
+                    import = true;
                 }
                 return order.m_order;
-            });
+            }).ToArray();
+            if (import) ImportThis();
+            return array;
         }
 
-        public VariableAsset[] GetOrderedSubAssets(VariableAsset parent)
+        public VariableAsset[] GetOrderedSubAssets(VariableAsset parent, bool includeParent = false)
         {
-            var assets = parent.GetAllVariables().Where(x => !AssetDatabase.IsMainAsset(x));
-            var ordered = Sort(assets).ToArray();
-            return ordered;
+            string path = AssetDatabase.GetAssetPath(parent);
+            var assets = AssetDatabase.LoadAllAssetsAtPath(path).Select(x => x as VariableAsset).Where(x => x != null && includeParent || !AssetDatabase.IsMainAsset(x));
+            return Sort(assets);
         }
 
         private void ImportThis()
@@ -107,3 +115,4 @@ namespace SilCilSystem.Editors
         }
     }
 }
+#endif

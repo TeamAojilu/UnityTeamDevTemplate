@@ -6,9 +6,6 @@
         internal const string SilCilSystemMenuPath = "SilCilSystem/";
         internal const string DragDropSettingMenuPath = SilCilSystemMenuPath + "DragDrop/";
 
-        // GUIDで指定. フォルダ構成をいじられても動くように.
-        internal const string VariableInspectorOrdersID = "632d6d46c658303489412669cd0c2a10";
-
         // Views
         internal const string CanvasTemplateID = "af0452c25383d8e44bef73d34d73bf00";
         internal const string EventSystemTemplateID = "1c18688ed5dc55b498134b8a9cfac836";

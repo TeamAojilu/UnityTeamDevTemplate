@@ -3,6 +3,7 @@ using UnityEditor;
 using SilCilSystem.Variables.Base;
 using System;
 using UnityEngine;
+using System.Linq;
 
 namespace SilCilSystem.Editors
 {
