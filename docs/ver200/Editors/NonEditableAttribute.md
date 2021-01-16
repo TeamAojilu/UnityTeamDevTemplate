@@ -14,7 +14,7 @@
 
 ## 使用例
 
-NonEditable属性をフィールドにつけるだけです。
+編集不可にしたいフィールドにNonEditable属性をつけます。
 
 ```cs
 using UnityEngine;
@@ -26,7 +26,7 @@ public class Test : MonoBehaviour
 }
 ```
 
-画像を挿入予定
+**画像を挿入予定**
 
 ## 注意点
 

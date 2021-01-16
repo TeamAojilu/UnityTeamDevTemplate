@@ -12,26 +12,26 @@ Enumのエディタ上での表示を変更するカスタム属性です。
 
 ## 使用例
 
-EnumLabel属性をつけるだけです。
+表示を変えたいEnumの要素にEnumLabel属性をつけます。
 
 ```cs
 using UnityEngine;
 using SilCilSystem.Editors;
 
-public enum Animal
+public class TestEnumLabel : MonoBehaviour
 {
-    [EnumLabel("ひと")] Human,
-    [EnumLabel("いぬ")] Dog,
-    [EnumLabel("ねこ")] Cat,
-}
+    public enum Animal
+    {
+        Human, // カスタマイズしない場合は無しでいい.
+        [EnumLabel("いぬ")] Dog,
+        [EnumLabel("ねこ")] Cat,
+    }
 
-public class Test : MonoBehaviour
-{
     [SerializeField] private Animal m_animal = Animal.Human;
 }
 ```
 
-画像を挿入予定
+**画像を挿入予定**
 
 ## 注意点
 

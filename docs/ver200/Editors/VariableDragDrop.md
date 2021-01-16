@@ -9,7 +9,7 @@
 
 例えば、int型の変数アセットをドラッグ&ドロップして変数の値を表示するTextを作成できます。
 
-画像を挿入予定
+**画像を挿入予定**
 
 UIだけでなく[Timer][page:Timer]などのコンポーネントも用意しています。
 
@@ -41,7 +41,8 @@ internal class GameObjectActivatorGenerator : VariableDragDropAction
     // 引数にはドラッグされた変数アセットが入る(サブアセットを含む)ので、利用可能ならtrueを返す.
     public override bool IsAccepted(VariableAsset[] assetIncludingChildren)
     {
-        return assetIncludingChildren.Any(x => x is ReadonlyBool); // bool型があれば生成可能なのでtrueを返す.
+        // bool型があれば生成可能なのでtrueを返す.
+        return assetIncludingChildren.Any(x => x is ReadonlyBool);
     }
 
     public override void OnDropExited(VariableAsset dropAsset)

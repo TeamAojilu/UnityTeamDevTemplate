@@ -7,22 +7,24 @@
 MonoBehaviourを継承したスクリプトをHierarchyにドラッグ&ドロップすることで、
 スクリプトがアタッチされたゲームオブジェクトの生成が可能です。
 
-画像を挿入予定
+**画像を挿入予定**
 
 複数のスクリプトをドラッグ&ドロップする場合には、2パターンから選択できます。
 
 1. ゲームオブジェクトを1つ作成する
 
-画像を挿入予定
+**画像を挿入予定**
 
 2. ゲームオブジェクトをそれぞれ作成する
 
-画像を挿入予定
+**画像を挿入予定**
 
 ## 機能のON/OFF
 
 ドラッグ&ドロップでのゲームオブジェクト生成機能をOFFにするには、
 SilCilSystemメニューからDragDrop/MonoBehaviourのチェックを外してください。
+
+**画像を挿入予定**
 
 ## カスタマイズ：生成できるゲームオブジェクトの種類を増やす
 
@@ -38,12 +40,13 @@ using UnityEngine;
 using UnityEditor; // Undoに必要.
 using SilCilSystem.Editors; // MonoBehaviourDragDropの使用に必要.
 
-internal static class GameObjectGenerators
+public static class CustomGameObjectGenerators
 {
-    [MonoBehaviourDragDrop("Empty")]
+    [MonoBehaviourDragDrop("Custom/Empty")]
     private static GameObject CreateEmpty()
     {
         var obj = new GameObject();
+        obj.name = "Custom"; // 名前をCustomにしてみる.
         Undo.RegisterCreatedObjectUndo(obj, "Create Empty"); // ctrl+zなどのUndoができるようにする.
         return obj;
     }
