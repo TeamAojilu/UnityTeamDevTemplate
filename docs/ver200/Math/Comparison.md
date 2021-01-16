@@ -41,7 +41,7 @@ floatやint, stringなどはIComparable\<T>を継承しているので、その�
 using UnityEngine;
 using SilCilSystem.Math;
 
-public class Test : MonoBehaviour
+public class TestComparison : MonoBehaviour
 {
     [SerializeField] private Comparison.CompareType m_compareType = default;
     [SerializeField] private float m_value1 = 0f;
@@ -50,10 +50,10 @@ public class Test : MonoBehaviour
     private void Update()
     {
         bool result = m_compareType.Compare(m_value1, m_value2);
-        
+
         // こっちでもOK.
         // bool result = m_value1.CompareTo(m_value2, m_compareType);
-        
+
         Debug.Log(result);
     }
 }
@@ -78,6 +78,8 @@ public static bool Compare<T>(this CompareType compareType, T value1, T value2) 
     }
 }
 ```
+
+エディタ上では[EnumLabel属性][page:EnumLabel]を使用して、記号で表示されるようにしています。
 
 <!--- footer --->
 

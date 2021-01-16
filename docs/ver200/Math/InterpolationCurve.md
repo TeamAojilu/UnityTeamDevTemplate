@@ -28,7 +28,7 @@ using UnityEngine;
 using System.Collections;
 using SilCilSystem.Math;
 
-public class MoveTest : MonoBehaviour
+public class TestInterpolationCurve : MonoBehaviour
 {
     [SerializeField] private Vector3 m_start = new Vector3(0f, 0f, 0f);
     [SerializeField] private Vector3 m_end = new Vector3(1f, 0f, 0f);

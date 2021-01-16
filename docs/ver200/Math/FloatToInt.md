@@ -37,7 +37,7 @@ Castメソッドを呼べば変換できます。
 using UnityEngine;
 using SilCilSystem.Math;
 
-public class Test : MonoBehaviour
+public class TestFloatToInt : MonoBehaviour
 {
     [SerializeField] private FloatToInt.CastType m_castType = default;
     [SerializeField] private float m_value = -1.5f;
