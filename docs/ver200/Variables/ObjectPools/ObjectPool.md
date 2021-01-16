@@ -102,7 +102,7 @@ public class PooledBulletGenerator : MonoBehaviour
 ## 実装
 
 ```cs
-public class ObjectPool<T> where T : class, IPooledObject
+public class ObjectPool<T> where T : IPooledObject
 {
     private readonly List<T> m_instances;
     private readonly Func<T> m_createFunction;
