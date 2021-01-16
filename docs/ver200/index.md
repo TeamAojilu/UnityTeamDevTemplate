@@ -70,6 +70,14 @@ SilCilSystemの他の要素は主に変数/イベントアセットを利用し�
 
 - [AudioClipを再生する][page:AudioPlayer]
 
+### シングルトン
+
+- [シングルトンの実装][page:SingletonMonoBehaviour]
+
+### オブジェクトプール
+
+- [オブジェクトプール][page:ObjectPool]
+
 ### 数学
 
 - [イージング関数を取得/設定する][page:InterpolationCurve]
@@ -82,14 +90,6 @@ SilCilSystemの他の要素は主に変数/イベントアセットを利用し�
 - [ゲームオブジェクトが破棄されたときにDisposeを呼ぶ][page:DisposeOnDestroy]
 - [シーン遷移時にDisposeを呼ぶ][page:DisposeOnSceneUnLoaded]
 - [複数のIDisposableを1つにまとめる][page:CompositeDisposable]
-
-### オブジェクトプール
-
-- [オブジェクトプール][page:ObjectPool]
-
-### シングルトン
-
-- [シングルトンの実装][page:SingletonMonoBehaviour]
 
 ### エディタ拡張
 
