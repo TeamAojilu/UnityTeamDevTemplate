@@ -2,7 +2,7 @@
 
 abstract
 
-名前空間：SilCilSystem.Variables
+名前空間：SilCilSystem.Variables (ジェネリック版はSilCilSystem.Variables.Generic)
 
 継承：[VariableAsset][page:VariableAsset]
 
@@ -109,31 +109,21 @@ Variable\<T>は抽象クラスなので、具体的な実装を記述してい�
 例えば、Variable\<bool>を継承したクラスならこうなります。
 
 ```cs
-using UnityEngine;
-
-namespace SilCilSystem.Variables
+// 使用する際は具体的な型（この場合はBoolValue）を知る必要がないのでinternalで実装.
+internal class BoolValue : VariableBool
 {
-    // 使用する際は具体的な型（この場合はBoolValue）を知る必要がないのでinternalで実装.
-    internal class BoolValue : VariableBool
-    {
-        [SerializeField] private bool m_value = default;
-        public override bool Value { get => m_value; set => m_value = value; }
-    }
+    [SerializeField] private bool m_value = default;
+    public override bool Value { get => m_value; set => m_value = value; }
 }
 ```
 
 読み取り専用クラスの具体的な実装はVariableBoolを参照に持ち、値を返します。
 
 ```cs
-using UnityEngine;
-
-namespace SilCilSystem.Variables
+internal class ReadonlyBoolValue : ReadonlyBool
 {
-    internal class ReadonlyBoolValue : ReadonlyBool
-    {
-        [SerializeField] private VariableBool m_variable = default;
-        public override bool Value => m_variable.Value;
-    }
+    [SerializeField] private VariableBool m_variable = default;
+    public override bool Value => m_variable.Value;
 }
 ```
 

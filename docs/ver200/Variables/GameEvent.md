@@ -2,7 +2,7 @@
 
 abstract
 
-名前空間：SilCilSystem.Variables
+名前空間：SilCilSystem.Variables (ジェネリック版はSilCilSystem.Variables.Generic)
 
 継承：[VariableAsset][page:VariableAsset]
 
@@ -80,7 +80,6 @@ public class RollDice : MonoBehaviour
 サイコロの値をDebug.Logで表示するにはGameEventIntListenerを使用します。
 
 ```cs
-using System;
 using UnityEngine;
 using SilCilSystem.Variables;
 
@@ -92,7 +91,7 @@ public class DebugDice : MonoBehaviour
     private void Start()
     {
         // 実行するメソッドを登録する. 第2引数に指定したGameObjectが破棄されたらイベント解除される.
-        m_disposable = m_onDiceRolled.Subscribe(x => Debug.Log(x), gameObject);
+        m_onDiceRolled.Subscribe(x => Debug.Log(x), gameObject);
     }
 }
 ```
@@ -127,22 +126,17 @@ IDisposeに関する機能を用意しています。
 例えば、GameEventを継承した抽象クラスEventNoArgsの具体的な実装は以下です。
 
 ```cs
-using System;
-
-namespace SilCilSystem.Variables
+// 使用する際は具体的な型（この場合はEventNoArgs）を知る必要がないのでinternalで実装.
+internal class EventNoArgs : GameEvent
 {
-    // 使用する際は具体的な型（この場合はEventNoArgs）を知る必要がないのでinternalで実装.
-    internal class EventNoArgs : GameEvent
+    private event Action m_event;
+    public override void Publish() => m_event?.Invoke();
+    public override IDisposable Subscribe(Action action)
     {
-        private event Action m_event;
-        public override void Publish() => m_event?.Invoke();
-        public override IDisposable Subscribe(Action action)
-        {
-            // イベントを登録.
-            m_event += action;
-            // 解除用のIDisposableクラスを返す.
-            return DelegateDispose.Create(() => m_event -= action);
-        }
+        // イベントを登録.
+        m_event += action;
+        // 解除用のIDisposableクラスを返す.
+        return DelegateDispose.Create(() => m_event -= action);
     }
 }
 ```
@@ -152,16 +146,10 @@ namespace SilCilSystem.Variables
 読み取り専用クラスGameEventListenerの具体的な実装はGameEventを参照に持ち、値を返します。
 
 ```cs
-using System;
-using UnityEngine;
-
-namespace SilCilSystem.Variables
+internal class EventNoArgsListener : GameEventListener
 {
-    internal class EventNoArgsListener : GameEventListener
-    {
-        [SerializeField] private EventNoArgs m_event = default;
-        public override IDisposable Subscribe(Action action) => m_event.Subscribe(action);
-    }
+    [SerializeField] private EventNoArgs m_event = default;
+    public override IDisposable Subscribe(Action action) => m_event.Subscribe(action);
 }
 ```
 

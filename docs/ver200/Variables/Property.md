@@ -2,7 +2,7 @@
 
 class
 
-名前空間：SilCilSystem.Variables
+名前空間：SilCilSystem.Variables (ジェネリック版はSilCilSystem.Variables.Generic)
 
 ---
 
@@ -53,7 +53,7 @@ SilCilSystemを使わない場合にはこうなります。
 ```cs
 using UnityEngine;
 
-public class Test : MonoBehaviour
+public class TestSerializeField : MonoBehaviour
 {
     // 移動速度をシリアライズしてインスペクタで設定可能に.
     [SerializeField] private float m_speed = 10f;
@@ -61,7 +61,7 @@ public class Test : MonoBehaviour
     private void Update()
     {
         float h = Input.GetAxis("Horizontal");
-        transform.position += Vector3.right * Time.deltaTime * m_speed;
+        transform.position += h * Vector3.right * Time.deltaTime * m_speed;
     }
 }
 ```
@@ -72,7 +72,7 @@ SilCilSystemの[変数アセット][page:Variable]を使用する場合は以下
 using UnityEngine;
 using SilCilSystem.Variables;
 
-public class TestVariable : MonoBehaviour
+public class TestSerializeVariable : MonoBehaviour
 {
     // 変数を変数アセットに変更.
     [SerializeField] private ReadonlyFloat m_speed = default;
@@ -80,7 +80,7 @@ public class TestVariable : MonoBehaviour
     private void Update()
     {
         float h = Input.GetAxis("Horizontal");
-        transform.position += Vector3.right * Time.deltaTime * m_speed;
+        transform.position += h * Vector3.right * Time.deltaTime * m_speed;
     }
 }
 ```
@@ -96,7 +96,7 @@ public class TestVariable : MonoBehaviour
 using UnityEngine;
 using SilCilSystem.Variables;
 
-public class TestVariable : MonoBehaviour
+public class TestSerializeProperty : MonoBehaviour
 {
     // 変数アセットを使う/使わないを選べるようになる.
     [SerializeField] private ReadonlyPropertyFloat m_speed = new ReadonlyPropertyFloat(10f);
@@ -104,7 +104,7 @@ public class TestVariable : MonoBehaviour
     private void Update()
     {
         float h = Input.GetAxis("Horizontal");
-        transform.position += Vector3.right * Time.deltaTime * m_speed;
+        transform.position += h * Vector3.right * Time.deltaTime * m_speed;
     }
 }
 ```
@@ -112,6 +112,7 @@ public class TestVariable : MonoBehaviour
 このようにすることで、変数アセットを使用したい場合にのみ、エディタ上で指定できるようになります。
 
 ![エディタ上での見え方][fig:PropertyFloat]
+
 **この画像は最新ではないので変更予定**
 
 ## 使用上の注意点

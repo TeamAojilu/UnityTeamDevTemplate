@@ -16,11 +16,12 @@ ScriptableObjectをそのまま継承した抽象クラスです。
 他のScriptableObjectと区別するために使用しています。
 
 ```cs
-using UnityEngine;
-
-namespace SilCilSystem.Variables.Base
+public abstract class VariableAsset : ScriptableObject 
 {
-    public abstract class VariableAsset : ScriptableObject{ }
+#if UNITY_EDITOR
+    // メモ用の変数. ビルド時には含まれない.
+    [SerializeField, TextArea] internal string m_description = default;
+#endif
 }
 ```
 

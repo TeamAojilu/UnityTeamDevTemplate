@@ -34,7 +34,6 @@ public class TestVariableInt : MonoBehaviour
 （スクリプト名が適切ではありませんが、サンプルなので気にしないでください。）
 
 ```cs
-using System;
 using UnityEngine;
 using SilCilSystem.Variables;
 
@@ -46,7 +45,7 @@ public class DebugDice : MonoBehaviour
     private void Start()
     {
         // 実行するメソッドを登録する. 第2引数に指定したGameObjectが破棄されたらイベント解除される.
-        m_disposable = m_onDiceRolled.Subscribe(x => Debug.Log(x), gameObject);
+        m_onDiceRolled.Subscribe(x => Debug.Log(x), gameObject);
     }
 }
 ```
@@ -64,25 +63,20 @@ public class DebugDice : MonoBehaviour
 イベントアセットを参照として持ち、setter内でPublishを読んでいるだけです。
 
 ```cs
-using UnityEngine;
-
-namespace SilCilSystem.Variables
+// 使用する際は具体的な型（この場合はNotificationBool）を知る必要がないのでinternalで実装.
+internal class NotificationBool : VariableBool
 {
-    // 使用する際は具体的な型（この場合はNotificationBool）を知る必要がないのでinternalで実装.
-    internal class NotificationBool : VariableBool
-    {
-        [SerializeField] private bool m_value = default;
-        [SerializeField] private GameEventBool m_onValueChanged = default;
+    [SerializeField] private bool m_value = default;
+    [SerializeField] private GameEventBool m_onValueChanged = default;
 
-        public override bool Value
+    public override bool Value
+    {
+        get => m_value;
+        set
         {
-            get => m_value;
-            set
-            {
-                m_value = value;
-                // setterが呼ばれる度にイベントを呼ぶ.
-                m_onValueChanged?.Publish(value);
-            }
+            m_value = value;
+            // setterが呼ばれる度にイベントを呼ぶ.
+            m_onValueChanged?.Publish(value);
         }
     }
 }
