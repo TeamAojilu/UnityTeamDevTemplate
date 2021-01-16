@@ -10,7 +10,7 @@ Assembly：SilCilSystem
 
 ---
 
-複数のIDisposableを1つにまとめるためのクラスです。
+複数の`IDisposable`を1つにまとめるためのクラスです。
 
 ## メンバ一覧
 
@@ -24,7 +24,7 @@ Assembly：SilCilSystem
 
 ## 使用例
 
-複数のイベントを登録する場合、登録する分だけ返り値のIDisposableを保持する必要があって面倒です。
+複数のイベントを登録する場合、登録する分だけ返り値の`IDisposable`を保持する必要があって面倒です。
 例えば、イベントが2つある場合は以下のようになります。
 
 ```cs
@@ -66,7 +66,7 @@ public class TestDisposables : MonoBehaviour
 }
 ```
 
-CompositeDisposableを使えば、複数のIDisposableを1つのIDisposableとして扱うことが可能です。
+`CompositeDisposable`を使えば、複数の`IDisposable`を1つの`IDisposable`として扱うことが可能です。
 
 ```cs
 using UnityEngine;
@@ -109,7 +109,7 @@ public class TestCompositeDisposable : MonoBehaviour
 
 ## 実装
 
-典型的なCompositeパターンです。
+典型的なコンポジットパターンです。
 
 ```cs
 public class CompositeDisposable : IDisposable

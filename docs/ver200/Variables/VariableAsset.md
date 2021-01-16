@@ -14,8 +14,8 @@ Assembly：SilCilSystem
 
 ## 実装
 
-ScriptableObjectをそのまま継承した抽象クラスです。
-他のScriptableObjectと区別するために使用しています。
+`ScriptableObject`をそのまま継承した抽象クラスです。
+他の`ScriptableObject`と区別するために使用しています。
 
 ```cs
 public abstract class VariableAsset : ScriptableObject 

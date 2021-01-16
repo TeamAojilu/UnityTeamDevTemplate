@@ -23,7 +23,7 @@ BGMの再生と効果音の再生をサポートしています。
 |static void PlayBGM(AudioClip clip)|BGMを再生/変更する|
 |static void PlaySE(AudioClip clip, Vector3 worldPosition)|SEを再生する, positionの規定値はVector3.zero|
 
-※PlayBGMにnullを渡すと音量0にフェードアウトします。
+※`PlayBGM`に`null`を渡すと音量0にフェードアウトします。
 
 ### 設定項目
 
@@ -49,12 +49,11 @@ BGMの再生と効果音の再生をサポートしています。
 |AudioSource|BgmSource|BGM再生用のAudioSource||
 |AudioSource[]|SeSources|SE再生用のAudioSource|設定した数が同時再生数の限界になります|
 
-※2D/3Dサウンド, AudioMixerの設定はそれぞれのAudioSourceに対して行ってください。
+※2D/3Dサウンド, `AudioMixer`の設定はそれぞれの`AudioSource`に対して行ってください。
 
 ## 使用例
 
-基本的にPlayBGMとPlaySEを呼べばいいです。
-音を再生したいタイミングでPlayBGM/PlaySEを呼びましょう。
+音を再生したいタイミングで`PlayBGM`/`PlaySE`を呼びます。
 例えば、以下はキーを押すたびに効果音を再生するスクリプトです。
 
 ```cs
@@ -78,12 +77,12 @@ public class TestAudioPlayer : MonoBehaviour
 
 ## AudioSourceの設定
 
-AudioPlayerで使用されるAudioSourceの設定により効果音の再生数や3D効果を取り入れることができます。
+`AudioPlayer`で使用される`AudioSource`の設定により効果音の再生数や3D効果を取り入れることができます。
 デフォルトで再生されるプレハブは[SingletonMonoBehaviour][page:SingletonMonoBehaviour]を参考にしてください。
 
 ## 実装
 
-BGM再生は次に再生するべきAudioClipを保持した状態で音量を0に変化させていきます。
+BGM再生は次に再生するべき`AudioClip`を保持した状態で音量を0に変化させていきます。
 
 ```cs
 void _PlayBGM(string name)
@@ -93,7 +92,7 @@ void _PlayBGM(string name)
 }
 ```
 
-音量が0になったら、AudioClipを差し替えます。
+音量が0になったら、`AudioClip`を差し替えます。
 
 ```cs
 void Update()
@@ -113,7 +112,7 @@ void Update()
 }
 ```
 
-SE再生は再生していないAudioSourceを探し出してPlayを呼び出します。
+SE再生は再生していない`AudioSource`を探し出して`Play`を呼び出します。
 
 ```cs
 void _PlaySE(AudioClip clip, Vector3 worldPosition)

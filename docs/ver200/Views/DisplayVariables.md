@@ -10,7 +10,7 @@ Assembly：SilCilSystem.Packages
 
 ---
 
-変数アセットの値を表示するためのコンポーネントです。
+[変数アセット][page:Variable]の値を表示するためのコンポーネントです。
 実際の表示処理は[IDisplayTextインターフェース][page:IDisplayText]に委譲し、
 このコンポーネントは表示形式の指定や表示する値のアニメーション設定を行います。
 
@@ -35,7 +35,7 @@ Assembly：SilCilSystem.Packages
 |ReadonlyPropertyString|Format|変数の値の表示形式|ToStringの引数|
 |VariableAsset|Variable|用いる変数アセット|Readonly|
 
-Formatについては[C#のドキュメント][page:StringFormat]を参考にしてください。
+`Format`については[C#のドキュメント][page:StringFormat]を参考にしてください。
 
 #### アニメーション設定
 
@@ -82,19 +82,19 @@ public class TestScore : MonoBehaviour
 
 ![変数アセットを設定する][fig:TestScore]
 
-次に、スコアをDisplayVariablesを用いて表示してみましょう。
+次に、スコアを`DisplayVariables`を用いて表示してみましょう。
 
-1. Textコンポーネント（TextMeshProでも可）と同じゲームオブジェクトにDisplayVariablesをアタッチして設定します。
-2. 全体設定のFormatに"score: {score}"を入力します。
-3. IntValuesにスコアの変数アセットを設定します。
-4. Keyには"score", Formatには"0"を入力します。
+1. `Text`コンポーネント（`TextMeshPro`でも可）と同じゲームオブジェクトに`DisplayVariables`をアタッチして設定します。
+2. 全体設定の`Format`に"score: {score}"を入力します。
+3. `IntValues`にスコアの変数アセットを設定します。
+4. `Key`には"score", Formatには"0"を入力します。
 
 ![DisplayVariablesで変数の値を表示する][fig:DisplayVariablesBasic]
 
 実行すれば、変数アセットの値が表示されます。
 
 アニメーションもさせてみましょう。
-Durationに0.5を入力すれば0.5秒で変数の値に変わってくれます。
+`Duration`に0.5を入力すれば0.5秒で変数の値に変わってくれます。
 
 ![アニメーションの設定をする][fig:AnimationSettings]
 
@@ -102,7 +102,7 @@ Durationに0.5を入力すれば0.5秒で変数の値に変わってくれます
 
 ## 実装
 
-基本的にはループを回して置換しているだけです。
+ループを回して文字列を置換しています。
 
 ```cs
 private void SetText()

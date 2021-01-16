@@ -1,33 +1,33 @@
 # Timelineで変数の値を変える
 
-Timeline機能と連携して変数の値を変化させることができます。
+`Timeline`機能と連携して変数の値を変化させることができます。
 
 ## 使用例
 
-変数アセットをTimelineにドラッグ&ドロップすればTrackができます。
+変数アセットを`Timeline`にドラッグ&ドロップすれば`Track`ができます。
 
 ### BoolActivation
 
-bool型の変数アセットを用いるとBoolActivationが生成されます。
-これはclip内でboolの値がtrueになり、clip外でfalseになります。
+`bool`型の変数アセットを用いると`BoolActivation`が生成されます。
+これはクリップ内で値が`true`になり、クリップ外で`false`になります。
 
 ![BoolActivationを作成して実行する][fig:BoolActivation]
 
 ### Tween
 
-floatなどの変数アセットを用いるとTweenVaraiableが生成されます。
-これは特定の値からある値へと徐々に変化させるclipです。
+`float`などの変数アセットを用いると`TweenVariable`が生成されます。
+これは特定の値からある値へと徐々に変化させるクリップです。
 
 ![TweenVariableを作成して実行する][fig:TweenVariable]
 
 ### 対応している型
 
-#### Primitive型
+#### Primitive
 
 - float
 - int
 
-#### struct
+#### Unityのstruct型
 
 - Vector2
 - Vector2Int
@@ -38,12 +38,12 @@ floatなどの変数アセットを用いるとTweenVaraiableが生成されま�
 
 ## 使用上の注意点
 
-CurveTypeの変更などは実行されないと反映されないようです。
+`CurveType`の変更などは実行されないと反映されないようです。
 
 ## 実装
 
-PlayableAssetとPlayableBehaviourを継承して実現しています。
-例えば、Tweenの処理はこんな感じです。
+`PlayableAsset`と`PlayableBehaviour`を継承して実現しています。
+例えば、`Tween`の処理はこんな感じです。
 
 ```cs
 public class TweenVariableBehaviour<T> : PlayableBehaviour

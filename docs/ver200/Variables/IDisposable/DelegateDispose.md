@@ -13,7 +13,7 @@ Assembly：SilCilSystem
 
 ---
 
-Disposeメソッドで呼ばれる処理を指定できるIDisposableです。
+`Dispose`メソッドで呼ばれる処理を指定できる`IDisposable`です。
 
 ## メンバ一覧
 
@@ -41,7 +41,7 @@ public IDisposable Subscribe(Action action)
 
 ## 実装
 
-指定されたメソッドを変数として保持してDisposeで呼び出しています。
+指定されたメソッドを変数として保持して`Dispose`で呼び出しています。
 
 ```cs
 private Action m_delegate;
@@ -53,7 +53,7 @@ public void Dispose()
 }
 ```
 
-m_delegateへの代入はstaticメソッドのCreateで行っています。
+`m_delegate`への代入は`static`メソッドの`Create`で行っています。
 
 ```cs
 public static IDisposable Create(Action action)
@@ -64,7 +64,7 @@ public static IDisposable Create(Action action)
 }
 ```
 
-newが極力呼ばれないようにするために[オブジェクトプール][page:ObjectPool]を行っています。
+`new`が極力呼ばれないようにするために[オブジェクトプール][page:ObjectPool]を行っています。
 
 <!--- footer --->
 

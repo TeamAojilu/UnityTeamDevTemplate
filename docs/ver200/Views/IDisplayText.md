@@ -38,8 +38,8 @@ class DisplayStringTextUGUI : IDisplayText
 }
 ```
 
-SilCilSystemではText, TextMeshProに対応したIDisplayTextの実装を用意しています。
-これらはGameObjectの拡張メソッドを通して取得できます。
+SilCilSystemでは`Text`, `TextMeshPro`に対応した`IDisplayText`の実装を用意しています。
+これらは`GameObject`の拡張メソッドを通して取得できます。
 
 ```cs
 using UnityEngine;
@@ -55,12 +55,11 @@ public class TestDisplayText : MonoBehaviour
 }
 ```
 
-このスクリプトをTextやTextMeshProコンポーネントにアタッチします。
+このスクリプトを`Text`や`TextMeshPro`コンポーネントにアタッチします。
 
 ## 実装
 
-GetTextComponentの実装は以下です。
-順番にGetComponentして取得しています。
+順番に`GetComponent`して取得しています。
 
 ```cs
 public static IDisplayText GetTextComponent(this GameObject gameObject)

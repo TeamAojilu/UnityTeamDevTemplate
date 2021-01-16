@@ -76,7 +76,7 @@ public class TestCallRepeatedly : MonoBehaviour
 
 ### void CallDelayed
 
-時間をチェックして、delayを超えたら処理を呼んでいます。
+時間をチェックして、`delay`を超えたら処理を呼んでいます。
 簡単に書くとこんな感じに処理しています。
 
 ```cs
@@ -94,7 +94,7 @@ public bool Update(float deltaTime)
 
 ### void CallRepeatedly
 
-時間をチェックして、intervalを超えたら処理を呼んでいます。
+時間をチェックして、`interval`を超えたら処理を呼んでいます。
 簡単に書くとこんな感じに処理しています。
 
 ```cs

@@ -8,7 +8,7 @@ Assembly：SilCilSystem
 
 ---
 
-IDisposableをシーンのアンロード時に呼ぶようにする拡張メソッドです。
+`IDisposable`をシーンのアンロード時に呼ぶようにする拡張メソッドです。
 [イベントアセット][page:GameEvent]の解除処理に利用できます。
 
 ## 使用例
@@ -33,12 +33,12 @@ public class TestDisposeOnSceneUnLoaded : MonoBehaviour
 
 ## 使用上の注意点
 
-マルチシーンやDontDestroyOnLoadしているゲームオブジェクトに使ってしまうと、
+マルチシーンや`DontDestroyOnLoad`しているゲームオブジェクトに使ってしまうと、
 予期せぬタイミングでイベントが解除されるため注意です。
 
 ## 実装
 
-RuntimeInitializeOnLoadMethodを用いてコールバックを登録して実現しています。
+`RuntimeInitializeOnLoadMethod`を用いてコールバックを登録して実現しています。
 
 ```cs
 private static List<IDisposable> _Disposables = new List<IDisposable>(); 

@@ -10,7 +10,7 @@ Assembly：SilCilSystem.Packages
 
 ---
 
-bool型の[変数アセット][page:Variable]でゲームオブジェクトのActiveやコンポーネントのenabledを切り替えるためのクラスです。
+`bool`型の[変数アセット][page:Variable]でゲームオブジェクトのアクティブやコンポーネントの`enabled`を切り替えるためのクラスです。
 
 ## クラス一覧
 
@@ -31,7 +31,7 @@ bool型の[変数アセット][page:Variable]でゲームオブジェクトのAc
 ## 使用例
 
 例えば、クリックするたびにCubeをON/OFFする処理をしてみます。
-まず、bool型の変数アセットを作成して以下のスクリプトに設定します。
+まず、`bool`型の変数アセットを作成して以下のスクリプトに設定します。
 
 ```cs
 using UnityEngine;
@@ -51,8 +51,8 @@ public class TestActivator : MonoBehaviour
 }
 ```
 
-GameObjectActivatorを作成して先ほどの変数アセットを設定します。
-TargetsにON/OFFを切り替えたいGameObjectを指定します。
+`GameObjectActivator`を作成して先ほどの変数アセットを設定します。
+`Targets`にON/OFFを切り替えたいゲームオブジェクトを指定します。
 
 ![GameObjectActivatorを設定する][fig:GameObjectActivator]
 
@@ -69,8 +69,8 @@ bool MicroUpdate(float deltaTime)
 }
 ```
 
-SetActivesメソッドはクラス別に実装しています。
-GameObjectActivatorの場合は以下のようになります。
+`SetActives`メソッドはクラス別に実装しています。
+`GameObjectActivator`の場合は以下のようになります。
 
 ```cs
 void SetActives(bool value) 

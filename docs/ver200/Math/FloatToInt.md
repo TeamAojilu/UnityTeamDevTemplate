@@ -8,9 +8,9 @@ Assembly：SilCilSystem.Packages
 
 ---
 
-float型からint型への変換を行うための列挙型です。
+`float`型から`int`型への変換を行うための列挙型です。
 インスペクタ上から指定できるようにするために作成しました。
-拡張メソッドによりfloatをintに変換できます。
+拡張メソッドにより`float`を`int`に変換できます。
 
 ## メンバ一覧
 
@@ -33,7 +33,7 @@ float型からint型への変換を行うための列挙型です。
 
 ## 使用例
 
-Castメソッドを呼べば変換できます。
+`Cast`メソッドを呼べば変換できます。
 
 ```cs
 using UnityEngine;
@@ -54,7 +54,7 @@ public class TestFloatToInt : MonoBehaviour
 
 ## 実装
 
-switch構文でそれぞれ処理しています。
+`switch`構文でそれぞれ処理しています。
 
 ```cs
 public static int Cast(this CastType castType, float value)

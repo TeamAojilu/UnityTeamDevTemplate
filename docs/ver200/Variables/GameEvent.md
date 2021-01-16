@@ -11,7 +11,7 @@ Assembly：SilCilSystem
 ---
 
 異なるスクリプト間でのメソッドの実行ができます。
-メソッドの実行が可能なGameEventとメソッドの登録のみ可能なGameEventListenerがあります。
+メソッドの実行が可能な`GameEvent`とメソッドの登録のみ可能な`GameEventListener`があります。
 
 ## クラス一覧
 
@@ -79,7 +79,7 @@ public class RollDice : MonoBehaviour
 }
 ```
 
-サイコロの値をDebug.Logで表示するにはGameEventIntListenerを使用します。
+サイコロの値を`Debug.Log`で表示するには`GameEventIntListener`を使用します。
 
 ```cs
 using UnityEngine;
@@ -99,7 +99,7 @@ public class DebugDice : MonoBehaviour
 ```
 
 インスペクタ上で同じイベントアセットを設定すれば、両者の連携が可能になります。
-メニューからInt型のイベントアセットを作成して設定します。
+メニューから`int`型のイベントアセットを作成して設定します。
 
 ![イベントアセットをインスペクタ上で設定する][fig:GameEventInInspector]
 **画像は最新版ではないので変更予定**
@@ -107,16 +107,16 @@ public class DebugDice : MonoBehaviour
 ## 変数の値が変化した場合に処理を呼ぶ
 
 変数の値が変化した場合に処理を呼びたい場合には、
-変数アセットのサブアセットになっているListenerが利用できます。
+変数アセットのサブアセットになっている`GameEventListener`が利用できます。
 使用方法は[こちら][page:OnValueChanged]が参考になります。
 
 ## 使用上の注意点
 
-引数が1つのSubscribeメソッドを使用する場合はIDisposableが返り値になります。
-そのDisposeメソッドの呼び出しでイベント解除になるため、呼び出し忘れに気を付けてください。
-OnDisableやOnDestroyなど利用しましょう。
+引数が1つの`Subscribe`メソッドを使用する場合は`IDisposable`が返り値になります。
+その`Dispose`メソッドの呼び出しでイベント解除になるため、呼び出し忘れに気を付けてください。
+`OnDisable`や`OnDestroy`メソッドなどを利用しましょう。
 
-IDisposeに関する機能を用意しています。
+`IDisposable`に関する機能を用意しています。
 
 - [DisposeメソッドをゲームオブジェクトのDestroy時に呼ぶ][page:DisposeOnDestroy]
 - [Disposeメソッドをシーンのアンロード時に呼ぶ][page:DisposeOnSceneUnLoaded]
@@ -124,8 +124,8 @@ IDisposeに関する機能を用意しています。
 
 ## 実装
 
-イベントアセットはイベントハンドラをメンバに持つ単純なScriptableObejctとして実装されています。
-例えば、GameEventを継承した抽象クラスEventNoArgsの具体的な実装は以下です。
+イベントアセットはイベントハンドラをメンバに持つ単純な`ScriptableObejct`として実装されています。
+例えば、`GameEvent`を継承したクラス`EventNoArgs`の具体的な実装は以下です。
 
 ```cs
 // 使用する際は具体的な型（この場合はEventNoArgs）を知る必要がないのでinternalで実装.
@@ -143,9 +143,9 @@ internal class EventNoArgs : GameEvent
 }
 ```
 
-※登録解除用のIDisposableの生成に用いているDelegateDisposeについては[こちら][page:DelegateDispose]。
+※登録解除用の`IDisposable`の生成に用いている`DelegateDispose`については[こちら][page:DelegateDispose]。
 
-読み取り専用クラスGameEventListenerの具体的な実装はGameEventを参照に持ち、値を返します。
+読み取り専用クラス`GameEventListener`の具体的な実装は`GameEvent`を参照に持ち、値を返します。
 
 ```cs
 internal class EventNoArgsListener : GameEventListener
@@ -158,15 +158,13 @@ internal class EventNoArgsListener : GameEventListener
 これら2つを機能させるためには、それぞれのアセットを作るだけでなく、参照関係も設定しなければなりません。
 つまり、機能させるには以下の3つのステップが必要です。
 
-1. EventNoArgsアセットを作成する
-2. EventNoArgsListenerアセットを作成する
-3. EventNoArgsListenerアセットのm_eventに1で作成したEventNoArgsアセットを設定する
+1. `EventNoArgs`アセットを作成する
+2. `EventNoArgsListener`アセットを作成する
+3. `EventNoArgsListener`アセットの`m_event`に1で作成した`EventNoArgs`アセットを設定する
 
 これを作成のたびにやるのは面倒なので、エディタ拡張で対応しています。
-GameEventアセットを選択すると自動でEventNoArgsListenerアセットをサブアセットとして生成し、参照を設定するようになっています。
-
-これらのアセットをすべて表示するのは煩わしいので、サブアセットにしてHideFlagsを設定することで非表示にしています。
-アセットのインスペクタにあるShow/Hideを押すことで表示/非表示を切り替えられます。
+アセットをすべて表示するのは煩わしいので、サブアセットにして`HideFlags`を設定することで非表示にしています。
+アセットのインスペクタにある`Show/Hide`を押すことで表示/非表示を切り替えられます。
 
 ここに画像を挿入予定
 

@@ -35,9 +35,9 @@ Assembly：SilCilSystem.Packages
 
 ## 使用例
 
-Compare\<T>メソッド、もしくはCompareTo\<T>メソッドを利用します。
-floatやint, stringなどはIComparable\<T>を継承しているので、そのまま使えます。
-継承されていないものに関してはIComparer\<T>を継承したものを指定しましょう。
+`Compare`メソッド、もしくは`CompareTo`メソッドを利用します。
+`float`や`int`, `string`などは`IComparable<T>`を継承しているので、そのまま使えます。
+継承されていないものに関しては`IComparer<T>`を継承したものを指定しましょう。
 
 ```cs
 using UnityEngine;
@@ -63,7 +63,7 @@ public class TestComparison : MonoBehaviour
 
 ## 実装
 
-switch構文でそれぞれ処理しています。
+`switch`構文でそれぞれ処理しています。
 
 ```cs
 public static bool Compare<T>(this CompareType compareType, T value1, T value2) where T : IComparable<T>

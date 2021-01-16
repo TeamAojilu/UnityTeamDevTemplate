@@ -6,10 +6,10 @@ Assembly：SilCilSystem.Attributes
 
 ---
 
-[変数アセット][page:Variable]をHierarchyにドラッグ&ドロップすることで、
+[変数アセット][page:Variable]をヒエラルキーにドラッグ&ドロップすることで、
 関連するゲームオブジェクトの生成が可能です。
 
-例えば、int型の変数アセットをドラッグ&ドロップして変数の値を表示するTextを作成できます。
+例えば、`int`型の変数アセットをドラッグ&ドロップして変数の値を表示する`Text`を作成できます。
 
 **画像を挿入予定**
 
@@ -18,7 +18,7 @@ UIだけでなく[Timer][page:Timer]などのコンポーネントも用意し�
 ## 機能のON/OFF
 
 ドラッグ&ドロップでのゲームオブジェクト生成機能をOFFにするには、
-SilCilSystemメニューからDragDrop/Variableのチェックを外してください。
+`SilCilSystem`メニューから`DragDrop/Variable`のチェックを外してください。
 
 ## カスタマイズ：生成できるゲームオブジェクトの種類を増やす
 
@@ -69,7 +69,7 @@ internal class GameObjectActivatorGenerator : VariableDragDropAction
 
 ## 実装
 
-VariableDragDrop属性で指定されたクラスをリフレクションで生成して処理を呼んでいます。
+`VariableDragDrop`属性で指定されたクラスをリフレクションで生成して処理を呼んでいます。
 そのため、引数のないコンストラクタで動作するようにしてください。
 
 <!--- footer --->

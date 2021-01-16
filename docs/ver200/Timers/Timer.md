@@ -11,7 +11,7 @@ Assembly：SilCilSystem.Packages
 ---
 
 時間を測定するコンポーネントです。
-[変数アセット][page:Variable]の値をUpdateメソッド内で変更します。
+[変数アセット][page:Variable]の値を`Update`メソッド内で変更します。
 2倍速で計算したり、-1倍速にしてカウントダウンさせたり、一定間隔ごとに処理を呼んだりできます。
 
 ## 設定項目
@@ -40,7 +40,7 @@ Assembly：SilCilSystem.Packages
 |UnityEvent|OnMinValue|時間がMinに到達した時に呼ばれる|カウントダウンのコールバックなどに使用|
 |UnityEvent|OnMaxValue|時間がMaxに到達した時に呼ばれる||
 
-※Repeatingがtrueになっている場合、OnMinValue, OnMaxValueは同時に呼ばれます。
+※`Repeating`が`true`になっている場合、`OnMinValue`, `OnMaxValue`は同時に呼ばれます。
 
 ## 使用例
 
@@ -55,7 +55,7 @@ Assembly：SilCilSystem.Packages
 |Min|0|
 |Max|30|
 
-OnMinValueに0秒になった時の処理を登録すれば、コールバックが可能です。
+`OnMinValue`に0秒になった時の処理を登録すれば、コールバックが可能です。
 例えば、以下のようなスクリプトを作成して登録します。
 
 ```cs
@@ -75,7 +75,7 @@ public class TestTimer : MonoBehaviour
 
 ### 5秒ごとに処理をする
 
-Repeatingをtrueにして5秒ごとに処理を読んでみましょう。
+`Repeating`を`true`にして5秒ごとに処理を読んでみましょう。
 以下のように設定します。
 
 |設定|値|
@@ -86,13 +86,13 @@ Repeatingをtrueにして5秒ごとに処理を読んでみましょう。
 |Max|5|
 |Repeating|true|
 
-OnMinValueに5秒ごとに呼ぶ処理を登録します。
+`OnMinValue`に5秒ごとに呼ぶ処理を登録します。
 
 ![5秒ごとに処理を行うタイマーを設定する][fig:RepeatingTimer]
 
 ## 実装
 
-Updateで処理して変数アセットの値を加算しています。
+`Update`で処理して変数アセットの値を加算しています。
 
 ```cs
 private void Update()
@@ -103,8 +103,8 @@ private void Update()
 }
 ```
 
-更新処理はRepeatingがtrueの場合はMathf.Repeatを、
-falseの場合はMathf.Clampを使用しています。
+更新処理は`Repeating`が`true`の場合は`Mathf.Repeat`を、
+`false`の場合は`Mathf.Clamp`を使用しています。
 変更があった場合のみ、変数アセットに値を代入しています。
 
 ```cs

@@ -19,11 +19,11 @@ Assembly：SilCilSystem.Packages
 |-|-|-|-|
 |float|Evaluate(float t)|補間曲線を用いて値を計算|基本的には返り値はt=0で0, t=1で1|
 
-※「基本的には」とついているのは例外があるからです。例えば、Backとついているものは1より大きい値を返すことがあります。
+※「基本的には」とついているのは例外があるからです。例えば、Backとついているものなど、1より大きい値を返すものもあります。
 
 ## 使用例
 
-例えば、transform.positionを徐々に変化させて移動させるなどのアニメーションに利用できます。
+例えば、`transform.position`を徐々に変化させて移動させるアニメーションなどに利用できます。
 
 ```cs
 using UnityEngine;
@@ -53,11 +53,11 @@ public class TestInterpolationCurve : MonoBehaviour
 }
 ```
 
-m_curveTypeを変えることでメリハリのあるアニメーションを設定できます。
+`m_curveType`を変えることでメリハリのあるアニメーションを設定できます。
 
 ![m_curveTypeの変更によるアニメーションの変化][fig:InterpolationCurveMove]
 
-また、曲線をAnimationCurveで設定することもできます。
+また、曲線を`AnimationCurve`で設定することもできます。
 その場合はインスペクタのチェックボックスをONにします。
 
 ![AnimationCurveを使用して動きをカスタマイズする][fig:InterpolationCurveCustom]
@@ -81,8 +81,8 @@ float Evaluate(float t)
 }
 ```
 
-既定の関数はCurveTypeDefinition.CurveType列挙型の拡張メソッドとして実装されています。
-拡張メソッドではswitch構文で対応する関数を返しています。
+既定の関数は`CurveTypeDefinition.CurveType`列挙型の拡張メソッドとして実装されています。
+拡張メソッドでは`switch`構文で対応する関数を返しています。
 
 ```cs
 public static Func<float, float> GetCurve(this CurveType type)

@@ -30,7 +30,7 @@ Assembly：SilCilSystem.Packages
 
 ## 使用例
 
-LoadSceneメソッドの呼び出しでシーンを読み込みます。
+`LoadScene`メソッドの呼び出しでシーンを読み込みます。
 キーを入力するとシーンを読み込む場合は以下のようになります。
 
 ```cs
@@ -52,7 +52,7 @@ public class TestSceneLoader : MonoBehaviour
 }
 ```
 
-シーンの遷移処理が終了するまで待ちたいことも多いので、WaitLoadingコルーチンを用意しています。
+シーンの遷移処理が終了するまで待ちたいことも多いので、`WaitLoading`コルーチンを用意しています。
 
 ```cs
 using System.Collections;
@@ -73,11 +73,11 @@ public class TestWaitSceneLoading : MonoBehaviour
 
 ## 使用上の注意点
 
-IsBusyがtrueの場合はLoadSceneを呼び出しても何も起こりません。
+`IsBusy`が`true`の場合は`LoadScene`を呼び出しても何も起こりません。
 
 ## 実装
 
-実際のロード処理はLoaderに委譲しています。
+実際のロード処理は`Loader`に委譲しています。
 つまり、シングルトンというよりはサービスロケーターに近い実装になっています。
 これは画面エフェクト込みのロードやマルチシーンの対応など、カスタマイズできるようにするためです。
 
@@ -92,17 +92,17 @@ private IEnumerator LoadSceneCoroutine(string sceneName)
 
 ### ISceneLoaderの実装
 
-Loaderはグローバルにアクセスが可能なため、独自の処理を作成し指定できます。
-独自に作成する場合はISceneLoaderインターフェースを実装してください。
+`Loader`はグローバルにアクセスが可能なため、独自の処理を作成し指定できます。
+独自に作成する場合は`ISceneLoader`インターフェースを実装してください。
 
-ISceneLoaderは以下のメソッドが定義されたインターフェースです。
+`ISceneLoader`は以下のメソッドが定義されたインターフェースです。
 
 |member|description|
 |-|-|
 |IEnumerator StartEffect()|SceneLoaderのStartメソッドで呼ばれるコルーチンです。|
 |IEnumerator LoadScene(string sceneName)|シーンのロード処理を行うコルーチンです。|
 
-例えば、以下のように、ISceneLoaderを継承したコンポーネントを作成してStartやAwakeメソッドでLoaderに設定して独自の処理を行います。
+例えば、以下のように、`ISceneLoader`を継承したコンポーネントを作成して`Start`や`Awake`メソッドで`Loader`に設定して独自の処理を行います。
 
 ```cs
 using System.Collections;
@@ -132,7 +132,7 @@ public class CustomSceneLoader : MonoBehaviour, ISceneLoader
 }
 ```
 
-**実際に使用する場合は、デフォルトで用意されているSceneLoaderのプレハブを変更するべきです。**
+**実際に使用する場合は、デフォルトで用意されている`SceneLoader`のプレハブを変更するべきです。**
 デフォルトで生成されるプレハブについては[SingletonMonoBehaviour][page:SingletonMonoBehaviour]を参考にしてください。
 
 <!--- footer --->

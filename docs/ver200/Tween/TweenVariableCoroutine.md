@@ -8,7 +8,7 @@ Assembly：SilCilSystem.Packages
 
 ---
 
-Tweenコルーチンは変数の値をある値から別の値へと時間変化させる拡張メソッドです。
+`Tween`コルーチンは変数の値をある値から別の値へと時間変化させる拡張メソッドです。
 1から10まで3秒間で値を増やしたり、赤から青に1秒で変化させたりできます。
 
 ## 対応している型
@@ -18,7 +18,7 @@ Tweenコルーチンは変数の値をある値から別の値へと時間変化
 - float
 - int
 
-### struct
+### Unityのstruct型
 
 - Vector2
 - Vector2Int
@@ -48,7 +48,7 @@ public class TestTweenFloat : MonoBehaviour
 }
 ```
 
-コルーチンメソッドを作成し、yield returnすることで、変化が終わるまで待機することもできます。
+コルーチンメソッドを作成し、`yield return`することで、変化が終わるまで待機することもできます。
 
 ```cs
 using UnityEngine;
@@ -85,7 +85,7 @@ public class TestTweenFloatSequence : MonoBehaviour
 
 ## 実装
 
-全てのTweenコルーチンは以下のメソッドを呼び出しています。
+全ての`Tween`コルーチンは以下のメソッドを呼び出しています。
 
 ```cs
 internal static IEnumerator Tween<T>(this Variable<T> variable, T start, T end, float time, Func<T, T, float, T> lerp, Func<float, float> curve)

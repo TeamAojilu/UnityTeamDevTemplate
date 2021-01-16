@@ -24,7 +24,7 @@ Assembly：SilCilSystem.Packages
 ## 使用例
 
 シングルトンを作成する場合はこのクラスを継承したコンポーネントを作成します。
-例えば、文字列をDebug.Logで表示するためのシングルトンは以下のようになります。
+例えば、文字列を`Debug.Log`で表示するためのシングルトンは以下のようになります。
 
 ```cs
 using UnityEngine;
@@ -49,7 +49,7 @@ public class SingletonExample : SingletonMonoBehaviour<SigletonExample>
 }
 ```
 
-呼び出しはInstanceにアクセスします。
+呼び出しは`Instance`にアクセスします。
 
 ```cs
 using UnityEngine;
@@ -68,21 +68,21 @@ public class TestSingletonExample : MonoBehaviour
 作成したシングルトンは自動で生成されるようにしたほうが便利です。
 
 ゲーム開始時に自動で生成されるようなエディタ拡張を用意しており、
-Resources/InitialPrefabsフォルダ下に置かれている全てのPrefabが生成されるようになっています。
+`Resources/InitialPrefabs`フォルダ下に置かれている全てのプレハブが生成されるようになっています。
 
-例えば、[SceneLoader][page:SceneLoader]や[AudioPlayer][page:AudioPlayer]はSilCilSystemフォルダ下にこのフォルダを作成しており、
+例えば、[SceneLoader][page:SceneLoader]や[AudioPlayer][page:AudioPlayer]は`SilCilSystem`フォルダ下にこのフォルダを作成しており、
 自動で生成されるようになっています。
 
 ![InitialPrefabs][fig:InitialPrefabs]
 
 **画像は変更予定**
 
-※生成処理はPrefabGeneratorOnLoad.csに記述してあります。
+※生成処理は`PrefabGeneratorOnLoad.cs`に記述してあります。
 
 ## 実装
 
 Awake内で重複がないかをチェックしています。
-すでに別のGameObjectが存在する場合には削除し、存在しない場合はDontDestoryOnLoadを用いてGameObjectが破棄されないように設定します。
+すでに存在する場合には削除し、存在しない場合は`DontDestoryOnLoad`を用いてゲームオブジェクトが破棄されないように設定します。
 
 ```cs
 private void Awake()
@@ -100,8 +100,8 @@ private void Awake()
 }
 ```
 
-明示的にGameObjectを削除した場合にはInstanceにはnullが代入されます。
-これはOnDestroyで処理しています。
+明示的に削除した場合には`Instance`には`null`が代入されます。
+これは`OnDestroy`で処理しています。
 
 ```cs
 private void OnDestroy()

@@ -10,21 +10,21 @@ Assembly：SilCilSystem.Packages
 
 ---
 
-AnimationState遷移時にイベントを発行するクラスです。
-UnityのAnimator機能と[イベントアセット][page:GameEvent]を連携させることが可能です。
+アニメーションステート遷移時にイベントを発行するクラスです。
+Unityのアニメーション機能と[イベントアセット][page:GameEvent]を連携させることが可能です。
 
 ## 設定項目
 
-Stateの開始時と終了時のタイミングで処理を呼ぶことができます。
-引数なしのイベントを呼ぶ場合は、GameEvent, UnityEngine.Events.UnityEventが利用できます。
+ステートの開始時と終了時のタイミングで処理を呼ぶことができます。
+引数なしのイベントを呼ぶ場合は、`GameEvent`, `UnityEngine.Events.UnityEvent`が利用できます。
 引数ありのイベントを呼ぶ場合には、以下の2通りが可能です。
 
-- 引数を固定値でイベントを呼ぶ -> UnityEventでイベントアセットをPublish
-- 引数にAnimatorのパラメータを使用する -> GameEventInfoInt, GameEventInfoFloat, GameEventInfoBoolを使用
+- 引数を固定値でイベントを呼ぶ -> `UnityEvent`でイベントアセットを`Publish`
+- 引数に`Animator`のパラメータを使用する -> `GameEventInfoInt`, `GameEventInfoFloat`, `GameEventInfoBool`を使用
 
-※GameEventInfo~系はインスペクタ上での設定を可能にするためのprivateなサブクラスです。
+※`GameEventInfo~`系はインスペクタ上での設定を可能にするためのサブクラスです。
 
-### State開始時にイベントを呼ぶ
+### ステート開始時にイベントを呼ぶ
 
 |type|name|description|note|
 |-|-|-|-|
@@ -34,7 +34,7 @@ Stateの開始時と終了時のタイミングで処理を呼ぶことができ
 |GameEventInfoBool[]|OnStateEnterBool|int型を引数にとるイベントアセット|引数にAnimatorのbool型パラメータを使用|
 |UnityEvent|OnStateEnterEvent|メソッドを指定|引数を固定してイベントを呼びたい場合などに使用可能|
 
-### State終了時にイベントを呼ぶ
+### ステート終了時にイベントを呼ぶ
 
 |type|name|description|note|
 |-|-|-|-|
@@ -48,12 +48,12 @@ Stateの開始時と終了時のタイミングで処理を呼ぶことができ
 
 ### State開始時に音を鳴らす
 
-PublishOnStateを使用することでアニメーションとロジックを紐づけることが可能です。
+`PublishOnState`を使用することでアニメーションとロジックを紐づけることが可能です。
 例えば、キャラクターの攻撃モーションに合わせて音を鳴らしたり、エフェクト用のゲームオブジェクトを生成することができます。
 
-ここでは、State遷移時に音を鳴らしてみましょう。
-まずはAnimatorControllerのStateを選択してPublishOnStateをアタッチします。
-そして、OnStateEnterEventに[AudioPlayer][page:AudioPlayer]のイベントアセットであるPlaySEを設定すれば音を鳴らすことができます。
+ここでは、ステート遷移時に音を鳴らしてみましょう。
+まずは`AnimatorController`の`State`を選択して`PublishOnState`をアタッチします。
+そして、`OnStateEnterEvent`に[AudioPlayer][page:AudioPlayer]のイベントアセットである`PlaySE`を設定すれば音を鳴らすことができます。
 
 ![State開始時に効果音を鳴らす][fig:PlaySEOnState]
 
@@ -64,10 +64,10 @@ PublishOnStateを使用することでアニメーションとロジックを紐
 
 ### ステートマシンとして利用する
 
-UnityのAnimator機能はその名の通り、アニメーションのための機能です。
+Unityの`Animator`はその名の通り、アニメーションのための機能です。
 通常は上記のように音を鳴らしたりといったエフェクト用の処理を呼ぶことが多いと思いますが、
 （使い勝手が良いかは置いておいて）有限ステートマシンとして利用することも可能です。
-Animatorのパラメータに[変数アセットをバインドさせる][page:BindingVariable]ことでゲームロジックを実装することも可能です。
+`Animator`のパラメータに[変数アセットをバインドさせる][page:BindingVariable]ことでゲームロジックを実装することも可能です。
 
 ここでは、制限時間10秒以内にスコアを10以上獲得したらゲームクリアになるロジックをコーディング無しで組んでみます。
 
@@ -80,8 +80,8 @@ Animatorのパラメータに[変数アセットをバインドさせる][page:B
 |GameClear|ゲームをクリアした|
 |GameOver|ゲームオーバーになった|
 
-Triggerが呼ばれるとPlayingに遷移してゲームが開始され、
-Timeが0になればGameOver、Scoreが10になればGameClearに遷移するように設定します。
+トリガーが呼ばれると`Playing`に遷移してゲームが開始され、
+`Time`が0になれば`GameOver`、`Score`が10になれば`GameClear`に遷移するように設定します。
 
 ![StartからPlayへの遷移条件][fig:LogicStartToPlay]
 ![PlayからGameOverへの遷移条件][fig:LogicPlayToGameOver]
@@ -89,17 +89,17 @@ Timeが0になればGameOver、Scoreが10になればGameClearに遷移するよ
 
 ※遷移条件は\>, \<, =の3つで≧などが選べないため、「0.0001より小さい」や「9より大きい」としています。
 
-Time, Score, IsPlayingのパラメータに対応する変数を作成します。
-Startで変数の値をPublishOnStateを用いて初期化します。
+`Time`, `Score`, `IsPlaying`のパラメータに対応する変数を作成します。
+`Start`で変数の値を`PublishOnState`を用いて初期化します。
 
 ![Startの変数設定][fig:LogicStartState]
 
-プレイ中はIsPlayingの値がtrueになるようにPlayingにもPublishOnStateを設定します。
+プレイ中は`IsPlaying`の値が`true`になるように`Playing`にも`PublishOnState`を設定します。
 
 ![Playの変数設定][fig:LogicPlayState]
 
 続いて、コンポーネントを設定します。
-Animatorコンポーネントと変数アセットをバインドします。
+`Animator`コンポーネントと変数アセットをバインドします。
 
 ![Animatorと変数のバインド][fig:LogicAnimatorComponent]
 
@@ -109,8 +109,8 @@ Animatorコンポーネントと変数アセットをバインドします。
 
 ## 実装
 
-UnityEngine.StateMachineBehaviourを継承して、イベントをPublishしているだけです。
-例えば、State開始時のイベントは以下のようになります。
+`UnityEngine.StateMachineBehaviour`を継承して、イベントを実行しています。
+例えば、ステート開始時のイベントは以下のようになります。
 
 ```cs
 public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -123,8 +123,8 @@ public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo
 }
 ```
 
-GameEventInfo~系ではanimatorから値を取得してイベントを呼ぶようになっています。
-例えば、intのパラメータを使用する場合はGetIntegerを使用します。
+`GameEventInfo~`系では`Animator`から値を取得してイベントを呼ぶようになっています。
+例えば、`int`のパラメータを使用する場合は`GetInteger`を使用します。
 
 ```cs
 private class GameEventInfoIntの例

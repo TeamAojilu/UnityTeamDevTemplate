@@ -10,8 +10,8 @@ Assembly：SilCilSystem.Packages
 
 ---
 
-[変数アセット][page:Variable]の値をuGUIのUI要素やAnimatorのパラメータに設定することができます。（以下、バインドと表記）
-ToggleのON/OFFやSliderのValueをバインドすることでUIとゲームロジックの連携が可能です。
+[変数アセット][page:Variable]の値をuGUIのUI要素や`Animator`のパラメータに設定することができます。（以下、バインドと表記）
+`Toggle`のON/OFFや`Slider`の`Value`をバインドすることでUIとゲームロジックの連携が可能です。
 
 ## クラス一覧
 
@@ -26,9 +26,9 @@ ToggleのON/OFFやSliderのValueをバインドすることでUIとゲームロ�
 |InputField/TMP_InputField|BindingInputField||
 |Dropdown/TMP_Dropdown|BindingDropdown||
 
-※Text/TextMeshProに関しては[DisplayVariables][page:DisplayVariables]が使用可能です。
+※`Text`/`TextMeshPro`に関しては[DisplayVariables][page:DisplayVariables]が使用可能です。
 
-※BindingAnimatorに関しては[PublishOnState][page:PublishOnState]と組み合わせることで自由度がさらに広がります。
+※`BindingAnimator`に関しては[PublishOnState][page:PublishOnState]と組み合わせることで自由度がさらに広がります。
 
 ### バインドする対象を複数設定できるもの
 
@@ -62,7 +62,7 @@ ToggleのON/OFFやSliderのValueをバインドすることでUIとゲームロ�
 
 ### Sliderに変数アセットをバインドする
 
-変数アセットをSliderのValueにバインドすることで、HPゲージなどに利用できます。
+変数アセットを`Slider`の`Value`にバインドすることで、HPゲージなどに利用できます。
 
 試しに、Z/Xキーで値を増減させるスクリプトを書いてみます。
 
@@ -95,26 +95,26 @@ public class TestSlider : MonoBehaviour
 }
 ```
 
-float型の変数アセットを作成してm_valueに設定します。
+`float`型の変数アセットを作成して`m_value`に設定します。
 
 ![TestSliderの設定][fig:TestSliderComponent]
 
-Sliderを作成します。
-簡単のために、Interactableはfalseにしてプレイヤーがスライダーを動かせないようにします。
-BindingSliderをアタッチして、Valueに先ほど作成したものと同じ変数アセットを設定すれば機能します。
+`Slider`を作成します。
+簡単のために、`Interactable`は`false`にしてプレイヤーがスライダーを動かせないようにします。
+`BindingSlider`をアタッチして、`Value`に先ほど作成したものと同じ変数アセットを設定すれば機能します。
 
 ![BindingSliderを設定する][fig:BindingSlider]
 
 アニメーションさせることも可能です。
-以下はDurationが0（アニメーション無し）と0.5のときの比較です。
+以下は`Duration`が0（アニメーション無し）と0.5のときの比較です。
 
 ![アニメーションありとなしの比較][fig:SliderAnimation]
 
 #### 双方向バインドする
 
-SliderのInteractableをtrueにすれば、プレイヤーが画面上で値を変更できるようになります。
+`Slider`の`Interactable`を`true`にすれば、プレイヤーが画面上で値を変更できるようになります。
 プレイヤーに変更された値を変数アセットの値に反映させる（UI -> 変数アセット）には
-SliderのOnValueChangedイベントに変数アセットを設定することで可能です。
+`Slider`の`OnValueChanged`イベントに変数アセットを設定することで可能です。
 
 ![Interactableをtrueにした双方向バインディング][fig:InteractableSlider]
 
@@ -127,7 +127,7 @@ SliderのOnValueChangedイベントに変数アセットを設定することで
 
 ## 実装
 
-StartとUpdateで処理しています。
+`Start`と`Update`で処理しています。
 
 ```cs
 void Start()
@@ -152,8 +152,8 @@ void Update()
 }
 ```
 
-SetParametersの実装はクラス毎で異なります。
-例えば、BindingSliderの場合、4つの項目を値の変更がある場合に変更しています。
+`SetParameters`の実装はクラス毎で異なります。
+例えば、`BindingSlider`の場合、4つの項目を値の変更がある場合に変更しています。
 
 ```cs
 void SetParameters()

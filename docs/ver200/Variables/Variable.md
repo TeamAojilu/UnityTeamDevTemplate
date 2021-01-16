@@ -11,7 +11,7 @@ Assembly：SilCilSystem
 ---
 
 異なるスクリプト間で変数の値を共有できます。
-値の変更が可能なVariable\<T>と値の読み取りのみ可能なReadonlyVariable\<T>が存在します。
+値の変更が可能な`Variable<T>`と値の読み取りのみ可能な`ReadonlyVariable<T>`が存在します。
 
 ## クラス一覧
 
@@ -68,8 +68,8 @@ public class TestVariableInt : MonoBehaviour
 }
 ```
 
-カウンタの値をDebug.Logで表示することを考えます。
-値を読み取るだけで値の変更は行わないため、ReadonlyIntを使用します。
+カウンタの値を`Debug.Log`で表示することを考えます。
+値を読み取るだけで値の変更は行わないため、`ReadonlyInt`を使用します。
 
 ```cs
 using UnityEngine;
@@ -89,14 +89,14 @@ public class TestReadonlyInt : MonoBehaviour
 ```
 
 インスペクタ上で同じ変数を設定すれば、両者の連携が可能になります。
-メニューからInt型の変数アセットを作成して設定します。
+メニューから`int`型の変数アセットを作成して設定します。
 
 ![変数アセットをインスペクタ上で設定する][fig:VariableInInspector]
 **画像は最新版ではないので変更予定**
 
 ## 使用上の注意点
 
-Updateで値をチェックして、値が変わったら何か処理をするといったことをしたい場合には
+`Update`で値をチェックして、値が変わったら何か処理をするといったことをしたい場合には
 [イベントアセット][page:GameEvent]の使用を検討してください。
 値の変更が少ない場合には、イベントアセットで実現するほうが良いと思います。
 上記のカウンタの例もイベントアセットで実現できます。
@@ -104,11 +104,11 @@ Updateで値をチェックして、値が変わったら何か処理をする�
 
 ## 実装
 
-Variable\<T>は抽象クラスなので、具体的な実装を記述していません。
-インスペクタ上で設定するアセットはinternalなクラスとして実装しています。
+`Variable<T>`は抽象クラスなので、具体的な実装を記述していません。
+インスペクタ上で設定するアセットは`internal`クラスとして実装しています。
 
-最も簡単な変数アセットの実装は変数を1つだけ持つ単純なScriptableObejctです。
-例えば、Variable\<bool>を継承したクラスならこうなります。
+最も簡単な変数アセットの実装は変数を1つだけ持つ単純な`ScriptableObejct`です。
+例えば、`Variable<bool>`を継承したクラスならこうなります。
 
 ```cs
 // 使用する際は具体的な型（この場合はBoolValue）を知る必要がないのでinternalで実装.
@@ -119,7 +119,7 @@ internal class BoolValue : VariableBool
 }
 ```
 
-読み取り専用クラスの具体的な実装はVariableBoolを参照に持ち、値を返します。
+読み取り専用クラスの具体的な実装は`VariableBool`を参照に持ち、値を返します。
 
 ```cs
 internal class ReadonlyBoolValue : ReadonlyBool
@@ -132,17 +132,17 @@ internal class ReadonlyBoolValue : ReadonlyBool
 これら2つを機能させるためには、それぞれのアセットを作るだけでなく、参照関係も設定しなければなりません。
 つまり、機能させるには以下の3つのステップが必要です。
 
-1. BoolValueアセットを作成する
-2. ReadonlyBoolValueアセットを作成する
-3. ReadonlyBoolValueアセットのm_variableに1で作成したBoolValueアセットを設定する
+1. `BoolValue`アセットを作成する
+2. `ReadonlyBoolValue`アセットを作成する
+3. `ReadonlyBoolValue`アセットの`m_variable`に1で作成した`BoolValue`アセットを設定する
 
 これを変数作成のたびにやるのは面倒なので、エディタ拡張で対応しています。
 
 実際には[値の変更を通知][page:OnValueChanged]するために[イベントアセット][page:GameEvent]も紐づけており、
 1つの変数に対して4つのアセットが生成されるようになっています。
 
-これらのアセットをすべて表示するのは煩わしいので、サブアセットにしてHideFlagsを設定することで非表示にしています。
-アセットのインスペクタにあるShow/Hideを押すことで表示/非表示を切り替えられます。
+これらのアセットをすべて表示するのは煩わしいので、サブアセットにして`HideFlags`を設定することで非表示にしています。
+アセットのインスペクタにある`Show/Hide`を押すことで表示/非表示を切り替えられます。
 
 ここに画像を挿入予定
 

@@ -10,16 +10,16 @@ Assembly：SilCilSystem.Packages
 
 ---
 
-Update, LateUpdate, FixedUpdateの処理を行うシングルトンです。
-これを用いることでMonoBehaviour以外からもUpdateに準ずる処理を実装できます。
+`Update`, `LateUpdate`, `FixedUpdate`の処理を行うシングルトンです。
+これを用いることで`MonoBehaviour`以外からも`Update`に準ずる処理を実装できます。
 
-また、[Unityの公式ブログ][page:UnityBlog]でも言われているように、Updateの処理は別々に実行するよりも
-1つのMonoBehaviourでまとめて実行するほうがパフォーマンスが出ます。
+また、[Unityの公式ブログ][page:UnityBlog]でも言われているように、`Update`の処理は別々に実行するよりも
+1つの`MonoBehaviour`でまとめて実行するほうがパフォーマンスが出ます。
 そういった用途にも利用できます。
 
 ## 使用例
 
-Registerメソッドで処理を登録します。
+`Register`メソッドで処理を登録します。
 以下は引数の一覧です。
 
 |type|name|description|

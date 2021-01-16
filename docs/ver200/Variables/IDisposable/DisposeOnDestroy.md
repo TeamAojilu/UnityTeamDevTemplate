@@ -8,7 +8,7 @@ Assembly：SilCilSystem
 
 ---
 
-ゲームオブジェクトが破棄されるタイミングでIDisposable.Disposeを呼ぶようにする拡張メソッドです。
+ゲームオブジェクトが破棄されるタイミングで`IDisposable.Dispose`を呼ぶようにする拡張メソッドです。
 [イベントアセット][page:GameEvent]の解除処理に利用できます。
 
 ## 使用例
@@ -37,9 +37,9 @@ public class TestDisposeOnDestroy : MonoBehaviour
 
 ## 実装
 
-Disoposeを呼ぶためのコンポーネントを指定されたゲームオブジェクトにAddComponentすることで実現しています。
+`Disopose`を呼ぶためのコンポーネントを指定されたゲームオブジェクトに`AddComponent`することで実現しています。
 イベント1つ1つに対してそれぞれコンポーネントを追加するのはパフォーマンス的にもよろしくないので、
-[CompositeDisposable][page:CompositeDisposable]を使用して複数のIDisposableを1つにまとめています。
+[CompositeDisposable][page:CompositeDisposable]を使用して複数の`IDisposable`を1つにまとめています。
 アタッチする用のコンポーネントは以下のようになっています。
 
 ```cs

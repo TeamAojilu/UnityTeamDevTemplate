@@ -6,7 +6,7 @@ Assembly：SilCilSystem.Attributes
 
 ---
 
-MonoBehaviourを継承したスクリプトをHierarchyにドラッグ&ドロップすることで、
+`MonoBehaviour`を継承したスクリプトをヒエラルキーにドラッグ&ドロップすることで、
 スクリプトがアタッチされたゲームオブジェクトの生成が可能です。
 
 **画像を挿入予定**
@@ -24,7 +24,7 @@ MonoBehaviourを継承したスクリプトをHierarchyにドラッグ&ドロッ
 ## 機能のON/OFF
 
 ドラッグ&ドロップでのゲームオブジェクト生成機能をOFFにするには、
-SilCilSystemメニューからDragDrop/MonoBehaviourのチェックを外してください。
+`SilCilSystem`メニューから`DragDrop/MonoBehaviour`のチェックを外してください。
 
 **画像を挿入予定**
 
@@ -32,7 +32,7 @@ SilCilSystemメニューからDragDrop/MonoBehaviourのチェックを外して�
 
 カスタム属性により生成時に選択できるゲームオブジェクトの種類を増やすことができます。
 独自のゲームオブジェクト生成機能を追加するには、
-引数無しで返り値がGameObject型のstatic関数に`[MonoBehaviourDragDrop("メニュー名")]`をつけます。
+引数無しで返り値が`GameObject`型の`static`関数に`[MonoBehaviourDragDrop("メニュー名")]`をつけます。
 例えば、空のゲームオブジェクトを生成する処理は以下のようになっています。
 
 ```cs
@@ -58,8 +58,8 @@ public static class CustomGameObjectGenerators
 
 ## 実装
 
-MonoBehaviourDragDropで指定された関数をリフレクションで呼び出し、
-取得したゲームオブジェクトにAddComponentしています。
+`MonoBehaviourDragDrop`属性で指定された関数をリフレクションで呼び出し、
+取得したゲームオブジェクトに`AddComponent`しています。
 
 <!--- footer --->
 
