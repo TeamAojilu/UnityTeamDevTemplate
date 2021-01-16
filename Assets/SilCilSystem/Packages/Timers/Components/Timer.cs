@@ -11,12 +11,14 @@ namespace SilCilSystem.Timers
 
         [Header("Basic")]
         [SerializeField] internal PropertyFloat m_time = new PropertyFloat(0f);
-        [SerializeField] internal ReadonlyPropertyFloat m_initialTime = new ReadonlyPropertyFloat(0f);
-        [SerializeField] internal ReadonlyPropertyFloat m_timeScale = new ReadonlyPropertyFloat(1f);
-
-        [Header("Range")]
         [SerializeField] internal ReadonlyPropertyFloat m_min = new ReadonlyPropertyFloat(0f);
         [SerializeField] internal ReadonlyPropertyFloat m_max = new ReadonlyPropertyFloat(float.MaxValue);
+        [SerializeField] internal ReadonlyPropertyFloat m_timeScale = new ReadonlyPropertyFloat(1f);
+        
+        [Header("Initial")]
+        [SerializeField] internal UpdateMode m_updateMode = UpdateMode.DeltaTime;
+        [SerializeField] internal ReadonlyPropertyBool m_useInitialTime = new ReadonlyPropertyBool(true);
+        [SerializeField] internal ReadonlyPropertyFloat m_initialTime = new ReadonlyPropertyFloat(0f);
 
         [Header("Repeat")]
         [SerializeField] internal ReadonlyPropertyBool m_repeating = new ReadonlyPropertyBool(false);
@@ -27,14 +29,17 @@ namespace SilCilSystem.Timers
 
         private void Start()
         {
-            SetTime(m_initialTime);
+            if (m_useInitialTime) SetTime(m_initialTime);
+            UpdateDispatcher.Register(MicroUpdate, gameObject);
         }
 
-        private void Update()
+        private bool MicroUpdate(float deltaTime)
         {
-            if (m_time == null) return;
-            if (!m_enable) return;
-            SetTime(m_time + Time.deltaTime * m_timeScale);
+            if (m_time == null) return true;
+            if (!enabled) return true;
+            if (!m_enable) return true;
+            SetTime(m_time + deltaTime * m_timeScale);
+            return true;
         }
 
         private void SetTime(float t)
