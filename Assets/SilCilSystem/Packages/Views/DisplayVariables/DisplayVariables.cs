@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SilCilSystem.Variables;
+using SilCilSystem.Timers;
 
 namespace SilCilSystem.Views
 {
@@ -92,12 +93,19 @@ namespace SilCilSystem.Views
         private void OnValidate()
         {
             SetVariables();
-            Update();
+            MicroUpdate(0f);
         }
-        
-        private void Update()
+
+        private void Start()
         {
+            UpdateDispatcher.Register(MicroUpdate, gameObject);
+        }
+
+        private bool MicroUpdate(float deltaTime)
+        {
+            if (!enabled) return true;
             UpdateText();
+            return true;
         }
 
         private bool UpdateStrings()

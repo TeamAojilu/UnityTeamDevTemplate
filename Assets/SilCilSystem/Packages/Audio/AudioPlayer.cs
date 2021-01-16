@@ -2,6 +2,7 @@
 using SilCilSystem.Variables;
 using SilCilSystem.Math;
 using SilCilSystem.Singletons;
+using SilCilSystem.Timers;
 
 namespace SilCilSystem.Audio
 {
@@ -52,7 +53,12 @@ namespace SilCilSystem.Audio
 
 		private AudioClip m_nextBGM = default;
 
-		private void Update()
+        private void Start()
+        {
+			UpdateDispatcher.Register(MicroUpdate, gameObject);
+        }
+
+        private bool MicroUpdate(float deltaTime)
         {
             // SEの音量を設定.
             foreach (var item in m_seSources)
@@ -63,7 +69,7 @@ namespace SilCilSystem.Audio
             // BGMのフェード処理.
             if (m_fadeTime > 0f)
             {
-				m_volumeRate += Time.deltaTime * m_multiply / m_fadeTime;
+				m_volumeRate += deltaTime * m_multiply / m_fadeTime;
 				m_volumeRate = Mathf.Clamp01(m_volumeRate);
             }
             else
@@ -81,7 +87,9 @@ namespace SilCilSystem.Audio
             }
 
 			m_bgmSource.loop = m_loop;
-			m_bgmSource.volume = Mathf.Lerp(0f, m_defaultBGMVolume, m_fadeCurve.Evaluate(m_volumeRate));
+            m_bgmSource.volume = Mathf.Lerp(0f, m_defaultBGMVolume, m_fadeCurve.Evaluate(m_volumeRate));
+
+			return true;
         }
 	}
 }
