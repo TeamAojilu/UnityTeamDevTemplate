@@ -14,25 +14,29 @@ namespace SilCilSystem.Editors
     [CustomPropertyDrawer(typeof(GameEventListener<>), true)]
     internal class SubAssetObjectFieldDrawer : PropertyDrawer
     {
-        private VariableAsset m_object = default;
-
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            m_object = property.objectReferenceValue as VariableAsset;
-            m_object = EditorGUI.ObjectField(position, label, m_object, typeof(VariableAsset), false) as VariableAsset;
+            EditorGUI.BeginProperty(position, label, property);
+            EditorGUI.BeginChangeCheck();
 
-            if (m_object == null)
-            {
-                property.objectReferenceValue = null;
-                return;
-            }
+            var obj = property.objectReferenceValue as VariableAsset;
+            obj = EditorGUI.ObjectField(position, label, obj, typeof(VariableAsset), false) as VariableAsset;
             
-            string path = AssetDatabase.GetAssetPath(m_object);
-            foreach (var asset in m_object.GetAllVariables())
+            if (EditorGUI.EndChangeCheck())
             {
-                property.objectReferenceValue = asset;
-                if (property.objectReferenceValue != null) break;
+                if (obj == null)
+                {
+                    property.objectReferenceValue = null;
+                    return;
+                }
+
+                foreach (var asset in obj.GetAllVariables())
+                {
+                    property.objectReferenceValue = asset;
+                    if (property.objectReferenceValue != null) break;
+                }
             }
+            EditorGUI.EndProperty();
         }
     }
 }
