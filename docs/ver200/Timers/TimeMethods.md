@@ -9,7 +9,7 @@ static class
 時間に関するメソッドが定義されています。
 一定時間後に処理を呼んだり、一定の時間間隔で処理を呼んだりできます。
 
-## メソッド一覧
+## メソッド
 
 ### void CallDelayed
 
@@ -38,24 +38,6 @@ public class TestCallDelayed : MonoBehaviour
     }
 }
 ```
-
-#### 実装
-
-時間をチェックして、delayを超えたら処理を呼んでいます。
-簡単に書くとこんな感じに処理しています。
-
-```cs
-// UpdateDispatcherから呼ばれる.
-public bool Update(float deltaTime)
-{
-    m_time += deltaTime;
-    if (m_time < Delay) return true;
-    CallBack?.Invoke();
-    return false;
-}
-```
-
-処理は[UpdateDispatcher][page:UpdateDispatcher]から呼ばれるようになっています。
 
 ### void CallRepeatedly
 
@@ -88,7 +70,27 @@ public class TestCallRepeatedly : MonoBehaviour
 }
 ```
 
-#### 実装
+## 実装
+
+### void CallDelayed
+
+時間をチェックして、delayを超えたら処理を呼んでいます。
+簡単に書くとこんな感じに処理しています。
+
+```cs
+// UpdateDispatcherから呼ばれる.
+public bool Update(float deltaTime)
+{
+    m_time += deltaTime;
+    if (m_time < Delay) return true;
+    CallBack?.Invoke();
+    return false;
+}
+```
+
+処理は[UpdateDispatcher][page:UpdateDispatcher]から呼ばれるようになっています。
+
+### void CallRepeatedly
 
 時間をチェックして、intervalを超えたら処理を呼んでいます。
 簡単に書くとこんな感じに処理しています。

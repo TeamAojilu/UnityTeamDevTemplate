@@ -32,8 +32,9 @@ Tweenコルーチンは変数の値をある値から別の値へと時間変化
 ```cs
 using UnityEngine;
 using SilCilSystem.Variables;
+using SilCilSystem.Tween;
 
-public class TweenFloat : MonoBehaviour
+public class TestTweenFloat : MonoBehaviour
 {
     [SerializeField] private VariableFloat m_value = default;
 
@@ -51,9 +52,10 @@ public class TweenFloat : MonoBehaviour
 using UnityEngine;
 using System.Collections;
 using SilCilSystem.Variables;
+using SilCilSystem.Tween;
 using SilCilSystem.Math; // イージング関数の指定で既に用意されているものを使用する場合は必要.
 
-public class TweenFloat : MonoBehaviour
+public class TestTweenFloatSequence : MonoBehaviour
 {
     [SerializeField] private VariableFloat m_value = default;
 
@@ -81,7 +83,7 @@ public class TweenFloat : MonoBehaviour
 
 ## 実装
 
-全てのTweenコルーチンは以下のGenericメソッドを呼び出しています。
+全てのTweenコルーチンは以下のメソッドを呼び出しています。
 
 ```cs
 internal static IEnumerator Tween<T>(this Variable<T> variable, T start, T end, float time, Func<T, T, float, T> lerp, Func<float, float> curve)

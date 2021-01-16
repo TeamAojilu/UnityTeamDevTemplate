@@ -22,21 +22,18 @@ Registerメソッドで処理を登録します。
 
 |type|name|description|
 |-|-|-|
-|Func<float, bool>|update|更新処理を行う。floatはdeltaTimeが渡されます。falseを返せば処理を終了します。|
-|UnityEngine.Object|lifeTimeObject|処理が実行される前にnullになった場合、呼び出しが行われません。|
-|[UpdateMode][page:UpdateMode]|updateMode|更新のタイミングを指定します。規定値はDeltaTimeで、これはUpdateでTime.deltaTimeを用いる設定です。|
+|Func<float, bool>|update|更新処理を行うメソッドを指定します。floatはdeltaTimeが渡されます。falseを返せば処理を終了します。|
+|UnityEngine.Object|lifeTimeObject|nullになった場合、登録を解除します。|
+|[UpdateMode][page:UpdateMode]|updateMode|更新のタイミングを指定します。規定値はDeltaTimeです。|
 
 例えば、FPSを測定するスクリプトは以下のようになります。
 
 ```cs
 using UnityEngine;
-using SilCilSystem.Variables;
 using SilCilSystem.Timers;
 
 public class TestFPS : MonoBehaviour
 {
-    [SerializeField] private VariableFloat m_fps = default;
-
     private int m_count = 0;
     private float m_time = 0f;
 
@@ -54,7 +51,7 @@ public class TestFPS : MonoBehaviour
         // 1秒ごとにFPSを計算する.
         if (m_time > 1f)
         {
-            m_fps.Value = m_count / m_time;
+            Debug.Log($"FPS: {m_count / m_time}");
             m_count = 0;
             m_time = 0f;
         }
@@ -74,5 +71,5 @@ public class TestFPS : MonoBehaviour
 
 {% include ver200/paths.md %}
 
-[page:UnityBlog] https://blogs.unity3d.com/jp/2015/12/23/1k-update-calls/
+[page:UnityBlog]: https://blogs.unity3d.com/jp/2015/12/23/1k-update-calls/
 
