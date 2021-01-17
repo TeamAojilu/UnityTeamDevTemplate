@@ -28,7 +28,7 @@ public class Test : MonoBehaviour
 }
 ```
 
-**画像を挿入予定**
+![編集不可のフィールド][fig:NonEditable]
 
 ## 注意点
 
@@ -59,3 +59,6 @@ internal class NonEditableDrawer : PropertyDrawer
 <!--- 参照 --->
 
 {% include ver200/paths.md %}
+
+<!--- 画像 --->
+[fig:NonEditable]: Figures/NonEditable.png

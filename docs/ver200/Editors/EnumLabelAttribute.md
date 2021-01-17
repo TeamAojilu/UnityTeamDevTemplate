@@ -33,7 +33,7 @@ public class TestEnumLabel : MonoBehaviour
 }
 ```
 
-**画像を挿入予定**
+![Enumの表示名を変更する][fig:EnumLabel]
 
 ## 注意点
 
@@ -65,3 +65,7 @@ public override void OnGUI(Rect position, SerializedProperty property, GUIConten
 <!--- 参照 --->
 
 {% include ver200/paths.md %}
+
+<!--- 画像 --->
+
+[fig:EnumLabel]: Figures/EnumLabel.gif

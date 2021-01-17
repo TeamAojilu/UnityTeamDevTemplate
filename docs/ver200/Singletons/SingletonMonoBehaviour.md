@@ -75,8 +75,6 @@ public class TestSingletonExample : MonoBehaviour
 
 ![InitialPrefabs][fig:InitialPrefabs]
 
-**画像は変更予定**
-
 ※生成処理は`PrefabGeneratorOnLoad.cs`に記述してあります。
 
 ## 実装

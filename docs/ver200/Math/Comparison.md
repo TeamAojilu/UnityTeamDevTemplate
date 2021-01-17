@@ -81,7 +81,7 @@ public static bool Compare<T>(this CompareType compareType, T value1, T value2) 
 }
 ```
 
-エディタ上では[EnumLabel属性][page:EnumLabel]を使用して、記号で表示されるようにしています。
+エディタ上では[EnumLabel属性][page:EnumLabelAttribute]を使用して、記号で表示されるようにしています。
 
 <!--- footer --->
 
