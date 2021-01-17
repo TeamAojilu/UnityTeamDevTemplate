@@ -14,9 +14,9 @@ Assembly：SilCilSystem.Attributes
 
 いくつかの変換についてはカスタマイズするコードを書かなくても既に用意しています。
 例えば、`int`型の変数アセットを`float`型として扱いたい場合には、
-インスペクタの`Add SubAsset`メニューから`Converter/To Float (from int)`を選択しましょう。
+インスペクタの`Add SubAsset`メニューから`Converter/Float (from int)`を選択しましょう。
 
-**画像を挿入予定**
+![int型の変数アセットをfloat型に変換する][fig:VariableAttribute_ToFloat]
 
 ## カスタマイズ：独自の変数アセットを書く
 
@@ -94,10 +94,9 @@ public class VariableElement : Variable<Element>
 あとはアセットを作成して、`int`型の変数アセットをエディタ上で設定してあげればいいわけですが、
 ちょっとした変換のたびに管理しなければならないアセットの数が増えてしまうのは面倒です。
 そのため、変数アセットのインスペクタにスクリプトをドラッグ&ドロップしてサブアセットとして生成できるようになっています。
-
-**画像を挿入予定**
-
 `int`型の変数アセットにドラッグ&ドロップして、参照を設定すれば完了です。
+
+[カスタマイズした変数アセットをドラッグ&ドロップする][fig:VariableAttribute_DragDrop]
 
 でもどうせなら、参照の設定を自動でやってほしい場合があります。
 また、頻繁に使うものはドラッグ&ドロップだけでなくメニューからも選びたくなるでしょう。
@@ -159,7 +158,7 @@ public class VariableElement : Variable<Element>
 
 これで、ドラッグ&ドロップだけでなく、メニューからも追加できるようになります。
 
-画像を挿入予定
+![カスタマイズした変数アセットをメニューから追加する][fig:VariableAttribute_DragDrop_CustomMenu]
 
 ## 注意点
 
@@ -189,3 +188,9 @@ public class VariableElement : Variable<Element>
 <!--- 参照 --->
 
 {% include ver200/paths.md %}
+
+<!--- 画像 --->
+
+[fig:VariableAttribute_ToFloat]: Figures/VariableAttribute_ToFloat.gif
+[fig:VariableAttribute_DragDrop]: Figures/VariableAttribute_DragDrop.gif
+[fig:VariableAttribute_DragDrop_CustomMenu]: Figures/VariableAttribute_DragDrop_CustomMenu.gif

@@ -9,24 +9,24 @@ Assembly：SilCilSystem.Attributes
 `MonoBehaviour`を継承したスクリプトをヒエラルキーにドラッグ&ドロップすることで、
 スクリプトがアタッチされたゲームオブジェクトの生成が可能です。
 
-**画像を挿入予定**
+![スクリプトからゲームオブジェクトの生成][fig:MonoBehaviourDragDrop]
 
 複数のスクリプトをドラッグ&ドロップする場合には、2パターンから選択できます。
 
 1. ゲームオブジェクトを1つ作成する
 
-**画像を挿入予定**
+![複数のスクリプトからゲームオブジェクトを1つ生成する][fig:MonoBehaviourMultiDragDrop_Single]
 
 2. ゲームオブジェクトをそれぞれ作成する
 
-**画像を挿入予定**
+![複数のスクリプトからゲームオブジェクトをそれぞれ作成する][fig:MonoBehaviourMultiDragDrop_Each]
 
 ## 機能のON/OFF
 
 ドラッグ&ドロップでのゲームオブジェクト生成機能をOFFにするには、
 `SilCilSystem`メニューから`DragDrop/MonoBehaviour`のチェックを外してください。
 
-**画像を挿入予定**
+![機能をOFFにする][fig:MonoBehaviourMultiDragDrop_OFF]
 
 ## カスタマイズ：生成できるゲームオブジェクトの種類を増やす
 
@@ -68,3 +68,10 @@ public static class CustomGameObjectGenerators
 <!--- 参照 --->
 
 {% include ver200/paths.md %}
+
+<!--- 画像 --->
+
+[fig:MonoBehaviourDragDrop]: Figures/MonoBehaviourDragDrop.gif
+[fig:MonoBehaviourMultiDragDrop_Single]: Figures/MonoBehaviourMultiDragDrop_Single.gif
+[fig:MonoBehaviourMultiDragDrop_Each]: Figures/MonoBehaviourMultiDragDrop_Each.gif
+[fig:MonoBehaviourMultiDragDrop_OFF]: Figures/MonoBehaviourMultiDragDrop_OFF.gif

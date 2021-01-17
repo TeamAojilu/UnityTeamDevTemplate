@@ -11,7 +11,7 @@ Assembly：SilCilSystem.Attributes
 
 例えば、`int`型の変数アセットをドラッグ&ドロップして変数の値を表示する`Text`を作成できます。
 
-**画像を挿入予定**
+![整数型の変数アセットからテキストを生成する][fig:VariableDragDrop]
 
 UIだけでなく[Timer][page:Timer]などのコンポーネントも用意しています。
 
@@ -19,6 +19,8 @@ UIだけでなく[Timer][page:Timer]などのコンポーネントも用意し�
 
 ドラッグ&ドロップでのゲームオブジェクト生成機能をOFFにするには、
 `SilCilSystem`メニューから`DragDrop/Variable`のチェックを外してください。
+
+![機能をOFFにする][fig:VariableDragDrop_OFF]
 
 ## カスタマイズ：生成できるゲームオブジェクトの種類を増やす
 
@@ -79,3 +81,8 @@ internal class GameObjectActivatorGenerator : VariableDragDropAction
 <!--- 参照 --->
 
 {% include ver200/paths.md %}
+
+<!--- 画像 --->
+
+[fig:VariableDragDrop]: Figures/VariableDragDrop.gif
+[fig:VariableDragDrop_OFF]: Figures/VariableDragDrop_OFF.gif
