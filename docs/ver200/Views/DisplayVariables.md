@@ -87,7 +87,7 @@ public class TestScore : MonoBehaviour
 1. `Text`コンポーネント（`TextMeshPro`でも可）と同じゲームオブジェクトに`DisplayVariables`をアタッチして設定します。
 2. 全体設定の`Format`に"score: {score}"を入力します。
 3. `IntValues`にスコアの変数アセットを設定します。
-4. `Key`には"score", Formatには"0"を入力します。
+4. `Key`には"score", `Format`には"0"を入力します。
 
 ![DisplayVariablesで変数の値を表示する][fig:DisplayVariablesBasic]
 
