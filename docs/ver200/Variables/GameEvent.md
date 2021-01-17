@@ -102,7 +102,6 @@ public class DebugDice : MonoBehaviour
 メニューから`int`型のイベントアセットを作成して設定します。
 
 ![イベントアセットをインスペクタ上で設定する][fig:GameEventInInspector]
-**画像は最新版ではないので変更予定**
 
 ## 変数の値が変化した場合に処理を呼ぶ
 
@@ -165,8 +164,9 @@ internal class EventNoArgsListener : GameEventListener
 これを作成のたびにやるのは面倒なので、エディタ拡張で対応しています。
 アセットをすべて表示するのは煩わしいので、サブアセットにして`HideFlags`を設定することで非表示にしています。
 アセットのインスペクタにある`Show/Hide`を押すことで表示/非表示を切り替えられます。
+細かく参照設定を行いたい場合は表示するとよいでしょう。
 
-ここに画像を挿入予定
+![サブアセットの表示を切り替える][fig:ShowHideSubAsset]
 
 ※変更を反映するにはプロジェクトビューを更新させなければならないようです。この辺り、エディタ拡張でうまくやることができませんでした。
 
@@ -179,3 +179,4 @@ internal class EventNoArgsListener : GameEventListener
 {% include ver200/paths.md %}
 
 [fig:GameEventInInspector]: Figures/GameEventInInspector.gif
+[fig:ShowHideSubAsset]: Figures/ShowHideSubAsset.gif

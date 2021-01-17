@@ -92,7 +92,6 @@ public class TestReadonlyInt : MonoBehaviour
 メニューから`int`型の変数アセットを作成して設定します。
 
 ![変数アセットをインスペクタ上で設定する][fig:VariableInInspector]
-**画像は最新版ではないので変更予定**
 
 ## 使用上の注意点
 
@@ -143,8 +142,9 @@ internal class ReadonlyBoolValue : ReadonlyBool
 
 これらのアセットをすべて表示するのは煩わしいので、サブアセットにして`HideFlags`を設定することで非表示にしています。
 アセットのインスペクタにある`Show/Hide`を押すことで表示/非表示を切り替えられます。
+細かく参照設定を行いたい場合は表示するとよいでしょう。
 
-ここに画像を挿入予定
+![サブアセットの表示を切り替える][fig:ShowHideSubAsset]
 
 ※変更を反映するにはプロジェクトビューを更新させなければならないようです。この辺り、エディタ拡張でうまくやることができませんでした。
 
@@ -157,4 +157,6 @@ internal class ReadonlyBoolValue : ReadonlyBool
 {% include ver200/paths.md %}
 
 <!--- 画像 --->
+
 [fig:VariableInInspector]: Figures/VariableInInspector.gif
+[fig:ShowHideSubAsset]: Figures/ShowHideSubAsset.gif

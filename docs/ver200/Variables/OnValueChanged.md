@@ -54,7 +54,6 @@ public class DebugDice : MonoBehaviour
 プロジェクトのメニューから`int`型の変数アセットを作成して設定します。
 
 ![インスペクタ上で変数とイベントの設定を行う][fig:OnValueChangedInInspector]
-画像は変更予定
 
 ## 実装
 
