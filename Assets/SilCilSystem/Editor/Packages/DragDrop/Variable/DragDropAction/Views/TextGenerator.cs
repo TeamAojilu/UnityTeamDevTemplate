@@ -11,7 +11,12 @@ namespace SilCilSystem.Editors
     {
         public override bool IsAccepted(VariableAsset[] dropAsset)
         {
-            return dropAsset.Any(x => x is ReadonlyInt || x is ReadonlyFloat || x is ReadonlyString);
+            return dropAsset.Any(x => IsTarget(x));
+        }
+
+        private bool IsTarget(VariableAsset variable)
+        {
+            return variable is ReadonlyInt || variable is ReadonlyFloat || variable is ReadonlyString;
         }
 
         public override void OnDropExited(VariableAsset dropAsset)
@@ -19,35 +24,29 @@ namespace SilCilSystem.Editors
             var text = CreateText();
             if (text == null) return;
 
-
             text.gameObject.name = $"{dropAsset.name} Text";
 
             string key = "key";
             var display = text.AddComponent<DisplayVariables>();
             display.Format = $"{dropAsset.name}: {{{key}}}";
 
-            var intValue = dropAsset.GetSubVariable<ReadonlyInt>();
-            if(intValue != null)
+            foreach(var subVariable in dropAsset.GetAllVariables())
             {
-                display.AddDisplayedVariable(key, intValue);
+                if (!IsTarget(subVariable)) continue;
+                switch (subVariable)
+                {
+                    case ReadonlyInt intValue:
+                        display.AddDisplayedVariable(key, intValue);
+                        break;
+                    case ReadonlyFloat floatValue:
+                        display.AddDisplayedVariable(key, floatValue);
+                        break;
+                    case ReadonlyString stringValue:
+                        display.AddDisplayedVariable(key, stringValue);
+                        break;
+                }
                 display.UpdateText();
-                return;
-            }
-
-            var floatValue = dropAsset.GetSubVariable<ReadonlyFloat>();
-            if (floatValue != null)
-            {
-                display.AddDisplayedVariable(key, floatValue);
-                display.UpdateText();
-                return;
-            }
-
-            var stringValue = dropAsset.GetSubVariable<ReadonlyString>();
-            if (stringValue != null)
-            {
-                display.AddDisplayedVariable(key, stringValue);
-                display.UpdateText();
-                return;
+                break;
             }
         }
 
