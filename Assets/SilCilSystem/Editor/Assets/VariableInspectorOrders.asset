@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4823596a68f3a3f4991084dbe6ec44fe, type: 3}
+  m_Name: VariableInspectorOrders
+  m_EditorClassIdentifier: 
+  m_orders:
+  - m_instanceID: 16226
+    m_order: 10
+  - m_instanceID: 17878
+    m_order: 1
+  - m_instanceID: 17884
+    m_order: 2
+  - m_instanceID: 17886
+    m_order: 3
+  - m_instanceID: 17888
+    m_order: 4
+  - m_instanceID: 17892
+    m_order: 5
+  - m_instanceID: 17894
+    m_order: 6
+  - m_instanceID: 17898
+    m_order: 7
+  - m_instanceID: 16250
+    m_order: 8
+  - m_instanceID: 17902
+    m_order: 9
+  - m_instanceID: 17904
+    m_order: 10
+  - m_instanceID: 17906
+    m_order: 11
+  - m_instanceID: 17910
+    m_order: 12
+  - m_instanceID: 17912
+    m_order: 13
+  - m_instanceID: 17914
+    m_order: 14
+  - m_instanceID: 17918
+    m_order: 15
+  - m_instanceID: 17920
+    m_order: 16
+  - m_instanceID: 17922
+    m_order: 17
+  - m_instanceID: 17924
+    m_order: 18
+  - m_instanceID: 17928
+    m_order: 19
+  - m_instanceID: 17930
+    m_order: 20
