@@ -39,7 +39,7 @@ SilCilSystemは変数アセットとイベントアセットにより成り立�
 SilCilSystemを用いたゲーム制作のチュートリアルです。
 参考にどうぞ。
 
-![「玉転がし」(Roll a ball)の作成][page:TutorialRollBall]
+https://hu-gsd.com/lecture/silcilsystem_roll-a-ball/
 
 ## 機能一覧
 
