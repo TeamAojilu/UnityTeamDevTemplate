@@ -1,14 +1,6 @@
 # UnityTeamDevTemplate
 Unityで共同開発(チーム開発)を行う際、円滑にスタートダッシュを切れるようにサポートをするテンプレートリポジトリです。
 
-
-```
-[TODO]
-ここにアイコン画像入れたい
-
-できれば名前も変えたい
-```
-
 # テンプレート概要
 
 このテンプレートは
@@ -25,11 +17,12 @@ Unityで共同開発(チーム開発)を行う際、円滑にスタートダッ�
 [**Use this template**](https://github.com/kugimasa/UnityTeamDevTemplate/generate) からリポジトリを新規作成できます。
 
 また、SilCilSystemはUnitypackage化されています。
+
 Unity2019用のものは以下になります。
 
 |version|Download|Document|note|
 |-|-|-|-|
-|2.00|1月末リリース予定|[ドキュメント][page:ver200]|Unity2019.4で動作確認|
+|2.00|[ダウンロード][release:ver200]|[ドキュメント][page:ver200]|Unity2019.4で動作確認|
 |1.00|[ダウンロード][release:ver100]|[ドキュメント][page:ver100]|Unity2019.4で動作確認|
 
 <!--- 参照 --->
@@ -37,11 +30,9 @@ Unity2019用のものは以下になります。
 [release:ver100]: https://github.com/TeamAojilu/UnityTeamDevTemplate/releases/download/v1.0/SilCilSystem_unity2019_ver100.unitypackage
 [page:ver100]: https://teamaojilu.github.io/UnityTeamDevTemplate/ver100/
 
+[release:ver200]: https://github.com/TeamAojilu/UnityTeamDevTemplate/releases/download/v2.0/SilCilSystem_ver2.0.0.unitypackage
 [page:ver200]: https://teamaojilu.github.io/UnityTeamDevTemplate/ver200/
 
 # ライセンス
 
-```
-[TODO]
-とりあえず今はMITを使っている
-```
+- MIT License
