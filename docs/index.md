@@ -20,7 +20,7 @@
 ## ログ
 
 - 2020.11.14 変数/イベントアセット追加（SilCilSystem開発開始）
-- 2020.12.10 [Momiji-LT#3 CISTLTコラボ!!!](page:Momiji-LT#3)で[「豚に真珠ストライク〜ブタスト〜」](page:butasuto)開発に使用
+- 2020.12.10 [Momiji-LT#3 CISTLTコラボ!!!][page:Momiji-LT#3]で[「豚に真珠ストライク〜ブタスト〜」][page:butasuto]開発に使用
 - 2020.12.21 [Unity 1週間ゲームジャム][page:unity1week_akeru]で[「すきすきスキマん」][page:sukisukisukiman]開発に使用
 - 2021.01.02 ver1.0 Released
 - 2021.01.18 ver2.0 Released
