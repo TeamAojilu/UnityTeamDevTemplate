@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382aedbb827af6f4199bc7a40d9d524b, type: 3}
   m_Name: IsPlaying_Readonly
   m_EditorClassIdentifier: 
+  m_description: 
   m_variable: {fileID: 11400000}
 --- !u!114 &-1588495288883467759
 MonoBehaviour:
@@ -25,6 +26,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb78647944348a4289c6818870c8ba1, type: 3}
   m_Name: IsPlaying_Listener
   m_EditorClassIdentifier: 
+  m_description: 
   m_event: {fileID: 6910766401496755564}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -38,6 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a25fae5bab828994a9301f64b9247c3b, type: 3}
   m_Name: IsPlaying
   m_EditorClassIdentifier: 
+  m_description: 
+  m_restoreValue: 0
   m_value: 0
   m_onValueChanged: {fileID: 6910766401496755564}
 --- !u!114 &6910766401496755564
@@ -52,3 +56,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92872acfccee99d44b84f7a04883ef2b, type: 3}
   m_Name: IsPlaying_Changed
   m_EditorClassIdentifier: 
+  m_description: 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2092934b449cda3408bfba63b456e87c, type: 3}
   m_Name: ClearCount_Listener
   m_EditorClassIdentifier: 
+  m_description: 
   m_event: {fileID: -2511579056211465032}
 --- !u!114 &-2511579056211465032
 MonoBehaviour:
@@ -25,6 +26,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9fd06d6bf479b4ba4dd3428b58b255, type: 3}
   m_Name: ClearCount_Changed
   m_EditorClassIdentifier: 
+  m_description: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37,6 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ce84787aec64f42b3f81868361589b, type: 3}
   m_Name: ClearCount
   m_EditorClassIdentifier: 
+  m_description: 
+  m_restoreValue: 1
   m_value: 13
   m_onValueChanged: {fileID: -2511579056211465032}
 --- !u!114 &3204594841943661011
@@ -51,4 +55,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3514c65ad6a8c154cae67cbc08b9398e, type: 3}
   m_Name: ClearCount_Readonly
   m_EditorClassIdentifier: 
+  m_description: 
   m_variable: {fileID: 11400000}

@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: Count
   m_EditorClassIdentifier: 
   m_description: 
+  m_restoreValue: 0
   m_value: 0
   m_onValueChanged: {fileID: -2511579056211465032}
 --- !u!114 &3204594841943661011

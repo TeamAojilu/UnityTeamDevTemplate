@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2092934b449cda3408bfba63b456e87c, type: 3}
   m_Name: Score_Listener
   m_EditorClassIdentifier: 
+  m_description: 
   m_event: {fileID: 830551647361708698}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -25,7 +26,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ce84787aec64f42b3f81868361589b, type: 3}
   m_Name: Score
   m_EditorClassIdentifier: 
-  m_value: 600
+  m_description: 
+  m_restoreValue: 0
+  m_value: 0
   m_onValueChanged: {fileID: 830551647361708698}
 --- !u!114 &830551647361708698
 MonoBehaviour:
@@ -39,6 +42,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9fd06d6bf479b4ba4dd3428b58b255, type: 3}
   m_Name: Score_Changed
   m_EditorClassIdentifier: 
+  m_description: 
 --- !u!114 &7030332484043393690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,4 +55,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3514c65ad6a8c154cae67cbc08b9398e, type: 3}
   m_Name: Score_Readonly
   m_EditorClassIdentifier: 
+  m_description: 
   m_variable: {fileID: 11400000}

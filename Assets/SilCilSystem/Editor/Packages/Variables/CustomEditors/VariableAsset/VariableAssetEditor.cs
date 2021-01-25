@@ -1,4 +1,5 @@
 ﻿using SilCilSystem.Variables.Base;
+using SilCilSystem.Variables.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,12 +44,10 @@ namespace SilCilSystem.Editors
         {
             base.OnInspectorGUI();
 
-            serializedObject.Update();
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(VariableAsset.m_description)));
-            serializedObject.ApplyModifiedProperties();
+            DrawEditorSelializedProperty();
 
             if (!IsMain()) return;
-            
+
             EditorGUILayout.Space();
             DrawHideFlagsMenu();
             EditorGUILayout.Space(EditorGUIUtility.singleLineHeight);
@@ -70,10 +69,23 @@ namespace SilCilSystem.Editors
             {
                 DrawLine();
             }
-            
+
             DrawDragDropArea();
         }
-        
+
+        private void DrawEditorSelializedProperty()
+        {
+            serializedObject.Update();
+
+            var restore = serializedObject.FindProperty(nameof(Variable<int>.m_restoreValue)); // intじゃなくてもいい. nameofが使いたいだけ.
+            if (restore != null) EditorGUILayout.PropertyField(restore);
+
+            var description = serializedObject.FindProperty(nameof(VariableAsset.m_description));
+            if (description != null) EditorGUILayout.PropertyField(description);
+
+            serializedObject.ApplyModifiedProperties();
+        }
+
         private void DrawDragDropArea()
         {
             //ドロップできる領域を確保

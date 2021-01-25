@@ -1,5 +1,6 @@
 using System;
 using SilCilSystem.Variables.Base;
+using UnityEngine;
 
 namespace SilCilSystem.Variables
 {
@@ -22,6 +23,30 @@ namespace SilCilSystem.Variables.Generic
         public abstract T Value { get; set; }
         public void SetValue(T value) => Value = value;
         public static implicit operator T(Variable<T> variable) => variable.Value;
+
+#if UNITY_EDITOR
+        // ランタイム中の値の変更を保持する機能のためにエディタ専用変数を用意.
+        // 値型でないと機能しない.
+        [SerializeField, Tooltip("エディタ専用：trueの時、プレイモード終了後に値をリセットします"), HideInInspector] internal bool m_restoreValue = false;
+        private T m_initialValue = default;
+
+        private void OnEnable()
+        {
+            if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode)
+            {
+                m_initialValue = Value;
+                UnityEditor.EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+            }
+        }
+
+        private void OnPlayModeStateChanged(UnityEditor.PlayModeStateChange obj)
+        {
+            if(UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode == false && m_restoreValue)
+            {
+                Value = m_initialValue;
+            }
+        }
+#endif
     }
 
     public abstract class ReadonlyVariable<T> : VariableAsset

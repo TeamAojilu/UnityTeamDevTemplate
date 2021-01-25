@@ -18,7 +18,7 @@ namespace SilCilSystem.Internals.Variables.Converters
             get => m_variable.Value;
             set => m_variable.Value = m_castType.Cast(value);
         }
-        
+
         [OnAttached, Conditional("UNITY_EDITOR")]
         private void OnAttached(VariableAsset parent)
         {
