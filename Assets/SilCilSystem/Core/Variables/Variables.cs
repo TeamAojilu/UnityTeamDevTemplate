@@ -1,6 +1,8 @@
 using System;
+using System.Diagnostics;
 using SilCilSystem.Variables.Base;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SilCilSystem.Variables
 {
@@ -24,29 +26,66 @@ namespace SilCilSystem.Variables.Generic
         public void SetValue(T value) => Value = value;
         public static implicit operator T(Variable<T> variable) => variable.Value;
 
+        #region Restore
+        protected T m_initialValue = default;
+        
+        public virtual void Restore()
+        {
+            Value = m_initialValue;
+        }
+
+        protected virtual void OnEnable()
+        {
+            m_initialValue = Value;
+
+            // 重複登録を防ぐために解除してから登録.
+            SceneChangedDispatcher.UnRegister(OnSceneChanged, ExecutionOrder);
+            SceneChangedDispatcher.Register(OnSceneChanged, ExecutionOrder);
+            
+            // エディタ専用.
+            RegisterPlayModeChanged();
+        }
+
+        protected virtual void OnDisable()
+        {
+            SceneChangedDispatcher.UnRegister(OnSceneChanged, ExecutionOrder);
+        }
+
+        // エディタ上で描画順を後にしたいのでHideInInspector.
+        [SerializeField, Tooltip("trueの時、シーン切り替え時に値をリセットします"), HideInInspector] internal bool m_restoreOnSceneChanged = false;
+        private const int ExecutionOrder = DisposeOnSceneChangedExtensios.ExecutionOrder + 1;
+
+        private void OnSceneChanged(Scene arg0, Scene arg1)
+        {
+            if (m_restoreOnSceneChanged) Restore();
+        }
+
+        public void RestoreOnGameObejctDestroyed(GameObject gameObject)
+        {
+            DelegateDispose.Create(Restore).DisposeOnDestroy(gameObject);
+        }
+
 #if UNITY_EDITOR
-        // ランタイム中の値の変更を保持する機能のためにエディタ専用変数を用意.
-        // 値型でないと機能しない.
-        [SerializeField, Tooltip("エディタ専用：trueの時、プレイモード終了後に値をリセットします"), HideInInspector] internal bool m_restoreValue = false;
-        private T m_initialValue = default;
-
-        private void OnEnable()
-        {
-            if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode)
-            {
-                m_initialValue = Value;
-                UnityEditor.EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-            }
-        }
-
-        private void OnPlayModeStateChanged(UnityEditor.PlayModeStateChange obj)
-        {
-            if(UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode == false && m_restoreValue)
-            {
-                Value = m_initialValue;
-            }
-        }
+        // エディタ上で描画順を後にしたいのでHideInInspector.
+        [SerializeField, Tooltip("エディタ専用: trueの時、プレイモード終了後に値をリセットします"), HideInInspector] internal bool m_restoreValue = false;
 #endif
+        
+        [Conditional("UNITY_EDITOR")]
+        private void RegisterPlayModeChanged()
+        {
+#if UNITY_EDITOR
+            if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode == false) return;
+
+            UnityEditor.EditorApplication.playModeStateChanged += _ => 
+            {
+                if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode == false && m_restoreValue)
+                {
+                    Restore();
+                }
+            };
+#endif
+        }
+#endregion
     }
 
     public abstract class ReadonlyVariable<T> : VariableAsset

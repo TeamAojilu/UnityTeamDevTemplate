@@ -1,38 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace SilCilSystem.Variables
 {
-    public static class DisposeOnSceneUnLoadedExtensios
+    public static class DisposeOnSceneChangedExtensios
     {
-        private static bool _Registered = false;
-        private static List<IDisposable> _Disposables = new List<IDisposable>(); 
+        public const int ExecutionOrder = -1000;
 
-        [RuntimeInitializeOnLoadMethod]
-        private static void RegisterCallback()
+        /// <summary>シーンの切り替え時に自動でDisposeが呼ばれるようにする</summary>
+        public static void DisposeOnSceneChanged(this IDisposable disposable)
         {
-            if (_Registered) return;
-            SceneManager.sceneUnloaded += OnSceneUnloaded;
-        }
-
-        private static void OnSceneUnloaded(Scene arg0)
-        {
-            foreach (var dispose in _Disposables)
-            {
-                dispose?.Dispose();
-            }
-            _Disposables.Clear();
-#if UNITY_EDITOR
-            Debug.Log("DisposeOnSceneUnloaded");
-#endif
-        }
-
-        /// <summary>シーンのアンロード時に自動でDisposeが呼ばれるようにする</summary>
-        public static void DisposeOnSceneUnLoaded(this IDisposable disposable)
-        {
-            _Disposables.Add(disposable);
+            SceneChangedDispatcher.Register((_, __) => disposable?.Dispose(), ExecutionOrder);
         }
     }
 }

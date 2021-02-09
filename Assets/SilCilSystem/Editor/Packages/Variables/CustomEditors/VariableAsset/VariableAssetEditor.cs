@@ -44,13 +44,11 @@ namespace SilCilSystem.Editors
         {
             base.OnInspectorGUI();
 
-            DrawEditorSelializedProperty();
+            DrawHiddenSelializedProperty();
 
             if (!IsMain()) return;
 
-            EditorGUILayout.Space();
             DrawHideFlagsMenu();
-            EditorGUILayout.Space(EditorGUIUtility.singleLineHeight);
 
             if (targets.Length == 1)
             {
@@ -73,11 +71,19 @@ namespace SilCilSystem.Editors
             DrawDragDropArea();
         }
 
-        private void DrawEditorSelializedProperty()
+        private void DrawHiddenSelializedProperty()
         {
+            EditorGUILayout.Space();
+
             serializedObject.Update();
 
-            var restore = serializedObject.FindProperty(nameof(Variable<int>.m_restoreValue)); // intじゃなくてもいい. nameofが使いたいだけ.
+            var restoreOnSceneChanged = serializedObject.FindProperty(nameof(Variable<int>.m_restoreOnSceneChanged)); // intじゃなくてもいい. nameofが使いたいだけ.
+            if (restoreOnSceneChanged != null) EditorGUILayout.PropertyField(restoreOnSceneChanged);
+
+            EditorGUILayout.Space(EditorGUIUtility.singleLineHeight);
+            EditorGUILayout.LabelField("Editor", EditorStyles.boldLabel);
+
+            var restore = serializedObject.FindProperty(nameof(Variable<int>.m_restoreValue));
             if (restore != null) EditorGUILayout.PropertyField(restore);
 
             var description = serializedObject.FindProperty(nameof(VariableAsset.m_description));
@@ -207,6 +213,8 @@ namespace SilCilSystem.Editors
 
         private void DrawHideFlagsMenu()
         {
+            EditorGUILayout.Space();
+
             EditorGUILayout.LabelField("SubAssets", EditorStyles.boldLabel);
             EditorGUILayout.BeginHorizontal();
             {
@@ -227,6 +235,8 @@ namespace SilCilSystem.Editors
                 }
             }
             EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.Space(EditorGUIUtility.singleLineHeight);
         }
 
         private void ClearActiveEditors()

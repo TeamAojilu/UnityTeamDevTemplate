@@ -7,6 +7,7 @@ namespace SilCilSystem.Variables.Base
     public abstract class VariableAsset : ScriptableObject
     {
 #if UNITY_EDITOR
+        // エディタ上で描画順を後にしたいのでHideInInspector.
         [SerializeField, TextArea, HideInInspector] internal string m_description = default;
 #endif
     }
