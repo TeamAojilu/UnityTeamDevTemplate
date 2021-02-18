@@ -44,7 +44,11 @@ namespace SilCilSystem.Editors
         {
             base.OnInspectorGUI();
 
+<<<<<<< Updated upstream
             DrawHiddenSelializedProperty();
+=======
+            DrawHiddenSerializedProperty();
+>>>>>>> Stashed changes
 
             if (!IsMain()) return;
 
@@ -71,7 +75,11 @@ namespace SilCilSystem.Editors
             DrawDragDropArea();
         }
 
+<<<<<<< Updated upstream
         private void DrawHiddenSelializedProperty()
+=======
+        private void DrawHiddenSerializedProperty()
+>>>>>>> Stashed changes
         {
             EditorGUILayout.Space();
 

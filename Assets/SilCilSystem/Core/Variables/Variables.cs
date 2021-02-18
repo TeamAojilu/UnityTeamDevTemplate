@@ -3,6 +3,10 @@ using System.Diagnostics;
 using SilCilSystem.Variables.Base;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+<<<<<<< Updated upstream
+=======
+using Debug = UnityEngine.Debug;
+>>>>>>> Stashed changes
 
 namespace SilCilSystem.Variables
 {
@@ -27,17 +31,37 @@ namespace SilCilSystem.Variables.Generic
         public static implicit operator T(Variable<T> variable) => variable.Value;
 
         #region Restore
+<<<<<<< Updated upstream
         protected T m_initialValue = default;
         
         public virtual void Restore()
         {
             Value = m_initialValue;
+=======
+        [SerializeReference, HideInInspector]
+        private T initialValue;
+
+        [SerializeField, HideInInspector] private bool isInitialized;
+
+        public virtual void Restore()
+        {
+            Value = initialValue;
+>>>>>>> Stashed changes
         }
 
         protected virtual void OnEnable()
         {
+<<<<<<< Updated upstream
             m_initialValue = Value;
 
+=======
+            if(m_restoreValue && isInitialized) Restore();
+            #if UNITY_EDITOR
+                initialValue = Value;
+                isInitialized = true;
+            #endif
+   
+>>>>>>> Stashed changes
             // 重複登録を防ぐために解除してから登録.
             SceneChangedDispatcher.UnRegister(OnSceneChanged, ExecutionOrder);
             SceneChangedDispatcher.Register(OnSceneChanged, ExecutionOrder);
@@ -60,16 +84,26 @@ namespace SilCilSystem.Variables.Generic
             if (m_restoreOnSceneChanged) Restore();
         }
 
+<<<<<<< Updated upstream
         public void RestoreOnGameObejctDestroyed(GameObject gameObject)
+=======
+        public void RestoreOnGameObjectDestroyed(GameObject gameObject)
+>>>>>>> Stashed changes
         {
             DelegateDispose.Create(Restore).DisposeOnDestroy(gameObject);
         }
 
+<<<<<<< Updated upstream
 #if UNITY_EDITOR
         // エディタ上で描画順を後にしたいのでHideInInspector.
         [SerializeField, Tooltip("エディタ専用: trueの時、プレイモード終了後に値をリセットします"), HideInInspector] internal bool m_restoreValue = false;
 #endif
         
+=======
+        // エディタ上で描画順を後にしたいのでHideInInspector.
+        [SerializeField, Tooltip("エディタ専用: trueの時、プレイモード終了後に値をリセットします"), HideInInspector] internal bool m_restoreValue = false;
+
+>>>>>>> Stashed changes
         [Conditional("UNITY_EDITOR")]
         private void RegisterPlayModeChanged()
         {
@@ -80,6 +114,10 @@ namespace SilCilSystem.Variables.Generic
             {
                 if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode == false && m_restoreValue)
                 {
+<<<<<<< Updated upstream
+=======
+                    isInitialized = false;
+>>>>>>> Stashed changes
                     Restore();
                 }
             };

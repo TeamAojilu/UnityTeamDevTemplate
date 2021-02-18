@@ -27,6 +27,10 @@ MonoBehaviour:
   m_Name: IsPlaying
   m_EditorClassIdentifier: 
   m_description: 
+<<<<<<< Updated upstream
+=======
+  m_restoreOnSceneChanged: 0
+>>>>>>> Stashed changes
   m_restoreValue: 0
   m_value: 0
   m_onValueChanged: {fileID: 6708980926655779903}
