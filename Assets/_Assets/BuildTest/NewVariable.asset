@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: NewVariable
   m_EditorClassIdentifier: 
   m_description: 
-  initialValue: jjj
-  isInitialized: 0
-  m_restoreOnSceneChanged: 0
-  m_restoreValue: 1
+  initialValue: Default Value
+  isInitialized: 1
+  restoreOnSceneChanged: 0
+  restoreValue: 1
   m_value: Default Value
   m_onValueChanged: {fileID: 0}
