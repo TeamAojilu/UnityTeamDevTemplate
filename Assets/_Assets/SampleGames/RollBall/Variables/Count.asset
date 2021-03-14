@@ -59,10 +59,6 @@ MonoBehaviour:
   m_Name: Count
   m_EditorClassIdentifier: 
   m_description: 
-<<<<<<< Updated upstream
-=======
-  m_restoreOnSceneChanged: 0
->>>>>>> Stashed changes
   m_restoreValue: 0
   m_value: 0
   m_onValueChanged: {fileID: -2511579056211465032}
