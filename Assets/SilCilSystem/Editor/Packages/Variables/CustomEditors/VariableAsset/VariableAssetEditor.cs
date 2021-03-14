@@ -1,6 +1,5 @@
 ﻿using SilCilSystem.Variables.Base;
 using SilCilSystem.Variables.Generic;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -13,7 +12,7 @@ namespace SilCilSystem.Editors
     internal class VariableAssetEditor : Editor
     {
         private Dictionary<Editor, bool> m_activeEditors = new Dictionary<Editor, bool>();
-        private VariableInspectorOrders m_orders = default;
+        private VariableInspectorOrders m_orders;
 
         private bool IsMain()
         {
@@ -44,15 +43,15 @@ namespace SilCilSystem.Editors
         {
             base.OnInspectorGUI();
 
-            DrawHiddenSelializedProperty();
-
+            DrawHiddenSerializedProperty();
+            
             if (!IsMain()) return;
 
             DrawHideFlagsMenu();
 
             if (targets.Length == 1)
             {
-                List<Editor> editors = new List<Editor>(m_activeEditors.Keys);
+                var editors = new List<Editor>(m_activeEditors.Keys);
                 DrawSubAssetsInspector(editors);
                 DrawLine();
 
@@ -71,19 +70,20 @@ namespace SilCilSystem.Editors
             DrawDragDropArea();
         }
 
-        private void DrawHiddenSelializedProperty()
+        private void DrawHiddenSerializedProperty()
+
         {
             EditorGUILayout.Space();
 
             serializedObject.Update();
 
-            var restoreOnSceneChanged = serializedObject.FindProperty(nameof(Variable<int>.m_restoreOnSceneChanged)); // intじゃなくてもいい. nameofが使いたいだけ.
+            var restoreOnSceneChanged = serializedObject.FindProperty(nameof(Variable<int>.restoreOnSceneChanged)); // intじゃなくてもいい. nameofが使いたいだけ.
             if (restoreOnSceneChanged != null) EditorGUILayout.PropertyField(restoreOnSceneChanged);
 
             EditorGUILayout.Space(EditorGUIUtility.singleLineHeight);
             EditorGUILayout.LabelField("Editor", EditorStyles.boldLabel);
 
-            var restore = serializedObject.FindProperty(nameof(Variable<int>.m_restoreValue));
+            var restore = serializedObject.FindProperty(nameof(Variable<int>.restoreValue));
             if (restore != null) EditorGUILayout.PropertyField(restore);
 
             var description = serializedObject.FindProperty(nameof(VariableAsset.m_description));
@@ -136,11 +136,11 @@ namespace SilCilSystem.Editors
             var buttonRect = new Rect(dragDropRect.x + 30f, dragDropRect.y + 30f, dragDropRect.width - 60f, 20f);
             if (!GUI.Button(buttonRect, "Add SubAsset")) return;
 
-            VariableAttributeList.GetEnableTypes(target as VariableAsset, out List<string> paths, out List<Type> types);
+            VariableAttributeList.GetEnableTypes(target as VariableAsset, out var paths, out var types);
             foreach(var t in targets.Skip(1))
             {
-                VariableAttributeList.GetEnableTypes(t as VariableAsset, out List<string> ps, out List<Type> ts);
-                for(int i = 0; i < paths.Count; i++)
+                VariableAttributeList.GetEnableTypes(t as VariableAsset, out _, out var ts);
+                for(var i = 0; i < paths.Count; i++)
                 {
                     if (ts.Contains(types[i])) continue;
                     types.RemoveAt(i);
@@ -189,14 +189,14 @@ namespace SilCilSystem.Editors
                 GUILayout.FlexibleSpace();
                 if (GUILayout.Button("Up"))
                 {
-                    m_orders?.MoveUp(target as VariableAsset, editorTarget as VariableAsset);
+                    m_orders.MoveUp(target as VariableAsset, editorTarget as VariableAsset);
                     InitActiveEditors();
                     Repaint();
                     return true;
                 }
                 if (GUILayout.Button("Down"))
                 {
-                    m_orders?.MoveDown(target as VariableAsset, editorTarget as VariableAsset);
+                    m_orders.MoveDown(target as VariableAsset, editorTarget as VariableAsset);
                     InitActiveEditors();
                     Repaint();
                     return true;
@@ -251,21 +251,21 @@ namespace SilCilSystem.Editors
         private void InitActiveEditors()
         {
             ClearActiveEditors();
-            m_orders = m_orders ?? VariableInspectorOrders.GetInstance();
-            foreach (var subasset in m_orders.GetOrderedSubAssets(target as VariableAsset))
+            m_orders = m_orders ? m_orders : VariableInspectorOrders.GetInstance();
+            foreach (var subAsset in m_orders.GetOrderedSubAssets(target as VariableAsset))
             {
-                m_activeEditors.Add(CreateEditor(subasset), true);
+                m_activeEditors.Add(CreateEditor(subAsset), true);
             }
         }
         
-        private void SetHideFlags(Object target, bool show)
+        private static void SetHideFlags(Object target, bool show)
         {
             if (!(target is VariableAsset variable)) return;
 
-            foreach (var subasset in variable.GetAllVariables())
+            foreach (var subAsset in variable.GetAllVariables())
             {
-                if (subasset == target) continue;
-                subasset.hideFlags = (show) ? HideFlags.None : HideFlags.HideInHierarchy;
+                if (subAsset == target) continue;
+                subAsset.hideFlags = (show) ? HideFlags.None : HideFlags.HideInHierarchy;
             }
             AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(target));
         }

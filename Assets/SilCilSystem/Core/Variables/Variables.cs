@@ -27,18 +27,27 @@ namespace SilCilSystem.Variables.Generic
         public static implicit operator T(Variable<T> variable) => variable.Value;
 
         #region Restore
-        protected T m_initialValue = default;
-        
+        [SerializeReference, HideInInspector]
+        private T initialValue;
+
+        [SerializeField, HideInInspector] private bool isInitialized;
+
         public virtual void Restore()
         {
-            Value = m_initialValue;
+            Value = initialValue;
         }
 
         protected virtual void OnEnable()
         {
-            m_initialValue = Value;
+            initialValue = Value;
 
-            // 重複登録を防ぐために解除してから登録.
+            if(restoreValue && isInitialized) Restore();
+            if (isInitialized == false)
+            {
+                initialValue = Value;
+                isInitialized = true;
+            }
+
             SceneChangedDispatcher.UnRegister(OnSceneChanged, ExecutionOrder);
             SceneChangedDispatcher.Register(OnSceneChanged, ExecutionOrder);
             
@@ -52,24 +61,22 @@ namespace SilCilSystem.Variables.Generic
         }
 
         // エディタ上で描画順を後にしたいのでHideInInspector.
-        [SerializeField, Tooltip("trueの時、シーン切り替え時に値をリセットします"), HideInInspector] internal bool m_restoreOnSceneChanged = false;
+        [SerializeField, Tooltip("trueの時、シーン切り替え時に値をリセットします"), HideInInspector] internal bool restoreOnSceneChanged = false;
         private const int ExecutionOrder = DisposeOnSceneChangedExtensios.ExecutionOrder + 1;
 
         private void OnSceneChanged(Scene arg0, Scene arg1)
         {
-            if (m_restoreOnSceneChanged) Restore();
+            if (restoreOnSceneChanged) Restore();
         }
 
-        public void RestoreOnGameObejctDestroyed(GameObject gameObject)
+        public void RestoreOnGameObjectDestroyed(GameObject gameObject)
         {
             DelegateDispose.Create(Restore).DisposeOnDestroy(gameObject);
         }
 
-#if UNITY_EDITOR
         // エディタ上で描画順を後にしたいのでHideInInspector.
-        [SerializeField, Tooltip("エディタ専用: trueの時、プレイモード終了後に値をリセットします"), HideInInspector] internal bool m_restoreValue = false;
-#endif
-        
+        [SerializeField, Tooltip("エディタ専用: trueの時、プレイモード終了後に値をリセットします"), HideInInspector] internal bool restoreValue = false;
+
         [Conditional("UNITY_EDITOR")]
         private void RegisterPlayModeChanged()
         {
@@ -78,8 +85,9 @@ namespace SilCilSystem.Variables.Generic
 
             UnityEditor.EditorApplication.playModeStateChanged += _ => 
             {
-                if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode == false && m_restoreValue)
+                if (UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode == false && restoreValue)
                 {
+                    isInitialized = false;
                     Restore();
                 }
             };

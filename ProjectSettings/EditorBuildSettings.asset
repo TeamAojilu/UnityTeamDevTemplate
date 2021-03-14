@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Assets/BuildTest/New Scene.unity
+    guid: 4e4000dba92b18144b9c9a67f1563217
+  - enabled: 1
     path: Assets/_Assets/SampleGames/RollBall/RollBall.unity
     guid: 572d46ea361cfff4a877f09dbe5f324f
   - enabled: 1
